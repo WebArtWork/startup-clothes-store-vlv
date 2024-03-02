@@ -2,14 +2,14 @@
 	"title": "Welcome to waw Template",
 	"description": "description",
 	"keywords": "keywords",
-	"prefix": "/template",
+	"prefix": "/vlv",
 	"picture": "picture",
 	"author": "author",
 	"moderators": [],
 	"scss": "scss/index.scss",
 	"variables": {
-		"land_video": "/template/img/lands.MP4",
-		"land_image": "/template/img/2.webp",
+		"land_video": "/vlv/img/lands.MP4",
+		"land_image": "/vlv/img/2.webp",
 		"primary_color": "#d3c9b7",
 		"secondary_color": "#f2f1ed",
 		"primary_text_color": "#000000",
@@ -27,21 +27,21 @@
 				"id": "/product",
 				"price": 1200,
 				"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-				"thumb": "https://neryxomka.com/template/img/welcome.png",
+				"thumb": "https://neryxomka.com/vlv/img/welcome.png",
 				"name": "product"
 			},
 			{
 				"id": "/product",
 				"price": 1200,
 				"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-				"thumb": "https://neryxomka.com/template/img/welcome.png",
+				"thumb": "https://neryxomka.com/vlv/img/welcome.png",
 				"name": "product"
 			},
 			{
 				"id": "/product",
 				"price": 1200,
 				"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-				"thumb": "https://neryxomka.com/template/img/welcome.png",
+				"thumb": "https://neryxomka.com/vlv/img/welcome.png",
 				"name": "product"
 			}
 		],
@@ -49,19 +49,19 @@
 			{
 				"id": "/article",
 				"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-				"thumb": "https://neryxomka.com/template/img/welcome.png",
+				"thumb": "https://neryxomka.com/vlv/img/welcome.png",
 				"name": "article"
 			},
 			{
 				"id": "/article",
 				"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-				"thumb": "https://neryxomka.com/template/img/welcome.png",
+				"thumb": "https://neryxomka.com/vlv/img/welcome.png",
 				"name": "article"
 			},
 			{
 				"id": "/article",
 				"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-				"thumb": "https://neryxomka.com/template/img/welcome.png",
+				"thumb": "https://neryxomka.com/vlv/img/welcome.png",
 				"name": "article"
 			}
 		],
