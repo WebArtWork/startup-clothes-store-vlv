@@ -4,5 +4,12 @@
 @import "scss/utils/vars";
 // @import "scss/media";
 @import "scss/base";
+
+// components
+@import "scss/components/header";
+@import "scss/components/footer";
+
 // pages
 @import "scss/pages/main";
+@import "scss/pages/index";
+
