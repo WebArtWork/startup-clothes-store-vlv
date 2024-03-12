@@ -1,41 +1,96 @@
-.swiper-section {
-    margin-bottom: 80px;
-}
+// .swiper-section {
+//     margin-bottom: 80px;
 
-.swiper {
-    height: 700px;
-}
+//     .swiper {
+//         height: 700px;
+//     }
+    
+//     .swiper-slide {
+//         text-align: center;
+//     }
+    
+//     @media (max-width: 1200px) {
+//         .swiper {
+//             height: 550px;
+//         }
+//     }
+    
+//     @media (max-width: 992px) {
+//         .swiper {
+//             height: 450px;
+//         }
+//     }
+    
+//     @media (max-width: 768px) {
+//         .swiper {
+//             height: 350px;
+//         }
+//     }
+    
+//     @media (max-width: 620px) {
+//         .swiper {
+//             height: 250px;
+//         }
+//     }
+    
+//     @media (max-width: 420px) {
+//         .swiper {
+//             height: 180px;
+//         }
+//     }
+// }
 
-.swiper-slide {
+  .cloth__item{
+    max-width: 310px;
+    max-height: 590px;
+    display: block;
     text-align: center;
-}
 
-@media (max-width: 1200px) {
-    .swiper {
-        height: 550px;
-    }
-}
+    img {
+        height: 465px; /* Высота контейнера */
+        width: 100%; /* Ширина контейнера */
+        object-fit: cover; /* Заполнение контейнера изображением с сохранением пропорций */
+      }
+  }
 
-@media (max-width: 992px) {
-    .swiper {
-        height: 450px;
-    }
-}
 
-@media (max-width: 768px) {
-    .swiper {
-        height: 350px;
-    }
-}
+  .cloth__item:hover .cloth__item-title,
+  .cloth__item:hover .cloth__item-price {
+    color: #6cc4cc;
+  }
 
-@media (max-width: 620px) {
-    .swiper {
-        height: 250px;
-    }
-}
+  .cloth__item-title {
+    transition: 0.2s ease;
+    font-size: 16px;
+    padding-top: 20px;
+  }
 
-@media (max-width: 420px) {
-    .swiper {
-        height: 180px;
-    }
-}
+  .cloth__item-price {
+    transition: 0.2s ease;
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .cloth-swiper{
+    max-width: 1300px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    overflow-x: hidden;
+  }
+
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
+    position: absolute;
+    left: auto;
+    color: #6cc4cc !important;
+    font-weight: 900;
+  }
+
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
+    position: absolute;
+    right: auto;
+    color: #6cc4cc !important;
+    font-weight: 900;
+  }
