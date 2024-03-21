@@ -1,3 +1,4 @@
+/*---------------swiper-section--------------*/
 .swiper-section {
   margin-bottom: 80px;
 
@@ -75,45 +76,7 @@
     }
   }
 }
-
-/*---------------Картка одягу--------------*/
-.cloth__item {
-  max-width: 310px;
-  max-height: 590px;
-  display: block;
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-
-  img {
-    height: 465px;
-    width: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-}
-
-.cloth__item:hover img {
-  transform: scale(1.05);
-}
-
-.cloth__item:hover .cloth__item-title,
-.cloth__item:hover .cloth__item-price {
-  color: #6cc4cc;
-}
-
-.cloth__item-title {
-  transition: 0.2s ease;
-  font-size: 16px;
-  padding-top: 20px;
-}
-
-.cloth__item-price {
-  transition: 0.2s ease;
-  font-size: 18px;
-  padding-top: 10px;
-}
-/*---------------/Картка одягу--------------*/
+/*---------------/swiper-section--------------*/
 
 /*---------------Свайпер одягу--------------*/
 .cloth-swipers__container {
@@ -209,14 +172,13 @@
 @media (max-width: 690px) {
   .swiper-wrapper {
     max-width: 540px;
-  }
+    .cloth__item {
+      max-width: 250px;
+      max-height: 500px;
 
-  .cloth__item {
-    max-width: 250px;
-    max-height: 500px;
-
-    img {
-      height: 375px;
+      img {
+        height: 375px;
+      }
     }
   }
 
@@ -230,14 +192,14 @@
 @media (max-width: 600px) {
   .swiper-wrapper {
     max-width: 380px;
-  }
 
-  .cloth__item {
-    max-width: 380px;
-    max-height: 650px;
+    .cloth__item {
+      max-width: 380px;
+      max-height: 650px;
 
-    img {
-      height: 570px;
+      img {
+        height: 570px;
+      }
     }
   }
 
@@ -250,13 +212,13 @@
 @media (max-width: 430px) {
   .swiper-wrapper {
     max-width: 300px;
-  }
 
-  .cloth__item {
-    max-width: 300px;
+    .cloth__item {
+      max-width: 300px;
 
-    img {
-      height: 450px;
+      img {
+        height: 450px;
+      }
     }
   }
 
@@ -269,13 +231,13 @@
 @media (max-width: 340px) {
   .swiper-wrapper {
     max-width: 270px;
-  }
 
-  .cloth__item {
-    max-width: 270px;
+    .cloth__item {
+      max-width: 270px;
 
-    img {
-      height: 405px;
+      img {
+        height: 405px;
+      }
     }
   }
 }

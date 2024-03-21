@@ -1,12 +1,12 @@
-{
-	"name": "product",
-	"products": {
+{   
+	"product": {
 		"id": "/product",
-		"price": 1200,
-		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-        "thumb": "https://neryxomka.com/vlv/img/welcome.png",
-        "thumbs": ["https://neryxomka.com/vlv/img/welcome.png"],
-		"name": "product"
+		"name": "Куртка 'Citric Summer'",
+		"price": 1719.00,
+		"weight": "750грам",
+		"descr": "Ref. 24-01453\n\nСклад:\nЗзовні\n100% Поліамід\nПідкладка\n100% Поліестер\nНаповнювач\n100% Поліестер",
+		"thumb": "/vlv/img/cloth/cloth2.jpg",
+		"category": "ВЕРХНІЙ ОДЯГ"
 	}
 }
+

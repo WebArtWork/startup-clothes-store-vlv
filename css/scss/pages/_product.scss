@@ -1,0 +1,151 @@
+.product {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  padding: 50px 0 100px;
+  margin-left: 20px;
+
+  &__img {
+    img {
+      width: 555px;
+      object-fit: cover;
+    }
+  }
+}
+
+.product-info {
+  &__title {
+    font-size: 32px;
+    font-weight: 500;
+    //   font-family: "Oswald", sans-serif;
+    color: #000000;
+    letter-spacing: 1px;
+    margin-bottom: 23px;
+    margin-top: 35px;
+    text-transform: uppercase;
+    word-spacing: 1px;
+  }
+
+  &__price {
+    font-size: 20px;
+    font-weight: 600;
+    //   font-family: "Oswald", sans-serif;
+    color: #2c2c2c;
+    margin-bottom: 24px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid #a6a6a6;
+  }
+
+  &__descr {
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    font-family: sans-serif;
+    margin: 0 0 30px 10px;
+  }
+
+  &__cart {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+  }
+
+  &__cart-text {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  &__cart-btn {
+    margin-bottom: 15px;
+  }
+
+  &__category {
+    font-size: 16px;
+    color: #000000;
+
+    a {
+      color: #454141;
+      transition: 0.2s ease;
+
+      &:hover {
+        color: #6cc4cc;
+      }
+    }
+  }
+}
+
+.product-info__cart-quantity input::-webkit-inner-spin-button,
+.product-info__cart-quantity input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (max-width: 1080px) {
+  .product {
+    gap: 40px;
+    &__img {
+      img {
+        width: 455px;
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .product__container {
+    display: table;
+  }
+  .product {
+    display: table-cell;
+
+    &__img {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  .minus,
+  .plus,
+  .value {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #ffffff;
+    border: 1px solid #a3a3a3;
+    color: #000000;
+  }
+
+  .minus,
+  .plus {
+    transition: 0.2s ease;
+
+    &:hover {
+      background-color: #454141;
+      color: #ffffff;
+    }
+  }
+
+  .value {
+    text-align: center;
+    margin: 0 10px;
+  }
+}

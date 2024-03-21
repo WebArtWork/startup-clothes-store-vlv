@@ -7,6 +7,7 @@
 	"author": "author",
 	"moderators": [],
 	"scss": "scss/index.scss",
+	"currency": "₴",
 	"variables": {
 		"land_video": "/vlv/img/lands.MP4",
 		"land_image": "/vlv/img/2.webp",
