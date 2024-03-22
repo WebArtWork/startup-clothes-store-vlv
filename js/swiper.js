@@ -1,19 +1,19 @@
 let swiper = new Swiper(".mySwiper", {
-    effect: "fade", // Применяем эффект fade
+    effect: "fade",
     fadeEffect: {
-        crossFade: true, // Включаем плавный переход между слайдами
+        crossFade: true,
     },
     spaceBetween: 30,
     pagination: {
         el: ".swiper-pagination",
-        clickable: true, // Делаем пагинацию кликабельной
+        clickable: true,
     },
     autoplay: {
-        delay: 6000, // Изменяем задержку до 6 секунд
+        delay: 6000,
         disableOnInteraction: false,
     },
-    mousewheel: false, // Отключаем скроллинг слайдера колесом мыши
-    loop: true, // Включаем зацикливание слайдера
+    mousewheel: false,
+    loop: true,
 });
 
 const swiperCloth = new Swiper('.cloth-swiper', {
@@ -23,7 +23,6 @@ const swiperCloth = new Swiper('.cloth-swiper', {
     speed: 800,
   
   
-    // Navigation arrows
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',

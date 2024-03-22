@@ -18,7 +18,7 @@ html {
 }
 
 a {
-  color: #000000;
+  color: $black;
 }
 
 ul {
@@ -31,7 +31,7 @@ li {
   padding: 0;
   list-style: none;
   display: flex;
-  color: #ffffff;
+  color: $white;
 }
 
 .btn {
@@ -41,8 +41,8 @@ li {
   align-items: center;
   min-height: 52px;
   min-width: 170px;
-  color: #ffffff;
-  background-color: #2a2828;
+  color: $white;
+  background-color: $blackest_night;
   border-radius: 4px;
   font-size: 18px;
   line-height: 1.2;
@@ -52,6 +52,6 @@ li {
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #454141;
+    background-color: $menu_hover;
   }
 }

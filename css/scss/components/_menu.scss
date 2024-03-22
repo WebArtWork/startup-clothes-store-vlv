@@ -1,5 +1,5 @@
 .menu-main__wrapper {
-    background-color: #2a2828;
+    background-color: $blackest_night;
     margin-bottom: 20px;
     position: sticky;
     top: -1px;
@@ -8,7 +8,7 @@
   
   .menu-main {
     .menu-main__container {
-      background-color: #2a2828;
+      background-color: $blackest_night;
       overflow-x: auto;
       white-space: nowrap;
     }
@@ -22,12 +22,12 @@
     /* Стилизация ползунка полосы прокрутки */
     .menu-main__container::-webkit-scrollbar-thumb {
       height: 3px;
-      background-color: #6cc4cc;
+      background-color: $azure_sky;
     }
   
     /* Стилизация полосы прокрутки при наведении курсора */
     .menu-main__container::-webkit-scrollbar-thumb:hover {
-      background-color: #56aeb6;
+      background-color: $misty_turquoise;
     }
   
     &__ul {
@@ -38,7 +38,7 @@
   
     &__a {
       padding: 20px 25px;
-      color: #ffffff;
+      color: $white;
       background-color: inherit;
       font-size: 18px;
       text-transform: uppercase;
@@ -46,7 +46,7 @@
       transition: background-color 0.2s ease;
   
       &:hover {
-        background-color: #454141;
+        background-color: $menu_hover;
       }
     }
   

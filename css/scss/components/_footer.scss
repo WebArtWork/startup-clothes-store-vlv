@@ -3,14 +3,14 @@
 }
 
 .footer {
-  color: #ffffff;
-  background-color: #2a2828;
+  color: $white;
+  background-color: $blackest_night;
 
   a {
-    color: #d3d3d3;
+    color: $silver_shimmer;
 
     &:hover {
-      color: #ffffff;
+      color: $white;
     }
   }
 }
@@ -18,7 +18,7 @@
 .footer-top {
   padding-top: 60px;
   padding-bottom: 50px;
-  border-bottom: 2px solid #363636;
+  border-bottom: 2px solid $footer_border;
 
   &__container {
     display: flex;
@@ -41,7 +41,7 @@
     font-size: 16px;
     margin-bottom: 10px;
     line-height: 26px;
-    color: #d3d3d3;
+    color: $silver_shimmer;
   }
 }
 
@@ -55,7 +55,7 @@
     align-items: center;
 
     .footer-bottom__soc-img svg {
-      fill: #ffffff;
+      fill: $white;
       width: 20px;
       height: 20px;
       transition: transform 0.2s ease;
