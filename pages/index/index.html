@@ -24,12 +24,12 @@
 
 <div class="container cloth-swipers__container">
   <h2 class="cloth-swiper__title">
-    {{{title_top_products}}}
+    Top products
   </h2>
 
   <div class="cloth-swiper">
     <div class="swiper-wrapper">
-      {% for product in top_products %}
+      {% for product in products %}
       <div class="swiper-slide">
         <a href="/product" class="cloth__item" data-modal-id="modal">
           <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
@@ -47,7 +47,7 @@
   <a href="/products" class="btn main__button">Весь одяг</a>
 </div>
 
-
+<!--
 <div class="container cloth-swipers__container">
   <h2 class="cloth-swiper__title">
     {{{title_products}}}
@@ -71,7 +71,7 @@
   </div>
 
   <a href="/products" class="btn main__button">Весь одяг</a>
-</div>
+</div> -->
 
 <!--
 {% for article in articles %}
