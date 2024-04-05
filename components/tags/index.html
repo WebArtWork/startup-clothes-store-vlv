@@ -1,0 +1,12 @@
+<ul class="menu-main__ul">
+	{% for tag in tags %}
+	<li class="menu-main__li{{{tag.tags.length && ' active' || ''}}}">
+		<a href="#{{{tag._id|string}}}" class="menu-main__a">{{{tag.name}}}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% for tag in tags %}
+{% if tag.tags.length %}
+{{{'/vlv/components/tags'|c({tags: tag.tags}|safe)}}}
+{% endif %}
+{% endfor %}
