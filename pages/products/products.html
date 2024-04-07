@@ -9,7 +9,7 @@
   </div>
 </div>
 
-{% for tag in tags %}
+<!-- {% for tag in tags %}
 <div class="container cloth-container">
   <h2 class="cloth__title">{{{tag.name}}}</h2>
   <div class="cloth__list">
@@ -22,6 +22,14 @@
     {% endfor %}
   </div>
 </div>
+{% endfor %} -->
+
+{% for product in products %}
+<a href="/product" class="cloth__item cloth__item-products" data-modal-id="modal">
+	<img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
+	<div class="cloth__item-title">{{{product.name}}}</div>
+	<div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
+</a>
 {% endfor %}
 
 <!-- {% for product in products %}
