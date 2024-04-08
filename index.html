@@ -50,6 +50,7 @@
       <header class="header">
         <div class="container header__container">
           <div class="header__soc">
+			{% if variables.link_facebook %}
             <a class="header__soc-img" href="{{{variables.link_facebook}}}">
               <?xml version="1.0" encoding="iso-8859-1"?>
               <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -74,6 +75,7 @@
                 </g>
               </svg>
             </a>
+			{% if variables.link_instagram %}
             <a class="header__soc-img" href="{{{variables.link_instagram}}}">
               <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
               <svg
@@ -101,45 +103,46 @@
                 />
               </svg>
             </a>
+			{% endif %}
           </div>
 
-          <h1 class="header__title"><a href="#">{{{title}}}</a></h1>
+          <h1 class="header__title"><a href="/">{{{title}}}</a></h1>
 
           <div class="header-btn">
-            <div class="header-btn__search">
-              <svg
-                fill="#000000"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24"
-                height="24"
-                viewBox="0,0,256,256"
-              >
-                <g
-                  fill-rule="nonzero"
-                  stroke="none"
-                  stroke-width="1"
-                  stroke-linecap="butt"
-                  stroke-linejoin="miter"
-                  stroke-miterlimit="10"
-                  stroke-dasharray=""
-                  stroke-dashoffset="0"
-                  font-family="none"
-                  font-weight="none"
-                  font-size="none"
-                  text-anchor="none"
-                  style="mix-blend-mode: normal"
-                >
-                  <g transform="translate(0,256) scale(0.26667,0.26667)">
-                    <path
-                      d="M784,-120l-252,-252c-20,16 -43,28.66667 -69,38c-26,9.33333 -53.66667,14 -83,14c-72.66667,0 -134.16667,-25.16667 -184.5,-75.5c-50.33333,-50.33333 -75.5,-111.83333 -75.5,-184.5c0,-72.66667 25.16667,-134.16667 75.5,-184.5c50.33333,-50.33333 111.83333,-75.5 184.5,-75.5c72.66667,0 134.16667,25.16667 184.5,75.5c50.33333,50.33333 75.5,111.83333 75.5,184.5c0,29.33333 -4.66667,57 -14,83c-9.33333,26 -22,49 -38,69l252,252zM380,-400c50,0 92.5,-17.5 127.5,-52.5c35,-35 52.5,-77.5 52.5,-127.5c0,-50 -17.5,-92.5 -52.5,-127.5c-35,-35 -77.5,-52.5 -127.5,-52.5c-50,0 -92.5,17.5 -127.5,52.5c-35,35 -52.5,77.5 -52.5,127.5c0,50 17.5,92.5 52.5,127.5c35,35 77.5,52.5 127.5,52.5z"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <a href="#" class="header-btn__basket">
+            <a href="/products" class="header-btn__search">
+				<svg
+					fill="#000000"
+					version="1.1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					width="24"
+					height="24"
+					viewBox="0,0,256,256"
+				>
+					<g
+					fill-rule="nonzero"
+					stroke="none"
+					stroke-width="1"
+					stroke-linecap="butt"
+					stroke-linejoin="miter"
+					stroke-miterlimit="10"
+					stroke-dasharray=""
+					stroke-dashoffset="0"
+					font-family="none"
+					font-weight="none"
+					font-size="none"
+					text-anchor="none"
+					style="mix-blend-mode: normal"
+					>
+					<g transform="translate(0,256) scale(0.26667,0.26667)">
+						<path
+						d="M784,-120l-252,-252c-20,16 -43,28.66667 -69,38c-26,9.33333 -53.66667,14 -83,14c-72.66667,0 -134.16667,-25.16667 -184.5,-75.5c-50.33333,-50.33333 -75.5,-111.83333 -75.5,-184.5c0,-72.66667 25.16667,-134.16667 75.5,-184.5c50.33333,-50.33333 111.83333,-75.5 184.5,-75.5c72.66667,0 134.16667,25.16667 184.5,75.5c50.33333,50.33333 75.5,111.83333 75.5,184.5c0,29.33333 -4.66667,57 -14,83c-9.33333,26 -22,49 -38,69l252,252zM380,-400c50,0 92.5,-17.5 127.5,-52.5c35,-35 52.5,-77.5 52.5,-127.5c0,-50 -17.5,-92.5 -52.5,-127.5c-35,-35 -77.5,-52.5 -127.5,-52.5c-50,0 -92.5,17.5 -127.5,52.5c-35,35 -52.5,77.5 -52.5,127.5c0,50 17.5,92.5 52.5,127.5c35,35 77.5,52.5 127.5,52.5z"
+						></path>
+					</g>
+					</g>
+				</svg>
+            </a>
+            <a href="/cart" class="header-btn__basket">
               <svg
                 fill="#000000"
                 xmlns="http://www.w3.org/2000/svg"
@@ -168,31 +171,49 @@
         <div class="footer-top">
           <div class="container footer-top__container">
             <div class="footer-top__item">
-              <div class="footer-top__title">{{{title}}}</div>
-              <div class="footer-top__descr">{{{description}}}</div>
+              <div class="footer-top__title">{{{store.name}}}</div>
+              <div class="footer-top__descr">{{{store.description}}}</div>
             </div>
+
+			{% if top_products.length %}
             <div class="footer-top__item">
-              <div class="footer-top__title">Про компанію</div>
+              <div class="footer-top__title">Товари</div>
               <ul class="footer-top__ul">
-                <li class="footer-top__li"><a href="#">Про проєкт</a></li>
-                <li class="footer-top__li"><a href="#">Оферта</a></li>
+				{% for product of top_products %}
                 <li class="footer-top__li">
-                  <a href="#">Політика конфіденційності</a>
-                </li>
-                <li class="footer-top__li"><a href="#">Мапа сайту</a></li>
+					<a href="/product/{{{product._id}}}">{{{product.name}}}</a>
+				</li>
+				{% endfor %}
               </ul>
             </div>
+			{% endif %}
+
+			{% if top_articles.length %}
+            <div class="footer-top__item">
+              <div class="footer-top__title">Новини</div>
+              <ul class="footer-top__ul">
+				{% for article of top_articles %}
+                <li class="footer-top__li">
+					<a href="/article/{{{article._id}}}">{{{article.name}}}</a>
+				</li>
+				{% endfor %}
+              </ul>
+            </div>
+			{% endif %}
+
+			{% if contents.length %}
             <div class="footer-top__item">
               <div class="footer-top__title">Споживачам</div>
               <ul class="footer-top__ul">
-                <li class="footer-top__li"><a href="#">Розмірна сітка</a></li>
+				{% for content of contents %}
                 <li class="footer-top__li">
-                  <a href="#">Доставка і оплата</a>
-                </li>
-                <li class="footer-top__li"><a href="#">Повернення</a></li>
-                <li class="footer-top__li"><a href="#">Контакти</a></li>
+					<a href="{{{content.url}}}">{{{content.name}}}</a>
+				</li>
+				{% endfor %}
               </ul>
             </div>
+			{% endif %}
+
             <div class="footer-top__item">
               <div class="footer-top__title">Наші данні</div>
               <ul class="footer-top__ul">
@@ -208,7 +229,8 @@
         <div class="footer-bottom">
           <div class="container footer-bottom__container">
             <div class="footer-bottom__soc">
-              <a
+              {% if variables.link_facebook %}
+			  <a
                 class="footer-bottom__soc-img"
                 href="{{{variables.link_facebook}}}"
               >
@@ -233,6 +255,8 @@
                   </g>
                 </svg>
               </a>
+			  {% endif %}
+              {% if variables.link_instagram %}
               <a
                 class="footer-bottom__soc-img"
                 href="{{{variables.link_instagram}}}"
@@ -262,9 +286,10 @@
                   />
                 </svg>
               </a>
+			  {% endif %}
             </div>
             <div class="footer-bottom__copyright">
-              <p>&copy; 2008 - 2024 - Group. All rights reserved.</p>
+              <p>&copy; 2024 - {{{store.name}}}. All rights reserved.</p>
             </div>
           </div>
         </div>
@@ -273,9 +298,6 @@
       <script src="/vlv/js/index.js"></script>
       <script src="/vlv/js/swiper.js"></script>
       <script src="/vlv/js/product.js"></script>
-      <script>
-        <!-- JS -->
-      </script>
     </div>
   </body>
 </html>

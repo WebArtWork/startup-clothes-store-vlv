@@ -25,7 +25,7 @@
 {% endfor %} -->
 
 {% for product in products %}
-<a href="/product" class="cloth__item cloth__item-products" data-modal-id="modal">
+<a href="/product/{{{product._id|string}}}" class="cloth__item cloth__item-products" data-modal-id="modal">
 	<img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
 	<div class="cloth__item-title">{{{product.name}}}</div>
 	<div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
