@@ -1,1 +1,57 @@
-<p>Page Cart is connected</p>
+<div class="cart-container">
+	<div class="product" id="product1">
+		<img src="product1.jpg" alt="Product 1" class="product-image">
+		<div class="product-details">
+			<span class="product-name">Product 1</span>
+			<span class="product-price">$10.00</span>
+		</div>
+		<div class="counter">
+			<button class="decrement">-</button>
+			<input type="number" value="1" class="quantity-input">
+			<button class="increment">+</button>
+		</div>
+	</div>
+	<!-- Repeat for more products -->
+	<div class="total-price-container">
+		Total Price: <span id="total-price">$0.00</span>
+	</div>
+	<form class="address-form">
+		<h2>Shipping Address</h2>
+		<input type="text" placeholder="Full Name" required>
+		<input type="text" placeholder="Address" required>
+		<input type="email" placeholder="Email" required>
+		<input type="submit" value="Complete Order">
+	</form>
+</div>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const updateTotalPrice = () => {
+			let total = 0;
+			document.querySelectorAll('.product').forEach((product) => {
+				const price = parseFloat(product.querySelector('.product-price').textContent.replace('$', ''));
+				const quantity = parseInt(product.querySelector('.quantity-input').value, 10);
+				total += price * quantity;
+			});
+			document.getElementById('total-price').textContent = `$${total.toFixed(2)}`;
+		};
+
+		document.querySelectorAll('.counter button').forEach((button) => {
+			button.addEventListener('click', (event) => {
+				const counter = event.target.closest('.counter');
+				const quantityInput = counter.querySelector('.quantity-input');
+				let currentValue = parseInt(quantityInput.value, 10);
+
+				if (event.target.classList.contains('increment')) {
+					quantityInput.value = currentValue < 99 ? currentValue + 1 : 99;
+				} else if (event.target.classList.contains('decrement')) {
+					quantityInput.value = currentValue > 1 ? currentValue - 1 : 1;
+				}
+
+				updateTotalPrice();
+			});
+		});
+
+		// Update total price when the page loads
+		updateTotalPrice();
+	});
+</script>

@@ -192,7 +192,7 @@
             <div class="footer-top__item">
               <div class="footer-top__title">Новини</div>
               <ul class="footer-top__ul">
-				{% for article of top_articles %}
+				{% for article in top_articles %}
                 <li class="footer-top__li">
 					<a href="/article/{{{article._id}}}">{{{article.name}}}</a>
 				</li>
@@ -205,7 +205,7 @@
             <div class="footer-top__item">
               <div class="footer-top__title">Споживачам</div>
               <ul class="footer-top__ul">
-				{% for content of contents %}
+				{% for content in contents %}
                 <li class="footer-top__li">
 					<a href="{{{content.url}}}">{{{content.name}}}</a>
 				</li>

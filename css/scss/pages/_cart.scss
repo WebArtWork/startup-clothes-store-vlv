@@ -1,0 +1,65 @@
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-image {
+    width: 100px;
+    height: auto;
+}
+
+.product-details {
+    flex-grow: 1;
+}
+
+.product-price, .total-price-container {
+    font-weight: bold;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+}
+
+.counter input {
+    width: 50px;
+    text-align: center;
+}
+
+.counter button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.total-price-container {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.address-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.address-form input {
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.address-form input[type="submit"] {
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
