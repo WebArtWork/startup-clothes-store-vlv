@@ -179,7 +179,7 @@
             <div class="footer-top__item">
               <div class="footer-top__title">Товари</div>
               <ul class="footer-top__ul">
-				{% for product of top_products %}
+				{% for product in top_products %}
                 <li class="footer-top__li">
 					<a href="/product/{{{product._id}}}">{{{product.name}}}</a>
 				</li>
