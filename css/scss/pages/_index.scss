@@ -113,6 +113,10 @@
     justify-content: center;
     align-items: center;
   }
+
+  .swiper-slide.swiper-slide-active.swiper-slide-next{
+  min-width: 310px !important; 
+}
   
   .swiper-button-next,
   .swiper-rtl .swiper-button-prev {
