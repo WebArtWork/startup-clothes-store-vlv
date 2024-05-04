@@ -17,7 +17,7 @@
     <a href="/product" class="cloth__item cloth__item-products" data-modal-id="modal">
       <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
       <div class="cloth__item-title">{{{product.name}}}</div>
-      <div class="cloth__item-price">{{{product.price}}} {{{currency}}} <span>{{{currency}}}</span></div>
+      <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
     </a>
     {% endfor %}
   </div>
@@ -30,7 +30,7 @@
         <a href="/product/{{{product._id|string}}}" class="cloth__item cloth__item-products" data-modal-id="modal">
         	<img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
         	<div class="cloth__item-title">{{{product.name}}}</div>
-        	<div class="cloth__item-price">{{{product.price}}} {{{currency}}} <span>{{{currency}}}</span></div>
+        	<div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
         </a>
         {% endfor %}
     </div>
@@ -42,5 +42,5 @@
 <div>
 	{{{product.short}}}
 </div>
-<span>{{{product.price}}} {{{currency}}}</span>
+<span>{{{product.price}}}</span>
 {% endfor %} -->
