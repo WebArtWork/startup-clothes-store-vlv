@@ -8,6 +8,7 @@
 	"moderators": [],
 	"scss": "scss/index.scss",
 	"currency": "₴",
+	"favicon": "/vlv/img/favicon.ico",
 	"variables": {
 		"swiper_img_1": "/vlv/img/swiper/photo1.jpg",
         "swiper_img_2": "/vlv/img/swiper/photo2.jpg",
