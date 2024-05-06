@@ -30,6 +30,9 @@
 		background-color: $misty_turquoise;
 	}
 
+	&__li .active {
+		border-bottom: 1px solid #6cc4cc;
+	}
 	&__ul {
 		display: flex;
 		justify-content: start;
