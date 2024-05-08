@@ -1,37 +1,37 @@
 <div class="container product__container">
-  <section class="product">
-    <div class="product__img">
-      <img src="{{{product.thumb}}}" alt="" />
-    </div>
-    <div class="product-info">
-      <div class="product-info__title">{{{product.name}}}</div>
-
-      <div class="product-info__price">
-        {{{product.price}}}&nbsp;<span>{{{currency}}}</span>
-      </div>
-      <form class="product-info__cart">
-        <div class="product-info__cart-text">Кількість</div>
-        <div class="counter">
-          <button class="minus">-</button>
-          <input class="value" type="number" value="1" />
-          <button class="plus">+</button>
-        </div>
-        <a href="#" class="btn product-info__cart-btn">Додати у кошик</a>
-        <button class="btn product-info__cart-btn">Купити зараз</button>
-      </form>
-      <div class="product-info__cart-text">Подробиці:</div>
-      <pre class="product-info__descr">{{{product.description}}}</pre>
-      <div class="product-info__category">
+	<section class="product">
+		<div class="product__img">
+			<img src="{{{product.thumb}}}" alt="" />
+		</div>
+		<div class="product-info">
+			<div class="product-info__title">{{{product.name}}}</div>
+			<div class="product-info__price">
+				{{{product.price}}}&nbsp;<span>{{{currency}}}</span>
+			</div>
+			<form class="product-info__cart">
+				<div class="product-info__cart-text">Кількість</div>
+				<div class="counter">
+					<button class="minus">-</button>
+					<input class="value" type="number" value="1" />
+					<button class="plus">+</button>
+				</div>
+				<button id="addToCart" class="btn product-info__cart-btn">
+					Додати у кошик
+				</button>
+				<button id="buyNow" class="btn product-info__cart-btn">
+					Купити зараз
+				</button>
+			</form>
+			<script type="module">
+				import Dom from '/api/wjst/dom';
+			</script>
+			{% if product.description %}
+			<div class="product-info__cart-text">Подробиці:</div>
+			<pre class="product-info__descr">{{{product.description}}}</pre>
+			{% endif %}
+			<!-- <div class="product-info__category">
         Категорія:&nbsp; <a href="#">{{{product.category}}}</a>
-      </div>
-    </div>
-  </section>
+      </div> -->
+		</div>
+	</section>
 </div>
-
-<!-- <h1>{{{product.name}}}</h1>
-<img src="{{{product.thumb}}}" alt="{{{product.name}}}">
-{% for thumb in product.thumbs %}
-<img src="{{{thumb}}}" alt="{{{product.name}}}">
-{% endfor %}
-<pre>{{{product.description|safe}}}</p>
-<span>{{{product.price}}}</span> -->

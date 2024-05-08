@@ -1,50 +1,52 @@
 {% if variables.swiper_img_1 || variables.swiper_img_2 || variables.swiper_img_3 %}
 <section class="swiper-section">
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      {% if variables.swiper_img_1 %}
-      <div class="swiper-slide">
-        <img src="{{{variables.swiper_img_1}}}" alt="" />
-      </div>
-      {% endif %}
-      {% if variables.swiper_img_2 %}
-      <div class="swiper-slide">
-        <img src="{{{variables.swiper_img_2}}}" alt="" />
-      </div>
-      {% endif %}
-      {% if variables.swiper_img_3 %}
-      <div class="swiper-slide">
-        <img src="{{{variables.swiper_img_3}}}" alt="" />
-      </div>
-      {% endif %}
-    </div>
-  </div>
+	<div class="swiper mySwiper">
+		<div class="swiper-wrapper">
+			{% if variables.swiper_img_1 %}
+			<div class="swiper-slide">
+				<img src="{{{variables.swiper_img_1}}}" alt="" />
+			</div>
+			{% endif %} {% if variables.swiper_img_2 %}
+			<div class="swiper-slide">
+				<img src="{{{variables.swiper_img_2}}}" alt="" />
+			</div>
+			{% endif %} {% if variables.swiper_img_3 %}
+			<div class="swiper-slide">
+				<img src="{{{variables.swiper_img_3}}}" alt="" />
+			</div>
+			{% endif %}
+		</div>
+	</div>
 </section>
 {% endif %}
 
 <div class="container cloth-swipers__container">
-  <h2 class="cloth-swiper__title">
-    {{{translate('vlv.Top Products')}}}
-  </h2>
+	<h2 class="cloth-swiper__title">{{{translate('vlv.Top Products')}}}</h2>
 
-  <div class="cloth-swiper">
-    <div class="swiper-wrapper">
-      {% for product in top_products %}
-      <div class="swiper-slide">
-        <a href="/product/{{product._id}}" class="cloth__item" data-modal-id="modal">
-          <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
-          <div class="cloth__item-title">{{{product.name}}}</div>
-          <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
-        </a>
-      </div>
-      {% endfor %}
-    </div>
+	<div class="cloth-swiper">
+		<div class="swiper-wrapper">
+			{% for product in top_products %}
+			<div class="swiper-slide">
+				<a
+					href="/product/{{{product._id}}}"
+					class="cloth__item"
+					data-modal-id="modal"
+				>
+					<img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
+					<div class="cloth__item-title">{{{product.name}}}</div>
+					<div class="cloth__item-price">
+						{{{product.price}}} <span>{{{currency}}}</span>
+					</div>
+				</a>
+			</div>
+			{% endfor %}
+		</div>
 
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
 
-  <a href="/products" class="btn main__button">Весь одяг</a>
+	<a href="/products" class="btn main__button">Весь одяг</a>
 </div>
 
 <!--

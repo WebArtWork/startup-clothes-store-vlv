@@ -1,65 +1,100 @@
 .cart-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    max-width: 1340px;
+    padding: 0 20px;
+    margin: 0 auto;
 }
 
-.product {
+h1 {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.cart-products .cart-product {
     display: flex;
+    justify-content: start;
     align-items: center;
-    gap: 15px;
+    padding: 20px;
+    border-bottom: 2px solid #d3d3d3;
 }
 
-.product-image {
-    width: 100px;
-    height: auto;
+.cart-product img.product-image {
+    width: auto; /* Maintains the aspect ratio */
+    height: 75px; /* Fixed height for uniformity */
+    max-width: 100px; /* Maximum width to ensure images are not too large */
+    object-fit: contain; /* Ensures the image is resized properly within the dimensions */
+    margin-right: 20px; /* Space between the image and the product details */
 }
 
-.product-details {
+.cart-product-name {
     flex-grow: 1;
 }
 
-.product-price, .total-price-container {
-    font-weight: bold;
-}
-
-.counter {
+.product-quantity {
     display: flex;
     align-items: center;
 }
 
-.counter input {
-    width: 50px;
+.quantity-minus, .quantity-plus {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    padding: 0;
+    color: #fff;
+    background-color: #6cc4cc;
+    border: none;
+    font-size: 16px;
+    line-height: 30px;
     text-align: center;
 }
 
-.counter button {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+.quantity-value {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #d3d3d3;
 }
 
-.total-price-container {
-    margin-top: 20px;
+.cart-total-container {
+    text-align: right;
+    margin: 20px 0;
     font-size: 20px;
 }
 
-.address-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.cart-info-form {
+    margin-bottom: 50px;
 }
 
-.address-form input {
+.cart-info-form input, .cart-info-form .cart-checkout-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
     padding: 10px;
-    margin: 5px 0;
 }
 
-.address-form input[type="submit"] {
-    background-color: black;
+.cart-checkout-btn {
+    background-color: #6cc4cc;
     color: white;
-    border: none;
-    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .cart-container {
+        padding: 0 10px;
+    }
+
+    .cart-product {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-product img.product-image {
+        margin-bottom: 10px;
+    }
+
+    .product-quantity {
+        width: 100%;
+    }
+
+    .quantity-minus, .quantity-plus, .quantity-value {
+        flex: 1;
+    }
 }
