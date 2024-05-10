@@ -1,13 +1,13 @@
 <div class="cart-container">
 	<div class="cart-products">
 		{% for orderproduct in order.products %}
-		<div class="cart-product">
+		<div class="cart-product" id="remove{{{orderproduct.product._id}}}">
 			<img src="{{{orderproduct.product.thumb}}}" alt="Product 1" class="product-image">
 			<span class="cart-product-name">{{{orderproduct.product.name}}} - {{{orderproduct.product.price}}} {{{currency}}}</span>
 			<div class="product-quantity">
-				<button class="quantity-minus">-</button>
-				<input type="number" class="quantity-value" value="{{{orderproduct.quantity}}}" min="1">
-				<button class="quantity-plus">+</button>
+				<button productId="{{{orderproduct.product._id}}}" class="quantity-minus">-</button>
+				<input id="id{{{orderproduct.product._id}}}" type="number" class="quantity-value" value="{{{orderproduct.quantity}}}" min="1">
+				<button productId="{{{orderproduct.product._id}}}" class="quantity-plus">+</button>
 			</div>
 			<span class="product-total-price">{{{orderproduct.product.price * orderproduct.quantity}}} {{{currency}}}</span>
 		</div>
@@ -24,4 +24,47 @@
 		<input type="text" name="poshta" placeholder="Nova Poshta" required />
 		<button type="submit" class="cart-checkout-btn">Place Order</button>
 	</form>
+	<script type="module">
+		import Dom from "/api/wjst/dom";
+		import Order from "/api/wjst/order";
+		import Event from "/api/wjst/event";
+		Dom.submit('cart-info-form', async data => {
+			Order.order.data = {
+				...Order.order.data,
+				...data
+			}
+			await Order.update(Order.order);
+			const url = await Order.pay();
+			window.location.href = url;
+		});
+		Dom.click('.quantity-minus', async (element) => {
+			const productId = element.getAttribute('productId');
+			const value = Number(Dom.element('id' + productId).value) - 1;
+			if (value > 0) {
+				Dom.element('id' + productId).value = value;
+				for (const orderproduct of Order.order.products) {
+					if(orderproduct.product === productId) {
+						orderproduct.quantity = value;
+					}
+				}
+			} else {
+				Order.order.products = Order.order.products.filter(p => p.product !== productId);
+				Dom.element("cart").innerHTML = Dom.template('cart', {
+					counter: Order.order.products.length
+				});
+				Dom.element('remove' + productId).innerHTML = '';
+			}
+			await Order.update(Order.order);
+		});
+		Dom.click('.quantity-plus', async (element) => {
+			const productId = element.getAttribute('productId');
+			Dom.element('id' + productId).value = Number(Dom.element('id' + productId).value) + 1;
+			for (const orderproduct of Order.order.products) {
+				if(orderproduct.product === productId) {
+					orderproduct.quantity = value;
+				}
+			}
+			await Order.update(Order.order);
+		});
+	</script>
 </div>

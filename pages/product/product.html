@@ -8,30 +8,62 @@
 			<div class="product-info__price">
 				{{{product.price}}}&nbsp;<span>{{{currency}}}</span>
 			</div>
-			<form class="product-info__cart">
+			<div class="product-info__cart">
 				<div class="product-info__cart-text">Кількість</div>
 				<div class="counter">
 					<button class="minus">-</button>
-					<input class="value" type="number" value="1" />
+					<input
+						class="value"
+						type="number"
+						value="1"
+						id="quantity"
+					/>
 					<button class="plus">+</button>
 				</div>
-				<button id="addToCart" class="btn product-info__cart-btn">
+				<button
+					id="addToCart"
+					type="button"
+					class="btn product-info__cart-btn"
+				>
 					Додати у кошик
 				</button>
-				<button id="buyNow" class="btn product-info__cart-btn">
+				<button
+					id="buyNow"
+					type="button"
+					class="btn product-info__cart-btn"
+				>
 					Купити зараз
 				</button>
-			</form>
+			</div>
 			<script type="module">
-				import Dom from '/api/wjst/dom';
+				import Dom from "/api/wjst/dom";
+				import Order from "/api/wjst/order";
+				const toggleProduct = async () => {
+					const product = "{{{product.id}}}";
+					const quantity = Dom.element("quantity").value;
+					await Order.toggleProduct(product, quantity);
+					if (await Order.hasProduct(product)) {
+						Dom.element("addToCart").innerHTML = "Додати у кошик";
+					} else {
+						Dom.element("addToCart").innerHTML = "Забрати з кошика";
+					}
+					Dom.element("cart").innerHTML = Dom.template('cart', {
+						counter: Order.order.products.length
+					});
+				};
+				Dom.click("addToCart", toggleProduct);
+				Dom.click("buyNow", async () => {
+					const product = "{{{product.id}}}";
+					if (!Order.hasProduct(product)) {
+						await toggleProduct();
+					}
+					window.location.href = '/cart';
+				});
 			</script>
 			{% if product.description %}
 			<div class="product-info__cart-text">Подробиці:</div>
 			<pre class="product-info__descr">{{{product.description}}}</pre>
 			{% endif %}
-			<!-- <div class="product-info__category">
-        Категорія:&nbsp; <a href="#">{{{product.category}}}</a>
-      </div> -->
 		</div>
 	</section>
 </div>

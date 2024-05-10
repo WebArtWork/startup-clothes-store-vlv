@@ -5,7 +5,7 @@
 		"products": [
 			{
 				"product": {
-					"id": "/product",
+					"_id": "/product",
 					"name": "Куртка 'Citric Summer'",
 					"price": 1719.00,
 					"description": "Ref. 24-01453\n\nСклад:\nЗзовні\n100% Поліамід\nПідкладка\n100% Поліестер\nНаповнювач\n100% Поліестер",
@@ -15,7 +15,7 @@
 			},
 			{
 				"product": {
-					"id": "/product",
+					"_id": "/product",
 					"name": "Куртка 'Citric Winter'",
 					"price": 1719.00,
 					"description": "Ref. 24-01453\n\nСклад:\nЗзовні\n100% Поліамід\nПідкладка\n100% Поліестер\nНаповнювач\n100% Поліестер",
