@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 style="text-transform: uppercase;">Вкажіть дані для реєстрація</h1>
+    <h1 style="text-transform: uppercase;">Зареєструватись | Увійти</h1>
     <div class="auth-info">
         <form id="cart-info-form">
             <label for="email">Email:</label>
@@ -14,7 +14,7 @@
             import Event from "/api/wjst/event";
             import Http from '/api/wjst/http';
             async function login(data) {
-                const resp = await Http.post('/api/user/login', data)
+                const resp = await Http.post('ц/api/user/login', data)
                 Http.setHeader('Token', resp.token);
                 window.location.href = '/';
             }
@@ -34,7 +34,7 @@
                 if (resp.email && resp.pass) {
                     login(data);
                 } else if (resp.email) {
-                    reset(data);
+                  reset(data);
                 } else {
                     sign(data);
                 }
