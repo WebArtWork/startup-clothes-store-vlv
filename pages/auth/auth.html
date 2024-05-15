@@ -15,7 +15,8 @@
             import Http from '/api/wjst/http';
             async function login(data) {
                 const resp = await Http.post('/api/user/login', data)
-                console.log(resp)
+                Http.setHeader('Token', resp.token);
+                window.location.href = '/';
             }
             async function reset(data) {
                 const resp = await Http.post('/api/user/reset', data)
@@ -23,6 +24,8 @@
             }
             async function sign(data) {
                 const resp = await Http.post('/api/user/sign', data)
+                Http.setHeader('Token', resp.token);
+                window.location.href = '/';
                 console.log(resp)
             }
             Dom.submit('cart-info-form', async data => {
