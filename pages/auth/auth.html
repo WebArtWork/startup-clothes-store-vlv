@@ -1,24 +1,41 @@
 <div class="container">
     <h1 style="text-transform: uppercase;">Вкажіть дані для реєстрація</h1>
     <div class="auth-info">
-        <form id="auth-form">
-            <label for="name">Ім'я:</label>
-            <input type="text" id="name" name="name" required><br>
+        <form id="cart-info-form">
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" required><br>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required><br>
             <input type="submit" value="Зареєструватись">
         </form>
+        <script type="module">
+            import Dom from "/api/wjst/dom";
+            import Order from "/api/wjst/order";
+            import Event from "/api/wjst/event";
+            import Http from '/api/wjst/http';
+            async function login(data) {
+                const resp = await Http.post('/api/user/login', data)
+                console.log(resp)
+            }
+            async function reset(data) {
+                const resp = await Http.post('/api/user/reset', data)
+                console.log(resp)
+            }
+            async function sign(data) {
+                const resp = await Http.post('/api/user/sign', data)
+                console.log(resp)
+            }
+            Dom.submit('cart-info-form', async data => {
+                console.log(data)
+                const resp = await Http.post('/api/user/status', data)
+                if (resp.email && resp.pass) {
+                    login(data);
+                } else if (resp.email) {
+                    reset(data);
+                } else {
+                    sign(data);
+                }
+            });
+        </script>
     </div>
 </div>
-
-<script>
-    document.getElementById("auth-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-        var name = document.getElementById("name").value;
-
-        var email = document.getElementById("email").value;
-
-        console.log("Ім'я: " + name);
-        console.log("Email: " + email);
-    });
-</script>
