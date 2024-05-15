@@ -1,3 +1,14 @@
+<script type="module">
+    import Dom from "/api/wjst/dom";
+    import Order from "/api/wjst/order";
+    import Event from "/api/wjst/event";
+    import Http from '/api/wjst/http';
+    const resp = await Http.post('/api/user/fetchme', {})
+    console.log(resp)
+    Dom.submit('profile-form', async data => {
+        console.log(data)
+    });
+</script>
 <div class="container">
     <h1 style="text-transform: uppercase;">Особисті дані</h1>
     <div class="profile-info">
@@ -13,24 +24,8 @@
             <input type="submit" value="Зберегти">
         </form>
     </div>
-        <div class="nav">
-            <a href="/auth" id="auth">Зареєструватись</a>
-            <a href="/orders" id="orders">Мої замовлення</a>
-        </div>
+    <div class="nav">
+        <a href="/auth" id="auth">Зареєструватись</a>
+        <a href="/orders" id="orders">Мої замовлення</a>
+    </div>
 </div>
-
-
-    <script>
-        document.getElementById("profile-form").addEventListener("submit", function (event) {
-            event.preventDefault();
-            var name = document.getElementById("name").value;
-            var age = document.getElementById("age").value;
-            var city = document.getElementById("city").value;
-            var email = document.getElementById("email").value;
-
-            console.log("Ім'я: " + name);
-            console.log("Вік: " + age);
-            console.log("Місто: " + city);
-            console.log("Email: " + email);
-        });
-    </script>
