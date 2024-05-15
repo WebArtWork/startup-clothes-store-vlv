@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 style="text-transform: uppercase;">Особисті дані</h1>
+    <div class="profile-info">
+        <form id="profile-form">
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="age">Вік:</label>
+            <input type="text" id="age" name="age" required><br>
+            <label for="city">Місто:</label>
+            <input type="text" id="city" name="city" required><br>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required><br>
+            <input type="submit" value="Зберегти">
+        </form>
+    </div>
+        <div class="nav">
+            <a href="/auth" id="auth">Зареєструватись</a>
+            <a href="/orders" id="orders">Мої замовлення</a>
+        </div>
+</div>
+
+
+    <script>
+        document.getElementById("profile-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var city = document.getElementById("city").value;
+            var email = document.getElementById("email").value;
+
+            console.log("Ім'я: " + name);
+            console.log("Вік: " + age);
+            console.log("Місто: " + city);
+            console.log("Email: " + email);
+        });
+    </script>
