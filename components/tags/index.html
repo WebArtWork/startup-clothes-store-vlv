@@ -1,4 +1,4 @@
-<ul class="menu-main__ul">
+<!-- <ul class="menu-main__ul">
 	{% for tag in tags %}
 	<li class="menu-main__li{{{tag.active && ' active' || ''}}}">
 		<a href="/products/{{{tag._id|string}}}" class="menu-main__a">{{{tag.name}}}</a>
@@ -10,3 +10,25 @@
 {{{'/vlv/components/tags'|c({tags: tag.tags}|safe)}}}
 {% endif %}
 {% endfor %}
+ -->
+
+{% if tag.tags.length %}
+		<a href="/products/{{{tag._id|string}}}"  class="menu-main__a">{{{tag.name}}} / </a> 
+{% endif %}
+
+{% if !tag.tags.length %}
+<ul class="breadcrumbs">
+	{% for tag in tags %}
+	<li class="menu-main__li{{{tag.active && ' active' || ''}}}">
+		<a href="/products/{{{tag._id|string}}}" class="breadcrumbs__item">{{{tag.name}}}</a>
+	</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+{% for tag in tags %}
+{% if tag.tags.length %}
+{{{'/vlv/components/tags'|c({tags: tag.tags}|safe)}}}
+{% endif %}
+{% endfor %}
+

@@ -15,7 +15,7 @@
             import Http from '/api/wjst/http';
             async function login(data) {
                 const resp = await Http.post('/api/user/login', data)
-                Http.setHeader('Token', resp.token);
+                Http.setHeader('token', resp.token);
                 window.location.href = '/profile';
                 console.log(resp)
             }
@@ -25,7 +25,7 @@
             }
             async function sign(data) {
                 const resp = await Http.post('/api/user/sign', data)
-                Http.setHeader('Token', resp.token);
+                Http.setHeader('token', resp.token);
                 window.location.href = '/profile';
                 console.log(resp)
             }
