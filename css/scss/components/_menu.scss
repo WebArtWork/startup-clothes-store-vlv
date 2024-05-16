@@ -15,8 +15,8 @@
 
 	/* Стилизация самой полосы прокрутки */
 	.menu-main__container::-webkit-scrollbar {
-		width: 10px;
-		height: 10px;
+		width: 6px;
+		height: 6px;
 	}
 
 	/* Стилизация ползунка полосы прокрутки */
@@ -44,7 +44,7 @@
 	}
 
 	&__a {
-		padding: 20px 25px;
+		padding: 15px 20px;
 		color: $white;
 		background-color: inherit;
 		font-size: 18px;
