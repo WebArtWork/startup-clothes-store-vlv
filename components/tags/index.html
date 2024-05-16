@@ -13,18 +13,18 @@
  -->
 
 {% if tag.tags.length %}
-		<a href="/products/{{{tag._id|string}}}"  class="">{{{tag.name}}} / </a> 
+		<a href="/products/{{{tag._id|string}}}"  class="breadcrumbs__item">{{{tag.name}}} / </a> 
 {% endif %}
 
-{% if !tag.tags.length %}
 <ul class="menu-main__ul">
+{% if !tag.tags.length %}
 	{% for tag in tags %}
 	<li class="menu-main__li{{{tag.active && ' active' || ''}}}">
-		<a href="/products/{{{tag._id|string}}}" class="breadcrumbs__item is-active">{{{tag.name}}}</a>
+		<a href="/products/{{{tag._id|string}}}" class="menu-main__a">{{{tag.name}}}</a>
 	</li>
 	{% endfor %}
-	</ul>
 {% endif %}
+</ul>
 
 {% for tag in tags %}
 {% if tag.tags.length %}
