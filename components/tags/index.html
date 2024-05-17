@@ -1,5 +1,7 @@
+|{{{tags.length}}}|
+|{{{(tags|map('t => t.tags')|flat).length}}}|
 
-{% if (tags|map(t => t.tags)|flat).length > 0 %}
+{% if (tags|map('t => t.tags')|flat).length > 0 %}
 {% for tag in tags %}
 {% if tag.tags.length %}
 <a href="/products/{{{tag._id|string}}}" class="breadcrumbs__item">{{{tag.name}}} / </a>
@@ -7,8 +9,7 @@
 {% endfor %}
 {% endif %}
 
-
-{% if (tags|map(t => t.tags)|flat).length %}
+{% if (tags|map('t => t.tags')|flat).length == 0 %}
 {% for tag in tags %}
 <li class="menu-main__li">
 	<a href="/products/{{{tag._id|string}}}" class="menu-main__a">{{{tag.name}}}</a>
