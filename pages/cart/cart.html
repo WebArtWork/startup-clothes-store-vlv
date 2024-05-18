@@ -3,27 +3,61 @@
 		{% for orderproduct in order.products %}
 		<div class="cart-product" id="remove{{{orderproduct.product._id}}}">
 			<img src="{{{orderproduct.product.thumb}}}" alt="Product 1" class="product-image">
-			<span class="cart-product-name">{{{orderproduct.product.name}}} - {{{orderproduct.product.price}}} {{{currency}}}</span>
+			<span class="cart-product-name">{{{orderproduct.product.name}}} - {{{orderproduct.product.price}}}
+				{{{currency}}}</span>
 			<div class="product-quantity">
 				<button productId="{{{orderproduct.product._id}}}" class="quantity-minus">-</button>
-				<input id="id{{{orderproduct.product._id}}}" type="number" class="quantity-value" value="{{{orderproduct.quantity}}}" min="1">
+				<input id="id{{{orderproduct.product._id}}}" type="number" class="quantity-value"
+					value="{{{orderproduct.quantity}}}" min="1">
 				<button productId="{{{orderproduct.product._id}}}" class="quantity-plus">+</button>
 			</div>
-			<span class="product-total-price">{{{orderproduct.product.price * orderproduct.quantity}}} {{{currency}}}</span>
+			<span class="product-total-price">{{{orderproduct.product.price * orderproduct.quantity}}}
+				{{{currency}}}</span>
 		</div>
 		{% endfor %}
 	</div>
 	<div class="cart-total-container">
 		<h2>Total: <span class="total-amount">{{{order.total}}} {{{currency}}}</span></h2>
+
+		<div class="cart-container">
+			<div class="cart-products">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Електрона пошта"
+						aria-label="Recipient's username" aria-describedby="basic-addon2">
+				</div>
+
+				<div class="mb-3">
+					<label for="basic-url" class="form-label d-flex">Доставка</label>
+
+					<div class="input-group">
+						<input type="text" class="form-control mb-3" id="basic-url" placeholder="Країна"
+							aria-describedby="basic-addon3 basic-addon4">
+					</div>
+
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Ім'я" aria-label="Username">
+						<input type="text" class="form-control ms-2" placeholder="Прізвище" aria-label="Server">
+					</div>
+				</div>
+
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Адреса доставки або номер відділення Нової пошти"
+						aria-label="Recipient's username" aria-describedby="basic-addon2">
+				</div>
+
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Місто" aria-label="Username">
+					<input type="text" class="form-control ms-2" placeholder="Поштовий індекс або введіть 12345" aria-label="Server">
+				</div>
+
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Телефон"
+						aria-label="Recipient's username" aria-describedby="basic-addon2">
+				</div>
+			</div>
+		</div>
 	</div>
-	<form class="cart-info-form" id="cart-info-form">
-		<input type="text" name="name" placeholder="ПІП" required />
-		<input type="text" name="phone" placeholder="Телефон" required />
-		<input type="text" name="address" placeholder="Адреса доставки" required />
-		<input type="text" name="city" placeholder="Місто" required />
-		<input type="text" name="poshta" placeholder="Відділення Нової пошти" required />
-		<button type="submit" class="cart-checkout-btn">Замовити</button>
-	</form>
+
 	<script type="module">
 		import Dom from "/api/wjst/dom";
 		import Order from "/api/wjst/order";
@@ -43,7 +77,7 @@
 			if (value > 0) {
 				Dom.element('id' + productId).value = value;
 				for (const orderproduct of Order.order.products) {
-					if(orderproduct.product === productId) {
+					if (orderproduct.product === productId) {
 						orderproduct.quantity = value;
 					}
 				}
@@ -60,7 +94,7 @@
 			const productId = element.getAttribute('productId');
 			Dom.element('id' + productId).value = Number(Dom.element('id' + productId).value) + 1;
 			for (const orderproduct of Order.order.products) {
-				if(orderproduct.product === productId) {
+				if (orderproduct.product === productId) {
 					orderproduct.quantity = value;
 				}
 			}
