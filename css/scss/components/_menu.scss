@@ -33,13 +33,17 @@
 	&__li .active {
 		border-bottom: 1px solid #6cc4cc;
 	}
+	&__li {
+		align-items: center;
+		font-size: 18px;
+	}
 	&__ul {
 		
 		justify-content: start;
 		//   justify-content: space-between;
 		//   align-items: center;
 		text-transform: uppercase;
-		display:inline-flex;
+		display:flex;
 		overflow: hidden;
 	}
 
@@ -102,6 +106,7 @@
 	position: relative;
 	text-decoration: none;
 	transition: background 0.2s linear;
+	
 }
 
 .breadcrumbs__item:hover:after,
