@@ -1,7 +1,21 @@
+// .container__profile{
+// display: inline-block;
+// }
+// .profile_box{
+//     display: block;
+//     margin: 0 auto;
+//     z-index: 2;
+// }
+// .menu_list{
+//     z-index: 4;
+// }
+
+
 .profile-info{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 
    & input[type="text"] {
         width: 100%;
@@ -44,4 +58,8 @@
     padding: 10px 20px;
     border-radius: 4px;
     color: rgb(255, 255, 255);
+}
+
+.nav-item .nav-link {
+    color: #000;
 }

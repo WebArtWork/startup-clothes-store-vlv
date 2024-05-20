@@ -22,39 +22,41 @@
 		<div class="cart-container">
 			<div class="cart-products">
 				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="Електрона пошта"
-						aria-label="Recipient's username" aria-describedby="basic-addon2">
+					<input type="text" disabled class="form-control" placeholder="Електрона пошта"
+						aria-label="Recipient's username" aria-describedby="basic-addon2" id="email" name="email">
 				</div>
 
 				<div class="mb-3">
 					<label for="basic-url" class="form-label d-flex">Доставка</label>
 
-					<div class="input-group">
-						<input type="text" class="form-control mb-3" id="basic-url" placeholder="Країна"
-							aria-describedby="basic-addon3 basic-addon4">
-					</div>
-
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="Ім'я" aria-label="Username">
-						<input type="text" class="form-control ms-2" placeholder="Прізвище" aria-label="Server">
+						<input type="text" class="form-control" placeholder="Ім'я та прізвище" aria-label="Username" id="name" name="name">
 					</div>
+				</div>
+
+				<div class="input-group mb-3">
+					<input type="text" list="cities" class="form-control" placeholder="Місто" id="city" name="city" aria-describedby="basic-addon2">
+					<datalist id="cities">
+						<option value="Київ">
+						<option value="Харків">
+						<option value="Одеса">
+						<option value="Дніпро">
+						<option value="Кам'янець-Подільський">
+						<!-- Add more cities here -->
+					</datalist>
 				</div>
 
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" placeholder="Адреса доставки або номер відділення Нової пошти"
-						aria-label="Recipient's username" aria-describedby="basic-addon2">
+						id="address" name="address" aria-describedby="basic-addon2">
 				</div>
 
 				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="Місто" aria-label="Username">
-					<input type="text" class="form-control ms-2" placeholder="Поштовий індекс або введіть 12345" aria-label="Server">
-				</div>
-
-				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="Телефон"
-						aria-label="Recipient's username" aria-describedby="basic-addon2">
+					<input type="text" class="form-control" placeholder="Телефон" id="phone" name="phone"
+						 aria-describedby="basic-addon2">
 				</div>
 			</div>
+			<input type="submit" id="orders" value="Зберегти">
 		</div>
 	</div>
 
@@ -62,6 +64,14 @@
 		import Dom from "/api/wjst/dom";
 		import Order from "/api/wjst/order";
 		import Event from "/api/wjst/event";
+		import Http from '/api/wjst/http';
+		const resp = await Http.post('/api/user/fetchme', {})
+		resp.data = resp.data || {}
+		Dom.element('email').value = resp.email || "";
+		Dom.element('name').value = resp.data.name || "";
+		Dom.element('city').value = resp.data.city || "";
+		Dom.element('address').value = resp.data.address || "";
+		Dom.element('phone').value = resp.data.phone || "";
 		Dom.submit('cart-info-form', async data => {
 			Order.order.data = {
 				...Order.order.data,
@@ -100,5 +110,6 @@
 			}
 			await Order.update(Order.order);
 		});
+
 	</script>
 </div>

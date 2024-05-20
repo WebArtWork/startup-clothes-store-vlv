@@ -1,31 +1,82 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-4">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Портал</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/orders"><img src="/vlv/img/icons/order-svgrepo-com.png" width="20px"> Мої замовлення</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/orders"><img src="/vlv/img/icons/protect-svgrepo-com.png" width="20px"> Налаштування</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h1 style="text-transform: uppercase;">Особисті дані</h1>
+        <div class="profile-info">
+            <form id="profile-form">
+                <div class="input-group mb-3">
+                    <input disabled type="email" class="form-control" placeholder="Електрона пошта"
+                        aria-describedby="basic-addon2" id="email">
+                </div>
+
+                <div class="mb-3">
+                    <label for="basic-url" class="form-label d-flex">Доставка</label>
+
+                    <div class="input-group mb-3">
+                        <input type="name" class="form-control" placeholder="Ім'я та прізвище" id="name" name="name">
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="city" list="cities" class="form-control" placeholder="Місто"
+                        aria-describedby="basic-addon2" id="city" name="city">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="address" class="form-control"
+                        placeholder="Адреса доставки або номер відділення Нової пошти" aria-describedby="basic-addon2"
+                        id="address" name="address">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="phone" class="form-control" placeholder="Телефон" aria-describedby="basic-addon2"
+                        id="phone" name="phone">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Зберегти" id="save-profile-button">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
 <script type="module">
     import Dom from "/api/wjst/dom";
     import Order from "/api/wjst/order";
     import Event from "/api/wjst/event";
     import Http from '/api/wjst/http';
     const resp = await Http.post('/api/user/fetchme', {})
-    console.log(resp)
+    resp.data = resp.data || {}
+    Dom.element('email').value = resp.email || "";
+    Dom.element('name').value = resp.data.name || "";
+    Dom.element('city').value = resp.data.city || "";
+    Dom.element('address').value = resp.data.address || "";
+    Dom.element('phone').value = resp.data.phone || "";
+
+
     Dom.submit('profile-form', async data => {
-        console.log(data)
+        console.log("hello");
+        const resp = await Http.post('/api/user/update', {
+            name: Dom.element('name').value,
+            data: {
+                name: Dom.element('name').value,
+                city: Dom.element('city').value,
+                address: Dom.element('address').value,
+                phone: Dom.element('phone').value
+            }
+        })
     });
 </script>
-<div class="container">
-    <h1 style="text-transform: uppercase;">Особисті дані</h1>
-    <div class="profile-info">
-        <form id="profile-form">
-            <label for="name">Ім'я:</label>
-            <input type="text" id="name" name="name" required><br>
-            <label for="age">Вік:</label>
-            <input type="text" id="age" name="age" required><br>
-            <label for="city">Місто:</label>
-            <input type="text" id="city" name="city" required><br>
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" required><br>
-            <input type="submit" value="Зберегти">
-        </form>
-    </div>
-    <div class="nav">
-        <a href="/auth" id="auth">Зареєструватись</a>
-        <a href="/orders" id="orders">Мої замовлення</a>
-    </div>
-</div>
