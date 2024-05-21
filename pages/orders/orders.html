@@ -6,51 +6,51 @@
                     <a class="nav-link disabled" aria-disabled="true">Портал</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/orders"><img src="/vlv/img/icons/order-svgrepo-com.png" width="20px"> Мої замовлення</a>
+                    <a class="nav-link" aria-current="page" href="/orders"><img
+                            src="/vlv/img/icons/order-svgrepo-com.png" width="20px"> Мої замовлення</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/orders"><img src="/vlv/img/icons/protect-svgrepo-com.png" width="20px"> Налаштування</a>
+                    <a class="nav-link" aria-current="page" href="/orders"><img
+                            src="/vlv/img/icons/protect-svgrepo-com.png" width="20px"> Налаштування</a>
                 </li>
             </ul>
         </div>
-        <div class="col-md-2">
-    <h1>Список замовлень</h1>
-    <div class="orders_list">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Назва товару</th>
-                    <th>Ціна</th>
-                    <th>Кількість</th>
-                    <th>Загальна сума</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Піджак 'Azores' для малюків</td>
-                    <td>5000 грн</td>
-                    <td>1</td>
-                    <td>5000 грн</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Заколка для волосся 'Nalda'</td>
-                    <td>2000 грн</td>
-                    <td>1</td>
-                    <td>2000 грн</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Шкарпетки 'Lisse' для малюків</td>
-                    <td>500 грн</td>
-                    <td>1</td>
-                    <td>500 грн</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <div class="col-md-4">
+            <h1>Список замовлень</h1>
+            <div class="orders_list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Назва товару</th>
+                            <th>Ціна</th>
+                            <th>Кількість</th>
+                            <th>Загальна сума</th>
+                        </tr>
+                    </thead>
+                    <div id="template-orders" style="display: none;">
+                        {orders}
+                    </div>
+                    <tbody id="orders">
+                        
+                    </tbody>
+
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+<script type="module">
+    import Dom from "/api/wjst/dom";
+    import Order from "/api/wjst/order";
+    import Event from "/api/wjst/event";
+    import Http from '/api/wjst/http';
+    const orders = await Order.get();
+    for (let i = 0; i < orders.length; i++) {
+        
+    }
+    Dom.element("orders").innerHTML = Dom.template('orders', {
+        orders: orders
+    });
+</script>
