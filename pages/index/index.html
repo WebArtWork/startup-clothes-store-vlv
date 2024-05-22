@@ -27,11 +27,7 @@
 		<div class="swiper-wrapper">
 			{% for product in top_products %}
 			<div class="swiper-slide">
-				<a
-					href="/product/{{{product._id}}}"
-					class="cloth__item"
-					data-modal-id="modal"
-				>
+				<a href="/product/{{{product._id}}}" class="cloth__item" data-modal-id="modal">
 					<img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
 					<div class="cloth__item-title">{{{product.name}}}</div>
 					<div class="cloth__item-price">
@@ -47,6 +43,22 @@
 	</div>
 
 	<a href="/products" class="btn main__button">Весь одяг</a>
+
+	<div class="cloth-swiper">
+		<div class="swiper-wrapper">
+			{% for article in articles %}
+			<div class="swiper-slide">
+				<a href="/article/{{{article._id}}}" class="cloth__item" data-modal-id="modal">
+					<img src="{{{article.thumb}}}" alt="{{{article.name}}}" />
+					<div class="cloth__item-title">{{{article.name}}}</div>
+				</a>
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
 </div>
 
 <!--

@@ -2,8 +2,8 @@
 	"name": "article",
 	"article": {
 		"id": "/article",
-		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-        "thumb": "https://neryxomka.com/vlv/img/welcome.png",
-		"name": "Article Name"
+		"short": "Нові поступлення у нашому магазині! Ознайомтеся з найсвіжішими трендами та найбільш популярними товарами цього сезону.",
+        "thumb": "/vlv/img/swiper/photo1.jpg",
+		"name": "Новини"
 	}
 }

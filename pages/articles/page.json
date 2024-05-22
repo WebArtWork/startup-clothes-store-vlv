@@ -5,22 +5,22 @@
 			"id": "123",
 			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "https://neryxomka.com/vlv/img/welcome.png",
-			"name": "Article Name"
+			"thumb": "/vlv/img/swiper/photo1.jpg",
+			"name": "Новини"
 		},
 		{
 			"id": "123",
 			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "https://neryxomka.com/vlv/img/welcome.png",
-			"name": "Article Name"
+			"thumb": "/vlv/img/swiper/photo3.jpg",
+			"name": "Знижки"
 		},
 		{
 			"id": "123",
 			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "https://neryxomka.com/vlv/img/welcome.png",
-			"name": "Article Name"
+			"thumb": "/vlv/img/swiper/photo2.jpg",
+			"name": "Нова колекція"
 		}
 	]
 }

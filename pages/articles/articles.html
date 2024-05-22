@@ -1,9 +1,12 @@
-{% for article in articles %}
-<a href="/article/{{{article.id}}}" class="article__item">
-	<h1>{{{article.name}}}</h1>
-	<img src="{{{article.thumb}}}" alt="{{{article.name}}}">
-	<pre>
-		{{{article.short}}}
-	</pre>
-</a>
-{% endfor %}
+
+  <div class="container cloth-container">
+		<div class="cloth__list">
+			{% for article in articles %}
+		  <a href="/article/{{{article._id|string}}}" class="cloth__item cloth__item-articles" data-modal-id="modal">
+			  <img src="{{{article.thumb}}}" alt="{{{article.name}}}" />
+			  <div class="cloth__item-title">{{{article.name}}}</div>
+		  </a>
+		  {% endfor %}
+	  </div>
+  </div>
+  

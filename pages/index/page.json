@@ -91,22 +91,46 @@
 	],
 	"articles": [
 		{
-			"id": "/article",
+			"id": "123",
 			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "https://neryxomka.com/vlv/img/welcome.png",
-			"name": "article"
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"thumb": "/vlv/img/swiper/photo1.jpg",
+			"name": "Новини"
 		},
 		{
-			"id": "/article",
+			"id": "123",
 			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "https://neryxomka.com/vlv/img/welcome.png",
-			"name": "article"
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"thumb": "/vlv/img/swiper/photo3.jpg",
+			"name": "Знижки"
 		},
 		{
-			"id": "/article",
+			"id": "123",
 			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "https://neryxomka.com/vlv/img/welcome.png",
-			"name": "article"
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"thumb": "/vlv/img/swiper/photo2.jpg",
+			"name": "Нова колекція"
+		},
+		{
+			"id": "123",
+			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"thumb": "/vlv/img/land/vlv1.jpg",
+			"name": "Новини"
+		},
+		{
+			"id": "123",
+			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"thumb": "/vlv/img/land/vlv2.jpg",
+			"name": "Знижки"
+		},
+		{
+			"id": "123",
+			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"thumb": "/vlv/img/land/vlv3.jpg",
+			"name": "Нова колекція"
 		}
 	]
 }
