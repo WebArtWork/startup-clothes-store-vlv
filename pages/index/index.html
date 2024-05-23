@@ -46,7 +46,7 @@
 
 	<div class="cloth-swiper">
 		<div class="swiper-wrapper">
-			{% for article in articles %}
+			{% for article in top_articles %}
 			<div class="swiper-slide">
 				<a href="/article/{{{article._id}}}" class="cloth__item" data-modal-id="modal">
 					<img src="{{{article.thumb}}}" alt="{{{article.name}}}" />
