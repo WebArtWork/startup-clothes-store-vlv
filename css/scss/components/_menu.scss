@@ -33,15 +33,18 @@
 	&__li .active {
 		border-bottom: 1px solid #6cc4cc;
 	}
-	
+
 	&__ul {
-		
+
 		justify-content: start;
 		//   justify-content: space-between;
 		//   align-items: center;
 		text-transform: uppercase;
-		display:flex;
+		display: flex;
 		overflow: hidden;
+	}
+	&__li{
+		margin-left: 14px;
 	}
 
 	&__a {
@@ -76,7 +79,9 @@
 
 	@media (max-width: 576px) {
 		&__a {
-			font-size: 15px;
+			font-size: 18px;
+			display: flex;
+			align-items: center;
 			padding: 12px 10px;
 		}
 	}
@@ -106,7 +111,7 @@
 	position: relative;
 	text-decoration: none;
 	transition: background 0.2s linear;
-	
+
 }
 
 .breadcrumbs__item:hover:after,
