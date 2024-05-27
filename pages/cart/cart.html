@@ -19,45 +19,25 @@
 	<div class="cart-total-container">
 		<h2>Total: <span class="total-amount">{{{order.total}}} {{{currency}}}</span></h2>
 
-		<div class="cart-container">
-			<div class="cart-products">
-				<div class="input-group mb-3">
-					<input type="text" disabled class="form-control" placeholder="Електрона пошта"
+		<form class="cart-info-form" id="cart-info-form">
+			<input type="text" disabled class="form-control" placeholder="Електрона пошта"
 						aria-label="Recipient's username" aria-describedby="basic-addon2" id="email" name="email">
-				</div>
-
-				<div class="mb-3">
-					<label for="basic-url" class="form-label d-flex">Доставка</label>
-
-					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="Ім'я та прізвище" aria-label="Username" id="name" name="name">
-					</div>
-				</div>
-
-				<div class="input-group mb-3">
-					<input type="text" list="cities" class="form-control" placeholder="Місто" id="city" name="city" aria-describedby="basic-addon2">
-					<datalist id="cities">
-						<option value="Київ">
-						<option value="Харків">
-						<option value="Одеса">
-						<option value="Дніпро">
-						<option value="Кам'янець-Подільський">
-						<!-- Add more cities here -->
-					</datalist>
-				</div>
-
-				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="Адреса доставки або номер відділення Нової пошти"
+						<input type="text" list="cities" class="form-control" placeholder="Місто" id="city" name="city" aria-describedby="basic-addon2">
+						<datalist id="cities">
+							<option value="Київ">
+							<option value="Харків">
+							<option value="Одеса">
+							<option value="Дніпро">
+							<option value="Кам'янець-Подільський">
+							<!-- Add more cities here -->
+						</datalist>
+						<input type="text" class="form-control" placeholder="Адреса доставки або номер відділення Нової пошти"
 						id="address" name="address" aria-describedby="basic-addon2">
-				</div>
-
-				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="Телефон" id="phone" name="phone"
-						 aria-describedby="basic-addon2">
-				</div>
-			</div>
-			<input type="submit" id="orders" value="Зберегти">
-		</div>
+						<input type="text" class="form-control" placeholder="Телефон" id="phone" name="phone"
+						aria-describedby="basic-addon2">
+			<button type="submit" class="cart-checkout-btn">Замовити</button>
+		</form>
 	</div>
 
 	<script type="module">
@@ -80,6 +60,7 @@
 			await Order.update(Order.order);
 			const url = await Order.pay();
 			window.location.href = url;
+			console.log(url)
 		});
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');

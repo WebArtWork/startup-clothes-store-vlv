@@ -28,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody id="orders">
-   
+
                     </tbody>
                 </table>
             </div>
@@ -52,7 +52,7 @@
 
     (async () => {
         const orders = await Order.get();
-console.log(orders);
+        console.log(orders);
         for (const order of orders) {
             Dom.add('orders', Dom.template('orders', {
                 currency: order.currency,
