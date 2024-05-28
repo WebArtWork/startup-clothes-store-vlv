@@ -5,6 +5,8 @@
 		  <a href="/article/{{{article._id|string}}}" class="cloth__item cloth__item-articles" data-modal-id="modal">
 			  <img src="{{{article.thumb}}}" alt="{{{article.name}}}" />
 			  <div class="cloth__item-title">{{{article.name}}}</div>
+			  <div class="cloth__item-title">{{{article.short}}}</div>
+			  <div class="cloth__item-title">{{{article.description}}}</div>
 		  </a>
 		  {% endfor %}
 	  </div>
