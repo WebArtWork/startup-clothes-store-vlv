@@ -52,7 +52,6 @@
 
     (async () => {
         const orders = await Order.get();
-        console.log(orders);
         for (const order of orders) {
             Dom.add('orders', Dom.template('orders', {
                 currency: order.currency,
