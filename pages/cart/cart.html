@@ -54,6 +54,8 @@
 		Dom.element('city').value = resp.data.city || "";
 		Dom.element('address').value = resp.data.address || "";
 		Dom.element('phone').value = resp.data.phone || "";
+		const orders = await Order.get();
+        console.log(orders);
 		Dom.submit('cart-info-form', async data => {
 			Order.order.data = {
 				...Order.order.data,
