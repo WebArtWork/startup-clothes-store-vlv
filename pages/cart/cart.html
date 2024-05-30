@@ -54,20 +54,6 @@
 		Dom.element('city').value = resp.data.city || "";
 		Dom.element('address').value = resp.data.address || "";
 		Dom.element('phone').value = resp.data.phone || "";
-		const orders = await Order.get();
-        console.log(orders);
-        for (const order of orders) {
-            for (const orderproduct of order.products) {
-                Dom.add('cart-products', Dom.template('cart-product', {
-                    productId: orderproduct.product._id,
-                    productName: orderproduct.product.name,
-                    productThumb: orderproduct.product.thumb,
-                    productPrice: orderproduct.product.price,
-                    productQuantity: orderproduct.quantity,
-                    currency: order.currency
-                }));
-            }
-        };
 		Dom.submit('cart-info-form', async data => {
 			Order.order.data = {
 				...Order.order.data,
@@ -104,7 +90,6 @@
 			currentValueElement.value = currentValue + 1;
 
 			for (const orderproduct of Order.order.products) {
-				console.log(orderproduct, productId);
 				if (orderproduct.product === productId) {
 					orderproduct.quantity = currentValue + 1;
 					break;
