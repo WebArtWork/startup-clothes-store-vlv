@@ -90,6 +90,7 @@
 			currentValueElement.value = currentValue + 1;
 
 			for (const orderproduct of Order.order.products) {
+				console.log(orderproduct, productId);
 				if (orderproduct.product === productId) {
 					orderproduct.quantity = currentValue + 1; // Оновлюємо значення кількості
 					break; // Зупиняємо цикл після знаходження потрібного товару
