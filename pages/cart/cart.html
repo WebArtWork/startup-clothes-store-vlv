@@ -1,6 +1,5 @@
 <div class="cart-container">
 	<div class="cart-products">
-		{{{order | json}}}
 		{% for orderproduct in order.products %}
 		<div class="cart-product" id="remove{{{orderproduct.product._id}}}">
 			<img src="{{{orderproduct.product.thumb}}}" alt="Product 1" class="product-image">
