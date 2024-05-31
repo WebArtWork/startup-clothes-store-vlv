@@ -48,6 +48,7 @@
 		import Event from "/api/wjst/event";
 		import Http from '/api/wjst/http';
 		const resp = await Http.post('/api/user/fetchme', {})
+		console.log(Order.order);
 		resp.data = resp.data || {}
 		Dom.element('email').value = resp.email || "";
 		Dom.element('name').value = resp.data.name || "";
