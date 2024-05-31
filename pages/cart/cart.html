@@ -1,19 +1,19 @@
 <div class="cart-container">
 	<div class="cart-products">
 		{% for orderproduct in order.products %}
-		<div class="cart-product" id="remove{{{orderproduct.product._id}}}">
-			<img src="{{{orderproduct.product.thumb}}}" alt="Product 1" class="product-image">
-			<span class="cart-product-name">{{{orderproduct.product.name}}} - {{{orderproduct.product.price}}}
-				{{{currency}}}</span>
-			<div class="product-quantity">
-				<button productId="{{{orderproduct.product._id}}}" class="quantity-minus">-</button>
-				<input id="id{{{orderproduct.product._id}}}" type="number" class="quantity-value"
-					value="{{{orderproduct.quantity}}}" min="1">
-				<button productId="{{{orderproduct.product._id}}}" class="quantity-plus">+</button>
+			<div class="cart-product" id="remove{{{orderproduct.product._id}}}">
+				<img src="{{{orderproduct.product.thumb}}}" alt="Product 1" class="product-image">
+				<span class="cart-product-name">{{{orderproduct.product.name}}} - {{{orderproduct.product.price}}}
+					{{{currency}}}</span>
+				<div class="product-quantity">
+					<button productId="{{{orderproduct.product._id}}}" class="quantity-minus">-</button>
+					<input id="id{{{orderproduct.product._id}}}" type="number" class="quantity-value"
+						value="{{{orderproduct.quantity}}}" min="1">
+					<button productId="{{{orderproduct.product._id}}}" class="quantity-plus">+</button>
+				</div>
+				<span class="product-total-price">{{{orderproduct.product.price * orderproduct.quantity}}}
+					{{{currency}}}</span>
 			</div>
-			<span class="product-total-price">{{{orderproduct.product.price * orderproduct.quantity}}}
-				{{{currency}}}</span>
-		</div>
 		{% endfor %}
 	</div>
 	<div class="cart-total-container">
@@ -72,7 +72,6 @@
 				for (const orderproduct of Order.order.products) {
 					if (orderproduct.product === productId) {
 						orderproduct.quantity = value;
-						break;
 					}
 				}
 			} else {
