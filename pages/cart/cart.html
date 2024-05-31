@@ -52,9 +52,9 @@
 		const resp = await Http.post('/api/user/fetchme', {})
 		console.log(Order.order);
 		(async () => {
-        const order = await Order.get();
+        const orders = await Order.get();
 		console.log(order);
-        for (const product of order.products) {
+        for (const product of orders[0].products) {
 			console.log(product);
             Dom.add('products', Dom.template('products', {
 				name: product.name,
