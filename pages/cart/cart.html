@@ -48,7 +48,7 @@
 		import Order from "/api/wjst/order";
 		import Event from "/api/wjst/event";
 		import Http from '/api/wjst/http';
-		const resp = await Http.post('/api/user/fetch', {})
+		const resp = await Http.post('/api/user/fetchme', {})
 		const order = await Order.populated();
 		for (const product of order.products) {
 			Dom.add('products', Dom.template('products', {
@@ -62,12 +62,12 @@
 
 			}));
 		}
-		// resp.data = resp.data || {}
-		// Dom.element('email').value = resp.email || "";
-		// Dom.element('name').value = resp.data.name || "";
-		// Dom.element('city').value = resp.data.city || "";
-		// Dom.element('address').value = resp.data.address || "";
-		// Dom.element('phone').value = resp.data.phone || "";
+		resp.data = resp.data || {}
+		Dom.element('email').value = resp.email || "";
+		Dom.element('name').value = resp.data.name || "";
+		Dom.element('city').value = resp.data.city || "";
+		Dom.element('address').value = resp.data.address || "";
+		Dom.element('phone').value = resp.data.phone || "";
 		Dom.submit('cart-info-form', async data => {
 			Order.order.data = {
 				...Order.order.data,
