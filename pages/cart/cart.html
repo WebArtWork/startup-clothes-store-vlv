@@ -96,6 +96,7 @@
 				});
 				Dom.element('remove' + productId).innerHTML = '';
 			}
+			console.log(order);
 			await Order.update(order);
 		});
 		Dom.click('.quantity-plus', async (element) => {
