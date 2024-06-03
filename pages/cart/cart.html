@@ -68,35 +68,35 @@
 		Dom.element('city').value = resp.data.city || "";
 		Dom.element('address').value = resp.data.address || "";
 		Dom.element('phone').value = resp.data.phone || "";
-		Dom.submit('cart-info-form', async data => {
-			Order.order.data = {
-				...Order.order.data,
-				...data
-			}
-			await Order.update(Order.order);
-			const url = await Order.pay();
-			window.location.href = url;
-			console.log(url)
-		});
+		// Dom.submit('cart-info-form', async data => {
+		// 	Order.order.data = {
+		// 		...Order.order.data,
+		// 		...data
+		// 	}
+		// 	await Order.update(Order.order);
+		// 	const url = await Order.pay();
+		// 	window.location.href = url;
+		// 	console.log(url)
+		// });
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
 			console.log(productId);
 			const value = Number(Dom.element('id' + productId).value) - 1;
 			if (value > 0) {
 				Dom.element('id' + productId).value = value;
-				for (const orderproduct of Order.order.products) {
+				for (const orderproduct of order.products) {
 					if (orderproduct.product === productId) {
 						orderproduct.quantity = value;
 					}
 				}
 			} else {
-				Order.order.products = Order.order.products.filter(p => p.product !== productId);
+				order.products = order.products.filter(p => p.product !== productId);
 				Dom.element("cart").innerHTML = Dom.template('cart', {
-					counter: Order.order.products.length
+					counter: order.products.length
 				});
 				Dom.element('remove' + productId).innerHTML = '';
 			}
-			await Order.update(Order.order);
+			await Order.update(order);
 		});
 		Dom.click('.quantity-plus', async (element) => {
 			const productId = element.getAttribute('productId');
@@ -104,14 +104,14 @@
 			const currentValue = Number(currentValueElement.value);
 			currentValueElement.value = currentValue + 1;
 
-			for (const orderproduct of Order.order.products) {
+			for (const orderproduct of order.products) {
 				if (orderproduct.product === productId) {
 					orderproduct.quantity = currentValue + 1;
 					break;
 				}
 			}
 
-			await Order.update(Order.order);
+			await Order.update(order);
 		});
 
 	</script>
