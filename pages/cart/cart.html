@@ -49,7 +49,8 @@
 		import Event from "/api/wjst/event";
 		import Http from '/api/wjst/http';
 		const resp = await Http.post('/api/user/fetch', {})
-		console.log(Order.order);
+		const order = this.populated();
+		console.log(order);
 		(async () => {
 			const orders = await Order.get();
 			for (const order of orders) {
