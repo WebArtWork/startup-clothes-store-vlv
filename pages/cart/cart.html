@@ -52,6 +52,7 @@
 		const order = await Order.populated();
 		console.log(order);
 		for (const product of order.products) {
+			console.log(product);
 			Dom.add('products', Dom.template('products', {
 				name: product.name,
 				currency: product.currency,
