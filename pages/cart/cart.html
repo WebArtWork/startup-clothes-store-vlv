@@ -80,6 +80,7 @@
 		});
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
+			console.log(productId);
 			const value = Number(Dom.element('id' + productId).value) - 1;
 			if (value > 0) {
 				Dom.element('id' + productId).value = value;
