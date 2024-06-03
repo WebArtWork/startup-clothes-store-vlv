@@ -54,7 +54,6 @@
 			const orders = await Order.get();
 			for (const order of orders) {
 				for (const product of order.products) {
-					console.log(product);
 					Dom.add('products', Dom.template('products', {
 						name: product.name,
 						currency: product.currency,
