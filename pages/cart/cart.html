@@ -80,12 +80,11 @@
 		// });
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
-			console.log(productId, order);
 			const value = Number(Dom.element('id' + productId).value) - 1;
 			if (value > 0) {
 				Dom.element('id' + productId).value = value;
 				for (const orderproduct of order.products) {
-					if (orderproduct.product === productId) {
+					if (orderproduct.product._id === productId) {
 						orderproduct.quantity = value;
 					}
 				}
@@ -96,7 +95,6 @@
 				});
 				Dom.element('remove' + productId).innerHTML = '';
 			}
-			console.log(order);
 			await Order.update(order);
 		});
 		Dom.click('.quantity-plus', async (element) => {
@@ -106,7 +104,7 @@
 			currentValueElement.value = currentValue + 1;
 
 			for (const orderproduct of order.products) {
-				if (orderproduct.product === productId) {
+				if (orderproduct.product._id === productId) {
 					orderproduct.quantity = currentValue + 1;
 					break;
 				}
