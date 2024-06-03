@@ -52,19 +52,19 @@
 		console.log(Order.order);
 		(async () => {
 			const orders = await Order.get();
-			for (const product of orders.products) {
-				console.log(orders);
-				console.log(product);
-				Dom.add('products', Dom.template('products', {
-					name: product.name,
-					currency: product.currency,
-					price: product.price,
-					quantity: product.quantity,
-					status: product.status,
-					thumb: product.thumb,
-					id: product._id
+			for (const order of orders) {
+				for (const product of order.products) {
+					Dom.add('products', Dom.template('products', {
+						name: product.name,
+						currency: product.currency,
+						price: product.price,
+						quantity: product.quantity,
+						status: product.status,
+						thumb: product.thumb,
+						id: product._id
 
-				}));
+					}));
+				}
 			}
 		})();
 		resp.data = resp.data || {}
