@@ -54,12 +54,12 @@
 		for (const product of order.products) {
 			console.log(product);
 			Dom.add('products', Dom.template('products', {
-				name: product.name,
+				name: product.product.name,
 				currency: product.currency,
 				price: product.price,
 				quantity: product.quantity,
-				status: product.status,
-				thumb: product.thumb,
+				status: product.product.status,
+				thumb: product.product.thumb,
 				id: product._id
 
 			}));
