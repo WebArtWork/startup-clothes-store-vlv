@@ -48,10 +48,8 @@
 		import Order from "/api/wjst/order";
 		import Event from "/api/wjst/event";
 		import Http from '/api/wjst/http';
-		import Crud from '/api/wjst/crud';
-		console.log(Crud);
 		const resp = await Http.post('/api/user/fetch', {})
-		const order = await this.populated();
+		const order = await Order.populated();
 		console.log(order);
 		for (const product of order.products) {
 			Dom.add('products', Dom.template('products', {
