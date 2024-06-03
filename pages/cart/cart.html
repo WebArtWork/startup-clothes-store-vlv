@@ -52,7 +52,8 @@
 		console.log(Order.order);
 		(async () => {
 			const orders = await Order.get();
-			for (const product of order.products) {
+			for (const product of orders.products) {
+				console.log(orders);
 				console.log(product);
 				Dom.add('products', Dom.template('products', {
 					name: product.name,
