@@ -3,7 +3,7 @@
 
 	</div>
 	<div class="cart-total-container">
-		<h2>Total: <span class="total-amount">{{{order.total}}} {{{currency}}}</span></h2>
+		<h2>Total: <span class="total-amount" id="orderTotal">0 {{{currency}}}</span></h2>
 
 		<form class="cart-info-form" id="cart-info-form">
 			<input type="text" disabled class="form-control" placeholder="Електрона пошта"
@@ -74,7 +74,7 @@
 			const value = Number(Dom.element('id' + productId).value) - 1;
 			if (value > 0) {
 				Dom.element('id' + productId).value = value;
-				for (const [index, orderproduct] of order.products) {
+				for (const orderproduct of order.products) {
 					if (orderproduct._id === productId) {
 						orderproduct.quantity = value;
 						Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + (orderproduct.currency || "");
@@ -83,12 +83,15 @@
 				}
 			} else {
 				order.products = order.products.filter(p => p._id !== productId);
-				console.log(order.products);
 				Dom.element("cart").innerHTML = Dom.template('cart', {
 					counter: order.products.length
 				});
 				Dom.element('remove' + productId).innerHTML = '';
 			}
+			Dom.element("orderTotal").textContent = order.products.reduce(
+  				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity) ,
+  				0,
+			);
 			await Order.update(order);
 		});
 		Dom.click('.quantity-plus', async (element) => {
@@ -103,7 +106,10 @@
 					break;
 				}
 			}
-
+			Dom.element("orderTotal").textContent = order.products.reduce(
+  				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity) ,
+  				0,
+			);
 			await Order.update(order);
 		});
 
