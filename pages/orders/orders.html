@@ -52,10 +52,10 @@
             Dom.add('orders', Dom.template('orders', {
                 currency: order.currency,
                 price: order.price,
-                quantity: order.products.product.quantity,
+                quantity: order.product.quantity,
                 status: order.status,
                 id: order._id,
-                // total: order.product.quantity * order.product.price,
+                total: order.product.quantity * order.product.price,
                 name: order.product.name
             }));
         }
