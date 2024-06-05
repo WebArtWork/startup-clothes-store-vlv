@@ -69,6 +69,10 @@
 		Dom.element('city').value = resp.data.city || "";
 		Dom.element('address').value = resp.data.address || "";
 		Dom.element('phone').value = resp.data.phone || "";
+		Dom.element("orderTotal").textContent = order.products.reduce(
+			(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity) ,
+			0,
+		);
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
 			const value = Number(Dom.element('id' + productId).value) - 1;
