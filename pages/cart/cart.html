@@ -82,7 +82,7 @@
 					}
 				}
 			} else {
-				order.products = order.products.filter(p => p.product !== productId);
+				order.products = order.products.filter(p => p._id !== productId);
 				console.log(order.products);
 				Dom.element("cart").innerHTML = Dom.template('cart', {
 					counter: order.products.length
