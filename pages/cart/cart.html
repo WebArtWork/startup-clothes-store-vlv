@@ -1,5 +1,5 @@
 <div class="cart-container">
-	<div id="products">
+	<div class="cart-products" id="products">
 
 	</div>
 	<div class="cart-total-container">
@@ -29,19 +29,17 @@
 	</div>
 
 	<div id="template-products" style="display: none;">
-		<div class="cart-products">
-			<div class="cart-product" id="remove{id}">
-				<img src="{thumb}" alt="Product 1" class="product-image">
-				<span class="cart-product-name">{name} - {price}
-					{currency}</span>
-				<div class="product-quantity">
-					<button productId="{id}" class="quantity-minus">-</button>
-					<input id="id{id}" type="number" class="quantity-value" value="{quantity}" min="1">
-					<button productId="{id}" class="quantity-plus">+</button>
-				</div>
-				<span class="product-total-price">{price * quantity}
-					{currency}</span>
+		<div class="cart-product" id="remove{id}">
+			<img src="{thumb}" alt="Product 1" class="product-image">
+			<span class="cart-product-name">{name} - {price}
+				{currency}</span>
+			<div class="product-quantity">
+				<button productId="{id}" class="quantity-minus">-</button>
+				<input id="id{id}" type="number" class="quantity-value" value="{quantity}" min="1">
+				<button productId="{id}" class="quantity-plus">+</button>
 			</div>
+			<span class="product-total-price">{price * quantity}
+				{currency}</span>
 		</div>
 	</div>
 
