@@ -74,6 +74,7 @@
 			const value = Number(Dom.element('id' + productId).value) - 1;
 			if (value > 0) {
 				Dom.element('id' + productId).value = value;
+				console.log("product-total-price" + productId);
 				console.log(Dom.element("product-total-price" + productId));
 				for (const orderproduct of order.products) {
 					if (orderproduct.product._id === productId) {
@@ -95,7 +96,7 @@
 			const currentValueElement = Dom.element('id' + productId);
 			const currentValue = Number(currentValueElement.value);
 			currentValueElement.value = currentValue + 1;
-
+			console.log("product-total-price" + productId);
 			console.log(Dom.element("product-total-price" + productId));
 			for (const orderproduct of order.products) {
 				if (orderproduct.product._id === productId) {
