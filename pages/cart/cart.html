@@ -77,7 +77,7 @@
 				console.log("product-total-price" + productId);
 				console.log(Dom.element("product-total-price" + productId));
 				for (const orderproduct of order.products) {
-					if (orderproduct.product._id === productId) {
+					if (orderproduct._id === productId) {
 						orderproduct.quantity = value;
 						Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + orderproduct.currency;
 					}
@@ -99,7 +99,7 @@
 			console.log("product-total-price" + productId);
 			console.log(Dom.element("product-total-price" + productId));
 			for (const orderproduct of order.products) {
-				if (orderproduct.product._id === productId) {
+				if (orderproduct._id === productId) {
 					orderproduct.quantity = currentValue + 1;
 					Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + orderproduct.currency;
 					break;
