@@ -74,10 +74,10 @@
 			const value = Number(Dom.element('id' + productId).value) - 1;
 			if (value > 0) {
 				Dom.element('id' + productId).value = value;
+				console.log(Dom.element("product-total-price" + productId));
 				for (const orderproduct of order.products) {
 					if (orderproduct.product._id === productId) {
 						orderproduct.quantity = value;
-						console.log(Dom.element("product-total-price" + productId));
 						Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + orderproduct.currency;
 					}
 				}
@@ -96,10 +96,10 @@
 			const currentValue = Number(currentValueElement.value);
 			currentValueElement.value = currentValue + 1;
 
+			console.log(Dom.element("product-total-price" + productId));
 			for (const orderproduct of order.products) {
 				if (orderproduct.product._id === productId) {
 					orderproduct.quantity = currentValue + 1;
-					console.log(Dom.element("product-total-price" + productId));
 					Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + orderproduct.currency;
 					break;
 				}
