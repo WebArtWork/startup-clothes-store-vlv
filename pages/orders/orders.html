@@ -39,15 +39,10 @@
 
 <div id="template-orders" style="display: none;">
     <tr>
-        <td>{id}</td> <!-- Order ID -->
-        <td>{total}</td> <!-- Order Summary -->
-        <td>{status}</td> <!-- Order Status -->
-        <td>
-            <!-- Order Products -->
-            <ul>
-                <li>2 x Product A ($50)</li>
-            </ul>
-        </td>
+        <td>{id}</td> 
+        <td>{total}</td> 
+        <td>{status}</td> 
+        <td>{name}</td>
     </tr>
 </div>
 
@@ -66,7 +61,8 @@
                 quantity: order.quantity,
                 status: order.status,
                 id: order._id,
-                total: order.total
+                total: order.total,
+                name: order.products.name
             }));
         }
     })();
