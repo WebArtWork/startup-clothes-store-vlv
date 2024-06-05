@@ -21,16 +21,17 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Назва товару</th>
-                            <th>Ціна</th>
-                            <th>Кількість</th>
-                            <th>Загальна сума</th>
+                            <th>ID</th>
+                            <th>Сумарна ціна</th>
+                            <th>Статус</th>
+                            <th>Продукти</th>
                         </tr>
                     </thead>
                     <tbody id="orders">
 
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
@@ -38,9 +39,15 @@
 
 <div id="template-orders" style="display: none;">
     <tr>
-        <td>{price} {currency}</td>
-        <td>{quantity}</td>
-        <td>{status}</td>
+        <td>{id}</td> <!-- Order ID -->
+        <td>{total}</td> <!-- Order Summary -->
+        <td>{status}</td> <!-- Order Status -->
+        <td>
+            <!-- Order Products -->
+            <ul>
+                <li>2 x Product A ($50)</li>
+            </ul>
+        </td>
     </tr>
 </div>
 
@@ -57,7 +64,9 @@
                 currency: order.currency,
                 price: order.price,
                 quantity: order.quantity,
-                status: order.status
+                status: order.status,
+                id: order._id,
+                total: order.total
             }));
         }
     })();
