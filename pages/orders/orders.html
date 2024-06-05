@@ -6,44 +6,36 @@
                     <a class="nav-link disabled" aria-disabled="true">Портал</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/orders"><img
-                            src="/vlv/img/icons/order-svgrepo-com.png" width="20px"> Мої замовлення</a>
+                    <a class="nav-link" aria-current="page" href="/orders"><img src="/vlv/img/icons/order-svgrepo-com.png" width="20px"> Мої замовлення</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/orders"><img
-                            src="/vlv/img/icons/protect-svgrepo-com.png" width="20px"> Налаштування</a>
+                    <a class="nav-link" aria-current="page" href="/orders"><img src="/vlv/img/icons/protect-svgrepo-com.png" width="20px"> Налаштування</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-4">
             <h1>Список замовлень</h1>
             <div class="orders_list">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Сумарна ціна</th>
-                            <th>Статус</th>
-                            <th>Продукти</th>
-                        </tr>
-                    </thead>
-                    <tbody id="orders">
-
-                    </tbody>
-                </table>
-
+                <div class="flex-table">
+                    <div class="flex-row flex-header">
+                        <div class="flex-cell">ID</div>
+                        <div class="flex-cell">Сумарна ціна</div>
+                        <div class="flex-cell">Статус</div>
+                        <div class="flex-cell">Продукти</div>
+                    </div>
+                    <div class="flex-row" id="orders">
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 <div id="template-orders" style="display: none;">
-    <tr>
-        <td>{id}</td> 
-        <td>{total}</td> 
-        <td>{status}</td> 
-        <td>{name}</td>
-    </tr>
+    <div class="flex-cell">{id}</div> 
+    <div class="flex-cell">{total}</div> 
+    <div class="flex-cell">{status}</div> 
+    <div class="flex-cell">{name}</div>
 </div>
 
 <script type="module">
