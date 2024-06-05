@@ -17,16 +17,17 @@ padding-bottom: 20px;
     background-color: #f5f5f5;
     }
 }
-
 .flex-table {
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
+    width: 100%; /* Робимо таблицю шириною 100% */
 }
 
 .flex-row {
     display: flex;
     border-top: 1px solid #ccc;
+    width: 100%; /* Робимо рядки шириною 100% */
 }
 
 .flex-header {
@@ -34,6 +35,11 @@ padding-bottom: 20px;
 }
 
 .flex-cell {
-    flex: 1;
+    flex: 1; /* Задаємо кожній комірці рівну частину простору */
     padding: 8px;
+    border-right: 1px solid #ccc; /* Додаємо правий бордер для розділення комірок */
+}
+
+.flex-cell:last-child {
+    border-right: none; /* Видаляємо бордер для останньої комірки */
 }
