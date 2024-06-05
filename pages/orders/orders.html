@@ -18,26 +18,27 @@
         <div class="col-md-4">
             <h1>Список замовлень</h1>
             <div class="orders_list">
-                <div class="flex-table">
-                    <div class="flex-row flex-header">
-                        <div class="flex-cell">ID</div>
-                        <div class="flex-cell">Сумарна ціна</div>
-                        <div class="flex-cell">Статус</div>
-                        <div class="flex-cell">Продукти</div>
+                <div class="grid-table">
+                    <div class="grid-row grid-header">
+                        <div class="grid-cell">ID</div>
+                        <div class="grid-cell">Сумарна ціна</div>
+                        <div class="grid-cell">Статус</div>
+                        <div class="grid-cell">Продукти</div>
                     </div>
-                    <div class="flex-row" id="orders">
-
+                    <div class="grid-row" id="orders">
+                     
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 <div id="template-orders" style="display: none;">
-    <div class="flex-cell">{id}</div>
-    <div class="flex-cell">{total}</div>
-    <div class="flex-cell">{status}</div>
-    <div class="flex-cell">{name}</div>
+    <div class="grid-cell">{id}</div>
+    <div class="grid-cell">{total}</div>
+    <div class="grid-cell">{status}</div>
+    <div class="grid-cell">{name}</div>
 </div>
 
 <script type="module">
