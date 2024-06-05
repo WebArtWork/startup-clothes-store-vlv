@@ -76,6 +76,7 @@
 				Dom.element('id' + productId).value = value;
 				for (const [index, orderproduct] of order.products) {
 					if (orderproduct._id === productId) {
+						console.log(value);
 						if (value !== 0) {
 							order.products.splice(index, 1);
 						} else {
