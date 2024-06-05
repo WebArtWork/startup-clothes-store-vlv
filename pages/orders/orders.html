@@ -46,18 +46,17 @@
     import Order from "/api/wjst/order";
     import Event from "/api/wjst/event";
     import Http from '/api/wjst/http';
-
     (async () => {
         const orders = await Order.get();
         for (const order of orders) {
             Dom.add('orders', Dom.template('orders', {
                 currency: order.currency,
                 price: order.price,
-                quantity: order.quantity,
+                quantity: order.product.quantity,
                 status: order.status,
                 id: order._id,
-                total: order.product.quantity * order.product.price,
-                name: order.products.name
+                // total: order.product.quantity * order.product.price,
+                name: order.product.name
             }));
         }
     })();
