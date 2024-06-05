@@ -94,7 +94,10 @@
 					counter: order.products.length
 				});
 				Dom.element('remove' + productId).innerHTML = '';
+
 			}
+			const total = orderproduct.price * value;
+			Dom.element('remove' + productId).querySelector('.product-total-price').textContent = total + ' ' + orderproduct.currency;
 			await Order.update(order);
 		});
 		Dom.click('.quantity-plus', async (element) => {
@@ -109,6 +112,9 @@
 					break;
 				}
 			}
+
+			const total = orderproduct.price * (currentValue + 1);
+			Dom.element('remove' + productId).querySelector('.product-total-price').textContent = total + ' ' + orderproduct.currency;
 
 			await Order.update(order);
 		});
