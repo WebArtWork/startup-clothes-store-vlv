@@ -72,21 +72,20 @@
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
 			const value = Number(Dom.element('id' + productId).value) - 1;
+			console.log(value);
 			if (value > 0) {
 				Dom.element('id' + productId).value = value;
-				for (let i = 0; i < order.products.length; i++) {
-					if (order.products[i]._id === productId) {
-						console.log(order.products[i]);
+				for (const [index, orderproduct] of order.products) {
+					if (orderproduct._id === productId) {
 						console.log(value);
 						if (value === 0) {
-							order.products.splice(i, 1);
+							order.products.splice(index, 1);
 						} else {
-							order.products[i].quantity = value;
-							Dom.element("product-total-price" + productId).textContent = order.products[i].product.price * order.products[i].quantity + " " + (order.products[i].currency || "");
+							orderproduct.quantity = value;
+							Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + (orderproduct.currency || "");
 						}
 						break;
 					}
-					
 				}
 			} else {
 				order.products = order.products.filter(p => p.product !== productId);
@@ -102,6 +101,7 @@
 			const currentValueElement = Dom.element('id' + productId);
 			const currentValue = Number(currentValueElement.value);
 			currentValueElement.value = currentValue + 1;
+			console.log(currentValueElement.value);
 			for (const orderproduct of order.products) {
 				if (orderproduct._id === productId) {
 					orderproduct.quantity = currentValue + 1;
