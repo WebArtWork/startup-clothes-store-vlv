@@ -69,16 +69,6 @@
 		Dom.element('city').value = resp.data.city || "";
 		Dom.element('address').value = resp.data.address || "";
 		Dom.element('phone').value = resp.data.phone || "";
-		// Dom.submit('cart-info-form', async data => {
-		// 	Order.order.data = {
-		// 		...Order.order.data,
-		// 		...data
-		// 	}
-		// 	await Order.update(Order.order);
-		// 	const url = await Order.pay();
-		// 	window.location.href = url;
-		// 	console.log(url)
-		// });
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
 			const value = Number(Dom.element('id' + productId).value) - 1;
@@ -87,6 +77,7 @@
 				for (const orderproduct of order.products) {
 					if (orderproduct.product._id === productId) {
 						orderproduct.quantity = value;
+						console.log(Dom.element("product-total-price" + productId));
 						Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + orderproduct.currency;
 					}
 				}
@@ -108,13 +99,24 @@
 			for (const orderproduct of order.products) {
 				if (orderproduct.product._id === productId) {
 					orderproduct.quantity = currentValue + 1;
-					console.log(Dom.element("product-total-price"));
+					console.log(Dom.element("product-total-price" + productId));
 					Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + orderproduct.currency;
 					break;
 				}
 			}
 
 			await Order.update(order);
+		});
+
+		Dom.submit('cart-info-form', async data => {
+			Order.order.data = {
+				...Order.order.data,
+				...data
+			}
+			await Order.update(Order.order);
+			const url = await Order.pay();
+			window.location.href = url;
+			console.log(url)
 		});
 
 	</script>
