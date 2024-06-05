@@ -121,12 +121,9 @@
 		});
 
 		Dom.submit('cart-info-form', async data => {
-			Order.order.data = {
-				...Order.order.data,
-				...data
-			}
-			await Order.update(Order.order);
-			const url = await Order.pay();
+			order.status = 'ordered';
+			await Order.update(order);
+			// const url = await Order.pay();
 			window.location.href = url;
 			console.log(url)
 		});
