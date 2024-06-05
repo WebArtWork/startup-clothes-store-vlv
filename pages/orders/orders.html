@@ -56,7 +56,7 @@
                 quantity: order.quantity,
                 status: order.status,
                 id: order._id,
-                total: order.product.total,
+                total: order.product.quantity * order.product.price,
                 name: order.products.name
             }));
         }
