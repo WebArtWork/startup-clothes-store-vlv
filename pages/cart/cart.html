@@ -73,6 +73,9 @@
 			(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity) ,
 			0,
 		);
+		Dom.element("cart").innerHTML = Dom.template('cart', {
+			counter: order.products.length
+		});
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
 			const value = Number(Dom.element('id' + productId).value) - 1;
