@@ -18,14 +18,14 @@
         <div class="col-md-4">
             <h1>Список замовлень</h1>
             <div class="orders_list">
-                <div class="grid-table">
-                    <div class="grid-row grid-header">
-                        <div class="grid-cell">ID</div>
-                        <div class="grid-cell">Сумарна ціна</div>
-                        <div class="grid-cell">Статус</div>
-                        <div class="grid-cell">Продукти</div>
+                <div>
+                    <div>
+                        <div>ID</div>
+                        <div>Сумарна ціна</div>
+                        <div>Статус</div>
+                        <div>Продукти</div>
                     </div>
-                    <div class="grid-row" id="orders">
+                    <div id="orders">
                      
                     </div>
                 </div>
@@ -35,10 +35,10 @@
     </div>
 </div>
 <div id="template-orders" style="display: none;">
-    <div class="grid-cell">{id}</div>
-    <div class="grid-cell">{total}</div>
-    <div class="grid-cell">{status}</div>
-    <div class="grid-cell">{name}</div>
+    <div>{id}</div>
+    <div>{total}</div>
+    <div>{status}</div>
+    <div>{name}</div>
 </div>
 
 <script type="module">
@@ -46,8 +46,9 @@
     import Order from "/api/wjst/order";
     import Event from "/api/wjst/event";
     import Http from '/api/wjst/http';
+    const resp = await Http.post('/api/user/fetchme', {})
     (async () => {
-        const orders = await Order.get();
+        const orders = await Order.populated();
         for (const order of orders) {
             Dom.add('orders', Dom.template('orders', {
                 currency: order.currency,
