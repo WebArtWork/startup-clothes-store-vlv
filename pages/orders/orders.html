@@ -18,17 +18,13 @@
         <div class="col-md-4">
             <h1>Список замовлень</h1>
             <div class="orders_list">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Статус</th>
-                        </tr>
-                    </thead>
-                    <tbody id="orders" class="table-group-divider">
+                <ul>
+                            <li scope="col">ID</li>
+                            <li scope="col">Статус</li>
+                        </ul>
+                    <div id="orders" class="table-group-divider">
 
-                    </tbody>
-                </table>
+                    </div>
 
             </div>
         </div>
@@ -36,11 +32,9 @@
 </div>
 
 <div id="template-orders" style="display: none;">
-    <tr>
-        <th scope="row">1</th>
-        <td class="id">{id}</td>
-        <td class="status">{status}</td>
-    </tr>
+        <div scope="row">1</div>
+        <div class="id">{id}<div>
+        <div class="status">{status}</div>
 </div>
 
 <script type="module">
