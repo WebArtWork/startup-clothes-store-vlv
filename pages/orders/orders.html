@@ -18,11 +18,11 @@
         <div class="col-md-4">
             <h1>Список замовлень</h1>
             <div class="orders_list">
-                <table>
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Статус</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Статус</th>
                         </tr>
                     </thead>
                     <tbody id="orders">
@@ -37,6 +37,7 @@
 
 <div id="template-orders" style="display: none;">
     <tr>
+        <th scope="row">1</th>
         <td>{id}</td>
         <td>{status}</td>
     </tr>
