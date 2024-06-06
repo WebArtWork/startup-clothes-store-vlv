@@ -1,10 +1,6 @@
-.orders_list ul li{
-    color: rgb(253, 253, 253);
+.orders_list li{
+    color: rgb(0, 0, 0);
     display: inline;
     padding-right: 10px;
     text-transform: uppercase;
-}
-.orders_list ul{
-    display: flex;
-    justify-content: space-evenly;
 }
