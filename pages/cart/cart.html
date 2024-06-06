@@ -121,6 +121,11 @@
 
 		Dom.submit('cart-info-form', async data => {
 			order.status = 'ordered';
+			order.delivery.email = Dom.element('email').value;
+			order.delivery.name = Dom.element('name').value;
+			order.delivery.city = Dom.element('city').value;
+			order.delivery.address = Dom.element('address').value;
+			order.delivery.phone = Dom.element('phone').value;
 			await Order.update(order);
 			// const url = await Order.pay();
 			window.location.href = '/orders';
