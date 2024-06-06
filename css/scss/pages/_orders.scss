@@ -1,7 +1,13 @@
 .orders_list li{
+    margin: 0;
+    padding: 0;
     color: rgb(0, 0, 0);
     display: inline;
     padding-right: 8px;
     text-transform: uppercase;
     list-style: none;
+}
+.orders_list ul{
+    border-bottom: 2px solid black;
+    display: inline;
 }
