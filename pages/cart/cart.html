@@ -121,6 +121,7 @@
 
 		Dom.submit('cart-info-form', async data => {
 			order.status = 'ordered';
+			order.delivery = order.delivery || {};
 			order.delivery.email = Dom.element('email').value;
 			order.delivery.name = Dom.element('name').value;
 			order.delivery.city = Dom.element('city').value;
