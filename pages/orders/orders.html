@@ -48,6 +48,7 @@
     import Http from '/api/wjst/http';
     const resp = await Http.post('/api/user/fetchme', {})
     const orders = await Order.populated();
+    console.log(orders)
     for (const order of orders) {
         Dom.add('orders', Dom.template('orders', {
             currency: order.currency,
