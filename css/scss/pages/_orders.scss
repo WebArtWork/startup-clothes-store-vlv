@@ -1,4 +1,10 @@
 .orders_list ul li{
-    color: black;
+    color: rgb(253, 253, 253);
     display: inline;
+    padding-right: 10px;
+    text-transform: uppercase;
+}
+.orders_list ul{
+    display: flex;
+    justify-content: space-evenly;
 }
