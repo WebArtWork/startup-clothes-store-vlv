@@ -1336,4 +1336,5 @@ justify-content: space-evenly;
 }
 .orders_list h1{
     display: inline;
+    text-align: center;
 }
