@@ -1318,6 +1318,9 @@ h1 {
 .auth-info p {
     margin-bottom: 10px
 }
+.orders_list{
+    margin-bottom: 20px;
+}
 
 .orders_list li {
     margin: 0;
@@ -1335,7 +1338,7 @@ h1 {
     justify-content: space-between;
 }
 
-.orders_list h1 {
+.orders_list h2 {
     display: flex;
     justify-content: center;
 }
