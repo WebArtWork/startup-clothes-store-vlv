@@ -19,7 +19,8 @@
             <h1>Список замовлень</h1>
             <div class="orders_list">
                 <ul>
-                    <li>ID</li> <li>Статус</li>
+                    <li>ID</li>
+                    <li>Статус</li>
                 </ul>
                 <div id="orders" class="table-group-divider">
 
@@ -31,9 +32,10 @@
 
 
 <div id="template-orders" style="display: none;">
-    <div scope="row">1</div>
-    <div class="id">{id}</div>
-    <div class="status">{status}</div>
+    <ul>
+        <li class="id">{id}</li>
+        <li class="status">{status}</li>
+    </ul>
 </div>
 
 <script type="module">
