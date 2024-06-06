@@ -1331,5 +1331,9 @@ h1 {
 
 .orders_list ul {
     border-bottom: 2px solid #000;
-    display: inline
+    display: flex;
+justify-content: space-evenly;
+}
+.orders_list h1{
+    display: inline;
 }
