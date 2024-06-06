@@ -18,15 +18,15 @@
         <div class="col-md-4">
             <h1>Список замовлень</h1>
             <div class="orders_list">
-                <div>
-                    <div>
-                        <div>ID</div>
-                        <div>Сумарна ціна</div>
-                        <div>Статус</div>
-                        <div>Продукти</div>
+                <div class="grid-table">
+                    <div class="grid-row grid-header">
+                        <div class="grid-cell">ID</div>
+                        <div class="grid-cell">Сумарна ціна</div>
+                        <div class="grid-cell">Статус</div>
+                        <div class="grid-cell">Продукти</div>
                     </div>
-                    <div id="orders">
-
+                    <div class="grid-row" id="orders">
+                     
                     </div>
                 </div>
             </div>
@@ -35,10 +35,10 @@
     </div>
 </div>
 <div id="template-orders" style="display: none;">
-    <div>{id}</div>
-    <div>{total}</div>
-    <div>{status}</div>
-    <div>{name}</div>
+    <div class="grid-cell">{id}</div>
+    <div class="grid-cell">{total}</div>
+    <div class="grid-cell">{status}</div>
+    <div class="grid-cell">{name}</div>
 </div>
 
 <script type="module">
@@ -46,18 +46,19 @@
     import Order from "/api/wjst/order";
     import Event from "/api/wjst/event";
     import Http from '/api/wjst/http';
-    const resp = await Http.post('/api/user/fetchme', {})
-    const orders = await Order.populated();
-    console.log(orders)
-    for (const order of orders) {
-        Dom.add('orders', Dom.template('orders', {
-            currency: order.currency,
-            price: order.price,
-            quantity: order.product.quantity,
-            status: order.status,
-            id: order._id,
-            total: order.product.quantity * order.product.price,
-            name: order.product.name
-        }));
-    };
+    (async () => {
+        const orders = await Order.get();
+    console.log(orders);
+        for (const order of orders) {
+            Dom.add('orders', Dom.template('orders', {
+                currency: order.currency,
+                price: order.price,
+                quantity: order.product.quantity,
+                status: order.status,
+                id: order._id,
+                total: order.product.quantity * order.product.price,
+                name: order.product.name
+            }));
+        }
+    })();
 </script>
