@@ -74,6 +74,7 @@
 		Dom.element("cart").innerHTML = Dom.template('cart', {
 			counter: order.products.length
 		});
+		console.log(order.products.length);
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
 			const value = Number(Dom.element('id' + productId).value) - 1;
