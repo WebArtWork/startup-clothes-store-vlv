@@ -130,6 +130,36 @@
 			// const url = await Order.pay();
 			window.location.href = '/orders';
 		});
+		const isFormValid = () => {
+        const email = Dom.element('email').value;
+        const name = Dom.element('name').value;
+        const city = Dom.element('city').value;
+        const address = Dom.element('address').value;
+        const phone = Dom.element('phone').value;
 
+        // Перевірка кожного поля на заповненість
+        if (!email || !name || !city || !address || !phone) {
+            return false; // Якщо хоча б одне поле не заповнено, повертаємо false
+        }
+        return true; // Якщо всі поля заповнені, повертаємо true
+    };
+
+    // Функція для блокування кнопки "Замовити", якщо форма не валідна
+    const toggleSubmitButton = () => {
+        const submitButton = document.querySelector('.cart-checkout-btn');
+        if (!isFormValid()) {
+            submitButton.disabled = true; // Блокуємо кнопку, якщо форма не валідна
+        } else {
+            submitButton.disabled = false; // Розблокуємо кнопку, якщо форма валідна
+        }
+    };
+
+    // Викликаємо функцію перевірки при введенні даних в будь-яке поле форми
+    document.querySelectorAll('.form-control').forEach(input => {
+        input.addEventListener('input', toggleSubmitButton);
+    });
+
+    // Викликаємо функцію перевірки після завантаження сторінки
+    window.addEventListener('load', toggleSubmitButton);
 	</script>
 </div>
