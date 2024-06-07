@@ -46,7 +46,7 @@
 		import Order from "/api/wjst/order";
 		import Event from "/api/wjst/event";
 		import Http from '/api/wjst/http';
-		const resp = await Http.post('/api/user/fetchme', {})
+		let resp = await Http.post('/api/user/fetchme', {})
 		const order = await Order.populated();
 		for (const product of order.products) {
 			Dom.add('products', Dom.template('products', {
