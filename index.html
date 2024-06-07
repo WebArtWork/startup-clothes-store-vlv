@@ -1,398 +1,348 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{{title}}}</title>
+    <meta itemprop="name" content="{{{title}}}" />
+    <meta name="twitter:title" content="{{{title}}}" />
+    <meta property="og:title" content="{{{title}}}" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{{title}}}</title>
-  <meta itemprop="name" content="{{{title}}}" />
-  <meta name="twitter:title" content="{{{title}}}" />
-  <meta property="og:title" content="{{{title}}}" />
+    <meta name="description" content="{{{description}}}" />
+    <meta itemprop="description" content="{{{description}}}" />
+    <meta name="twitter:description" content="{{{description}}}" />
+    <meta property="og:description" content="{{{description}}}" />
 
-  <meta name="description" content="{{{description}}}" />
-  <meta itemprop="description" content="{{{description}}}" />
-  <meta name="twitter:description" content="{{{description}}}" />
-  <meta property="og:description" content="{{{description}}}" />
+    <meta itemprop="image" content="{{{image}}}" />
+    <meta name="twitter:image:src" content="{{{image}}}" />
+    <meta property="og:image" content="{{{image}}}" />
+	<link rel="icon" type="image/png" href="{{{favicon}}}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	{% if keywords %}
+    <meta name="keywords" content="{{{keywords}}}" />
+    {% endif %}
+	<base href="/" />
+    <link rel="stylesheet" href="/vlv/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      <!-- CSS -->
+    </style>
 
-  <meta itemprop="image" content="{{{image}}}" />
-  <meta name="twitter:image:src" content="{{{image}}}" />
-  <meta property="og:image" content="{{{image}}}" />
-  <link rel="icon" type="image/png" href="{{{favicon}}}">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  {% if keywords %}
-  <meta name="keywords" content="{{{keywords}}}" />
-  {% endif %}
-  <base href="/" />
-  <link rel="stylesheet" href="/vlv/css/index.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <style>
-    <!-- CSS 
-    -->
-  </style>
-
-  <style>
-    :root {
-      --white: {
-          {
-            {
-            variables.white || "#ffffff"
-          }
-        }
+    <style>
+      :root {
+      	--white: {{{variables.white || "#ffffff"}}};
+      	--azure_sky: {{{variables.azure_sky || "#6cc4cc"}}};
+      	--misty_turquoise: {{{variables.misty_turquoise || "#56aeb6"}}};
+      	--charcoal_gray: {{{variables.charcoal_gray || "#4f4f4f"}}};
+      	--menu_hover: {{{variables.menu_hover || "#454141"}}};
+      	--footer_border: {{{variables.footer_border || "#363636"}}};
+      	--hover_svg: {{{variables.hover_svg || "#4d4d4d"}}};
+      	--ebony_black: {{{variables.ebony_black || "#2c2c2c"}}};
+      	--blackest_night: {{{variables.blackest_night || "#2a2828"}}};
+      	--black: {{{variables.black || "#000000"}}};
+      	--silver_shimmer: {{{variables.silver_shimmer || "#d3d3d3"}}};
       }
-
-      ;
-
-      --azure_sky: {
-          {
-            {
-            variables.azure_sky || "#6cc4cc"
-          }
-        }
-      }
-
-      ;
-
-      --misty_turquoise: {
-          {
-            {
-            variables.misty_turquoise || "#56aeb6"
-          }
-        }
-      }
-
-      ;
-
-      --charcoal_gray: {
-          {
-            {
-            variables.charcoal_gray || "#4f4f4f"
-          }
-        }
-      }
-
-      ;
-
-      --menu_hover: {
-          {
-            {
-            variables.menu_hover || "#454141"
-          }
-        }
-      }
-
-      ;
-
-      --footer_border: {
-          {
-            {
-            variables.footer_border || "#363636"
-          }
-        }
-      }
-
-      ;
-
-      --hover_svg: {
-          {
-            {
-            variables.hover_svg || "#4d4d4d"
-          }
-        }
-      }
-
-      ;
-
-      --ebony_black: {
-          {
-            {
-            variables.ebony_black || "#2c2c2c"
-          }
-        }
-      }
-
-      ;
-
-      --blackest_night: {
-          {
-            {
-            variables.blackest_night || "#2a2828"
-          }
-        }
-      }
-
-      ;
-
-      --black: {
-          {
-            {
-            variables.black || "#000000"
-          }
-        }
-      }
-
-      ;
-
-      --silver_shimmer: {
-          {
-            {
-            variables.silver_shimmer || "#d3d3d3"
-          }
-        }
-      }
-
-      ;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="wrapper">
-    <header class="header">
-      <div class="container header__container">
-        <div class="header__soc">
-          {% if variables.link_facebook %}
-          <a class="header__soc-img" href="{{{variables.link_facebook}}}">
-            <?xml version="1.0" encoding="iso-8859-1"?>
-            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-            <svg fill="#000000" version="1.1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="0 0 512 512"
-              xml:space="preserve">
-              <g id="7935ec95c421cee6d86eb22ecd11b7e3">
-                <path style="display: inline" d="M283.122,122.174c0,5.24,0,22.319,0,46.583h83.424l-9.045,74.367h-74.379
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container header__container">
+          <div class="header__soc">
+			{% if variables.link_facebook %}
+            <a class="header__soc-img" href="{{{variables.link_facebook}}}">
+              <?xml version="1.0" encoding="iso-8859-1"?>
+              <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+              <svg
+                fill="#000000"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="800px"
+                height="800px"
+                viewBox="0 0 512 512"
+                xml:space="preserve"
+              >
+                <g id="7935ec95c421cee6d86eb22ecd11b7e3">
+                  <path
+                    style="display: inline"
+                    d="M283.122,122.174c0,5.24,0,22.319,0,46.583h83.424l-9.045,74.367h-74.379
 						  c0,114.688,0,268.375,0,268.375h-98.726c0,0,0-151.653,0-268.375h-51.443v-74.367h51.443c0-29.492,0-50.463,0-56.302
 						  c0-27.82-2.096-41.02,9.725-62.578C205.948,28.32,239.308-0.174,297.007,0.512c57.713,0.711,82.04,6.263,82.04,6.263
-						  l-12.501,79.257c0,0-36.853-9.731-54.942-6.263C293.539,83.238,283.122,94.366,283.122,122.174z"></path>
-              </g>
-            </svg>
-          </a>
-          {% if variables.link_instagram %}
-          <a class="header__soc-img" href="{{{variables.link_instagram}}}">
-            <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-            <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-                fill="#0F0F0F" />
-              <path
-                d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
-                fill="#0F0F0F" />
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
-                fill="#0F0F0F" />
-            </svg>
-          </a>
-          {% endif %}
-          {% if variables.link_tiktok%}
-          <a class="header__soc-img" href="{{{variables.link_tiktok}}}">
-            <?xml version="1.0" encoding="utf-8"?>
-            <svg fill="#000000" width="800px" height="800px" viewBox="0 0 32 32" version="1.1"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z">
-              </path>
-            </svg>
-          </a>
-          {% endif %}
-        </div>
-
-        <h1 class="header__title"><a href="/">{{{title}}}</a></h1>
-
-        <div class="header-btn">
-          <a href="/products" class="header-btn__search">
-            <svg fill="#000000" version="1.1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0,0,256,256">
-              <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
-                stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
-                font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                <g transform="translate(0,256) scale(0.26667,0.26667)">
-                  <path
-                    d="M784,-120l-252,-252c-20,16 -43,28.66667 -69,38c-26,9.33333 -53.66667,14 -83,14c-72.66667,0 -134.16667,-25.16667 -184.5,-75.5c-50.33333,-50.33333 -75.5,-111.83333 -75.5,-184.5c0,-72.66667 25.16667,-134.16667 75.5,-184.5c50.33333,-50.33333 111.83333,-75.5 184.5,-75.5c72.66667,0 134.16667,25.16667 184.5,75.5c50.33333,50.33333 75.5,111.83333 75.5,184.5c0,29.33333 -4.66667,57 -14,83c-9.33333,26 -22,49 -38,69l252,252zM380,-400c50,0 92.5,-17.5 127.5,-52.5c35,-35 52.5,-77.5 52.5,-127.5c0,-50 -17.5,-92.5 -52.5,-127.5c-35,-35 -77.5,-52.5 -127.5,-52.5c-50,0 -92.5,17.5 -127.5,52.5c-35,35 -52.5,77.5 -52.5,127.5c0,50 17.5,92.5 52.5,127.5c35,35 77.5,52.5 127.5,52.5z">
-                  </path>
-                </g>
-              </g>
-            </svg>
-          </a>
-          <a id="cart" href="/cart" class="header-btn__basket">
-            <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-              <path
-                d="M240-80q-33 0-56.5-23.5T160-160v-480q0-33 23.5-56.5T240-720h80q0-66 47-113t113-47q66 0 113 47t47 113h80q33 0 56.5 23.5T800-640v480q0 33-23.5 56.5T720-80H240Zm0-80h480v-480h-80v80q0 17-11.5 28.5T600-520q-17 0-28.5-11.5T560-560v-80H400v80q0 17-11.5 28.5T360-520q-17 0-28.5-11.5T320-560v-80h-80v480Zm160-560h160q0-33-23.5-56.5T480-800q-33 0-56.5 23.5T400-720ZM240-160v-480 480Z" />
-            </svg>
-            <div class="header-btn__basket-quantuty">{{{order.products.length || 0}}}</div>
-          </a>
-          <div id="template-cart" style="display: none;">
-            <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-              <path
-                d="M240-80q-33 0-56.5-23.5T160-160v-480q0-33 23.5-56.5T240-720h80q0-66 47-113t113-47q66 0 113 47t47 113h80q33 0 56.5 23.5T800-640v480q0 33-23.5 56.5T720-80H240Zm0-80h480v-480h-80v80q0 17-11.5 28.5T600-520q-17 0-28.5-11.5T560-560v-80H400v80q0 17-11.5 28.5T360-520q-17 0-28.5-11.5T320-560v-80h-80v480Zm160-560h160q0-33-23.5-56.5T480-800q-33 0-56.5 23.5T400-720ZM240-160v-480 480Z" />
-            </svg>
-            <div class="header-btn__basket-quantuty">{counter}</div>
-          </div>
-          <div class="header-btn">
-            <a href="/auth" class="header-btn__search" id="icon_profile">
-              <svg fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="-20.48 -20.48 552.96 552.96" xml:space="preserve" stroke="#000000" stroke-width="9.728">
-                <g id="SVGRepo_bgCarrier" stroke-width="0" />
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
-                <g id="SVGRepo_iconCarrier">
-                  <g>
-                    <g>
-                      <path
-                        d="M256,0c-65.733,0-119.211,53.479-119.211,119.211S190.267,238.423,256,238.423s119.211-53.479,119.211-119.211 S321.733,0,256,0z M256,218.024c-54.486,0-98.813-44.328-98.813-98.813S201.515,20.398,256,20.398s98.813,44.328,98.813,98.813 S310.485,218.024,256,218.024z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path
-                        d="M426.272,331.529c-45.48-45.48-105.952-70.529-170.272-70.529c-64.32,0-124.791,25.047-170.273,70.529 c-45.48,45.48-70.529,105.952-70.529,170.272c0,5.632,4.566,10.199,10.199,10.199h461.204c5.632,0,10.199-4.567,10.199-10.199 C496.801,437.482,471.752,377.01,426.272,331.529z M35.831,491.602C41.179,374.789,137.889,281.398,256,281.398 s214.821,93.391,220.17,210.204H35.831z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path
-                        d="M182.644,457.944H66.295c-5.633,0-10.199,4.567-10.199,10.199s4.566,10.199,10.199,10.199h116.349 c5.633,0,10.199-4.567,10.199-10.199S188.277,457.944,182.644,457.944z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path
-                        d="M225.621,457.944h-7.337c-5.633,0-10.199,4.567-10.199,10.199s4.566,10.199,10.199,10.199h7.337 c5.633,0,10.199-4.567,10.199-10.199S231.254,457.944,225.621,457.944z" />
-                    </g>
-                  </g>
+						  l-12.501,79.257c0,0-36.853-9.731-54.942-6.263C293.539,83.238,283.122,94.366,283.122,122.174z"
+                  ></path>
                 </g>
               </svg>
             </a>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="menu-main__wrapper">
-      <secction class="menu-main">
-        <div class="container menu-main__container">
-          <ul class="breadcrumbs">
-            {{{'/vlv/components/tags'|c({tags: tags}|safe)}}}
-          </ul>
-        </div>
-      </secction>
-    </div>
-    <!-- HTML -->
-    <footer class="footer">
-      <div class="footer-top">
-        <div class="container footer-top__container">
-          <div class="footer-top__item">
-            <div class="footer-top__title">{{{store.name}}}</div>
-            <div class="footer-top__descr">{{{store.description}}}</div>
-          </div>
-
-          {% if top_products.length %}
-          <div class="footer-top__item">
-            <div class="footer-top__title">Товари </div>
-            <ul class="footer-top__ul">
-              {% for product in top_products %}
-              <li class="footer-top__li">
-                <a href="/product/{{{product._id}}}">{{{product.name}}}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-
-          {% if top_articles.length %}
-          <div class="footer-top__item">
-            <div class="footer-top__title">Новини</div>
-            <ul class="footer-top__ul">
-              {% for article in top_articles %}
-              <li class="footer-top__li">
-                <a href="/article/{{{article._id}}}">{{{article.name}}}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-
-          {% if contents.length %}
-          <div class="footer-top__item">
-            <div class="footer-top__title">Споживачам</div>
-            <ul class="footer-top__ul">
-              {% for content in contents %}
-              <li class="footer-top__li">
-                <a href="{{{content.url}}}">{{{content.name}}}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-
-          <div class="footer-top__item">
-            <div class="footer-top__title">Наші дані</div>
-            <ul class="footer-top__ul">
-              <li class="footer-top__li">{{{variables.address}}}</li>
-              <li class="footer-top__li">{{{variables.phone}}}</li>
-              <li class="footer-top__li">
-                <a href="{{{variables.email}}}">{{{variables.email}}}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="container footer-bottom__container">
-          <div class="footer-bottom__soc">
-            {% if variables.link_facebook %}
-            <a class="footer-bottom__soc-img" href="{{{variables.link_facebook}}}">
-              <svg fill="#000000" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="0 0 512 512"
-                xml:space="preserve">
-                <g id="7935ec95c421cee6d86eb22ecd11b7e3">
-                  <path style="display: inline" d="M283.122,122.174c0,5.24,0,22.319,0,46.583h83.424l-9.045,74.367h-74.379
-								c0,114.688,0,268.375,0,268.375h-98.726c0,0,0-151.653,0-268.375h-51.443v-74.367h51.443c0-29.492,0-50.463,0-56.302
-								c0-27.82-2.096-41.02,9.725-62.578C205.948,28.32,239.308-0.174,297.007,0.512c57.713,0.711,82.04,6.263,82.04,6.263
-								l-12.501,79.257c0,0-36.853-9.731-54.942-6.263C293.539,83.238,283.122,94.366,283.122,122.174z"></path>
-                </g>
-              </svg>
-            </a>
-            {% endif %}
-            {% if variables.link_instagram %}
-            <a class="footer-bottom__soc-img" href="{{{variables.link_instagram}}}">
-              <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
+			{% if variables.link_instagram %}
+            <a class="header__soc-img" href="{{{variables.link_instagram}}}">
+              <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+              <svg
+                width="800px"
+                height="800px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
                   d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-                  fill="$white" />
+                  fill="#0F0F0F"
+                />
                 <path
                   d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
-                  fill="$white" />
-                <path fill-rule="evenodd" clip-rule="evenodd"
+                  fill="#0F0F0F"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
                   d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
-                  fill="$white" />
+                  fill="#0F0F0F"
+                />
               </svg>
             </a>
-            {% endif %}
+			{% endif %}
+      {% if variables.link_tiktok%}
+            <a class="header__soc-img" href="{{{variables.link_tiktok}}}">
+              <?xml version="1.0" encoding="utf-8"?>
+              <svg fill="#000000" width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"></path>
+             </svg>
+            </a>
+			{% endif %}
           </div>
-          <div class="footer-bottom__copyright">
-            <p>&copy; 2024 - {{{store.name}}}. </p>
-            <!-- All rights reserved. -->
+
+          <h1 class="header__title"><a href="/">{{{title}}}</a></h1>
+
+          <div class="header-btn">
+            <a href="/products" class="header-btn__search">
+				<svg
+					fill="#000000"
+					version="1.1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					width="24"
+					height="24"
+					viewBox="0,0,256,256"
+				>
+					<g
+					fill-rule="nonzero"
+					stroke="none"
+					stroke-width="1"
+					stroke-linecap="butt"
+					stroke-linejoin="miter"
+					stroke-miterlimit="10"
+					stroke-dasharray=""
+					stroke-dashoffset="0"
+					font-family="none"
+					font-weight="none"
+					font-size="none"
+					text-anchor="none"
+					style="mix-blend-mode: normal"
+					>
+					<g transform="translate(0,256) scale(0.26667,0.26667)">
+						<path
+						d="M784,-120l-252,-252c-20,16 -43,28.66667 -69,38c-26,9.33333 -53.66667,14 -83,14c-72.66667,0 -134.16667,-25.16667 -184.5,-75.5c-50.33333,-50.33333 -75.5,-111.83333 -75.5,-184.5c0,-72.66667 25.16667,-134.16667 75.5,-184.5c50.33333,-50.33333 111.83333,-75.5 184.5,-75.5c72.66667,0 134.16667,25.16667 184.5,75.5c50.33333,50.33333 75.5,111.83333 75.5,184.5c0,29.33333 -4.66667,57 -14,83c-9.33333,26 -22,49 -38,69l252,252zM380,-400c50,0 92.5,-17.5 127.5,-52.5c35,-35 52.5,-77.5 52.5,-127.5c0,-50 -17.5,-92.5 -52.5,-127.5c-35,-35 -77.5,-52.5 -127.5,-52.5c-50,0 -92.5,17.5 -127.5,52.5c-35,35 -52.5,77.5 -52.5,127.5c0,50 17.5,92.5 52.5,127.5c35,35 77.5,52.5 127.5,52.5z"
+						></path>
+					</g>
+					</g>
+				</svg>
+            </a>
+            <a id="cart" href="/cart" class="header-btn__basket">
+              <svg
+                fill="#000000"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path
+                  d="M240-80q-33 0-56.5-23.5T160-160v-480q0-33 23.5-56.5T240-720h80q0-66 47-113t113-47q66 0 113 47t47 113h80q33 0 56.5 23.5T800-640v480q0 33-23.5 56.5T720-80H240Zm0-80h480v-480h-80v80q0 17-11.5 28.5T600-520q-17 0-28.5-11.5T560-560v-80H400v80q0 17-11.5 28.5T360-520q-17 0-28.5-11.5T320-560v-80h-80v480Zm160-560h160q0-33-23.5-56.5T480-800q-33 0-56.5 23.5T400-720ZM240-160v-480 480Z"
+                />
+              </svg>
+              <div class="header-btn__basket-quantuty">{{{order.products.length || 0}}}</div>
+            </a>
+			<div id="template-cart" style="display: none;">
+				<svg
+					fill="#000000"
+					xmlns="http://www.w3.org/2000/svg"
+					height="24"
+					viewBox="0 -960 960 960"
+					width="24"
+				>
+					<path
+					d="M240-80q-33 0-56.5-23.5T160-160v-480q0-33 23.5-56.5T240-720h80q0-66 47-113t113-47q66 0 113 47t47 113h80q33 0 56.5 23.5T800-640v480q0 33-23.5 56.5T720-80H240Zm0-80h480v-480h-80v80q0 17-11.5 28.5T600-520q-17 0-28.5-11.5T560-560v-80H400v80q0 17-11.5 28.5T360-520q-17 0-28.5-11.5T320-560v-80h-80v480Zm160-560h160q0-33-23.5-56.5T480-800q-33 0-56.5 23.5T400-720ZM240-160v-480 480Z"
+					/>
+				</svg>
+				<div class="header-btn__basket-quantuty">{counter}</div>
+			</div>
+      <div class="header-btn">
+        <a href="/auth" class="header-btn__search" id="icon_profile">
+            <svg fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-20.48 -20.48 552.96 552.96" xml:space="preserve" stroke="#000000" stroke-width="9.728">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier"> <g> <g> <path d="M256,0c-65.733,0-119.211,53.479-119.211,119.211S190.267,238.423,256,238.423s119.211-53.479,119.211-119.211 S321.733,0,256,0z M256,218.024c-54.486,0-98.813-44.328-98.813-98.813S201.515,20.398,256,20.398s98.813,44.328,98.813,98.813 S310.485,218.024,256,218.024z"/> </g> </g> <g> <g> <path d="M426.272,331.529c-45.48-45.48-105.952-70.529-170.272-70.529c-64.32,0-124.791,25.047-170.273,70.529 c-45.48,45.48-70.529,105.952-70.529,170.272c0,5.632,4.566,10.199,10.199,10.199h461.204c5.632,0,10.199-4.567,10.199-10.199 C496.801,437.482,471.752,377.01,426.272,331.529z M35.831,491.602C41.179,374.789,137.889,281.398,256,281.398 s214.821,93.391,220.17,210.204H35.831z"/> </g> </g> <g> <g> <path d="M182.644,457.944H66.295c-5.633,0-10.199,4.567-10.199,10.199s4.566,10.199,10.199,10.199h116.349 c5.633,0,10.199-4.567,10.199-10.199S188.277,457.944,182.644,457.944z"/> </g> </g> <g> <g> <path d="M225.621,457.944h-7.337c-5.633,0-10.199,4.567-10.199,10.199s4.566,10.199,10.199,10.199h7.337 c5.633,0,10.199-4.567,10.199-10.199S231.254,457.944,225.621,457.944z"/> </g> </g> </g>
+  </svg>
+        </a>
+      </div>
           </div>
         </div>
+      </header>
+      <div class="menu-main__wrapper">
+        <secction class="menu-main">
+          <div class="container menu-main__container">
+            <ul class="breadcrumbs">
+            {{{'/vlv/components/tags'|c({tags: tags}|safe)}}}
+          </ul>
+          </div>
+        </secction>
       </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="/vlv/js/index.js"></script>
-    <script src="/vlv/js/swiper.js"></script>
-    <script src="/vlv/js/product.js"></script>
-  </div>
-</body>
+	  <!-- HTML -->
+      <footer class="footer">
+        <div class="footer-top">
+          <div class="container footer-top__container">
+            <div class="footer-top__item">
+              <div class="footer-top__title">{{{store.name}}}</div>
+              <div class="footer-top__descr">{{{store.description}}}</div>
+            </div>
 
+			{% if top_products.length %}
+            <div class="footer-top__item">
+              <div class="footer-top__title">Товари </div>
+              <ul class="footer-top__ul">
+				{% for product in top_products %}
+                <li class="footer-top__li">
+					<a href="/product/{{{product._id}}}">{{{product.name}}}</a>
+				</li>
+				{% endfor %}
+              </ul>
+            </div>
+			{% endif %}
+
+			{% if top_articles.length %}
+            <div class="footer-top__item">
+              <div class="footer-top__title">Новини</div>
+              <ul class="footer-top__ul">
+				{% for article in top_articles %}
+                <li class="footer-top__li">
+					<a href="/article/{{{article._id}}}">{{{article.name}}}</a>
+				</li>
+				{% endfor %}
+              </ul>
+            </div>
+			{% endif %}
+
+			{% if contents.length %}
+            <div class="footer-top__item">
+              <div class="footer-top__title">Споживачам</div>
+              <ul class="footer-top__ul">
+				{% for content in contents %}
+                <li class="footer-top__li">
+					<a href="{{{content.url}}}">{{{content.name}}}</a>
+				</li>
+				{% endfor %}
+              </ul>
+            </div>
+			{% endif %}
+
+            <div class="footer-top__item">
+              <div class="footer-top__title">Наші дані</div>
+              <ul class="footer-top__ul">
+                <li class="footer-top__li">{{{variables.address}}}</li>
+                <li class="footer-top__li">{{{variables.phone}}}</li>
+                <li class="footer-top__li">
+                  <a href="{{{variables.email}}}">{{{variables.email}}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="container footer-bottom__container">
+            <div class="footer-bottom__soc">
+              {% if variables.link_facebook %}
+			  <a
+                class="footer-bottom__soc-img"
+                href="{{{variables.link_facebook}}}"
+              >
+                <svg
+                  fill="#000000"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="800px"
+                  height="800px"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <g id="7935ec95c421cee6d86eb22ecd11b7e3">
+                    <path
+                      style="display: inline"
+                      d="M283.122,122.174c0,5.24,0,22.319,0,46.583h83.424l-9.045,74.367h-74.379
+								c0,114.688,0,268.375,0,268.375h-98.726c0,0,0-151.653,0-268.375h-51.443v-74.367h51.443c0-29.492,0-50.463,0-56.302
+								c0-27.82-2.096-41.02,9.725-62.578C205.948,28.32,239.308-0.174,297.007,0.512c57.713,0.711,82.04,6.263,82.04,6.263
+								l-12.501,79.257c0,0-36.853-9.731-54.942-6.263C293.539,83.238,283.122,94.366,283.122,122.174z"
+                    ></path>
+                  </g>
+                </svg>
+              </a>
+			  {% endif %}
+              {% if variables.link_instagram %}
+              <a
+                class="footer-bottom__soc-img"
+                href="{{{variables.link_instagram}}}"
+              >
+                <svg
+                  width="800px"
+                  height="800px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
+                    fill="$white"
+                  />
+                  <path
+                    d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
+                    fill="$white"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
+                    fill="$white"
+                  />
+                </svg>
+              </a>
+			  {% endif %}
+            </div>
+            <div class="footer-bottom__copyright">
+              <p>&copy; 2024 - {{{store.name}}}. </p>
+			  <!-- All rights reserved. -->
+            </div>
+          </div>
+        </div>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <script src="/vlv/js/index.js"></script>
+      <script src="/vlv/js/swiper.js"></script>
+      <script src="/vlv/js/product.js"></script>
+    </div>
+  </body>
 </html>
 <script type="module">
   import Dom from "/api/wjst/dom";
   import Http from '/api/wjst/http';
-
-  if (Http.headers['token']) {
-    Dom.element('icon_profile').href = '/profile';
+  
+  if (Http.headers['token']){
+      Dom.element('icon_profile').href = '/profile';
   }
-
-
-  const counter = order.products.length;
-  Dom.element("cart").innerHTML = Dom.template('cart', {
-    counter: counter
-  });
-</script>
+  </script>
+  
