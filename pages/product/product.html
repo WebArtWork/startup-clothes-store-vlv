@@ -41,9 +41,6 @@
 				Dom.click("addToCart", toggleProduct);
 				Dom.click("buyNow", async () => {
 					const product = "{{{product.id}}}";
-					if (!Order.hasProduct(product)) {
-						await toggleProduct();
-					}
 					window.location.href = '/cart';
 				});
 			</script>

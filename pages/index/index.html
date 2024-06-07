@@ -4,15 +4,35 @@
 		<div class="swiper-wrapper">
 			{% if variables.swiper_img_1 %}
 			<div class="swiper-slide">
-				<img src="{{{variables.swiper_img_1}}}" alt="" />
+				<div class="slide-content">
+					<img src="{{{variables.swiper_img_1}}}" alt="" />
+					<div class="text-overlay">
+						<h1>VLV</h1>
+						<p>{{{variables.swiper_text_1}}}</p>
+					</div>
+				</div>
 			</div>
-			{% endif %} {% if variables.swiper_img_2 %}
+			{% endif %}
+			{% if variables.swiper_img_2 %}
 			<div class="swiper-slide">
-				<img src="{{{variables.swiper_img_2}}}" alt="" />
+				<div class="slide-content">
+					<img src="{{{variables.swiper_img_2}}}" alt="" />
+					<div class="text-overlay">
+						<h1>VLV</h1>
+						<p>{{{variables.swiper_text_2}}}</p>
+					</div>
+				</div>
 			</div>
-			{% endif %} {% if variables.swiper_img_3 %}
+			{% endif %}
+			{% if variables.swiper_img_3 %}
 			<div class="swiper-slide">
-				<img src="{{{variables.swiper_img_3}}}" alt="" />
+				<div class="slide-content">
+					<img src="{{{variables.swiper_img_3}}}" alt="" />
+					<div class="text-overlay">
+						<h1>VLV</h1>
+						<p>{{{variables.swiper_text_3}}}</p>
+					</div>
+				</div>
 			</div>
 			{% endif %}
 		</div>

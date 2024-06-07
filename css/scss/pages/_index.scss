@@ -1,4 +1,27 @@
 /*---------------swiper-section--------------*/
+
+.swiper-slide {
+	position: relative;
+}
+
+.slide-content {
+	position: relative;
+}
+
+.text-overlay {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(255, 255, 255, 0.7); /* Полупрозрачний білий фон */
+	padding: 100px;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 26px;
+	font-weight: 500;
+	text-transform: uppercase;
+	border-radius: 20px;
+}
 .swiper-section {
 	margin-bottom: 80px;
 
