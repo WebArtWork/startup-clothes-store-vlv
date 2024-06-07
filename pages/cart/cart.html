@@ -130,21 +130,15 @@
 			// const url = await Order.pay();
 			window.location.href = '/orders';
 		});
-		const isFormValid = () => {
-			const email = Dom.element('email').value;
-			const name = Dom.element('name').value;
-			const city = Dom.element('city').value;
-			const address = Dom.element('address').value;
-			const phone = Dom.element('phone').value;
-
-			if (!email || !name || !city || !address || !phone) {
-				return false;
-			}
-			return true;
-		};
 		const toggleSubmitButton = () => {
 			const submitButton = document.querySelector('.cart-checkout-btn');
-			if (!isFormValid()) {
+			const email = Dom.element('email').value.trim();
+			const name = Dom.element('name').value.trim();
+			const city = Dom.element('city').value.trim();
+			const address = Dom.element('address').value.trim();
+			const phone = Dom.element('phone').value.trim();
+
+			if (!email || !name || !city || !address || !phone) {
 				submitButton.disabled = true;
 			} else {
 				submitButton.disabled = false;
