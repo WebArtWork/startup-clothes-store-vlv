@@ -60,6 +60,7 @@
 				total: product.product.price * product.quantity
 			}));
 		}
+		resp = resp || {data: {}}
 		resp.data = resp.data || {}
 		Dom.element('email').value = resp.email || "";
 		Dom.element('name').value = resp.data.name || "";
