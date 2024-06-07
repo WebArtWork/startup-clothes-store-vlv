@@ -136,32 +136,12 @@
 			const city = Dom.element('city').value;
 			const address = Dom.element('address').value;
 			const phone = Dom.element('phone').value;
+
 			if (!email || !name || !city || !address || !phone) {
-				if (!email) Dom.element('email').classList.add('invalid-input');
-				else Dom.element('email').classList.remove('invalid-input');
-
-				if (!name) Dom.element('name').classList.add('invalid-input');
-				else Dom.element('name').classList.remove('invalid-input');
-
-				if (!city) Dom.element('city').classList.add('invalid-input');
-				else Dom.element('city').classList.remove('invalid-input');
-
-				if (!address) Dom.element('address').classList.add('invalid-input');
-				else Dom.element('address').classList.remove('invalid-input');
-
-				if (!phone) Dom.element('phone').classList.add('invalid-input');
-				else Dom.element('phone').classList.remove('invalid-input');
-
 				return false;
 			}
-
-			document.querySelectorAll('.form-control').forEach(input => {
-				input.classList.remove('invalid-input');
-			});
-
 			return true;
 		};
-
 		const toggleSubmitButton = () => {
 			const submitButton = document.querySelector('.cart-checkout-btn');
 			if (!isFormValid()) {
