@@ -90,8 +90,8 @@
 			} else {
 				order.products = order.products.filter(p => p._id !== productId);
 				Dom.element("cart").innerHTML = Dom.template('cart', {
-					counter: order.products.length
-				});
+					counter: 0
+				})
 				Dom.element('remove' + productId).innerHTML = '';
 			}
 			Dom.element("orderTotal").textContent = order.products.reduce(
