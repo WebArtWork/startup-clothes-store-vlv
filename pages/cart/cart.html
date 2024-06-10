@@ -46,7 +46,27 @@
 		import Order from "/api/wjst/order";
 		import Event from "/api/wjst/event";
 		import Http from '/api/wjst/http';
-		let resp = await Http.post('/api/user/fetchme', {})
+
+		const toggleSubmitButton = () => {
+			const submitButton = document.querySelector('.cart-checkout-btn');
+			const email = Dom.element('email').value.trim();
+			const name = Dom.element('name').value.trim();
+			const city = Dom.element('city').value.trim();
+			const address = Dom.element('address').value.trim();
+			const phone = Dom.element('phone').value.trim();
+
+			if (!email || !name || !city || !address || !phone) {
+				submitButton.disabled = true;
+			} else {
+				submitButton.disabled = false;
+			}
+		};
+
+		document.addEventListener("DOMContentLoaded", function () {
+			toggleSubmitButton();
+		});
+
+		const resp = await Http.post('/api/user/fetchme', {});
 		const order = await Order.populated();
 		for (const product of order.products) {
 			Dom.add('products', Dom.template('products', {
@@ -60,13 +80,13 @@
 				total: product.product.price * product.quantity
 			}));
 		}
-		resp = resp || { data: {} }
-		resp.data = resp.data || {}
-		Dom.element('email').value = resp.email || "";
-		Dom.element('name').value = resp.data.name || "";
-		Dom.element('city').value = resp.data.city || "";
-		Dom.element('address').value = resp.data.address || "";
-		Dom.element('phone').value = resp.data.phone || "";
+		const respData = resp || { data: {} };
+		respData.data = respData.data || {};
+		Dom.element('email').value = respData.email || "";
+		Dom.element('name').value = respData.data.name || "";
+		Dom.element('city').value = respData.data.city || "";
+		Dom.element('address').value = respData.data.address || "";
+		Dom.element('phone').value = respData.data.phone || "";
 		Dom.element("orderTotal").textContent = order.products.reduce(
 			(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
 			0,
@@ -74,6 +94,11 @@
 		Dom.element("cart").innerHTML = Dom.template('cart', {
 			counter: order.products.length
 		});
+
+		document.querySelectorAll('.form-control').forEach(input => {
+			input.addEventListener('input', toggleSubmitButton);
+		});
+
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
 			const value = Number(Dom.element('id' + productId).value) - 1;
@@ -130,24 +155,6 @@
 			// const url = await Order.pay();
 			window.location.href = '/orders';
 		});
-		const toggleSubmitButton = () => {
-			const submitButton = document.querySelector('.cart-checkout-btn');
-			const email = Dom.element('email').value.trim();
-			const name = Dom.element('name').value.trim();
-			const city = Dom.element('city').value.trim();
-			const address = Dom.element('address').value.trim();
-			const phone = Dom.element('phone').value.trim();
-
-			if (!email || !name || !city || !address || !phone) {
-				submitButton.disabled = true;
-			} else {
-				submitButton.disabled = false;
-			}
-		};
-
-		document.querySelectorAll('.form-control').forEach(input => {
-			input.addEventListener('input', toggleSubmitButton);
-		});
-		window.addEventListener('load', toggleSubmitButton)
 	</script>
+
 </div>
