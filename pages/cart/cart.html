@@ -46,102 +46,90 @@
 		import Order from "/api/wjst/order";
 		import Event from "/api/wjst/event";
 		import Http from '/api/wjst/http';
-
-		async function init() {
-			let resp = await Http.post('/api/user/fetchme', {});
-			const order = await Order.populated();
-
-			for (const product of order.products) {
-				Dom.add('products', Dom.template('products', {
-					name: product.product.name,
-					currency: product.currency,
-					price: product.product.price,
-					quantity: product.quantity,
-					status: product.product.status,
-					thumb: product.product.thumb,
-					id: product._id,
-					total: product.product.price * product.quantity
-				}));
-			}
-
-			resp = resp || { data: {} };
-			resp.data = resp.data || {};
-			Dom.element('email').value = resp.email || "";
-			Dom.element('name').value = resp.data.name || "";
-			Dom.element('city').value = resp.data.city || "";
-			Dom.element('address').value = resp.data.address || "";
-			Dom.element('phone').value = resp.data.phone || "";
-			Dom.element("orderTotal").textContent = order.products.reduce(
-				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
-				0
-			);
-			Dom.element("cart").innerHTML = Dom.template('cart', {
-				counter: order.products.length
-			});
-
-			Dom.click('.quantity-minus', async (element) => {
-				const productId = element.getAttribute('productId');
-				const value = Number(Dom.element('id' + productId).value) - 1;
-				if (value > 0) {
-					Dom.element('id' + productId).value = value;
-					for (const orderproduct of order.products) {
-						if (orderproduct._id === productId) {
-							orderproduct.quantity = value;
-							Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + (orderproduct.currency || "");
-							break;
-						}
-					}
-				} else {
-					order.products = order.products.filter(p => p._id !== productId);
-					Dom.element("cart").innerHTML = Dom.template('cart', {
-						counter: order.products.length
-					});
-					Dom.element('remove' + productId).innerHTML = '';
-				}
-				Dom.element("orderTotal").textContent = order.products.reduce(
-					(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
-					0
-				);
-				await Order.update(order);
-			});
-
-			Dom.click('.quantity-plus', async (element) => {
-				const productId = element.getAttribute('productId');
-				const currentValueElement = Dom.element('id' + productId);
-				const currentValue = Number(currentValueElement.value);
-				currentValueElement.value = currentValue + 1;
+		let resp = await Http.post('/api/user/fetchme', {})
+		const order = await Order.populated();
+		for (const product of order.products) {
+			Dom.add('products', Dom.template('products', {
+				name: product.product.name,
+				currency: product.currency,
+				price: product.product.price,
+				quantity: product.quantity,
+				status: product.product.status,
+				thumb: product.product.thumb,
+				id: product._id,
+				total: product.product.price * product.quantity
+			}));
+		}
+		resp = resp || { data: {} }
+		resp.data = resp.data || {}
+		Dom.element('email').value = resp.email || "";
+		Dom.element('name').value = resp.data.name || "";
+		Dom.element('city').value = resp.data.city || "";
+		Dom.element('address').value = resp.data.address || "";
+		Dom.element('phone').value = resp.data.phone || "";
+		Dom.element("orderTotal").textContent = order.products.reduce(
+			(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
+			0,
+		);
+		Dom.element("cart").innerHTML = Dom.template('cart', {
+			counter: order.products.length
+		});
+		Dom.click('.quantity-minus', async (element) => {
+			const productId = element.getAttribute('productId');
+			const value = Number(Dom.element('id' + productId).value) - 1;
+			if (value > 0) {
+				Dom.element('id' + productId).value = value;
 				for (const orderproduct of order.products) {
 					if (orderproduct._id === productId) {
-						orderproduct.quantity = currentValue + 1;
+						orderproduct.quantity = value;
 						Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + (orderproduct.currency || "");
 						break;
 					}
 				}
-				Dom.element("orderTotal").textContent = order.products.reduce(
-					(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
-					0
-				);
-				await Order.update(order);
-			});
+			} else {
+				order.products = order.products.filter(p => p._id !== productId);
+				Dom.element("cart").innerHTML = Dom.template('cart', {
+					counter: order.products.length
+				});
+				Dom.element('remove' + productId).innerHTML = '';
+			}
+			Dom.element("orderTotal").textContent = order.products.reduce(
+				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
+				0,
+			);
+			await Order.update(order);
+		});
+		Dom.click('.quantity-plus', async (element) => {
+			const productId = element.getAttribute('productId');
+			const currentValueElement = Dom.element('id' + productId);
+			const currentValue = Number(currentValueElement.value);
+			currentValueElement.value = currentValue + 1;
+			for (const orderproduct of order.products) {
+				if (orderproduct._id === productId) {
+					orderproduct.quantity = currentValue + 1;
+					Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + (orderproduct.currency || "");
+					break;
+				}
+			}
+			Dom.element("orderTotal").textContent = order.products.reduce(
+				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
+				0,
+			);
+			await Order.update(order);
+		});
 
-			Dom.submit('cart-info-form', async data => {
-				order.status = 'ordered';
-				order.delivery = order.delivery || {};
-				order.delivery.email = Dom.element('email').value;
-				order.delivery.name = Dom.element('name').value;
-				order.delivery.city = Dom.element('city').value;
-				order.delivery.address = Dom.element('address').value;
-				order.delivery.phone = Dom.element('phone').value;
-				await Order.update(order);
-				// const url = await Order.pay();
-				window.location.href = '/orders';
-			});
-
-			document.querySelectorAll('.form-control').forEach(input => {
-				input.addEventListener('input', toggleSubmitButton);
-			});
-		}
-
+		Dom.submit('cart-info-form', async data => {
+			order.status = 'ordered';
+			order.delivery = order.delivery || {};
+			order.delivery.email = Dom.element('email').value;
+			order.delivery.name = Dom.element('name').value;
+			order.delivery.city = Dom.element('city').value;
+			order.delivery.address = Dom.element('address').value;
+			order.delivery.phone = Dom.element('phone').value;
+			await Order.update(order);
+			// const url = await Order.pay();
+			window.location.href = '/orders';
+		});
 		const toggleSubmitButton = () => {
 			const submitButton = document.querySelector('.cart-checkout-btn');
 			const email = Dom.element('email').value.trim();
@@ -156,10 +144,9 @@
 				submitButton.disabled = false;
 			}
 		};
-
-		window.onload = toggleSubmitButton;
-
-		init();
+		document.querySelectorAll('.form-control').forEach(input => {
+			input.addEventListener('input', toggleSubmitButton);
+		});
+		window.addEventListener('load', toggleSubmitButton);
 	</script>
-
 </div>

@@ -75,6 +75,10 @@ h1 {
     color: white;
 }
 
+.cart-checkout-btn:disabled {
+    opacity: 0.7;
+}
+
 @media (max-width: 768px) {
     .cart-container {
         padding: 0 10px;
