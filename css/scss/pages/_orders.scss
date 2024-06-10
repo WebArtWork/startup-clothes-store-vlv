@@ -1,19 +1,16 @@
-.orders_list li{
-    margin: 0;
-    padding: 0;
-    color: rgb(0, 0, 0);
-    display: inline;
-    padding-right: 10px;
-    text-transform: uppercase;
-    list-style: none;
+.order-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #6cc4cc !important;
+    padding: 8px;
+    margin-bottom: 8px;
 }
-.orders_list ul{
-    border-bottom: 2px solid black;
-    display: inline;
+
+.order-container > div {
+    margin-bottom: 4px;
 }
-#orders{
-    background-color: aliceblue;
-}
-.orders_list h2{
-    text-align: center;
+
+.order-container .label {
+    font-weight: bold;
+    margin-right: 4px;
 }
