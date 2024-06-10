@@ -130,25 +130,24 @@
 			// const url = await Order.pay();
 			window.location.href = '/orders';
 		});
-		const formInputs = document.querySelectorAll('.form-control');
-		const submitButton = document.querySelector('.cart-checkout-btn');
-
 		const toggleSubmitButton = () => {
-			let allFieldsFilled = true;
+			const submitButton = document.querySelector('.cart-checkout-btn');
+			const email = Dom.element('email').value.trim();
+			const name = Dom.element('name').value.trim();
+			const city = Dom.element('city').value.trim();
+			const address = Dom.element('address').value.trim();
+			const phone = Dom.element('phone').value.trim();
 
-			formInputs.forEach(input => {
-				if (input.value.trim() === '') {
-					allFieldsFilled = false;
-				}
-			});
-
-			submitButton.disabled = !allFieldsFilled;
+			if (!email || !name || !city || !address || !phone) {
+				submitButton.disabled = true;
+			} else {
+				submitButton.disabled = false;
+			}
 		};
 
-		formInputs.forEach(input => {
+		document.querySelectorAll('.form-control').forEach(input => {
 			input.addEventListener('input', toggleSubmitButton);
 		});
-
-		window.addEventListener('load', toggleSubmitButton);
+		window.addEventListener('load', toggleSubmitButton)
 	</script>
 </div>
