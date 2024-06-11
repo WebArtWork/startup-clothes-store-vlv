@@ -20,9 +20,9 @@
 				import Dom from "/api/wjst/dom";
 				import Order from "/api/wjst/order";
 
-				const toggleProduct = async () => {
+				const toggleProduct = async (quantity = 1) => {
 					const product = "{{{product.id}}}";
-					await Order.toggleProduct(product);
+					await Order.toggleProduct(product, quantity);
 					if (await Order.hasProduct(product)) {
 						Dom.element("addToCart").innerHTML = "Додати у кошик";
 					} else {
@@ -33,7 +33,7 @@
 					});
 				};
 
-				Dom.click("addToCart", toggleProduct);
+				Dom.click("addToCart", () => toggleProduct(1));
 
 				Dom.click("buyNow", async () => {
 					const product = "{{{product.id}}}";
