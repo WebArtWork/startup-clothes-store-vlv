@@ -42,7 +42,7 @@
     (async () => {
         const orders = await Order.get();
         for (const order of orders) {
-            Dom.add('orders', Dom.template('orders', {
+            const orderElement = Dom.template('orders', {
                 id: order._id,
                 status: order.status,
                 name: order.delivery.name,
@@ -50,7 +50,8 @@
                 city: order.delivery.city,
                 address: order.delivery.address,
                 phone: order.delivery.phone
-            }));
+            });
+            Dom.element('orders').prepend(orderElement);
         }
     })();
 </script>
