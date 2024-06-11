@@ -9,12 +9,6 @@
 				{{{product.price}}}&nbsp;<span>{{{currency}}}</span>
 			</div>
 			<div class="product-info__cart">
-				<div class="product-info__cart-text">Кількість</div>
-				<div class="counter">
-					<button class="minus">-</button>
-					<input class="value" type="number" value="1" id="quantity" />
-					<button class="plus">+</button>
-				</div>
 				<button id="addToCart" type="button" class="btn product-info__cart-btn">
 					Додати у кошик
 				</button>
@@ -28,8 +22,7 @@
 
 				const toggleProduct = async () => {
 					const product = "{{{product.id}}}";
-					const quantity = Dom.element("quantity").value;
-					await Order.toggleProduct(product, quantity);
+					await Order.toggleProduct(product);
 					if (await Order.hasProduct(product)) {
 						Dom.element("addToCart").innerHTML = "Додати у кошик";
 					} else {
@@ -44,8 +37,8 @@
 
 				Dom.click("buyNow", async () => {
 					const product = "{{{product.id}}}";
-					await toggleProduct(); // Додати продукт у кошик
-					window.location.href = '/cart'; // Перехід на сторінку кошика після додавання продукту
+					await toggleProduct();
+					window.location.href = '/cart';
 				});
 			</script>
 			{% if product.description %}
