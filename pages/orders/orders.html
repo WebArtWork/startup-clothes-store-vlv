@@ -54,25 +54,3 @@
         }
     })();
 </script>
-
-<script type="module">
-    import Dom from "/api/wjst/dom";
-    import Order from "/api/wjst/order";
-    import Http from '/api/wjst/http';
-
-    (async () => {
-        const orders = await Order.get();
-        console.log(orders);
-        for (const order of orders) {
-            Dom.add('orders', Dom.template('orders', {
-                id: order._id,
-                status: order.status,
-                name: order.delivery.name,
-                email: order.delivery.email,
-                city: order.delivery.city,
-                address: order.delivery.address,
-                phone: order.delivery.phone
-            }));
-        }
-    })();
-</script>
