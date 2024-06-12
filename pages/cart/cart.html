@@ -162,8 +162,10 @@
 						const orderTotal = parseFloat(orderTotalElement.textContent.trim());
 						const discountedTotal = orderTotal - discountAmount;
 						orderTotalElement.textContent = discountedTotal.toFixed(2);
+						order.discount = true;
 					} else {
 						console.log('Discount not found');
+						order.discount = false;
 					}
 				} else {
 					console.error('Failed to check discount:', response.status);
@@ -172,15 +174,17 @@
 				console.error('Error checking discount:', error);
 			}
 		});
+
 		Dom.submit('cart-info-form', async data => {
 			order.status = 'ordered';
-			order.delivery = order.delivery || {};
-			order.delivery.email = Dom.element('email').value;
-			order.delivery.name = Dom.element('name').value;
-			order.delivery.city = Dom.element('city').value;
-			order.delivery.address = Dom.element('address').value;
-			order.delivery.phone = Dom.element('phone').value;
-			order.discount = Dom.element('applyDiscountButton');
+			order.delivery = {
+				email: Dom.element('email').value.trim(),
+				name: Dom.element('name').value.trim(),
+				city: Dom.element('city').value.trim(),
+				address: Dom.element('address').value.trim(),
+				phone: Dom.element('phone').value.trim()
+			};
+			order.discount = Dom.element('applyDiscountButton').disabled ? false : true;
 			await Order.update(order);
 			// const url = await Order.pay();
 			window.location.href = '/orders';
