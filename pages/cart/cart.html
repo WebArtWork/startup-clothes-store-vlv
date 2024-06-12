@@ -29,6 +29,9 @@
 					name="discountCode" aria-describedby="basic-addon2">
 				<button type="button" class="applyDiscountButton" id="applyDiscountButton">Застосувати</button>
 			</div>
+			<div id="existingDiscount" style="display: none;">
+				Знижка: <span class="discountAmount">0</span> грн
+			</div>
 			<button type="submit" class="cart-checkout-btn">Замовити</button>
 		</form>
 	</div>
@@ -186,6 +189,12 @@
 
 		function toggleDiscount() {
 			Dom.element("codeBlock").style.display = order.discount ? 'none': 'block';
+			const discountElement = Dom.element("existingDiscount");
+			discountElement.style.display = order.discount ? 'block': 'none';
+			if (order.discount) {
+				const discountAmount = discountElement.querySelector('.discountAmount');
+				discountAmount.textContent = order.discount.amount;
+			}
 		}
 	</script>
 
