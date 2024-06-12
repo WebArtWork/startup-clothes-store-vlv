@@ -31,6 +31,7 @@
 			</div>
 			<div id="existingDiscount" style="display: none;">
 				Знижка: <span class="discountAmount">0</span> грн
+				<button class="deleteDiscount" type="button" id="deleteDiscount">Видалити</button>
 			</div>
 			<button type="submit" class="cart-checkout-btn">Замовити</button>
 		</form>
@@ -166,6 +167,15 @@
 				console.log('Discount not valide');
 			}
 		});
+		Dom.click('.deleteDiscount', async () => {
+				order.discount = undefined;
+				const orderTotalElement = Dom.element("orderTotal");
+				const orderTotal = parseFloat(orderTotalElement.textContent.trim());
+				const discountedTotal = calculateTotal();
+				orderTotalElement.textContent = discountedTotal.toFixed(2);
+				toggleDiscount()
+				await Order.update(order);
+		});
 		Dom.submit('cart-info-form', async data => {
 			order.status = 'ordered';
 			order.delivery = order.delivery || {};
@@ -184,7 +194,7 @@
 				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
 				0,
 			);
-			return total - (total * order.discount.amount) / 100
+			return total - (total * (order.discount?.amount || 0)) / 100
 		}
 
 		function toggleDiscount() {
@@ -192,8 +202,12 @@
 			const discountElement = Dom.element("existingDiscount");
 			discountElement.style.display = order.discount ? 'block': 'none';
 			if (order.discount) {
+				let total = order.products.reduce(
+					(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
+					0,
+				);
 				const discountAmount = discountElement.querySelector('.discountAmount');
-				discountAmount.textContent = order.discount.amount;
+				discountAmount.textContent = (total * order.discount.amount) / 100;
 			}
 		}
 	</script>
