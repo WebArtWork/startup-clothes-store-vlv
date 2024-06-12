@@ -86,7 +86,7 @@
 				status: product.product.status,
 				thumb: product.product.thumb,
 				id: product._id,
-				total: product.product.price * product.quantity + 'грн'
+				total: product.product.price * product.quantity
 			}));
 		}
 		const respData = resp || { data: {} };
@@ -120,7 +120,7 @@
 				for (const orderproduct of order.products) {
 					if (orderproduct._id === productId) {
 						orderproduct.quantity = value;
-						Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + (orderproduct.currency || "");
+						Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + (orderproduct.currency || "грн");
 						break;
 					}
 				}
@@ -143,7 +143,7 @@
 			for (const orderproduct of order.products) {
 				if (orderproduct._id === productId) {
 					orderproduct.quantity = currentValue + 1;
-					Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + (orderproduct.currency || "");
+					Dom.element("product-total-price" + productId).textContent = orderproduct.product.price * orderproduct.quantity + " " + (orderproduct.currency || "грн");
 					break;
 				}
 			}
