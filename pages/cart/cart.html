@@ -152,13 +152,14 @@
 			const response = await Http.post('/api/discount/checkup', {
 				code: discountCode
 			});
+			console.log(response);
 			if (response.ok) {
 				const data = await response.json();
 				if (data.valid) {
 					const discountAmount = data.discount.amount || 0;
 					const orderTotalElement = Dom.element("orderTotal");
 					const orderTotal = parseFloat(orderTotalElement.textContent.trim());
-					const discountedTotal = orderTotal - discountAmount;
+					const discountedTotal = (orderTotal * discountAmount) / 100;
 					orderTotalElement.textContent = discountedTotal.toFixed(2);
 					order.discount = data.discount._id;
 					await Order.update(order);
