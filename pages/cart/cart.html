@@ -198,7 +198,7 @@
 		}
 
 		function toggleDiscount() {
-			Dom.element("codeBlock").style.display = order.discount ? 'flex': 'block';
+			Dom.element("codeBlock").style.display = order.discount ? 'none': 'flex';
 			const discountElement = Dom.element("existingDiscount");
 			discountElement.style.display = order.discount ? 'block': 'none';
 			if (order.discount) {
