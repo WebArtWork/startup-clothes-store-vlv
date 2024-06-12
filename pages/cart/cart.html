@@ -100,6 +100,8 @@
 			counter: order.products.length
 		});
 
+		Dom.element("orderTotal").textContent = calculateTotal();
+
 		document.querySelectorAll('.form-control').forEach(input => {
 			input.addEventListener('input', toggleSubmitButton);
 		});
@@ -123,10 +125,7 @@
 				});
 				Dom.element('remove' + productId).innerHTML = '';
 			}
-			Dom.element("orderTotal").textContent = order.products.reduce(
-				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
-				0,
-			);
+			Dom.element("orderTotal").textContent = calculateTotal()
 			await Order.update(order);
 		});
 		Dom.click('.quantity-plus', async (element) => {
@@ -141,10 +140,7 @@
 					break;
 				}
 			}
-			Dom.element("orderTotal").textContent = order.products.reduce(
-				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
-				0,
-			);
+			Dom.element("orderTotal").textContent = calculateTotal();
 			await Order.update(order);
 		});
 		Dom.click('.applyDiscountButton', async () => {
@@ -154,11 +150,11 @@
 			});
 			if (response.valid) {
 				const discountAmount = response.discount.amount || 0;
+				order.discount = response.discount;
 				const orderTotalElement = Dom.element("orderTotal");
 				const orderTotal = parseFloat(orderTotalElement.textContent.trim());
-				const discountedTotal = (orderTotal * discountAmount) / 100;
+				const discountedTotal = calculateTotal();
 				orderTotalElement.textContent = discountedTotal.toFixed(2);
-				order.discount = response.discount._id;
 				await Order.update(order);
 			} else {
 				console.log('Discount not valide');
@@ -176,6 +172,14 @@
 			// const url = await Order.pay();
 			window.location.href = '/orders';
 		});
+
+		function calculateTotal() {
+			let total = order.products.reduce(
+				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
+				0,
+			);
+			return total - (total * order.discount.amount) / 100
+		}
 	</script>
 
 </div>
