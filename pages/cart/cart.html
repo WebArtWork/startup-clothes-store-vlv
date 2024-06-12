@@ -86,7 +86,7 @@
 				status: product.product.status,
 				thumb: product.product.thumb,
 				id: product._id,
-				total: product.product.price * product.quantity
+				total: product.product.price * product.quantity + 'грн'
 			}));
 		}
 		const respData = resp || { data: {} };
