@@ -200,7 +200,7 @@
 		function toggleDiscount() {
 			Dom.element("codeBlock").style.display = order.discount ? 'none': 'block';
 			const discountElement = Dom.element("existingDiscount");
-			discountElement.style.display = order.discount ? 'block': 'none';
+			discountElement.style.display = order.discount ? 'flex': 'none';
 			if (order.discount) {
 				let total = order.products.reduce(
 					(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
