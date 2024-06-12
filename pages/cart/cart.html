@@ -132,6 +132,7 @@
 				Dom.element('remove' + productId).innerHTML = '';
 			}
 			Dom.element("orderTotal").textContent = calculateTotal()
+			toggleDiscount()
 			await Order.update(order);
 		});
 		Dom.click('.quantity-plus', async (element) => {
@@ -147,6 +148,7 @@
 				}
 			}
 			Dom.element("orderTotal").textContent = calculateTotal();
+			toggleDiscount()
 			await Order.update(order);
 		});
 		Dom.click('.applyDiscountButton', async () => {
