@@ -149,42 +149,32 @@
 		});
 		Dom.click('.applyDiscountButton', async () => {
 			const discountCode = Dom.element('discountCode').value.trim();
-			try {
-				const response = await Http.post('/api/discount/checkup', {
-					code: discountCode
-				});
-				if (response.ok) {
-					const data = await response.json();
-					if (data.valid) {
-						console.log('Discount is valid:', data.discount);
-						const discountAmount = data.discount.amount || 0;
-						const orderTotalElement = Dom.element("orderTotal");
-						const orderTotal = parseFloat(orderTotalElement.textContent.trim());
-						const discountedTotal = orderTotal - discountAmount;
-						orderTotalElement.textContent = discountedTotal.toFixed(2);
-						order.discount = true;
-					} else {
-						console.log('Discount not found');
-						order.discount = false;
-					}
+			const response = await Http.post('/api/discount/checkup', {
+				code: discountCode
+			});
+			if (response.ok) {
+				const data = await response.json();
+				if (data.valid) {
+					const discountAmount = data.discount.amount || 0;
+					const orderTotalElement = Dom.element("orderTotal");
+					const orderTotal = parseFloat(orderTotalElement.textContent.trim());
+					const discountedTotal = orderTotal - discountAmount;
+					orderTotalElement.textContent = discountedTotal.toFixed(2);
+					order.discount = data.discount._id;
+					await Order.update(order);
 				} else {
-					console.error('Failed to check discount:', response.status);
+					console.log('Discount not valide');
 				}
-			} catch (error) {
-				console.error('Error checking discount:', error);
 			}
 		});
-
 		Dom.submit('cart-info-form', async data => {
 			order.status = 'ordered';
-			order.delivery = {
-				email: Dom.element('email').value.trim(),
-				name: Dom.element('name').value.trim(),
-				city: Dom.element('city').value.trim(),
-				address: Dom.element('address').value.trim(),
-				phone: Dom.element('phone').value.trim()
-			};
-			order.discount = Dom.element('applyDiscountButton').disabled ? false : true;
+			order.delivery = order.delivery || {};
+			order.delivery.email = Dom.element('email').value;
+			order.delivery.name = Dom.element('name').value;
+			order.delivery.city = Dom.element('city').value;
+			order.delivery.address = Dom.element('address').value;
+			order.delivery.phone = Dom.element('phone').value;
 			await Order.update(order);
 			// const url = await Order.pay();
 			window.location.href = '/orders';
