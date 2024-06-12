@@ -52,6 +52,8 @@
 		import Event from "/api/wjst/event";
 		import Http from '/api/wjst/http';
 
+		let discountData = null; // Variable to store discount data
+
 		const toggleSubmitButton = () => {
 			const submitButton = document.querySelector('.cart-checkout-btn');
 			const email = Dom.element('email').value.trim();
@@ -71,65 +73,52 @@
 			toggleSubmitButton();
 		});
 
-		const resp = await Http.post('/api/user/fetchme', {});
-		const order = await Order.populated();
-		for (const product of order.products) {
-			Dom.add('products', Dom.template('products', {
-				name: product.product.name,
-				currency: product.currency,
-				price: product.product.price,
-				quantity: product.quantity,
-				status: product.product.status,
-				thumb: product.product.thumb,
-				id: product._id,
-				total: product.product.price * product.quantity
-			}));
-		}
-		const respData = resp || { data: {} };
-		respData.data = respData.data || {};
-		Dom.element('email').value = respData.email || "";
-		Dom.element('name').value = respData.data.name || "";
-		Dom.element('city').value = respData.data.city || "";
-		Dom.element('address').value = respData.data.address || "";
-		Dom.element('phone').value = respData.data.phone || "";
-		Dom.element("orderTotal").textContent = order.products.reduce(
-			(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
-			0,
-		);
-		Dom.element("cart").innerHTML = Dom.template('cart', {
-			counter: order.products.length
-		});
+		const loadDiscountData = async () => {
+			try {
+				const response = await Http.post('/api/discount/checkup', {});
+				if (response.ok) {
+					discountData = await response.json();
+					console.log('Discount data:', discountData);
+				} else {
+					console.error('Failed to fetch discount data:', response.status);
+				}
+			} catch (error) {
+				console.error('Error fetching discount data:', error);
+			}
+		};
 
-		document.querySelectorAll('.form-control').forEach(input => {
-			input.addEventListener('input', toggleSubmitButton);
-		});
-		Dom.click('.applyDiscountButton', async () => {
-    const discountCode = Dom.element('discountCode').value.trim();
+		const applyDiscount = async () => {
+			const discountCode = Dom.element('discountCode').value.trim();
 
-    try {
-        const response = await Http.post('/api/discount/checkup', {
-            code: discountCode
-        });
+			try {
+				const response = await Http.post('/api/discount/checkup', {
+					code: discountCode
+				});
 
-        if (response.ok) {
-            const data = await response.json();
-            if (data.valid) {
-                console.log('Discount is valid:', data.discount);
-                const discountAmount = data.discount.amount || 0;
-                const orderTotalElement = Dom.element("orderTotal");
-                const orderTotal = parseFloat(orderTotalElement.textContent.trim());
-                const discountedTotal = orderTotal - discountAmount;
-                orderTotalElement.textContent = discountedTotal.toFixed(2);
-            } else {
-                console.log('Discount not found');
-            }
-        } else {
-            console.error('Failed to check discount:', response.status);
-        }
-    } catch (error) {
-        console.error('Error checking discount:', error);
-    }
-});
+				if (response.ok) {
+					discountData = await response.json();
+					console.log('Discount data:', discountData);
+					if (discountData.valid) {
+						const discountAmount = discountData.discount.amount || 0;
+						const orderTotalElement = Dom.element("orderTotal");
+						const orderTotal = parseFloat(orderTotalElement.textContent.trim());
+						const discountedTotal = orderTotal - discountAmount;
+						orderTotalElement.textContent = discountedTotal.toFixed(2);
+					} else {
+						console.log('Discount not found');
+					}
+				} else {
+					console.error('Failed to check discount:', response.status);
+				}
+			} catch (error) {
+				console.error('Error checking discount:', error);
+			}
+		};
+
+		loadDiscountData();
+
+		Dom.click('.applyDiscountButton', applyDiscount);
+
 
 		Dom.click('.quantity-minus', async (element) => {
 			const productId = element.getAttribute('productId');
