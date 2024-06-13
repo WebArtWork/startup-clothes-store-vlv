@@ -17,11 +17,16 @@ h1 {
 }
 
 .cart-product img.product-image {
-    width: auto; /* Maintains the aspect ratio */
-    height: 75px; /* Fixed height for uniformity */
-    max-width: 100px; /* Maximum width to ensure images are not too large */
-    object-fit: contain; /* Ensures the image is resized properly within the dimensions */
-    margin-right: 20px; /* Space between the image and the product details */
+    width: auto;
+    /* Maintains the aspect ratio */
+    height: 75px;
+    /* Fixed height for uniformity */
+    max-width: 100px;
+    /* Maximum width to ensure images are not too large */
+    object-fit: contain;
+    /* Ensures the image is resized properly within the dimensions */
+    margin-right: 20px;
+    /* Space between the image and the product details */
 }
 
 .cart-product-name {
@@ -33,7 +38,8 @@ h1 {
     align-items: center;
 }
 
-.quantity-minus, .quantity-plus {
+.quantity-minus,
+.quantity-plus {
     width: 30px;
     height: 30px;
     margin: 0 5px;
@@ -63,7 +69,8 @@ h1 {
     margin-bottom: 50px;
 }
 
-.cart-info-form input, .cart-info-form .cart-checkout-btn {
+.cart-info-form input,
+.cart-info-form .cart-checkout-btn {
     display: block;
     width: 100%;
     margin-top: 10px;
@@ -97,24 +104,29 @@ h1 {
         width: 100%;
     }
 
-    .quantity-minus, .quantity-plus, .quantity-value {
+    .quantity-minus,
+    .quantity-plus,
+    .quantity-value {
         flex: 1;
     }
 }
-.input-group button{
-  margin-top: 12px;
-  background-color: #2a2828;
-  color: white;
-  font-size: 18px;
-  border-radius: 10px;
+
+.input-group button {
+    margin-top: 12px;
+    background-color: #2a2828;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
 }
-.deleteDiscount{
+
+.deleteDiscount {
     margin-top: 12px;
     background-color: #2a2828;
     color: white;
     font-size: 14px;
-    border-radius: 10px;
+    border-radius: 2px;
 }
-.discountAmount{
+
+#existingDiscount {
     color: #6cc4cc;
 }
