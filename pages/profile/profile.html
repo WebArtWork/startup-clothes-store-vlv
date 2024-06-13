@@ -3,7 +3,7 @@
     <div class="col-md-4">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Портал</a>
+                <a class="nav-link disabled" aria-disabled="true"><b>Портал</b> </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/orders"><img src="/vlv/img/icons/order-svgrepo-com.png" width="20px"> Мої замовлення</a>
@@ -66,9 +66,7 @@
     Dom.element('address').value = resp.data.address || "";
     Dom.element('phone').value = resp.data.phone || "";
 
-
     Dom.submit('profile-form', async data => {
-        console.log("hello");
         const resp = await Http.post('/api/user/update', {
             name: Dom.element('name').value,
             data: {
@@ -77,6 +75,12 @@
                 address: Dom.element('address').value,
                 phone: Dom.element('phone').value
             }
-        })
+        });
+
+        if (resp.success) {
+            alert('Дані успішно збережено в кошик!');
+        } else {
+            alert('Виникла помилка. Будь ласка, спробуйте ще раз.');
+        }
     });
 </script>

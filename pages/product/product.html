@@ -24,9 +24,10 @@
 					const product = "{{{product.id}}}";
 					await Order.toggleProduct(product, quantity);
 					if (await Order.hasProduct(product)) {
-						Dom.element("addToCart").innerHTML = "Додати у кошик";
-					} else {
 						Dom.element("addToCart").innerHTML = "Забрати з кошика";
+						Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
+					} else {
+						Dom.element("addToCart").innerHTML = "Додати у кошик";
 					}
 					Dom.element("cart").innerHTML = Dom.template('cart', {
 						counter: Order.order.products.length

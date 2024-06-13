@@ -131,3 +131,12 @@ h1 {
 #existingDiscount {
     color: #56989e;
 }
+.product-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.product-quantity button,
+.product-quantity input {
+    margin-right: 5px; 
+}
