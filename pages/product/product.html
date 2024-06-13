@@ -28,6 +28,7 @@
 						Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
 					} else {
 						Dom.element("addToCart").innerHTML = "Додати у кошик";
+						Dom.element("addToCart").style.backgroundColor = "black";
 					}
 					Dom.element("cart").innerHTML = Dom.template('cart', {
 						counter: Order.order.products.length
