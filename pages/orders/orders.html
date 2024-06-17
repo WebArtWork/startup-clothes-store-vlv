@@ -44,7 +44,7 @@
     (async () => {
         const orders = await Order.get();
         for (const order of orders) {
-            const price =  order.products.reduce((accumulator, product) => accumulator + product.price, 0);
+            const price = order.products.reduce((accumulator, product) => accumulator + product.product.price, 0);
             Dom.add('orders', Dom.template('orders', {
                 id: order._id,
                 status: order.status,
