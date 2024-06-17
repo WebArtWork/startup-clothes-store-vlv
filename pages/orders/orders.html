@@ -51,7 +51,7 @@
                 city: order.delivery?.city || "",
                 address: order.delivery?.address || "",
                 phone: order.delivery?.phone || "",
-                discount: order.discount.amount
+                discount: order.discount?.amount || ""
             }));
         }
     })();
