@@ -53,8 +53,8 @@
                 city: order.delivery?.city || "",
                 address: order.delivery?.address || "",
                 phone: order.delivery?.phone || "",
-                discount: order.discount ? `-${price - (price * order.discount?.amount / 100)} (${order.discount?.amount}%)` : '',
-                price: price
+                discount: order.discount ? `-${price - (price * order.discount?.amount / 100)} грн (${order.discount?.amount}%)` : '',
+                price: `${price} грн`
             }));
         }
     })();
