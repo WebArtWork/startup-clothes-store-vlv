@@ -31,7 +31,7 @@
         <div><span class="label">Місто:</span> <span class="info">{city}</span></div>
         <div><span class="label">Адреса:</span> <span class="info">{address}</span></div>
         <div><span class="label">Телефон:</span> <span class="info">{phone}</span></div>
-        <div><span class="label">Знижка:</span> <span class="info">{discount}</span></div>
+        <div><span class="label">Знижка:</span> <span class="info">-1000 ({discount}%)</span></div>
     </div>
 </div>
 
@@ -51,7 +51,7 @@
                 city: order.delivery?.city || "",
                 address: order.delivery?.address || "",
                 phone: order.delivery?.phone || "",
-                discount: order.discount
+                discount: order.discount.amount
             }));
         }
     })();
