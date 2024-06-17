@@ -1,7 +1,26 @@
 <div class="container product__container">
 	<section class="product">
 		<div class="product__img">
-			<img src="{{{product.thumb}}}" alt="" />
+			<div id="carouselExample" class="carousel slide">
+				<div class="carousel-inner">
+				  <div class="carousel-item active">
+					<img src="{{{product.thumb}}}" class="d-block w-100" alt="...">
+				  </div>
+				  {% for thumb in product.thumbs %}
+				  <div class="carousel-item">
+					<img src="{{{thumb}}}" class="d-block w-100" alt="...">
+				  </div>
+				  {% endfor %}
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+				  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				  <span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+				  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				  <span class="visually-hidden">Next</span>
+				</button>
+			  </div>
 		</div>
 		<div class="product-info">
 			<div class="product-info__title">{{{product.name}}}</div>
@@ -45,7 +64,7 @@
 			</script>
 			{% if product.description %}
 			<div class="product-info__cart-text">Подробиці:</div>
-			<pre class="product-info__descr">{{{product.description}}}</pre>
+			<div class="product-info__cart">{{{product.description}}}</div>
 			{% endif %}
 		</div>
 	</section>
