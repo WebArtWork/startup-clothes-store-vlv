@@ -31,7 +31,8 @@
         <div><span class="label">Місто:</span> <span class="info">{city}</span></div>
         <div><span class="label">Адреса:</span> <span class="info">{address}</span></div>
         <div><span class="label">Телефон:</span> <span class="info">{phone}</span></div>
-        <div><span class="label">Знижка:</span> <span class="info">-1000 ({discount}%)</span></div>
+        <div><span class="label">Знижка:</span> <span class="info">{discount}</span></div>
+        <div><span class="label">Ціна:</span> <span class="info">{price}</span></div>
     </div>
 </div>
 
@@ -43,6 +44,7 @@
     (async () => {
         const orders = await Order.get();
         for (const order of orders) {
+            const price =  order.products.reduce((accumulator, product) => accumulator + product.price, 0);
             Dom.add('orders', Dom.template('orders', {
                 id: order._id,
                 status: order.status,
@@ -51,7 +53,8 @@
                 city: order.delivery?.city || "",
                 address: order.delivery?.address || "",
                 phone: order.delivery?.phone || "",
-                discount: order.discount?.amount || ""
+                discount: order.discount ? `-${price - (price * order.discount?.amount / 100)} (${order.discount?.amount}%)` : '',
+                price: price
             }));
         }
     })();
