@@ -59,6 +59,9 @@
 		&:hover {
 			background-color: $menu_hover;
 		}
+		img{
+			width: 26px;
+		}
 	}
 
 	@media (max-width: 992px) {
@@ -74,15 +77,21 @@
 		&__a {
 			padding: 15px 20px;
 			font-size: 16px;
+			img{
+				width: 20px;
+			}
 		}
 	}
 
 	@media (max-width: 576px) {
 		&__a {
-			font-size: 18px;
+			font-size: 12px;
 			display: flex;
 			align-items: center;
 			padding: 12px 10px;
+			img{
+				width: 18px;
+			}
 		}
 	}
 }
@@ -148,3 +157,8 @@
 .breadcrumbs__item:last-child {
 	border-right: none;
 }
+@media (max-width: 768px) {
+	.breadcrumbs__item {
+	  font-size: 12px;
+	}
+  }
