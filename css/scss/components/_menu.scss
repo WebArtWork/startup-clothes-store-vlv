@@ -162,3 +162,22 @@
 	  font-size: 12px;
 	}
   }
+
+
+  .navbar{
+	display: none;
+  }
+  @media (max-width: 768px) {
+	.menu-main__container{
+		display: none;
+	  }
+	
+	  .navbar{
+		display: block;
+	  }
+	  .navbar .nav-item a{
+		color: whitesmoke;
+		font-size: 18px;
+		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	  }
+	}
