@@ -77,8 +77,8 @@
 
 		const resp = await Http.post('/api/user/fetchme', {});
 		const order = await Order.populated();
+		console.log(order);
 		for (const product of order.products) {
-			console.log(order);
 			Dom.add('products', Dom.template('products', {
 				name: product.product.name,
 				currency: product.currency,
