@@ -219,29 +219,11 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-
-                {% if (tags|map('t => t.tags')|flat).length > 0 %}
-                {% for tag in tags %}
-                {% if tag.tags.length %}
-                <a href="/products/{{{tag._id|string}}}" class="breadcrumbs__item">{{{tag.name}}} </a>
-                {% endif %}
-                {% endfor %}
-                {% endif %}
-                
-                {% if (tags|map('t => t.tags')|flat).length == 0 %}
                 {% for tag in tags %}
                 <li class="nav-item">
-                  <a href="/products/{{{tag._id|string}}}" class="nav-link">{{{tag.name}}}</a>
+                <a class="nav-link" href="/products/{{{tag._id|string}}}">{{{tag.name}}}</a>
                 </li>
                 {% endfor %}
-                {% endif %}
-                
-                {% for tag in tags %}
-                {% if tag.tags.length %}
-                {{{'/vlv/components/tags'|c({tags: tag.tags}|safe)}}}
-                {% endif %}
-                {% endfor %}
-                
               </ul>
               </div>
             </div>
