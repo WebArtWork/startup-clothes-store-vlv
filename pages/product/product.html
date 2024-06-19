@@ -42,30 +42,28 @@
 					<script type="module">
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";
-					
+
 						const toggleProduct = async (quantity = 1) => {
 							const product = "{{{product.id}}}";
+							await Order.toggleProduct(product, quantity);
 							if (await Order.hasProduct(product)) {
-								window.location.href = '/cart';
+								Dom.element("addToCart").innerHTML = "Забрати з кошика";
+								Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
 							} else {
-								await Order.toggleProduct(product, quantity);
-								if (await Order.hasProduct(product)) {
-									Dom.element("addToCart").innerHTML = "Забрати з кошика";
-									Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
-								} else {
-									Dom.element("addToCart").innerHTML = "Додати у кошик";
-									Dom.element("addToCart").style.backgroundColor = "black";
-								}
-								Dom.element("cart").innerHTML = Dom.template('cart', {
-									counter: Order.order.products.length
-								});
+								Dom.element("addToCart").innerHTML = "Додати у кошик";
+								Dom.element("addToCart").style.backgroundColor = "black";
 							}
+							Dom.element("cart").innerHTML = Dom.template('cart', {
+								counter: Order.order.products.length
+							});
 						};
-					
+
 						Dom.click("addToCart", () => toggleProduct(1));
-					
+
 						Dom.click("buyNow", async () => {
+							const product = "{{{product.id}}}";
 							await toggleProduct();
+							window.location.href = '/cart';
 						});
 					</script>
 					{% if product.description %}
