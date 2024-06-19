@@ -214,33 +214,38 @@
                     </svg>
 
               </a>
-              <button class="navbar-toggler" style="background-color: #DA9405;" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      {% if (tags|map('t => t.tags')|flat).length > 0 %}
-      <ul class="navbar-nav">
-        {% for tag in tags %}
-        {% if tag.tags.length > 0 %}
-        <li class="nav-item">
-          <a class="nav-link" href="/products/{{ tag._id|string }}">{{{tag.name}}}</a>
-        </li>
-        {% endif %}
-        {% endfor %}
-      </ul>
-      {% else %}
-      <ul class="navbar-nav">
-        {% for tag in tags %}
-        <li class="nav-item">
-          <a class="nav-link" href="/products/{{ tag._id|string }}">{{{tag.name}}}</a>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </div>
-  </div>
-</nav>
+              <button class="navbar-toggler" style="background-color: #DA9405;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+
+                {% if (tags|map('t => t.tags')|flat).length > 0 %}
+                {% for tag in tags %}
+                {% if tag.tags.length %}
+                <a href="/products/{{{tag._id|string}}}" class="breadcrumbs__item">{{{tag.name}}} </a>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                
+                {% if (tags|map('t => t.tags')|flat).length == 0 %}
+                {% for tag in tags %}
+                <li class="nav-item">
+                  <a href="/products/{{{tag._id|string}}}" class="nav-link">{{{tag.name}}}</a>
+                </li>
+                {% endfor %}
+                {% endif %}
+                
+                {% for tag in tags %}
+                {% if tag.tags.length %}
+                {{{'/vlv/components/tags'|c({tags: tag.tags}|safe)}}}
+                {% endif %}
+                {% endfor %}
+                
+              </ul>
+              </div>
+            </div>
+            </nav>
         </secction>
       </div>
 	  <!-- HTML -->
