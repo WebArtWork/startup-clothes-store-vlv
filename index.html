@@ -217,23 +217,6 @@
       <footer class="footer">
         <div class="footer-top">
           <div class="container footer-top__container">
-            <div class="footer-top__item">
-              <div class="footer-top__title">{{{store.name}}}</div>
-              <div class="footer-top__descr">{{{store.description}}}</div>
-            </div>
-
-			{% if top_products.length %}
-            <div class="footer-top__item">
-              <div class="footer-top__title">Товари </div>
-              <ul class="footer-top__ul">
-				{% for product in top_products %}
-                <li class="footer-top__li">
-					<a href="/product/{{{product._id}}}">{{{product.name}}}</a>
-				</li>
-				{% endfor %}
-              </ul>
-            </div>
-			{% endif %}
 
 			{% if top_articles.length %}
             <div class="footer-top__item">
@@ -259,7 +242,6 @@
 				{% endfor %}
               </ul>
             </div>
-`
 
             <div class="footer-top__item">
               <div class="footer-top__title">Наші дані</div>
