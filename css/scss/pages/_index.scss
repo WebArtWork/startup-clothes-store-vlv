@@ -334,8 +334,13 @@ nav ul li:hover {
 	display: none;
 	position: absolute;
 	background-color: #ffffff;
-	width: 100px;
-	z-index: 1;
+	width: 200px;
+	z-index: 1; 
+	a{
+		font-size: 14px;
+		text-align: left;
+		
+	}
 }
 
 .dropdown.active .dropdown-content {
