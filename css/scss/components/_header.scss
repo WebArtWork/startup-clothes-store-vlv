@@ -1,16 +1,26 @@
+.header{
+	background-color: #2a2828;
+}
 .header__container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 10px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+
 
 	.header__title {
 		font-size: 38px;
 		white-space: nowrap;
 		letter-spacing: 1.2px;
 		text-transform: uppercase;
+		text-align: center;
+		padding: 15px 0px;
+		a{
+			color: aliceblue;
+			font-size: 16px;
+			letter-spacing: 10px;
+			font-family: 'Ledger';
+		}
 	}
 
 	.header__soc-img svg {
