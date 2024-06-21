@@ -293,74 +293,58 @@
 
 /*---------------/Свайпер одягу--------------*/
 
+
 nav {
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #ffffff;
+	z-index: 1000;
 }
 
-nav ul.menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+nav ul {
+	list-style: none;
+	text-align: center;
+	padding: 0;
 }
 
-nav ul.menu .menu-item {
-    display: inline-block;
-    position: relative;
+nav ul li {
+	display: inline-block;
+	position: relative;
 }
 
-nav ul.menu .menu-item a {
-    display: block;
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #000000;
-    font-size: 16px;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
+nav ul li a {
+	font-size: 18px;
+	font-weight: 500;
+	text-transform: uppercase;
+	display: block;
+	color: rgb(0, 0, 0);
+	padding: 15px 20px;
+	text-decoration: none;
 }
 
-nav ul.menu .menu-item:hover {
-    background-color: #f0f0f0;
+nav ul li:hover {
+	background-color: #f0f0f0;
+}
+.dropdown{
+	padding: 10px 0px;
 }
 
-nav ul.menu .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    z-index: 1000;
-    left: 0;
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #ffffff;
+	width: 200px;
+	z-index: 1; 
+	a{
+		font-size: 14px;
+		text-align: left;
+		
+	}
 }
 
-nav ul.menu .dropdown-content ul.submenu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul.menu .dropdown-content ul.submenu li {
-    padding: 10px 0;
-}
-
-nav ul.menu .dropdown-content ul.submenu li a {
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #333333;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-nav ul.menu .dropdown-content ul.submenu li a:hover {
-    background-color: #f0f0f0;
-}
-
-nav ul.menu .menu-item:hover .dropdown-content {
-    display: block;
+.dropdown.active .dropdown-content {
+	display: block;
 }
 
 .fixed-nav {
