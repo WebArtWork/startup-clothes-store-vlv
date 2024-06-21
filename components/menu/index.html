@@ -5,11 +5,13 @@
         {% for tag in tags %}
         {% for tag in tag.tags %}
         <a href="/products/{{{tag._id|string}}}">{{{tag.name}}}</a>
+
+        {% if tag.tags.length %}
+        {{{'/vlv/components/menu'|c({tags: tag.tags}|safe)}}}
+        {% endif %}
+        
         {% endfor %}
         {% endfor %}
     </div>
-    {% if tag.tags.length %}
-    {{{'/vlv/components/menu'|c({tags: tag.tags}|safe)}}}
-    {% endif %}
     </li>
 {% endfor %}
