@@ -7,10 +7,11 @@
         <a href="/products/{{{tag._id|string}}}">{{{tag.name}}}</a>
         {% endfor %}
         {% endfor %}
-
-        {% if tag.tags.length %}
-        {{{'/vlv/components/menu'|c({tags: tag.tags}|safe)}}}
-        {% endif %}
     </div>
 </li>
+
+{% if tag.tags.length %}
+{{{'/vlv/components/menu'|c({tags: tag.tags}|safe)}}}
+{% endif %}
+
 {% endfor %}
