@@ -50,16 +50,12 @@
 
 	&__a {
 		padding: 15px 20px;
-		color: $white;
+		color:black;
 		background-color: inherit;
 		font-size: 18px;
 		text-transform: uppercase;
 		white-space: nowrap;
 		transition: background-color 0.2s ease;
-
-		&:hover {
-			background-color: $menu_hover;
-		}
 
 		img {
 			width: 26px;
@@ -104,40 +100,28 @@
 
 
 
-// //////breadcrumbs/////
+//////breadcrumbs/////
 
-// .breadcrumbs {
-// 	text-transform: uppercase;
-// 	border-radius: 0.3rem;
-// 	display: inline-flex;
-// 	overflow: hidden;
-// }
+.breadcrumbs {
+	text-transform: uppercase;
+	border-radius: 0.3rem;
+	display: inline-flex;
+	overflow: hidden;
+}
 
-// .breadcrumbs__item {
-// 	display: flex;
-// 	align-items: center;
-// 	font-size: 18px;
-// 	background: #2a2828;
-// 	color: white;
-// 	outline: none;
-// 	padding: 0.75em 0.75em 0.75em 1.25em;
-// 	position: relative;
-// 	text-decoration: none;
-// 	transition: background 0.2s linear;
+.breadcrumbs__item {
+	display: flex;
+	align-items: center;
+	font-size: 18px;
+	background: #2a2828;
+	color: white;
+	outline: none;
+	padding: 0.75em 0.75em 0.75em 1.25em;
+	position: relative;
+	text-decoration: none;
+	transition: background 0.2s linear;
 
-// }
-
-// .breadcrumbs__item:hover:after,
-// .breadcrumbs__item:hover {
-// 	background: #2a2828;
-// }
-
-// .breadcrumbs__item:focus:after,
-// .breadcrumbs__item:focus,
-// .breadcrumbs__item.is-active:focus {
-// 	background: var(--azure_sky);
-// 	color: #fff;
-// }
+}
 
 // .breadcrumbs__item:after,
 // .breadcrumbs__item:before {
