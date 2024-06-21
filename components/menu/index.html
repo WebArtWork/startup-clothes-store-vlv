@@ -1,8 +1,6 @@
 {% for tag in tags %}
 <li class="menu-item">
     <a href="/products/{{{tag._id|string}}}">{{{tag.name}}}</a>
-
-    {% if tag.tags.length %}
     <div class="dropdown-content">
         <ul class="submenu">
             {% for tag in tags %}
@@ -12,6 +10,8 @@
             {% endfor %}
         </ul>
     </div>
+    {% if tag.tags.length %}
+    {{{'/vlv/components/menu'|c({tags: tags}|safe)}}}
     {% endif %}
 </li>
 {% endfor %}
