@@ -4,6 +4,7 @@
 	position: sticky;
 	top: -1px;
 	z-index: 999;
+	text-align: center;
 }
 
 .menu-main {
@@ -43,14 +44,14 @@
 		display: flex;
 		overflow: hidden;
 	}
-
+	
 	&__li {
 		margin-left: 14px;
 	}
-
+	
 	&__a {
 		padding: 15px 20px;
-		color:#EAA619;
+		color: white;
 		background-color: inherit;
 		font-size: 18px;
 		text-transform: uppercase;
@@ -114,7 +115,7 @@
 	align-items: center;
 	font-size: 18px;
 	background: #2a2828;
-	color: white;
+	color:#EAA619;
 	outline: none;
 	padding: 0.75em 0.75em 0.75em 1.25em;
 	position: relative;
