@@ -147,13 +147,13 @@
 // 	border-right: none;
 // }
 
-// @media (max-width: 768px) {
-// 	.breadcrumbs__item {
-// 		color: whitesmoke;
-// 		font-size: 18px;
-// 		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-// 	}
-// }
+@media (max-width: 768px) {
+	.breadcrumbs__item {
+		color:#EAA619;
+		font-size: 16px;
+		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	}
+}
 
 
 .navbar {
@@ -161,10 +161,6 @@
 }
 
 @media (max-width: 768px) {
-	.menu-main__container {
-		display: none;
-	}
-
 	.navbar {
 		display: block;
 	}
