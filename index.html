@@ -202,11 +202,16 @@
           </div>
         </div>
       </header>
-            <nav>
-              <ul class="breadcrumbs">
-                {{{'/vlv/components/tags'|c({tags: tags}|safe)}}}
-              </ul>
-            </nav>
+      <div class="menu-main__wrapper">
+        <secction class="menu-main">
+          <div class="container menu-main__container">
+            <ul class="breadcrumbs">
+              <a href="/" class="menu-main__a"><img src="vlv/img/icons/icons8-home-100.svg" ></a>
+            {{{'/vlv/components/tags'|c({tags: tags}|safe)}}}
+          </ul>
+        </div>
+        </secction>
+      </div>
 
 	  <!-- HTML -->
       <footer class="footer">
