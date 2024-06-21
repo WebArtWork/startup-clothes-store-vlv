@@ -9,9 +9,9 @@
         {% endfor %}
     </div>
 </li>
+{% endfor %}
+
 
 {% if tag.tags.length %}
 {{{'/vlv/components/menu'|c({tags: tag.tags}|safe)}}}
 {% endif %}
-
-{% endfor %}
