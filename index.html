@@ -214,11 +214,10 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {{{tag.name}}}
                 </button>
-                {% endfor %}
-
                 <ul class="dropdown-menu">
-                 {{{'/vlv/components/tags'|c({tags: tags}|safe)}}}
-                </ul>
+                  {{{'/vlv/components/tags'|c({tags: tag.tags}|safe)}}}
+                 </ul>
+                {% endfor %}
               </div>
           <!-- </ul>
         </div>
