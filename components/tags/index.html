@@ -13,3 +13,9 @@
 	</li>
 {% endfor %}
 {% endif %}
+
+{% for tag in tags %}
+{% if tag.tags.length %}
+{{{'/vlv/components/tags'|c({tags: tag.tags}|safe)}}}
+{% endif %}
+{% endfor %}
