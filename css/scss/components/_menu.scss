@@ -155,19 +155,7 @@
 	}
 }
 
-
-.navbar {
-	display: none;
-}
-
-@media (max-width: 768px) {
-	.navbar {
-		display: block;
-	}
-
-	.navbar .nav-item a {
-		color: whitesmoke;
-		font-size: 18px;
-		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	}
+.dropdown-menu{
+	width: 200px;
+	height: 150px;
 }
