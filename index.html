@@ -204,14 +204,29 @@
         </div>
       </header>
       <div class="menu-main__wrapper">
-        <secction class="menu-main">
+        <!-- <secction class="menu-main">
           <div class="container menu-main__container">
-            <ul class="breadcrumbs">
-              <a href="/" class="menu-main__a">Головна</a>
-            {{{'/vlv/components/tags'|c({tags: tags}|safe)}}}
-          </ul>
+            <ul class="breadcrumbs"> -->
+              <div class="dropdown"> 
+
+                <a href="/" class="menu-main__a">Головна</a>
+                {% if (tags|map('t => t.tags')|flat).length > 0 %}
+                {% for tag in tags %}
+                {% if tag.tags.length %}
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{{tag.name}}}
+                </button>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                
+                <ul class="dropdown-menu">
+                 {{{'/vlv/components/tags'|c({tags: tags}|safe)}}}
+                </ul>
+              </div>
+          <!-- </ul>
         </div>
-        </secction>
+        </secction> -->
       </div>
 
 	  <!-- HTML -->
