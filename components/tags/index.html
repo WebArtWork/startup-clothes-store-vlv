@@ -1,18 +1,18 @@
-{% if (tags|map('t => t.tags')|flat).length > 0 %}
+<!-- {% if (tags|map('t => t.tags')|flat).length > 0 %}
 {% for tag in tags %}
 {% if tag.tags.length %}
 <a href="/products/{{{tag._id|string}}}" class="dropdown-item">{{{tag.name}}} </a>
 {% endif %}
 {% endfor %}
-{% endif %}
+{% endif %} -->
 
-<!-- {% if (tags|map('t => t.tags')|flat).length == 0 %}
+{% if (tags|map('t => t.tags')|flat).length == 0 %}
 {% for tag in tags %}
 	<li class="menu-main__li">
 		<a href="/products/{{{tag._id|string}}}" class="dropdown-item">{{{tag.name}}}</a>
 	</li>
 {% endfor %}
-{% endif %} -->
+{% endif %}
 
 {% for tag in tags %}
 {% if tag.tags.length %}
