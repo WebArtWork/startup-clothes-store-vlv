@@ -294,59 +294,6 @@
 /*---------------/Свайпер одягу--------------*/
 
 
-nav {
-	top: 0;
-	left: 0;
-	width: 100%;
-	background-color: #ffffff;
-	z-index: 1000;
-}
-
-nav ul {
-	list-style: none;
-	text-align: center;
-	padding: 0;
-}
-
-nav ul li {
-	display: inline-block;
-	position: relative;
-}
-
-nav ul li a {
-	font-size: 18px;
-	font-weight: 500;
-	text-transform: uppercase;
-	display: block;
-	color: rgb(0, 0, 0);
-	padding: 15px 20px;
-	text-decoration: none;
-}
-
-nav ul li:hover {
-	background-color: #f0f0f0;
-}
-.dropdown{
-	padding: 10px 0px;
-}
-
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #ffffff;
-	width: 200px;
-	z-index: 1; 
-	a{
-		font-size: 14px;
-		text-align: left;
-		
-	}
-}
-
-.dropdown.active .dropdown-content {
-	display: block;
-}
-
 .fixed-nav {
 	position: fixed;
 	top: 0;

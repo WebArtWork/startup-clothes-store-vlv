@@ -1,6 +1,7 @@
-.header{
+.header {
 	background-color: #2a2828;
 }
+
 .header__container {
 	display: flex;
 	justify-content: space-between;
@@ -15,7 +16,8 @@
 		text-transform: uppercase;
 		text-align: center;
 		padding: 10px 0px;
-		a{
+
+		a {
 			color: aliceblue;
 			font-size: 16px;
 			letter-spacing: 10px;
@@ -79,10 +81,15 @@
 @media (max-width: 768px) {
 	.header__container {
 		padding-top: 20px;
-		padding-bottom: 20px;
 
 		.header__title {
-			font-size: 28px;
+			svg {
+				width: 120px;
+			}
+
+			p {
+				display: none;
+			}
 		}
 
 		.header__soc-img svg {
@@ -110,9 +117,9 @@
 @media (max-width: 576px) {
 	.header__container {
 		.header__title {
-			display: none;
-			font-size: 22px;
-			letter-spacing: 1px;
+			svg {
+				width: 110px;
+			}
 		}
 
 		.header__soc {
@@ -126,6 +133,7 @@
 
 		.header-btn {
 			gap: 6px;
+
 			svg {
 				width: 22px;
 				height: 22px;

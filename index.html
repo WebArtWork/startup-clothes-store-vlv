@@ -126,7 +126,7 @@
             <path
               d="M16.0831 22.05V23.52C13.9365 23.52 12.5831 23.8 12.0231 24.36L22.7331 53.69L33.0231 24.78C32.5565 23.94 31.1098 23.52 28.6831 23.52V22.05H40.1631V23.52C37.5498 23.52 36.1265 23.8933 35.8931 24.64L22.1731 63H18.8131L5.23313 24.99C4.85979 24.01 3.36646 23.52 0.753125 23.52L0.753125 22.05H16.0831ZM42.4693 63V61.53C44.9893 61.53 46.4593 61.0633 46.8793 60.13V24.92C46.4593 23.9867 44.9893 23.52 42.4693 23.52V22.05H57.7293V23.52C55.2093 23.52 53.7393 23.9867 53.3193 24.92V60.62H69.2793C70.446 60.1067 71.496 58.6367 72.4293 56.21H73.8293L72.1493 63H42.4693ZM84.1007 22.05V23.52C81.954 23.52 80.6007 23.8 80.0407 24.36L90.7507 53.69L101.041 24.78C100.574 23.94 99.1274 23.52 96.7007 23.52V22.05H108.181V23.52C105.567 23.52 104.144 23.8933 103.911 24.64L90.1907 63H86.8307L73.2507 24.99C72.8774 24.01 71.384 23.52 68.7707 23.52V22.05H84.1007Z"
               fill="#DA9405" />
-          </svg><br/>{{{title}}}</a>
+          </svg><p>{{{title}}}</p></a>
         </div>
 
           <div class="header-btn">
@@ -207,18 +207,29 @@
         <!-- <secction class="menu-main">
           <div class="container menu-main__container">
             <ul class="breadcrumbs"> -->
-              <div class="dropdown"> 
+              <nav class="navbar navbar-expand-lg" style="background-color: #2a2828;">
+                <div class="container-fluid" style="background-color: #2a2828; display: flex; justify-content: flex-end;">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #615f5f;">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <div class="dropdown"> 
+                          {% for tag in tags %}
+                          <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="	text-transform: uppercase;">
+                            {{{tag.name}}}
+                          </button>
+                          <ul class="dropdown-menu">
+                            {{{'/vlv/components/menu'|c({tags: tag.allTags}|safe)}}}
+                           </ul>
+                          {% endfor %}
+                        </div>
 
-                <a href="/" class="menu-main__a">Головна</a>
-                {% for tag in tags %}
-                <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{{tag.name}}}
-                </button>
-                <ul class="dropdown-menu">
-                  {{{'/vlv/components/menu'|c({tags: tag.allTags}|safe)}}}
-                 </ul>
-                {% endfor %}
-              </div>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+
           <!-- </ul>
         </div>
         </secction> -->
