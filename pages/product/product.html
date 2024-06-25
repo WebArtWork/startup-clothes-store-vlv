@@ -2,8 +2,8 @@
 	<section class="product">
 		<div class="row">
 			<div class="col-md-6">
-				<div id="carouselExample" class="carousel slide">
-					<div class="carousel-inner">
+
+				<!-- <div class="carousel-inner">
 						<div class="carousel-item active">
 							<img src="{{{product.thumb}}}" class="d-block w-100">
 						</div>
@@ -23,7 +23,14 @@
 						<span class="carousel-control-next-icon" aria-hidden="true"></span>
 						<span class="visually-hidden">Next</span>
 					</button>
-				</div>
+				</div> -->
+				<img id="mainPhoto" class="main-photo" src="{{{product.thumb}}}" alt="Головне фото" onclick="setMainPhoto('{{{product.thumb}}}')">
+				<div id="thumbnails">
+					<img id="mainPhoto" class="thumbnail" src="{{{product.thumb}}}" alt="Головне фото" onclick="setMainPhoto('{{{product.thumb}}}')">
+					{% for thumb in product.thumbs %}
+					  <img class="thumbnail" src="{{{thumb}}}" alt="Маленьке фото" onclick="setMainPhoto('{{{thumb}}}')">
+					{% endfor %}
+				  </div>
 			</div>
 			<div class="col-md-6">
 				<div class="product-info">

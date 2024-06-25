@@ -61,14 +61,30 @@
 						}
 					]
 				},
-			{
-				"name": "Шапки"
-			}
-		]
-	},
-	{
-		"name": "Штани",
-		"tags": [
+				{
+					"name": "Шапки"
+				}
+			],
+			"allTags": [
+				{
+					"name": "Штани",
+					"tags": [
+						{
+							"name": "ПІнгвік"
+						},
+						{
+							"name": "кролік"
+						}
+					]
+				},
+				{
+					"name": "Шапки"
+				}
+			]
+		},
+		{
+			"name": "Штани",
+			"tags": [
 				{
 					"name": "Штани",
 					"tags": [
@@ -81,133 +97,133 @@
 					]
 				}
 			]
-	},
-	{
-		"name": "Шапки"
-	},
-	{
-		"name": "Взуття"
-	},
-	{
-		"name": "Светри"
-	},
-	{
-		"name": "Білизна"
-	},
-	{
-		"name": "Спортивні комплекти"
-	},
-	{
-		"name": "Аксесуари"
-	},
-	{
-		"name": "Розпродаж"
-	}
-],
-"top_products": [
-	{
-		"_id": "/product",
-		"price": 583,
-		"thumb": "/vlv/img/cloth/cloth7.jpg",
-		"name": "Заколка для волосся 'Nalda'"
-	},
-	{
-		"_id": "/product",
-		"price": 583,
-		"thumb": "/vlv/img/cloth/cloth6.jpg",
-		"name": "Комплект 'Toscana' з сорочки та шортів"
-	},
-	{
-		"_id": "/product",
-		"price": 390,
-		"thumb": "/vlv/img/cloth/cloth5.jpg",
-		"name": "Шкарпетки 'Lisse' з мереживом"
-	},
-	{
-		"_id": "/product",
-		"price": 949,
-		"thumb": "/vlv/img/cloth/cloth4.jpg",
-		"name": "Шкарпетки 'Lisse' для малюків"
-	},
-	{
-		"_id": "/product",
-		"price": 880,
-		"thumb": "/vlv/img/cloth/cloth3.jpg",
-		"name": "Пов'язка на голову 'Azores'"
-	},
-	{
-		"_id": "/product",
-		"price": "3,907",
-		"thumb": "/vlv/img/cloth/cloth2.jpg",
-		"name": "Піджак 'Azores' для малюків"
-	},
-	{
-		"_id": "/product",
-		"price": "4,463",
-		"thumb": "/vlv/img/cloth/cloth1.jpg",
-		"name": "Комплект 'Nalda' з сорочки та шортів"
-	}
-],
-"contents": [
-	{
-		"name": "Про проєкт",
-		"thumb": "/angelina_nianchyr/img/4.webp",
-		"url": "/"
-	},
-	{
-		"name": "Оферта",
-		"thumb": "/angelina_nianchyr/img/4.webp",
-		"url": "/"
-	},
-	{
-		"name": "Політика конфіденційності",
-		"thumb": "/angelina_nianchyr/img/4.webp",
-		"url": "/"
-	},
-	{
-		"name": "Мапа сайту",
-		"thumb": "/angelina_nianchyr/img/4.webp",
-		"url": "/"
-	},
-	{
-		"name": "Розмірна сітка",
-		"thumb": "/angelina_nianchyr/img/4.webp",
-		"url": "/"
-	},
-	{
-		"name": "Доставка і оплата",
-		"thumb": "/angelina_nianchyr/img/8.webp",
-		"url": "/"
-	},
-	{
-		"name": "Повернення",
-		"thumb": "/angelina_nianchyr/img/7.webp",
-		"url": "/"
-	},
-	{
-		"name": "Контакти",
-		"thumb": "/angelina_nianchyr/img/5.webp",
-		"url": "/"
-	}
-],
-"top_articles": [
-	{
-		"_id": "/article",
-		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"thumb": "https://neryxomka.com/vlv/img/welcome.png",
-		"name": "article"
-	},
-	{
-		"_id": "/article",
-		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"thumb": "https://neryxomka.com/vlv/img/welcome.png",
-		"name": "article"
-	},
-	{
-		"_id": "/article",
-		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"thumb": "https://neryxomka.com/vlv/img/welcome.png",
-		"name": "article"
-	}
-]
+		},
+		{
+			"name": "Шапки"
+		},
+		{
+			"name": "Взуття"
+		},
+		{
+			"name": "Светри"
+		},
+		{
+			"name": "Білизна"
+		},
+		{
+			"name": "Спортивні комплекти"
+		},
+		{
+			"name": "Аксесуари"
+		},
+		{
+			"name": "Розпродаж"
+		}
+	],
+	"top_products": [
+		{
+			"_id": "/product",
+			"price": 583,
+			"thumb": "/vlv/img/cloth/cloth7.jpg",
+			"name": "Заколка для волосся 'Nalda'"
+		},
+		{
+			"_id": "/product",
+			"price": 583,
+			"thumb": "/vlv/img/cloth/cloth6.jpg",
+			"name": "Комплект 'Toscana' з сорочки та шортів"
+		},
+		{
+			"_id": "/product",
+			"price": 390,
+			"thumb": "/vlv/img/cloth/cloth5.jpg",
+			"name": "Шкарпетки 'Lisse' з мереживом"
+		},
+		{
+			"_id": "/product",
+			"price": 949,
+			"thumb": "/vlv/img/cloth/cloth4.jpg",
+			"name": "Шкарпетки 'Lisse' для малюків"
+		},
+		{
+			"_id": "/product",
+			"price": 880,
+			"thumb": "/vlv/img/cloth/cloth3.jpg",
+			"name": "Пов'язка на голову 'Azores'"
+		},
+		{
+			"_id": "/product",
+			"price": "3,907",
+			"thumb": "/vlv/img/cloth/cloth2.jpg",
+			"name": "Піджак 'Azores' для малюків"
+		},
+		{
+			"_id": "/product",
+			"price": "4,463",
+			"thumb": "/vlv/img/cloth/cloth1.jpg",
+			"name": "Комплект 'Nalda' з сорочки та шортів"
+		}
+	],
+	"contents": [
+		{
+			"name": "Про проєкт",
+			"thumb": "/angelina_nianchyr/img/4.webp",
+			"url": "/"
+		},
+		{
+			"name": "Оферта",
+			"thumb": "/angelina_nianchyr/img/4.webp",
+			"url": "/"
+		},
+		{
+			"name": "Політика конфіденційності",
+			"thumb": "/angelina_nianchyr/img/4.webp",
+			"url": "/"
+		},
+		{
+			"name": "Мапа сайту",
+			"thumb": "/angelina_nianchyr/img/4.webp",
+			"url": "/"
+		},
+		{
+			"name": "Розмірна сітка",
+			"thumb": "/angelina_nianchyr/img/4.webp",
+			"url": "/"
+		},
+		{
+			"name": "Доставка і оплата",
+			"thumb": "/angelina_nianchyr/img/8.webp",
+			"url": "/"
+		},
+		{
+			"name": "Повернення",
+			"thumb": "/angelina_nianchyr/img/7.webp",
+			"url": "/"
+		},
+		{
+			"name": "Контакти",
+			"thumb": "/angelina_nianchyr/img/5.webp",
+			"url": "/"
+		}
+	],
+	"top_articles": [
+		{
+			"_id": "/article",
+			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"thumb": "https://neryxomka.com/vlv/img/welcome.png",
+			"name": "article"
+		},
+		{
+			"_id": "/article",
+			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"thumb": "https://neryxomka.com/vlv/img/welcome.png",
+			"name": "article"
+		},
+		{
+			"_id": "/article",
+			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+			"thumb": "https://neryxomka.com/vlv/img/welcome.png",
+			"name": "article"
+		}
+	]
 }
