@@ -70,21 +70,23 @@
 </section>
 {% endif %} -->
 
-	<div class="container land_tags">
-		{% for tag in tags %}
-		<div class="all tag">
-			<div class="tag-content">
-				<img src="{{{tag.thumb}}}">
-				<div class="overlay">
-					<h3>{{{tag.name}}}</h3>
-					<a href="/products/{{{tag._id|string}}}">Переглянути</a>
-				</div>
+<div class="container land_tags">
+	{% for tag in tags %}
+	<div class="all tag">
+		<div class="tag-content">
+			<img src="{{{tag.thumb}}}">
+			<div class="overlay">
+				<h3>{{{tag.name}}}</h3>
+				<a href="/products/{{{tag._id|string}}}">Переглянути</a>
 			</div>
 		</div>
-		{% endfor %}
 	</div>
-
-	<div class="container cloth-swipers__container">
+	{% endfor %}
+</div>
+{% for ad in ads %}
+<img src="{{{ad.thunb}}}">
+{% endfor %}
+<div class="container cloth-swipers__container">
 	<h1>НАШ ОДЯГ</h1>
 	<div class="cloth-swiper">
 		<div class="swiper-wrapper">
