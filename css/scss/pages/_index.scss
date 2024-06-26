@@ -384,15 +384,20 @@
 .photo-container {
 	width: 100%; /* Ширина контейнера */
 	max-width: 100%; /* Максимальная ширина контейнера */
-	margin-bottom: 20px; /* Отступ снизу */
+	height: 300px; /* Высота контейнера - замените на нужную вам */
+	background-image: url('/vlv/img/banner_1.jpg'); /* URL изображения */
+	background-size: cover; /* Масштабирование фонового изображения */
+	background-position: center; /* Позиционирование фонового изображения */
+	text-align: center; /* Выравнивание текста по центру */
+	color: #fff; /* Цвет текста */
+	display: flex; /* Используем Flexbox для центрирования по вертикали и горизонтали */
+	justify-content: center; /* Центрируем по горизонтали */
+	align-items: center; /* Центрируем по вертикали */
   }
   
-  /* Стили для самой фотографии */
-  .photo-container img {
-	display: block; /* Делаем изображение блочным элементом */
-	width: 100%; /* Ширина изображения (занимает всю ширину контейнера) */
-	height: 500px; /* Автоматическая высота (сохраняет пропорции) */
-	border-radius: 5px; /* Закругление углов */
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
-	object-fit: cover;
+  .content {
+	font-size: 35px;
+	text-align: center;
+	font-weight: 500;
+	font-family: 'Inknut Antiqua';
   }
