@@ -1,5 +1,5 @@
 {% for tag in tags %}
-<li class="col-md-4">
+<li>
 <a href="/products/{{{tag._id|string}}}" class="dropdown-item">{{{tag.name}}}</a>
 </li>
 {% if tag.allTags.length %}
