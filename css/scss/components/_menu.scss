@@ -157,16 +157,13 @@
 
 .dropdown-menu {
 	background-color: #2a2828;
-	li{
-		word-wrap: break-word; /* автоматичний перенос слова */
-		overflow-wrap: break-word; /* автоматичний перенос рядка */
-	}
 	a {
 		color: rgb(206, 206, 206);
 		text-align: left;
 		font-size: medium;
 		display: inline-table;
 		max-width: 100%; /* максимальна ширина контейнера */
+		white-space: normal; /* автоматичний перенос тексту */
 	  }
 }
 @media (min-width: 992px) {
