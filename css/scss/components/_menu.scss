@@ -157,15 +157,26 @@
 
 .dropdown-menu {
 	background-color: #2a2828;
-	.dropdown-item {
-		color: rgb(206, 206, 206);
-		text-align: left;
-		font-size: medium;
-		display: inline-table;
-		max-width: 100%; /* максимальна ширина контейнера */
-		white-space: normal; /* автоматичний перенос тексту */
-	  }
-}
+	width: 1250px; /* Ширина контейнера */
+	height: 300px; /* Висота контейнера */
+	overflow-y: auto; /* Додатковий скролінг по вертикалі, якщо контент перевищує висоту */
+  }
+  
+  .dropdown-item {
+	color: rgb(206, 206, 206);
+	text-align: left;
+	font-size: medium;
+	display: block; /* Змінено з inline-table на block */
+	max-width: 100%; /* Максимальна ширина контейнера */
+	white-space: normal; /* Автоматичний перенос тексту */
+	padding: 10px; /* Додаткові внутрішні відступи для кращого вигляду */
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Підкреслення між елементами */
+  }
+  
+  .dropdown-item:last-child {
+	border-bottom: none; /* Видаляє підкреслення в останньому елементі списку */
+  }
+  
 @media (min-width: 992px) {
     .navbar-expand-lg .navbar-collapse {
         justify-content: center;
