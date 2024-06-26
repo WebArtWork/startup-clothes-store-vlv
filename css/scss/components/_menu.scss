@@ -157,9 +157,14 @@
 
 .dropdown-menu {
 	background-color: #2a2828;
+	li{
+		display: inline-block; margin-right: 10px;
+	}
 	a{
 		color: rgb(206, 206, 206);
-		text-align: center;
+		text-align: left;
+		font-size: medium;
+		display: inline-table;
 	}
 }
 @media (min-width: 992px) {
