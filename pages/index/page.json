@@ -1,136 +1,146 @@
 {
 	"title_top_products": "Вишукана колекція одягу для дітей від 1 до 14 років",
-	"top_products": [
+	"ads": [
 		{
-			"id": "/product",
-			"price": 583,
-			"thumb": "/vlv/img/cloth/cloth1.jpg",
-			"name": "Заколка для волосся 'Nalda'"
+			"name": "summer banner",
+			"thumb": "/vlv/img/cloth/cloth1.jpg"
 		},
 		{
-			"id": "/product",
-			"price": 583,
-			"thumb": "/vlv/img/cloth/cloth2.jpg",
-			"name": "Комплект 'Toscana' з сорочки та шортів"
-		},
-		{
-			"id": "/product",
-			"price": 390,
-			"thumb": "/vlv/img/cloth/cloth3.jpg",
-			"name": "Шкарпетки 'Lisse' з мереживом"
-		},
-		{
-			"id": "/product",
-			"price": 949,
-			"thumb": "/vlv/img/cloth/cloth4.jpg",
-			"name": "Шкарпетки 'Lisse' для малюків"
-		},
-		{
-			"id": "/product",
-			"price": 880,
-			"thumb": "/vlv/img/cloth/cloth5.jpg",
-			"name": "Пов'язка на голову 'Azores'"
-		},
-		{
-			"id": "/product",
-			"price": "3,907",
-			"thumb": "/vlv/img/cloth/cloth6.jpg",
-			"name": "Піджак 'Azores' для малюків"
-		},
-		{
-			"id": "/product",
-			"price": "4,463",
-			"thumb": "/vlv/img/cloth/cloth7.jpg",
-			"name": "Комплект 'Nalda' з сорочки та шортів"
+			"name": "summer banner",
+			"thumb": "/vlv/img/cloth/cloth1.jpg"
 		}
 	],
-	"title_products": "Нова колекція одягу",
-	"products": [
-		{
-			"id": "/product",
-			"price": 583,
-			"thumb": "/vlv/img/cloth/cloth7.jpg",
-			"name": "Заколка для волосся 'Nalda'"
-		},
-		{
-			"id": "/product",
-			"price": 583,
-			"thumb": "/vlv/img/cloth/cloth6.jpg",
-			"name": "Комплект 'Toscana' з сорочки та шортів"
-		},
-		{
-			"id": "/product",
-			"price": 390,
-			"thumb": "/vlv/img/cloth/cloth5.jpg",
-			"name": "Шкарпетки 'Lisse' з мереживом"
-		},
-		{
-			"id": "/product",
-			"price": 949,
-			"thumb": "/vlv/img/cloth/cloth4.jpg",
-			"name": "Шкарпетки 'Lisse' для малюків"
-		},
-		{
-			"id": "/product",
-			"price": 880,
-			"thumb": "/vlv/img/cloth/cloth3.jpg",
-			"name": "Пов'язка на голову 'Azores'"
-		},
-		{
-			"id": "/product",
-			"price": "3,907",
-			"thumb": "/vlv/img/cloth/cloth2.jpg",
-			"name": "Піджак 'Azores' для малюків"
-		},
-		{
-			"id": "/product",
-			"price": "4,463",
-			"thumb": "/vlv/img/cloth/cloth1.jpg",
-			"name": "Комплект 'Nalda' з сорочки та шортів"
-		}
-	],
-	"top_articles": [
-		{
-			"id": "123",
-			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "/vlv/img/swiper/photo1.jpg",
-			"name": "Новини"
-		},
-		{
-			"id": "123",
-			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "/vlv/img/swiper/photo3.jpg",
-			"name": "Знижки"
-		},
-		{
-			"id": "123",
-			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "/vlv/img/swiper/photo2.jpg",
-			"name": "Нова колекція"
-		},
-		{
-			"id": "123",
-			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "/vlv/img/land/vlv1.jpg",
-			"name": "Новини"
-		},
-		{
-			"id": "123",
-			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "/vlv/img/land/vlv2.jpg",
-			"name": "Знижки"
-		},
-		{
-			"id": "123",
-			"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-			"thumb": "/vlv/img/land/vlv3.jpg",
-			"name": "Нова колекція"
-		}
-	]
+"top_products": [
+	{
+		"id": "/product",
+		"price": 583,
+		"thumb": "/vlv/img/cloth/cloth1.jpg",
+		"name": "Заколка для волосся 'Nalda'"
+	},
+	{
+		"id": "/product",
+		"price": 583,
+		"thumb": "/vlv/img/cloth/cloth2.jpg",
+		"name": "Комплект 'Toscana' з сорочки та шортів"
+	},
+	{
+		"id": "/product",
+		"price": 390,
+		"thumb": "/vlv/img/cloth/cloth3.jpg",
+		"name": "Шкарпетки 'Lisse' з мереживом"
+	},
+	{
+		"id": "/product",
+		"price": 949,
+		"thumb": "/vlv/img/cloth/cloth4.jpg",
+		"name": "Шкарпетки 'Lisse' для малюків"
+	},
+	{
+		"id": "/product",
+		"price": 880,
+		"thumb": "/vlv/img/cloth/cloth5.jpg",
+		"name": "Пов'язка на голову 'Azores'"
+	},
+	{
+		"id": "/product",
+		"price": "3,907",
+		"thumb": "/vlv/img/cloth/cloth6.jpg",
+		"name": "Піджак 'Azores' для малюків"
+	},
+	{
+		"id": "/product",
+		"price": "4,463",
+		"thumb": "/vlv/img/cloth/cloth7.jpg",
+		"name": "Комплект 'Nalda' з сорочки та шортів"
+	}
+],
+"title_products": "Нова колекція одягу",
+"products": [
+	{
+		"id": "/product",
+		"price": 583,
+		"thumb": "/vlv/img/cloth/cloth7.jpg",
+		"name": "Заколка для волосся 'Nalda'"
+	},
+	{
+		"id": "/product",
+		"price": 583,
+		"thumb": "/vlv/img/cloth/cloth6.jpg",
+		"name": "Комплект 'Toscana' з сорочки та шортів"
+	},
+	{
+		"id": "/product",
+		"price": 390,
+		"thumb": "/vlv/img/cloth/cloth5.jpg",
+		"name": "Шкарпетки 'Lisse' з мереживом"
+	},
+	{
+		"id": "/product",
+		"price": 949,
+		"thumb": "/vlv/img/cloth/cloth4.jpg",
+		"name": "Шкарпетки 'Lisse' для малюків"
+	},
+	{
+		"id": "/product",
+		"price": 880,
+		"thumb": "/vlv/img/cloth/cloth3.jpg",
+		"name": "Пов'язка на голову 'Azores'"
+	},
+	{
+		"id": "/product",
+		"price": "3,907",
+		"thumb": "/vlv/img/cloth/cloth2.jpg",
+		"name": "Піджак 'Azores' для малюків"
+	},
+	{
+		"id": "/product",
+		"price": "4,463",
+		"thumb": "/vlv/img/cloth/cloth1.jpg",
+		"name": "Комплект 'Nalda' з сорочки та шортів"
+	}
+],
+"top_articles": [
+	{
+		"id": "123",
+		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"thumb": "/vlv/img/swiper/photo1.jpg",
+		"name": "Новини"
+	},
+	{
+		"id": "123",
+		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"thumb": "/vlv/img/swiper/photo3.jpg",
+		"name": "Знижки"
+	},
+	{
+		"id": "123",
+		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"thumb": "/vlv/img/swiper/photo2.jpg",
+		"name": "Нова колекція"
+	},
+	{
+		"id": "123",
+		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"thumb": "/vlv/img/land/vlv1.jpg",
+		"name": "Новини"
+	},
+	{
+		"id": "123",
+		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"thumb": "/vlv/img/land/vlv2.jpg",
+		"name": "Знижки"
+	},
+	{
+		"id": "123",
+		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
+		"thumb": "/vlv/img/land/vlv3.jpg",
+		"name": "Нова колекція"
+	}
+]
 }
