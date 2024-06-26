@@ -84,13 +84,18 @@
 	{% endfor %}
 </div>
 
+{% if variables.banner_top_text || variables.banner_bottom_text %}
 <div class="photo-container">
 	<div class="content">
-	  <h1>{{{variables.banner_top_text}}}</h1>
-	  <h2>{{{variables.banner_bottom_text}}}</h2>
+		{% if variables.banner_top_text %}
+		<h1>{{{variables.banner_top_text}}}</h1>
+		{% endif %}
+		{% if variables.banner_bottom_text %}
+		<h2>{{{variables.banner_bottom_text}}}</h2>
+		{% endif %}
 	</div>
-  </div>
-
+</div>
+{% endif %}
 <div class="container cloth-swipers__container">
 	<h1>НАШ ОДЯГ</h1>
 	<div class="cloth-swiper">
