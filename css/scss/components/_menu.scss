@@ -160,7 +160,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #ffffff;
-	width: 1250px;
+	max-width: 1250px;
 	height: 400px;
 	z-index: 1000;
 	overflow-y: auto;
@@ -169,11 +169,9 @@
 
 .submenu {
 	display: none;
-	/* Початково приховуємо дочірній список */
 	position: absolute;
 	top: 0;
-	left: 100%;
-	/* Відступ від батьківського елемента */
+	left: 200px;
 	background-color: #ffffff;
 	min-width: 200px;
 	/* Мінімальна ширина меню */
