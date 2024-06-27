@@ -167,16 +167,9 @@
 }
 
 .submenu {
+	display: none;
 	position: absolute;
-    top: 270px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ffffff;
-    width: 1250px;
-    z-index: 1000;
-    overflow-y: auto;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    padding: 20px; /* Додатковий padding для зручності */
+	left: 170px;
 }
 
 
