@@ -154,7 +154,7 @@
 // }
 
 .dropdown-menu {
-	position: fixed;
+	position: absolute;
 	top: 270px;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -187,10 +187,6 @@
 
 .dropdown-menu.show {
 	display: block;
-}
-
-.dropdown-hover {
-	position: relative;
 }
 
 .dropdown-item {

@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         dropdownHoverItems.forEach(item => {
             let button = item.querySelector('.button-menu');
-            let dropdownMenu = item.querySelector('.dropdown-menu');
-
             button.addEventListener('mouseenter', function() {
                 dropdownMenu.classList.add('show');
             });
+            let dropdownMenu = item.querySelector('.dropdown-menu');
+
 
             item.addEventListener('mouseleave', function() {
                 dropdownMenu.classList.remove('show');
