@@ -162,7 +162,8 @@
 	height: 400px;
 	overflow-y: auto;
 	padding: 35px;
-	li{
+
+	li {
 		display: inline-flex;
 	}
 }
@@ -186,7 +187,8 @@
 	.dropdown-menu {
 		height: 350px;
 		padding: 0;
-		li{
+
+		li {
 			display: inline-flex;
 		}
 	}
@@ -198,3 +200,13 @@
 	}
 }
 
+.navbar-toggler {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.container-fluid .navbar-collapse {
+	background-color: #dbdbdb00;
+	border: none;
+}
