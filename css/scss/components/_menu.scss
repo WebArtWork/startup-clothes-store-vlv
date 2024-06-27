@@ -182,19 +182,6 @@
 	border-bottom: none;
 }
 
-@media (max-width: 768px) {
-	.dropdown-menu {
-		width: 100%;
-		height: auto;
-		overflow-y: auto;
-
-		a {
-			text-align: center;
-			color: #000000;
-		}
-	}
-}
-
 @media (min-width: 992px) {
 	.navbar-expand-lg .navbar-collapse {
 		justify-content: center;
