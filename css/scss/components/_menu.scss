@@ -152,51 +152,52 @@
 // 		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 // 	}
 // }
-
 .dropdown-menu {
-	position: absolute;
-	top: 270px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #ffffff;
-	width: 1250px;
-	height: 400px;
-	z-index: 1000;
-	overflow-y: auto;
-	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    width: 1250px;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Додатковий padding для зручності */
+}
+
+.dropdown-item-wrapper {
+    position: relative; /* Додано позицію relative для dropdown-item-wrapper */
 }
 
 .submenu {
-	display: none;
-	position: absolute;
-	left: 170px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 10px); /* Відступ від правого краю попереднього елемента */
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1001; /* Вище за основне меню */
+    padding: 10px; /* Додатковий padding для зручності */
+    border: 1px solid #ccc; /* Приклад рамки */
 }
-
 
 .dropdown-item-wrapper:hover .submenu {
-	display: block;
-	/* Показуємо дочірній список при наведенні на wrapper */
-}
-
-.dropdown-menu.show {
-	display: block;
+    display: block;
 }
 
 .dropdown-item {
-	color: #000000;
-	text-align: left;
-	display: block;
-	max-width: 100%;
-	white-space: normal;
-	font-size: 14px;
-	margin-left: 10px;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #000000;
+    text-align: left;
+    display: block;
+    white-space: normal;
+    font-size: 14px;
+    padding: 8px 15px;
 }
 
 .dropdown-item:last-child {
-	border-bottom: none;
+    border-bottom: none;
 }
-
 @media (max-width: 768px) {
 	.dropdown-menu {
 		height: 350px;
