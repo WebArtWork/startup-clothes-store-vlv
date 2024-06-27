@@ -182,6 +182,15 @@
 	border-bottom: none;
 }
 
+@media (max-width: 768px) {
+	.dropdown-menu {
+		height: 350px;
+		li{
+			display: ruby;
+		}
+	}
+}
+
 @media (min-width: 992px) {
 	.navbar-expand-lg .navbar-collapse {
 		justify-content: center;
