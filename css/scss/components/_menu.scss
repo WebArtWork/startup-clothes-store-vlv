@@ -155,7 +155,7 @@
 // }
 
 .dropdown-menu {
-	position: relative;
+	position: absolute;
 	top: 270px;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -171,7 +171,7 @@
 	display: none;
 	position: absolute;
 	top: 0;
-	left: 120px;
+	left: 250px;
 	background-color: #ffffff;
 	min-width: 200px;
 	/* Мінімальна ширина меню */
@@ -180,20 +180,6 @@
 	/* Підняття на верх */
 }
 
-.arrow-down {
-	position: absolute;
-	top: 50%;
-	right: -15px;
-	/* Зсув стрілочки вправо */
-	transform: translateY(-50%);
-	width: 0;
-	height: 0;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-top: 5px solid #000000;
-	/* Колір стрілочки */
-	cursor: pointer;
-}
 
 .dropdown-item-wrapper:hover .submenu {
 	display: block;
