@@ -181,6 +181,9 @@
 .dropdown-toggle {
     display: inline-block;
 }
+.btn-group.dropend .dropdown-toggle {
+	position: relative; /* Establish positioning context */
+  }
 
 .dropdown-menu[data-bs-popper] {
     left: auto; /* Adjust if necessary */
