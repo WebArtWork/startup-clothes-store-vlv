@@ -1,7 +1,7 @@
 {% for tag in tags %}
 <li>
     <div class="dropdown-item">
-        <a href="/products/{{ tag._id|string }}">{{{tag.name}}}</a>
+        <a href="/products/{{{tag._id|string}}}">{{{tag.name}}}</a>
         {% if tag.allTags %}
         <div class="btn-group dropend">
             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
