@@ -175,7 +175,8 @@
 }
 
 .btn-group .btn {
-
+	min-height: 0;
+	min-height: 0;
 	background-color: #6cc4cc00;
 }
 
@@ -185,7 +186,7 @@
 }
 .dropdown-toggle {
     white-space: nowrap;
-    left: 15px;
+    left: 45px;
     position: absolute;
 }
 // .submenu {
