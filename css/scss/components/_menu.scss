@@ -174,37 +174,19 @@
 .btn-group .btn {
 	min-height: 0;
 	background-color: #6cc4cc00;
-	/* Example background color */
-	position: relative;
-	/* Ensure positioning context */
-}
-
-.dropdown-toggle {
-	display: inline-block;
-}
-
-.btn-group.dropend .dropdown-toggle {
-	position: relative;
-}
-
-.btn-group.dropend .dropdown-toggle::after {
 	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 10px;
-
 }
+
+
 
 
 .dropdown-menu[data-bs-popper] {
 	left: auto;
-	/* Adjust if necessary */
 }
 
 .btn-group-vertical>.btn,
 .btn-group>.btn {
 	color: #2a2828;
-	/* Example text color */
 }
 
 // .submenu {
