@@ -4,9 +4,9 @@
         <a href="/products/{{ tag._id|string }}">{{{tag.name}}}</a>
         {% if tag.allTags %}
         <div class="btn-group dropend">
-            <button type="button" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <a type="button" class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             
-            </button>
+            </a>
             <ul class="dropdown-menu">
                 {{{'/vlv/components/menu'|c({tags: tag.allTags}|safe)}}}
             </ul>
