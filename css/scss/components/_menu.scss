@@ -153,50 +153,50 @@
 // 	}
 // }
 
-.dropdown-menu {
-	position:relative;
-	top: 270px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #ffffff;
-	max-width: 1250px;
-	height: auto; 
-	z-index: 1000;
-	overflow-y: auto;
-	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-}
+// .dropdown-menu {
+// 	position:relative;
+// 	top: 270px;
+// 	left: 50%;
+// 	transform: translate(-50%, -50%);
+// 	background-color: #ffffff;
+// 	max-width: 1250px;
+// 	height: auto; 
+// 	z-index: 1000;
+// 	overflow-y: auto;
+// 	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+// }
 
-.submenu {
-	display: none;
-	position: absolute;
-	left: 170px;
-	background-color: #ffffff;
-}
+// .submenu {
+// 	display: none;
+// 	position: absolute;
+// 	left: 170px;
+// 	background-color: #ffffff;
+// }
 
 
-.dropdown-item-wrapper:hover .submenu {
-	display: block;
-	/* Показуємо дочірній список при наведенні на wrapper */
-}
+// .dropdown-item-wrapper:hover .submenu {
+// 	display: block;
+// 	/* Показуємо дочірній список при наведенні на wrapper */
+// }
 
-.dropdown-menu.show {
-	display: block;
-}
+// .dropdown-menu.show {
+// 	display: block;
+// }
 
-.dropdown-item {
-	color: #000000;
-	text-align: left;
-	display: block;
-	max-width: 100%;
-	white-space: normal;
-	font-size: 14px;
-	margin-left: 10px;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+// .dropdown-item {
+// 	color: #000000;
+// 	text-align: left;
+// 	display: block;
+// 	max-width: 100%;
+// 	white-space: normal;
+// 	font-size: 14px;
+// 	margin-left: 10px;
+// 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+// }
 
-.dropdown-item:last-child {
-	border-bottom: none;
-}
+// .dropdown-item:last-child {
+// 	border-bottom: none;
+// }
 
 @media (max-width: 768px) {
 	.dropdown-menu {
