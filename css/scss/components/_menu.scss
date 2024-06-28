@@ -183,7 +183,11 @@
 .btn-group>.btn {
 	color: #2a2828;
 }
-
+.dropdown-toggle {
+    white-space: nowrap;
+    left: 15px;
+    position: absolute;
+}
 // .submenu {
 // 	display: none;
 // 	position: absolute;
