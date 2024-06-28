@@ -178,8 +178,9 @@
 	position: relative;
 }
 
-
-
+.btn-group.dropend:empty .dropdown-toggle::after {
+	display: none; /* Hide arrow if no subtags */
+  }
 
 .dropdown-menu[data-bs-popper] {
 	left: auto;
