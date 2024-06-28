@@ -177,9 +177,7 @@
 	background-color: #6cc4cc00;
 	position: relative;
 }
-.btn-group.dropend{
-	left: 300px;
-}
+
 .btn-group.dropend:empty .dropdown-toggle::after {
 	display: none; /* Hide arrow if no subtags */
   }
