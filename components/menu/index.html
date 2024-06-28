@@ -1,8 +1,8 @@
 {% for tag in tags %}
+<div class="dropdown-item-wrapper"></div>
 <li class="col">
     <a href="/products/{{{tag._id|string}}}" class="dropdown-item">{{{tag.name}}}</a>
 </li>
-<div class="dropdown-item-wrapper">
     <ul class="submenu">
         {% if tag.allTags.length %}
         {{{'/vlv/components/menu'|c({tags: tag.allTags}|safe)}}}
