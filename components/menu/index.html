@@ -5,7 +5,10 @@
         {% if tag.allTags %}
         <div class="btn-group dropend">
             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                
+                <span class="visually-hidden"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                    <path d="M14.71 6.71a1 1 0 0 1 0 1.41l-6 6a1 1 0 0 1-1.41 0l-6-6a1 1 0 0 1 1.41-1.41L8 11.18l5.29-5.3a1 1 0 0 1 1.42 0z"/>
+                </svg>
             </button>
             <ul class="dropdown-menu">
                 {{{'/vlv/components/menu'|c({tags: tag.allTags}|safe)}}}
