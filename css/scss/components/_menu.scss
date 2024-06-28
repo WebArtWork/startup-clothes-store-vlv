@@ -178,8 +178,8 @@
 
 .dropdown-toggle {
     display: inline-block;
-    position: absolute;
-    right: 10px; /* Adjust as needed to position the arrow at the end */
+	display: flex;
+	justify-content: end;
 }
 
 .dropdown-menu[data-bs-popper] {
