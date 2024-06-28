@@ -174,13 +174,13 @@
 	left: auto;
 }
 
-.btn-group button {
+.btn-group .btn {
+	width: 40px;
 	background-color: #6cc4cc00;
 }
 
 .btn-group-vertical>.btn,
 .btn-group>.btn {
-	width: 20px;
 	color: #2a2828;
 }
 
