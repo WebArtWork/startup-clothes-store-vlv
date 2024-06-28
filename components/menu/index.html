@@ -3,12 +3,12 @@
     <a href="/products/{{{tag._id|string}}}" class="dropdown-item">{{{tag.name}}}</a>
 </li>
 
+{% endfor %}
+
+{% if tag.allTags.length %}
 <div class="btn-group dropend">
     <ul class="dropdown-menu">
-        {% if tag.allTags.length %}
         {{{'/vlv/components/menu'|c({tags: tag.allTags}|safe)}}}
-        {% endif %}
     </ul>
 </div>
-
-{% endfor %}
+{% endif %}
