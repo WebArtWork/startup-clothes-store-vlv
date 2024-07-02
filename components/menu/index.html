@@ -1,4 +1,4 @@
-
+{% for tag in tags %}
 <li>
     <div class="dropdown-item">
         <a href="/products/{{{tag._id|string}}}">{{{tag.name}}}</a>
@@ -14,4 +14,4 @@
         {% endif %}
     </div>
 </li>
-
+{% endfor %}
