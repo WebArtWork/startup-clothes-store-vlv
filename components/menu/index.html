@@ -2,7 +2,7 @@
 <li>
     <div class="dropdown-item">
         <a href="/products/{{{tag._id|string}}}">{{{tag.name}}}</a>
-        {% if tag.allTags %}
+        {% if tag.allTags and tag.allTags|length > 0 %}
         <div class="btn-group dropend dropdown-hover">
             <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="dropdown-toggle"></span>
