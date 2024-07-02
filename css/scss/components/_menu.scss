@@ -166,16 +166,18 @@
 // 	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
 // }
 #menu-drop {
-    position: relative;
     top: 60px;
+    left: -20px; /* Shift 20px to the left */
 }
 
+/* Style for nested dropdown menus */
 .btn-group .dropdown-menu {
     position: absolute;
     top: 0;
-    left: 100%;
+    left: 100%; /* Position next to the parent menu */
     margin-top: -1px;
     z-index: 1000;
+    transform: translateX(0); /* No additional shift needed */
 }
 
 .btn-group .btn {
@@ -197,6 +199,8 @@
 .btn-group > .btn {
     color: #2a2828;
 }
+
+
 // .submenu {
 // 	display: none;
 // 	position: absolute;
