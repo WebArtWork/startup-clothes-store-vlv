@@ -1,105 +1,184 @@
 .menu-main__wrapper {
-    background-color: $blackest_night;
-    top: -1px;
-    z-index: 999;
-    text-align: center;
+	background-color: $blackest_night;
+	top: -1px;
+	z-index: 999;
+	text-align: center;
 }
 
-.menu-main__container {
-    background-color: #2a2828;
-    overflow-x: auto;
-    white-space: nowrap;
+.menu-main {
+	.menu-main__container {
+		background-color: #2a2828;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+
+	/* Стилизация самой полосы прокрутки */
+	.menu-main__container::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+
+	/* Стилизация ползунка полосы прокрутки */
+	.menu-main__container::-webkit-scrollbar-thumb {
+		height: 3px;
+		background-color: $azure_sky;
+	}
+
+	/* Стилизация полосы прокрутки при наведении курсора */
+	.menu-main__container::-webkit-scrollbar-thumb:hover {
+		background-color: $misty_turquoise;
+	}
+
+	&__li .active {
+		border-bottom: 1px solid #6cc4cc;
+	}
+
+	&__ul {
+
+		justify-content: start;
+		//   justify-content: space-between;
+		//   align-items: center;
+		text-transform: uppercase;
+		display: flex;
+		overflow: hidden;
+	}
+
+	&__li {
+		margin-left: 14px;
+	}
+
+	&__a {
+		padding: 15px 20px;
+		color: white;
+		background-color: inherit;
+		font-size: 18px;
+		text-transform: uppercase;
+		white-space: nowrap;
+		transition: background-color 0.2s ease;
+
+		img {
+			width: 26px;
+		}
+	}
+
+	@media (max-width: 992px) {
+		position: sticky;
+		top: -1px;
+
+		.menu-main__container::-webkit-scrollbar {
+			height: 5px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		&__a {
+			padding: 15px 20px;
+			font-size: 16px;
+
+			img {
+				width: 20px;
+			}
+		}
+	}
+
+	@media (max-width: 576px) {
+		&__a {
+			font-size: 12px;
+			display: flex;
+			align-items: center;
+			padding: 12px 10px;
+
+			img {
+				width: 18px;
+			}
+		}
+	}
 }
 
-/* Scrollbar styling */
-.menu-main__container::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
 
-.menu-main__container::-webkit-scrollbar-thumb {
-    height: 3px;
-    background-color: $azure_sky;
-}
 
-.menu-main__container::-webkit-scrollbar-thumb:hover {
-    background-color: $misty_turquoise;
-}
 
-.menu-main__li .active {
-    border-bottom: 1px solid #6cc4cc;
-}
 
-.menu-main__ul {
-    justify-content: start;
-    text-transform: uppercase;
-    display: flex;
-    overflow: hidden;
-}
+//////breadcrumbs/////
 
-.menu-main__li {
-    margin-left: 14px;
-}
+// .breadcrumbs {
+// 	text-transform: uppercase;
+// 	border-radius: 0.3rem;
+// 	display: inline-flex;
+// 	overflow: hidden;
+// }
 
-.menu-main__a {
-    padding: 15px 20px;
-    color: white;
-    background-color: inherit;
-    font-size: 18px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    transition: background-color 0.2s ease;
-}
+// .breadcrumbs__item {
+// 	display: flex;
+// 	align-items: center;
+// 	font-size: 18px;
+// 	background: #ffffff;
+// 	color: #EAA619;
+// 	outline: none;
+// 	padding: 0.75em 0.75em 0.75em 1.25em;
+// 	position: relative;
+// 	text-decoration: none;
+// 	transition: background 0.2s linear;
 
-.menu-main__a img {
-    width: 26px;
-}
+// }
 
-@media (max-width: 992px) {
-    .menu-main__container::-webkit-scrollbar {
-        height: 5px;
-    }
-}
+// .breadcrumbs__item:after,
+// .breadcrumbs__item:before {
+// 	background: #2a2828;
+// 	bottom: 0;
+// 	clip-path: polygon(50% 50%, -50% -50%, 0 100%);
+// 	content: "";
+// 	left: 100%;
+// 	position: absolute;
+// 	top: 0;
+// 	transition: background 0.2s linear;
+// 	width: 1em;
+// 	z-index: 1;
+// }
 
-@media (max-width: 768px) {
-    .menu-main__a {
-        padding: 15px 20px;
-        font-size: 16px;
-    }
+// .breadcrumbs__item:before {
+// 	background: white;
+// 	margin-left: 1px;
+// }
 
-    .menu-main__a img {
-        width: 20px;
-    }
-}
+// .breadcrumbs__item:last-child {
+// 	border-right: none;
+// }
 
-@media (max-width: 576px) {
-    .menu-main__a {
-        font-size: 12px;
-        display: flex;
-        align-items: center;
-        padding: 12px 10px;
-    }
+// @media (max-width: 768px) {
+// 	.breadcrumbs__item {
+// 		color:#EAA619;
+// 		font-size: 16px;
+// 		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+// 	}
+// }
 
-    .menu-main__a img {
-        width: 18px;
-    }
-}
-
+// .dropdown-menu {
+// 	position:relative;
+// 	top: 270px;
+// 	left: 50%;
+// 	transform: translate(-50%, -50%);
+// 	background-color: #ffffff;
+// 	max-width: 1250px;
+// 	height: auto; 
+// 	z-index: 1000;
+// 	overflow-y: auto;
+// 	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+// }
 #menu-drop2 {
     top: -12px;
     left: 35px;
-    border: none;
+	border: none; /* Shift 20px to the left */
 }
 
 /* Style for nested dropdown menus */
 .btn-group .dropdown-menu {
-    top: 20px;
-    left: 100%;
+    top: 20;
+    left: 100%; /* Position next to the parent menu */
     margin-top: -1px;
     z-index: 1000;
-    transform: translateX(0);
+    transform: translateX(0); /* No additional shift needed */
 }
-
 .dropdown-item {
     display: flex;
     justify-content: space-between;
@@ -128,39 +207,72 @@
     color: #2a2828;
 }
 
-@media (max-width: 768px) {
-    .dropdown-menu {
-        height: 350px;
-        padding: 0;
-    }
 
-    .dropdown-menu li {
-        display: inline-flex;
-    }
+// .submenu {
+// 	display: none;
+// 	position: absolute;
+// 	left: 170px;
+// 	background-color: #ffffff;
+// }
+
+
+// .dropdown-item-wrapper:hover .submenu {
+// 	display: block;
+// 	/* Показуємо дочірній список при наведенні на wrapper */
+// }
+
+// .dropdown-menu.show {
+// 	display: block;
+// }
+
+// .dropdown-item {
+// 	color: #000000;
+// 	text-align: left;
+// 	display: block;
+// 	max-width: 100%;
+// 	white-space: normal;
+// 	font-size: 14px;
+// 	margin-left: 10px;
+// 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+// }
+
+// .dropdown-item:last-child {
+// 	border-bottom: none;
+// }
+
+@media (max-width: 768px) {
+	.dropdown-menu {
+		height: 350px;
+		padding: 0;
+
+		li {
+			display: inline-flex;
+		}
+	}
 }
 
 @media (min-width: 992px) {
-    .navbar-expand-lg .navbar-collapse {
-        justify-content: center;
-    }
+	.navbar-expand-lg .navbar-collapse {
+		justify-content: center;
+	}
 }
 
 .navbar-toggler {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .container-fluid .navbar-collapse {
-    background-color: #dbdbdb00;
-    border: none;
+	background-color: #dbdbdb00;
+	border: none;
 }
 
 .dropdown-hover {
-    display: inline-flex;
-}
+	display: inline-flex;
 
-.button-menu {
-    margin: 25px;
-    text-transform: uppercase;
-    color: black;
-    background: #ffffff;
+	.button-menu {
+		margin: 25px;
+		text-transform: uppercase;
+		color: black;
+		background: #ffffff;
+	}
 }
