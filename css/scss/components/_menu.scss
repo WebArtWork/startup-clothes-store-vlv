@@ -165,20 +165,18 @@
 // 	overflow-y: auto;
 // 	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
 // }
+
+#menu-drop1 {
+    top: 50px;
+	border: none;
+}
+
 #menu-drop2 {
     top: -12px;
     left: 35px;
-	border: none; /* Shift 20px to the left */
+	border: none;
 }
 
-/* Style for nested dropdown menus */
-.btn-group .dropdown-menu {
-    top: 20;
-    left: 100%; /* Position next to the parent menu */
-    margin-top: -1px;
-    z-index: 1000;
-    transform: translateX(0); /* No additional shift needed */
-}
 .dropdown-item {
     display: flex;
     justify-content: space-between;
@@ -207,38 +205,6 @@
     color: #2a2828;
 }
 
-
-// .submenu {
-// 	display: none;
-// 	position: absolute;
-// 	left: 170px;
-// 	background-color: #ffffff;
-// }
-
-
-// .dropdown-item-wrapper:hover .submenu {
-// 	display: block;
-// 	/* Показуємо дочірній список при наведенні на wrapper */
-// }
-
-// .dropdown-menu.show {
-// 	display: block;
-// }
-
-// .dropdown-item {
-// 	color: #000000;
-// 	text-align: left;
-// 	display: block;
-// 	max-width: 100%;
-// 	white-space: normal;
-// 	font-size: 14px;
-// 	margin-left: 10px;
-// 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-// }
-
-// .dropdown-item:last-child {
-// 	border-bottom: none;
-// }
 
 @media (max-width: 768px) {
 	.dropdown-menu {
