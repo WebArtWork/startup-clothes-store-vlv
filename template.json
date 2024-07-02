@@ -19,15 +19,8 @@
 		"accessories_photo": "https://images.unsplash.com/photo-1666464716206-326158e82444?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		"banner_top_text": "SALE",
 		"banner_bottom_text": "до -30% на весь асортимент",
-		"swiper_img_1": "/vlv/img/swiper/photo1.jpg",
-		"swiper_img_2": "/vlv/img/swiper/photo2.jpg",
-		"swiper_img_3": "/vlv/img/swiper/photo3.jpg",
-		"swiper_text_1": "Наш асортимент охоплює все, що вам може знадобитися для створення неперевершеного образу.",
-		"swiper_text_2": "Ми дуже пильно обираємо кожен предмет одягу, щоб ви могли бути впевнені в його якості та стилю.",
-		"swiper_text_3": "Ми прагнемо забезпечити вас найкращим обслуговуванням і найкращими умовами покупки.",
 		"link_instagram": "https://instagram.com/kpcity2023?igshid=OGQ5ZDc2ODk2ZA==",
 		"link_facebook": "https://www.facebook.com/profile.php?id=100094157589278",
-		"link_tiktok": "https://www.facebook.com/profile.php?id=100094157589278",
 		"workingHours": "11:00 - 22:00",
 		"address": "Ploshcha Polʹsʹkyy Rynok, 9G, Kamianets'-podil's'kyi, Khmel'nyts'ka oblast, Ukraine, 00000",
 		"phone": "+380686080000",
@@ -78,49 +71,6 @@
 							"name": "кролік"
 						}
 					]
-				},
-				{
-					"name": "Шапки"
-				},
-				{
-					"name": "Штани",
-					"tags": [
-						{
-							"name": "ПІнгвік"
-						},
-						{
-							"name": "кролік"
-						}
-					]
-				},
-				{
-					"name": "Шапки"
-				},	{
-					"name": "Штани",
-					"tags": [
-						{
-							"name": "ПІнгвік"
-						},
-						{
-							"name": "кролік"
-						}
-					]
-				},
-				{
-					"name": "Шапки"
-				},	{
-					"name": "Штани",
-					"tags": [
-						{
-							"name": "ПІнгвік"
-						},
-						{
-							"name": "кролік"
-						}
-					]
-				},
-				{
-					"name": "Шапки"
 				}
 				
 			]
