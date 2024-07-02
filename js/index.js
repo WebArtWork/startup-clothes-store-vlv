@@ -4,22 +4,56 @@ function setMainPhoto(newSrc) {
 };
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Перевірка розміру екрану
-    if (window.innerWidth > 768) { // Припустимо, що ви хочете активувати на екранах ширше 768px
+    function handleDropdownHover() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
         dropdownHoverItems.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
 
-            // При наведенні на item (dropdownHoverItems), показати dropdownMenu
-            item.addEventListener('mouseenter', function() {
-                dropdownMenu.classList.add('show');
-            });
+            // For larger screens, show dropdown on hover
+            if (window.innerWidth > 768) {
+                item.addEventListener('mouseenter', function() {
+                    dropdownMenu.classList.add('show');
+                });
 
-            // При відведенні від item, прибрати клас show з dropdownMenu
-            item.addEventListener('mouseleave', function() {
-                dropdownMenu.classList.remove('show');
-            });
+                item.addEventListener('mouseleave', function() {
+                    dropdownMenu.classList.remove('show');
+                });
+            } else {
+                // For smaller screens, show dropdown on click
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('show');
+                });
+            }
         });
     }
+
+    handleDropdownHover();
+
+    // Reapply hover/click behavior on window resize
+    window.addEventListener('resize', function() {
+        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
+        
+        dropdownHoverItems.forEach(item => {
+            let dropdownMenu = item.querySelector('.dropdown-menu');
+
+            // Remove existing event listeners to avoid duplicate events
+            item.replaceWith(item.cloneNode(true));
+        });
+
+        handleDropdownHover();
+    });
+
+    // Close dropdowns when clicking outside (only on small screens)
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+            dropdownHoverItems.forEach(menu => {
+                if (!menu.contains(e.target)) {
+                    menu.classList.remove('show');
+                }
+            });
+        }
+    });
 });
