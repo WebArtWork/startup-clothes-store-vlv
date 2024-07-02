@@ -1,16 +1,32 @@
 {% for tag in tags %}
 <li>
-    <div class="dropdown-item">
-        <a href="/products/{{{tag._id|string}}}">{{{tag.name}}}</a>
+    <div class="dropdown-hover">
+        <a class="button-menu" data-bs-toggle="dropdown" aria-expanded="false">
+            {{{tag.name}}}
+            {% if tag.allTags %}
+            <span class="dropdown-toggle"></span>
+            {% endif %}
+        </a>
         {% if tag.allTags %}
-        <div class="btn-group dropend dropdown-hover">
-            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="dropdown-toggle"></span>
-            </button>
-            <ul class="dropdown-menu">
-                {{{'/vlv/components/menu'|c({tags: tag.allTags}|safe)}}}
-            </ul>
-        </div>
+        <ul class="dropdown-menu">
+            {% for subtag in tag.allTags %}
+            <li>
+                <div class="dropdown-item">
+                    <a href="/products/{{{subtag._id|string}}}">{{{subtag.name}}}</a>
+                    {% if subtag.allTags %}
+                    <div class="btn-group dropend dropdown-hover">
+                        <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="dropdown-toggle"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            {{{'/vlv/components/menu'|c({tags: subtag.allTags}|safe)}}}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
         {% endif %}
     </div>
 </li>
