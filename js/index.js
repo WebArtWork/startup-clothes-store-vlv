@@ -9,13 +9,14 @@ document.addEventListener("DOMContentLoaded", function() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
         dropdownHoverItems.forEach(item => {
-            let button = item.querySelector('.button-menu');
-            button.addEventListener('mouseenter', function() {
-                dropdownMenu.classList.add('show');
-            });
             let dropdownMenu = item.querySelector('.dropdown-menu');
 
+            // При наведенні на item (dropdownHoverItems), показати dropdownMenu
+            item.addEventListener('mouseenter', function() {
+                dropdownMenu.classList.add('show');
+            });
 
+            // При відведенні від item, прибрати клас show з dropdownMenu
             item.addEventListener('mouseleave', function() {
                 dropdownMenu.classList.remove('show');
             });
