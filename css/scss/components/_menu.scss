@@ -178,12 +178,19 @@
     z-index: 1000;
     transform: translateX(0); /* No additional shift needed */
 }
+.dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .btn-group .btn {
     min-width: 0;
     min-height: 0;
     background-color: transparent;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .btn-group.dropend:empty .dropdown-toggle::after {
