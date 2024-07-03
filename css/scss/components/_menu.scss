@@ -242,3 +242,16 @@
 		background: #ffffff;
 	}
 }
+
+@media (max-width: 992px) {
+	.dropdown-hover {
+		display: list-item;
+	
+		.button-menu {
+			margin: 25px;
+			text-transform: uppercase;
+			color: black;
+			background: #ffffff;
+		}
+	}
+}
