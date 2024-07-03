@@ -20,12 +20,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    let dropdownHoverItems1 = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-                    dropdownHoverItems1.forEach(menu => {
-                        menu.classList.remove('show');
-                    });
-                    console.log(dropdownHoverItems1);
-                    dropdownMenu.classList.add('show');
+                    if (dropdownMenu.classList.contains('show')) {
+                        dropdownMenu.classList.remove('show');
+                    } else {
+                        dropdownMenu.classList.add('show');
+                    }
                 });
             }
         });
