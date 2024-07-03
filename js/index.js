@@ -2,16 +2,13 @@ function setMainPhoto(newSrc) {
     var mainPhoto = document.getElementById('mainPhoto');
     mainPhoto.src = newSrc;
 };
+
 document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
         dropdownHoverItems.forEach(item => {
-            let dropdownMenu = item.querySelector('.menu-drop2');
-
-            // Clean up any previous event listeners to prevent duplicate events
-            item.replaceWith(item.cloneNode(true));
-            item = document.querySelectorAll('.dropdown-hover')[0];
+            let dropdownMenu = item.querySelector('.dropdown-menu');
 
             if (window.innerWidth > 768) {
                 item.addEventListener('mouseenter', function() {
@@ -24,37 +21,33 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    let isOpen = dropdownMenu.classList.contains('show');
-                    closeAllDropdowns();
-                    if (!isOpen) {
-                        dropdownMenu.classList.toggle('show');
-                    }
-                });
-
-                // Handle clicks within the dropdown menu to prevent propagation
-                dropdownMenu.addEventListener('click', function(e) {
-                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('show');
                 });
             }
-        });
-    }
-
-    function closeAllDropdowns() {
-        let dropdownMenus = document.querySelectorAll('.menu-drop2');
-        dropdownMenus.forEach(menu => {
-            menu.classList.remove('show');
         });
     }
 
     handleDropdownHover();
 
     window.addEventListener('resize', function() {
+        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
+        
+        dropdownHoverItems.forEach(item => {
+            let dropdownMenu = item.querySelector('.dropdown-menu');
+            item.replaceWith(item.cloneNode(true));
+        });
+
         handleDropdownHover();
     });
 
     document.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
-            closeAllDropdowns();
+            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+            dropdownHoverItems.forEach(menu => {
+                if (!menu.contains(e.target)) {
+                    menu.classList.remove('show');
+                }
+            });
         }
     });
 });
