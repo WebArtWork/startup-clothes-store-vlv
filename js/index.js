@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 item.addEventListener('click', function(e) {
                     console.log(e.target);
+                    e.stopPropagation();
                     dropdownMenu.classList.add('show');
                 });
             }
@@ -40,15 +41,15 @@ document.addEventListener("DOMContentLoaded", function() {
         handleDropdownHover();
     });
 
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 992) {
-            console.log(e.target);
-            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-            dropdownHoverItems.forEach(menu => {
-                if (!menu.contains(e.target)) {
-                    menu.classList.remove('show');
-                }
-            });
-        }
-    });
+    // document.addEventListener('click', function(e) {
+    //     if (window.innerWidth <= 992) {
+    //         console.log(e.target);
+    //         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+    //         dropdownHoverItems.forEach(menu => {
+    //             if (!menu.contains(e.target)) {
+    //                 menu.classList.remove('show');
+    //             }
+    //         });
+    //     }
+    // });
 });
