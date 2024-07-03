@@ -21,33 +21,37 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    dropdownMenu.classList.toggle('show');
+                    let isOpen = dropdownMenu.classList.contains('show');
+                    closeAllDropdowns();
+                    if (!isOpen) {
+                        dropdownMenu.classList.toggle('show');
+                    }
+                });
+
+                // Handle clicks within the dropdown menu to prevent propagation
+                dropdownMenu.addEventListener('click', function(e) {
+                    e.stopPropagation();
                 });
             }
+        });
+    }
+
+    function closeAllDropdowns() {
+        let dropdownMenus = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+        dropdownMenus.forEach(menu => {
+            menu.classList.remove('show');
         });
     }
 
     handleDropdownHover();
 
     window.addEventListener('resize', function() {
-        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
-        
-        dropdownHoverItems.forEach(item => {
-            let dropdownMenu = item.querySelector('.dropdown-menu');
-            item.replaceWith(item.cloneNode(true));
-        });
-
         handleDropdownHover();
     });
 
     document.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
-            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-            dropdownHoverItems.forEach(menu => {
-                if (!menu.contains(e.target)) {
-                    menu.classList.remove('show');
-                }
-            });
+            closeAllDropdowns();
         }
     });
 });
