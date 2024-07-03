@@ -39,4 +39,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         handleDropdownHover();
     });
+
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu .dropdown-item');
+            dropdownHoverItems.forEach(menu => {
+                if (!menu.contains(e.target)) {
+                    menu.classList.remove('show');
+                }
+            });
+        }
+    });
 });
