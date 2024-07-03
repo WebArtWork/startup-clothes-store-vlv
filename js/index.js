@@ -21,30 +21,34 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    dropdownMenu.classList.toggle('show');
+                    let isOpen = dropdownMenu.classList.contains('show');
+                    closeAllDropdowns();
+                    if (!isOpen) {
+                        dropdownMenu.classList.toggle('show');
+                    }
                 });
             }
+        });
+    }
+
+    function closeAllDropdowns() {
+        let dropdownMenus = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+        dropdownMenus.forEach(menu => {
+            menu.classList.remove('show');
         });
     }
 
     handleDropdownHover();
 
     window.addEventListener('resize', function() {
-        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
-        
-        dropdownHoverItems.forEach(item => {
-            let dropdownMenu = item.querySelector('.dropdown-menu');
-            item.replaceWith(item.cloneNode(true));
-        });
-
         handleDropdownHover();
     });
 
     document.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
-            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu /');
+            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
             dropdownHoverItems.forEach(menu => {
-                if (!menu.contains(e.target)) {
+                if (!menu.contains(e.target) && !e.target.closest('.dropdown-hover')) {
                     menu.classList.remove('show');
                 }
             });
