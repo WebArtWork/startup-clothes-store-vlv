@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", function() {
         dropdownHoverItems.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
 
+            // Clean up any previous event listeners to prevent duplicate events
+            item.replaceWith(item.cloneNode(true));
+            item = document.querySelectorAll('.dropdown-hover')[0];
+
             if (window.innerWidth > 768) {
                 item.addEventListener('mouseenter', function() {
                     dropdownMenu.classList.add('show');
