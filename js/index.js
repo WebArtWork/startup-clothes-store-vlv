@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         dropdownHoverItems.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
+            let dropdownToggle = item.querySelector('.btn');
 
             if (window.innerWidth > 768) {
                 item.addEventListener('mouseenter', function() {
@@ -19,11 +20,22 @@ document.addEventListener("DOMContentLoaded", function() {
                     dropdownMenu.classList.remove('show');
                 });
             } else {
-                item.addEventListener('click', function(e) {
+                dropdownToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    dropdownMenu.classList.toggle('show');
+                    let isOpen = dropdownMenu.classList.contains('show');
+                    closeAllDropdowns();
+                    if (!isOpen) {
+                        dropdownMenu.classList.toggle('show');
+                    }
                 });
             }
+        });
+    }
+
+    function closeAllDropdowns() {
+        let dropdownMenus = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+        dropdownMenus.forEach(menu => {
+            menu.classList.remove('show');
         });
     }
 
@@ -42,9 +54,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
-            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu /');
+            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
             dropdownHoverItems.forEach(menu => {
-                if (!menu.contains(e.target)) {
+                if (!menu.contains(e.target) && !e.target.closest('.dropdown-hover')) {
                     menu.classList.remove('show');
                 }
             });
