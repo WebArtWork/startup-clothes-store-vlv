@@ -21,8 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 item.addEventListener('click', function(e) {
                     console.log(e.target);
-                    e.stopPropagation();
-                    dropdownMenu.classList.add('show');
+                    dropdownMenu.classList.toggle('show');
                 });
             }
         });
