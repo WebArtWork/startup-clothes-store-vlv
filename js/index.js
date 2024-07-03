@@ -5,7 +5,7 @@ function setMainPhoto(newSrc) {
 
 document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
-        if (window.innerWidth > 992) {
+        if (window.innerWidth <= 992) {
             let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
             dropdownHoverItems.forEach(menu => {
                 menu.classList.remove('show');
