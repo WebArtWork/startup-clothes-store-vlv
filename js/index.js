@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
+                    console.log(dropdownMenu.classList);
                     if (dropdownMenu.classList.contains('show')) {
                         dropdownMenu.classList.remove('show');
                     } else {
