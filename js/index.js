@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.addEventListener('click', function(e) {
         if (window.innerWidth <= 992) {
+            console.log(e.target);
             let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
             dropdownHoverItems.forEach(menu => {
-                console.log(e.target);
                 if (!menu.contains(e.target)) {
                     menu.classList.remove('show');
                 }
