@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 item.addEventListener('click', function(e) {
                     console.log('test');
-                    dropdownMenu.classList.toggle('show');
+                    dropdownMenu.classList.add('show');
                 });
             }
         });
