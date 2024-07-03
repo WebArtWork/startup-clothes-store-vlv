@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 item.addEventListener('click', function(e) {
                     console.log(dropdownMenu.classList);
-                    if (dropdownMenu.classList.contains('show')) {
+                    if (dropdownMenu.classList.includes('show')) {
                         dropdownMenu.classList.remove('show');
                     } else {
                         dropdownMenu.classList.add('show');
