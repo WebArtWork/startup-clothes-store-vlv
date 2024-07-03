@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         dropdownHoverItems.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) {
+            
+            console.log(window.innerWidth);
+            if (window.innerWidth > 992) {
                 item.addEventListener('mouseenter', function() {
                     dropdownMenu.classList.add('show');
                 });
@@ -41,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 992) {
             let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
             dropdownHoverItems.forEach(menu => {
                 if (!menu.contains(e.target)) {
