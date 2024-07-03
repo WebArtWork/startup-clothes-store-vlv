@@ -20,12 +20,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 992) {
-                        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-                        dropdownHoverItems.forEach(menu => {
-                            menu.classList.remove('show');
-                        });
-                    }
+                    let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+                    dropdownHoverItems.forEach(menu => {
+                        menu.classList.remove('show');
+                    });
                     console.log('test');
                     dropdownMenu.classList.add('show');
                 });
