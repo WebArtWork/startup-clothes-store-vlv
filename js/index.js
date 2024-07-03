@@ -5,6 +5,14 @@ function setMainPhoto(newSrc) {
 
 document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
+        if (window.innerWidth > 992) {
+            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+            dropdownHoverItems.forEach(menu => {
+                if (!menu.contains(e.target)) {
+                    menu.classList.remove('show');
+                }
+            });
+        }
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
         dropdownHoverItems.forEach(item => {
@@ -20,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    console.log(e.target);
                     dropdownMenu.classList.toggle('show');
                 });
             }
