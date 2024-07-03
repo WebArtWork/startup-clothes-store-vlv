@@ -20,9 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    console.log(Array.from(dropdownMenu.classList));
                     if (Array.from(dropdownMenu.classList)?.length) {
-                        if (Array.from(dropdownMenu.classList || []).contains('show')) {
+                        if (Array.from(dropdownMenu.classList).contains('show')) {
                             dropdownMenu.classList.remove('show');
                         } else {
                             dropdownMenu.classList.add('show');
