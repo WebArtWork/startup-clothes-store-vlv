@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.addEventListener('click', function(e) {
                     console.log(e.target);
                     e.stopPropagation();
-                    dropdownMenu.classList.toggle('show');
+                    dropdownMenu.classList.add('show');
                 });
             }
         });
