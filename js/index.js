@@ -2,13 +2,12 @@ function setMainPhoto(newSrc) {
     var mainPhoto = document.getElementById('mainPhoto');
     mainPhoto.src = newSrc;
 };
-
 document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
         dropdownHoverItems.forEach(item => {
-            let dropdownMenu = item.querySelector('.dropdown-menu');
+            let dropdownMenu = item.querySelector('.menu-drop2');
 
             // Clean up any previous event listeners to prevent duplicate events
             item.replaceWith(item.cloneNode(true));
@@ -41,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function closeAllDropdowns() {
-        let dropdownMenus = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+        let dropdownMenus = document.querySelectorAll('.menu-drop2');
         dropdownMenus.forEach(menu => {
             menu.classList.remove('show');
         });
