@@ -22,10 +22,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.addEventListener('click', function(e) {
                     console.log(e.target);
                     if (Array.from(dropdownMenu.classList)?.length) {
-                        if (Array.from(dropdownMenu.classList).contains('show')) {
-                            dropdownMenu.classList.remove('show');
+                        if (Array.from(e.target.classList).contains('dropdown-item')) {
+                            console.log(e.target);
                         } else {
-                            dropdownMenu.classList.add('show');
+                            if (Array.from(dropdownMenu.classList).contains('show')) {
+                                dropdownMenu.classList.remove('show');
+                            } else {
+                                dropdownMenu.classList.add('show');
+                            }
                         }
                     }
                 });
