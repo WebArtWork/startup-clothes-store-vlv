@@ -250,14 +250,15 @@
 
 }
 
-
+@media (max-width: 992px) {
+	.navbar-nav .dropdown-menu {
+		position: absolute;
+	}
+}
 
 @media (max-width: 768px) {
-	.navbar-nav .dropdown-menu {
-		position: relative;
-	}
-
 	.dropdown-menu {
+		position: absolute;
 		height: 350px;
 		text-align: center;
 
@@ -278,7 +279,7 @@
 	}
 
 	.dropdown-hover {
-		display: block;
+		display: flex;
 		width: 100%;
 	}
 
@@ -288,7 +289,7 @@
 	}
 
 	.dropdown-hover .dropdown-menu {
-		position: static;
+		position: absolute;
 		float: none;
 		width: 100%;
 		margin: 0;
@@ -299,5 +300,8 @@
 
 	.dropdown-hover .dropdown-menu li:last-child {
 		border-bottom: none;
+	}
+	.dropdown-toggle{
+		display: none;
 	}
 }
