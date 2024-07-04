@@ -251,6 +251,11 @@
 }
 
 @media (max-width: 992px) {
+
+	.dropdown-item {
+		align-items: start;
+	}
+
 	.navbar-nav .dropdown-menu {
 		position: absolute;
 	}
