@@ -226,7 +226,7 @@
 	display: inline-flex;
 
 	.button-menu {
-		margin: 25px;
+		margin: 20px;
 		text-transform: uppercase;
 		color: black;
 		background: #ffffff;
@@ -257,13 +257,17 @@
 }
 
 @media (max-width: 768px) {
+	.dropdown-item {
+
+	}
+
 	.dropdown-menu {
 		position: absolute;
 		height: 350px;
-		text-align: center;
 
 		li {
-			display: inline-flex;
+			display: table;
+			padding-left: 20px;
 		}
 	}
 
@@ -301,6 +305,7 @@
 	.dropdown-hover .dropdown-menu li:last-child {
 		border-bottom: none;
 	}
+
 	.dropend .dropdown-menu[data-bs-popper] {
 		top: auto;
 		left: 100%;
