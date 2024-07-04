@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    console.log(e.target);
                     if (Array.from(dropdownMenu.classList)?.length) {
                         if (Array.from(e.target.classList).contains('dropdown-item')) {
                             console.log(e.target);
