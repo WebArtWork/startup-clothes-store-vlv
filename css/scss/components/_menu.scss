@@ -301,4 +301,10 @@
 	.dropdown-hover .dropdown-menu li:last-child {
 		border-bottom: none;
 	}
+	.dropend .dropdown-menu[data-bs-popper] {
+		top: auto;
+		left: 100%;
+		margin-top: 0;
+		margin-left: var(--bs-dropdown-spacer);
+	}
 }
