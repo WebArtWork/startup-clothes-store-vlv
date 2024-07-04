@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
+                    console.log(e.target);
                     if (Array.from(dropdownMenu.classList)?.length) {
                         if (Array.from(dropdownMenu.classList).contains('show')) {
                             dropdownMenu.classList.remove('show');
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // document.addEventListener('click', function(e) {
     //     if (window.innerWidth <= 992) {
+
     //         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
     //         dropdownHoverItems.forEach(menu => {
     //             if (!menu.contains(e.target)) {
