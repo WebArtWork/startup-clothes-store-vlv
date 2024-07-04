@@ -279,7 +279,7 @@
 	}
 
 	.dropdown-hover {
-		display: flex;
+		display: inline-block;
 		width: 100%;
 	}
 
@@ -289,7 +289,7 @@
 	}
 
 	.dropdown-hover .dropdown-menu {
-		position: relative;
+		position: static;
 		float: none;
 		width: 100%;
 		margin: 0;
