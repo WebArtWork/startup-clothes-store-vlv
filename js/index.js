@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 item.addEventListener('mouseleave', function () {
                     dropdownMenu.classList.remove('show');
                 });
+
                 document.addEventListener('click', function (e) {
                     const isDropdownItem = item.contains(e.target);
                     const isInsideDropdown = dropdownMenu.contains(e.target);
@@ -43,20 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         dropdownHoverItems.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
-            item.replaceWith(item.cloneNode(true));
+            let newItem = item.cloneNode(true);
+            item.parentNode.replaceChild(newItem, item);
         });
 
         handleDropdownHover();
     });
-
-    // document.addEventListener('click', function(e) {
-    //     if (window.innerWidth <= 992) {
-    //         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-    //         dropdownHoverItems.forEach(menu => {
-    //             if (!menu.contains(e.target)) {
-    //                 menu.classList.remove('show');
-    //             }
-    //         });
-    //     }
-    // });
 });
