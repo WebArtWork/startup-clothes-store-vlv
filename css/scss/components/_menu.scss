@@ -263,6 +263,7 @@
 
 @media (max-width: 768px) {
 	.dropdown-menu {
+		--bs-dropdown-link-hover-bg: white;
 		position: absolute;
 		height: 350px;
 
