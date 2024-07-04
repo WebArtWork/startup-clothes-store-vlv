@@ -257,10 +257,6 @@
 }
 
 @media (max-width: 768px) {
-	.dropdown-item {
-
-	}
-
 	.dropdown-menu {
 		position: absolute;
 		height: 350px;
@@ -308,7 +304,7 @@
 
 	.dropend .dropdown-menu[data-bs-popper] {
 		top: auto;
-		left: 100%;
+		left: 60px;
 		margin-top: 0;
 		margin-left: var(--bs-dropdown-spacer);
 	}
