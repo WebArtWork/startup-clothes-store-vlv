@@ -19,6 +19,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     dropdownMenu.classList.remove('show');
                 });
             } else {
+                let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+                dropdownHoverItems.forEach(menu => {
+                    if (!menu.contains(e.target)) {
+                        menu.classList.remove('show');
+                    }
+                });
                 item.addEventListener('click', function(e) {
                     console.log(e.target);
                     e.stopPropagation();
