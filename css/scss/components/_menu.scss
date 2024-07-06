@@ -264,7 +264,6 @@
 @media (max-width: 768px) {
 	.dropdown-menu {
 		--bs-dropdown-link-hover-bg: white;
-		position: absolute;
 		height: auto;
 
 		li {
@@ -290,7 +289,6 @@
 	}
 
 	.dropdown-hover .btn {
-		width: 100%;
 		text-align: left;
 	}
 
