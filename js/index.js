@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             }
                         });
         
-                        const nextDropdownMenu = this.nextElementSibling;
+                        const nextDropdownMenu = event.target.nextElementSibling;
                         console.log(nextDropdownMenu);
                         if (nextDropdownMenu && nextDropdownMenu.classList.contains('dropdown-menu')) {
                             if (nextDropdownMenu.classList.contains('show')) {
