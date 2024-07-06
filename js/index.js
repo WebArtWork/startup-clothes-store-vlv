@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             }
                         });
         
-                        const nextDropdownMenu = this.parentElement.querySelector('.menu-drop2, .menu-drop1');
+                        const nextDropdownMenu = this.parentElement.querySelector('.menu-drop1, .menu-drop2');
                         if (nextDropdownMenu && (nextDropdownMenu.classList.contains('menu-drop1') || nextDropdownMenu.classList.contains('menu-drop2'))) {
                             nextDropdownMenu.classList.toggle('show');
                         }
