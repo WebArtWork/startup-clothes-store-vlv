@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", function() {
         
                 dropdownToggles.forEach(toggle => {
                     toggle.addEventListener('click', function(event) {
-                        console.log(event.target);
                         const parentDropdown = this.closest('.dropdown');
                         const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
-    
+        
+                        console.log(openDropdowns);
         
                         const nextDropdownMenu = this.nextElementSibling;
                         if (nextDropdownMenu.classList.contains('show')) {
