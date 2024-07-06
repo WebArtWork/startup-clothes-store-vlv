@@ -37,12 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         console.log(event.target);
                         const parentDropdown = this.closest('.dropdown');
                         const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
-        
-                        openDropdowns.forEach(dropdown => {
-                            if (dropdown !== parentDropdown.querySelector('.dropdown-menu')) {
-                                dropdown.classList.remove('show');
-                            }
-                        });
+    
         
                         const nextDropdownMenu = this.nextElementSibling;
                         if (nextDropdownMenu.classList.contains('show')) {
