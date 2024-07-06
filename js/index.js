@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
         
                 // Prevent closing dropdown when clicking inside a submenu
-                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                document.querySelectorAll('.menu-drop2').forEach(menu => {
                     menu.addEventListener('click', function(event) {
                         event.stopPropagation();
                     });
