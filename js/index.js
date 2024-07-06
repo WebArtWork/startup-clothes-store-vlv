@@ -20,18 +20,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 document.addEventListener('click', function(event) {
-                    const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
-                    openDropdowns.forEach(dropdown => {
-                        if (!dropdown.parentElement.contains(event.target)) {
-                            dropdown.classList.remove('show');
-                        }
-                    });
+                    if (event.target.classList.contains('button-menu')) {
+                        const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
+                        openDropdowns.forEach(dropdown => {
+                            if (!dropdown.parentElement.contains(event.target)) {
+                                dropdown.classList.remove('show');
+                            }
+                        });
+                    }
                 });
         
                 const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
         
                 dropdownToggles.forEach(toggle => {
                     toggle.addEventListener('click', function(event) {
+                        console.log(event.target);
                         const parentDropdown = this.closest('.dropdown');
                         const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
         
