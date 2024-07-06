@@ -20,32 +20,41 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 document.addEventListener('click', function(event) {
-                    if (event.target.classList.contains('button-menu')) {
-                        const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
-                        openDropdowns.forEach(dropdown => {
-                            if (!dropdown.parentElement.contains(event.target)) {
-                                dropdown.classList.remove('show');
-                            }
-                        });
-                    }
+                    const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
+                    openDropdowns.forEach(dropdown => {
+                        if (!dropdown.parentElement.contains(event.target)) {
+                            dropdown.classList.remove('show');
+                        }
+                    });
                 });
         
                 const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
         
                 dropdownToggles.forEach(toggle => {
                     toggle.addEventListener('click', function(event) {
-                        const parentDropdown = this.closest('.dropdown');
+                        const parentDropdown = this.closest('.dropdown, .dropend');
                         const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
         
-                        console.log(openDropdowns);
+                        openDropdowns.forEach(dropdown => {
+                            if (dropdown !== parentDropdown.querySelector('.dropdown-menu')) {
+                                dropdown.classList.remove('show');
+                            }
+                        });
         
-                        const nextDropdownMenu = openDropdowns.nextElementSibling;
+                        const nextDropdownMenu = this.nextElementSibling;
                         if (nextDropdownMenu.classList.contains('show')) {
                             nextDropdownMenu.classList.remove('show');
                         } else {
                             nextDropdownMenu.classList.add('show');
                         }
         
+                        event.stopPropagation();
+                    });
+                });
+        
+                // Prevent closing dropdown when clicking inside a submenu
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.addEventListener('click', function(event) {
                         event.stopPropagation();
                     });
                 });
