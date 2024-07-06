@@ -19,15 +19,37 @@ document.addEventListener("DOMContentLoaded", function() {
                     dropdownMenu.classList.remove('show');
                 });
             } else {
-                let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-                dropdownHoverItems.forEach(menu => {
-                    if (!menu.contains(e.target)) {
-                        menu.classList.remove('show');
-                    }
+                document.addEventListener('click', function(event) {
+                    const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
+                    openDropdowns.forEach(dropdown => {
+                        if (!dropdown.parentElement.contains(event.target)) {
+                            dropdown.classList.remove('show');
+                        }
+                    });
                 });
-                item.addEventListener('click', function(e) {
-                    console.log(e.target);
-                    e.stopPropagation();
+        
+                const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+                dropdownToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function(event) {
+                        const parentDropdown = this.closest('.dropdown');
+                        const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
+        
+                        openDropdowns.forEach(dropdown => {
+                            if (dropdown !== parentDropdown.querySelector('.dropdown-menu')) {
+                                dropdown.classList.remove('show');
+                            }
+                        });
+        
+                        const nextDropdownMenu = this.nextElementSibling;
+                        if (nextDropdownMenu.classList.contains('show')) {
+                            nextDropdownMenu.classList.remove('show');
+                        } else {
+                            nextDropdownMenu.classList.add('show');
+                        }
+        
+                        event.stopPropagation();
+                    });
                 });
             }
         });
