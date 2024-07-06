@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
                         console.log(openDropdowns);
         
-                        const nextDropdownMenu = this.nextElementSibling;
+                        const nextDropdownMenu = openDropdowns.nextElementSibling;
                         if (nextDropdownMenu.classList.contains('show')) {
                             nextDropdownMenu.classList.remove('show');
                         } else {
