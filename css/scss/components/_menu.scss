@@ -254,6 +254,9 @@
 
 	.dropdown-item {
 		align-items: start;
+		a{
+			text-align: center;
+		}
 	}
 
 	.navbar-nav .dropdown-menu {
@@ -264,11 +267,12 @@
 @media (max-width: 768px) {
 	.dropdown-menu {
 		--bs-dropdown-link-hover-bg: white;
+		--bs-dropdown-link-active-bg: #ffffff;
 		height: auto;
 
 		li {
 			display: table;
-			padding-left: 20px;
+			margin: 0 auto;
 		}
 	}
 
@@ -300,6 +304,10 @@
 		border: none;
 		box-shadow: none;
 		background-color: white;
+		a{
+			color:#9e6c08;
+			text-transform: uppercase;
+		}
 	}
 
 	.dropdown-hover .dropdown-menu li:last-child {
