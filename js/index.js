@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         });
         
                         console.log(event.target.parentElement.parentElement);
-                        const nextDropdownMenu = event.target.parentElement.parentElement;
+                        const nextDropdownMenu = event.target.parentElement.parentElement.querySelector('dropdown-menu');
                         if (nextDropdownMenu && nextDropdownMenu.classList.contains('dropdown-menu')) {
                             if (nextDropdownMenu.classList.contains('show')) {
                                 nextDropdownMenu.classList.remove('show');
