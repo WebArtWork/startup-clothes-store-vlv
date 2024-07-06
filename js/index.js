@@ -42,10 +42,12 @@ document.addEventListener("DOMContentLoaded", function() {
                         });
         
                         const nextDropdownMenu = this.nextElementSibling;
-                        if (nextDropdownMenu.classList.contains('show')) {
-                            nextDropdownMenu.classList.remove('show');
-                        } else {
-                            nextDropdownMenu.classList.add('show');
+                        if (nextDropdownMenu && nextDropdownMenu.classList.contains('dropdown-menu')) {
+                            if (nextDropdownMenu.classList.contains('show')) {
+                                nextDropdownMenu.classList.remove('show');
+                            } else {
+                                nextDropdownMenu.classList.add('show');
+                            }
                         }
         
                         event.stopPropagation();
