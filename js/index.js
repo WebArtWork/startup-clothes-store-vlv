@@ -5,6 +5,10 @@ function setMainPhoto(newSrc) {
 
 document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
+
+        document.addEventListener('click', function() {
+            console.log(1);
+        });
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
         dropdownHoverItems.forEach(item => {
@@ -46,10 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         handleDropdownHover();
-    });
-
-    document.addEventListener('click', function() {
-        console.log(1);
     });
 
 });
