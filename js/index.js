@@ -21,10 +21,14 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 item.addEventListener('show.bs.dropdown', function(e) {
                     console.log(e.target);
-                    let dropdowns = document.querySelectorAll('.dropdown-menu');
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('show');
-                    });
+                    if (Array.from(e.target.classList).includes('btn')) {
+                        e.stopPropagation()
+                    } else {
+                        let dropdowns = document.querySelectorAll('.dropdown-menu');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('show');
+                        });
+                    }
                 });
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
