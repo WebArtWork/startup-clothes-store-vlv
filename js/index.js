@@ -9,45 +9,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
         dropdownHoverItems.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
-
+            
             if (window.innerWidth > 992) {
                 item.addEventListener('mouseenter', function() {
-                    // Закриваємо всі відкриті головні меню перед відкриттям нового
-                    closeAllMainDropdownMenus();
-                    if (dropdownMenu.classList.contains('menu-drop1')) {
-                        dropdownMenu.classList.add('show');
-                    }
+                    dropdownMenu.classList.add('show');
                 });
 
                 item.addEventListener('mouseleave', function() {
-                    if (dropdownMenu.classList.contains('menu-drop1')) {
-                        dropdownMenu.classList.remove('show');
-                    }
+                    dropdownMenu.classList.remove('show');
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    // Закриваємо всі відкриті головні меню перед відкриттям нового, якщо це не вкладене меню
-                    if (dropdownMenu.classList.contains('menu-drop1')) {
-                        closeAllMainDropdownMenus();
-                        if (dropdownMenu.classList.contains('show')) {
-                            dropdownMenu.classList.remove('show');
-                        } else {
-                            dropdownMenu.classList.add('show');
-                        }
-                    } else {
-                        // Запобігаємо закриттю вкладених меню
-                        dropdownMenu.classList.toggle('show');
-                    }
+                    e.stopPropagation()
+                    console.log(e.stopPropagation);
+                    // if (Array.from(dropdownMenu.classList)?.length) {
+                    //     console.log(Array.from(e.target.classList));
+                    //     if (Array.from(e.target.classList).includes('dropdown-item')) {
+                    //         console.log(e.target);
+                    //     } else {
+                    //         if (Array.from(dropdownMenu.classList).includes('show')) {
+                    //             dropdownMenu.classList.remove('show');
+                    //         } else {
+                    //             dropdownMenu.classList.add('show');
+                    //         }
+                    //     }
+                    // }
                 });
             }
-        });
-    }
-
-    function closeAllMainDropdownMenus() {
-        let mainDropdownMenus = document.querySelectorAll('.menu-drop1');
-        mainDropdownMenus.forEach(menu => {
-            menu.classList.remove('show');
         });
     }
 
