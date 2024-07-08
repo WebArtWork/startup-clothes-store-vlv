@@ -4,6 +4,12 @@ function setMainPhoto(newSrc) {
 };
 
 document.addEventListener("DOMContentLoaded", function() {
+    function closeAllDropdowns() {
+        let dropdownMenus = document.querySelectorAll('.dropdown-menu.show');
+        dropdownMenus.forEach(menu => {
+            menu.classList.remove('show');
+        });
+    }
     function handleDropdownHover() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
@@ -20,8 +26,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    e.stopPropagation()
-                    console.log(e.stopPropagation);
+                    e.stopPropagation();
+                    closeAllDropdowns();
+                    dropdownMenu.classList.add('show');
                     // if (Array.from(dropdownMenu.classList)?.length) {
                     //     console.log(Array.from(e.target.classList));
                     //     if (Array.from(e.target.classList).includes('dropdown-item')) {
