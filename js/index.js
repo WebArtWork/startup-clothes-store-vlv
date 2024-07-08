@@ -19,6 +19,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     dropdownMenu.classList.remove('show');
                 });
             } else {
+                toggle.addEventListener('show.bs.dropdown', function() {
+                    console.log(document);
+                    let dropdowns = document.querySelectorAll('.dropdown-menu.show');
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('show');
+                    });
+                });
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
