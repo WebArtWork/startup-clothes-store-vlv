@@ -22,15 +22,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.addEventListener('click', function(e) {
                     console.log(e.target);
                     e.stopPropagation();
-                    if (Array.from(e.target.classList).includes('button-menu')) {
-                       console.log('test');
-                        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-                        dropdownHoverItems.forEach(menu => {
-                            if (!menu.classList.contains('show')) {
-                                menu.classList.remove('show');
-                            }
-                        });
-                    }
+                    dropdownHoverItems.forEach(otherItem => {
+                        let otherDropdownMenu = otherItem.querySelector('.dropdown-menu');
+                        if (otherItem !== item) {
+                            otherDropdownMenu.classList.remove('show');
+                        }
+                    });
+
+                    // Toggle the clicked dropdown
+                    dropdownMenu.classList.toggle('show');
                 });
             }
         });
@@ -49,15 +49,15 @@ document.addEventListener("DOMContentLoaded", function() {
         handleDropdownHover();
     });
 
-    // document.addEventListener('click', function(e) {
-    //     if (window.innerWidth <= 992) {
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 992) {
 
-    //         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-    //         dropdownHoverItems.forEach(menu => {
-    //             if (!menu.contains(e.target)) {
-    //                 menu.classList.remove('show');
-    //             }
-    //         });
-    //     }
-    // });
+            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+            dropdownHoverItems.forEach(menu => {
+                if (!menu.contains(e.target)) {
+                    menu.classList.remove('show');
+                }
+            });
+        }
+    });
 });
