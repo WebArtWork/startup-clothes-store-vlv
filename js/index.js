@@ -24,19 +24,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     e.stopPropagation();
                     if (Array.from(e.target.classList).includes('button-menu')) {
                        console.log('test');
+                        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+                        dropdownHoverItems.forEach(menu => {
+                            if (!menu.contains(e.target)) {
+                                menu.classList.remove('show');
+                            }
+                        });
                     }
-                    // if (Array.from(dropdownMenu.classList)?.length) {
-                    //     console.log(Array.from(e.target.classList));
-                    //     if (Array.from(e.target.classList).includes('dropdown-item')) {
-                    //         console.log(e.target);
-                    //     } else {
-                    //         if (Array.from(dropdownMenu.classList).includes('show')) {
-                    //             dropdownMenu.classList.remove('show');
-                    //         } else {
-                    //             dropdownMenu.classList.add('show');
-                    //         }
-                    //     }
-                    // }
                 });
             }
         });
