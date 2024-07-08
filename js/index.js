@@ -22,15 +22,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.addEventListener('click', function(e) {
                     console.log(e.target);
                     e.stopPropagation();
-                    dropdownHoverItems.forEach(otherItem => {
-                        let otherDropdownMenu = otherItem.querySelector('.dropdown-menu');
-                        if (otherItem !== item) {
-                            otherDropdownMenu.classList.remove('show'); 
-                        }
-                    });
-
-                    // Toggle the clicked dropdown
-                    dropdownMenu.classList.toggle('show');
+                    if (Array.from(e.target.classList).includes('button-menu')) {
+                        console.log('test');
+                        console.log(document);
+                    }
                 });
             }
         });
