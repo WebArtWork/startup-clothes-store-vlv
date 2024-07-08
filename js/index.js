@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     dropdownHoverItems.forEach(otherItem => {
                         let otherDropdownMenu = otherItem.querySelector('.dropdown-menu');
                         if (otherItem !== item) {
-                            otherDropdownMenu.classList.remove('show');
+                            otherDropdownMenu.classList.remove('show'); 
                         }
                     });
 
@@ -49,15 +49,4 @@ document.addEventListener("DOMContentLoaded", function() {
         handleDropdownHover();
     });
 
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 992) {
-
-            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-            dropdownHoverItems.forEach(menu => {
-                if (!menu.contains(e.target)) {
-                    menu.classList.remove('show');
-                }
-            });
-        }
-    });
 });
