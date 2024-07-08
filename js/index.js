@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
                        console.log('test');
                         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
                         dropdownHoverItems.forEach(menu => {
-                            if (!menu.contains(e.target)) {
+                            if (!menu.classList.contains('show')) {
                                 menu.classList.remove('show');
                             }
                         });
