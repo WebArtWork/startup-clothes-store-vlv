@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     dropdownMenu.classList.remove('show');
                 });
             } else {
-                item.addEventListener('show.bs.dropdown', function() {
-                    console.log(document);
+                item.addEventListener('show.bs.dropdown', function(e) {
+                    console.log(e.target);
                     let dropdowns = document.querySelectorAll('.dropdown-menu');
                     dropdowns.forEach(dropdown => {
                         dropdown.classList.remove('show');
