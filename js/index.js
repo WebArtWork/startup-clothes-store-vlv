@@ -22,23 +22,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.addEventListener('click', function(e) {
                     console.log(e.target);
                     e.stopPropagation();
-                    if (e.target.classList.contains('dropdown-toggle')) {
-                        // Close all dropdowns except the parent element of the clicked dropdown-toggle
-                        dropdownHoverItems.forEach(otherItem => {
-                            let otherDropdownMenu = otherItem.querySelector('.dropdown-menu');
-                            if (otherItem !== item) {
-                                otherDropdownMenu.classList.remove('show');
-                            }
+                    if (Array.from(e.target.classList).includes('button-menu')) {
+                        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+                        dropdownHoverItems.forEach(menu => {
+                            console.log(menu);
                         });
-
-                        // Toggle the dropdown menu of the clicked element's parent
-                        dropdownMenu.classList.toggle('show');
-                    } else {
-                        // Close all dropdowns
-                        dropdownHoverItems.forEach(otherItem => {
-                            let otherDropdownMenu = otherItem.querySelector('.dropdown-menu');
-                            otherDropdownMenu.classList.remove('show');
-                        });
+                    } else if (Array.from(e.target.classList).includes('dropdown-toggle')) {
+                        
                     }
                 });
             }
