@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('show.bs.dropdown', function(e) {
-                    console.log(e.target);
                     if (Array.from(e.target.classList).includes('btn')) {
                         e.stopPropagation()
                     } else {
