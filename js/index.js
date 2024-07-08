@@ -36,14 +36,19 @@ document.addEventListener("DOMContentLoaded", function() {
                         const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
         
                         openDropdowns.forEach(dropdown => {
-                            if (dropdown !== parentDropdown.querySelector('.menu-drop1') && dropdown !== parentDropdown.querySelector('.menu-drop2')) {
+                            if (dropdown !== parentDropdown.querySelector('.dropdown-menu')) {
                                 dropdown.classList.remove('show');
                             }
                         });
         
-                        const nextDropdownMenu = this.parentElement.querySelector('.menu-drop2, .menu-drop1');
-                        if (nextDropdownMenu && (nextDropdownMenu.classList.contains('menu-drop1') || nextDropdownMenu.classList.contains('menu-drop2'))) {
-                            nextDropdownMenu.classList.toggle('show');
+                        console.log(event.target.parentElement.parentElement);
+                        const nextDropdownMenu = event.target.parentElement.parentElement.querySelector('.dropdown-menu');
+                        if (nextDropdownMenu && nextDropdownMenu.classList.contains('dropdown-menu')) {
+                            if (nextDropdownMenu.classList.contains('show')) {
+                                nextDropdownMenu.classList.remove('show');
+                            } else {
+                                nextDropdownMenu.classList.add('show');
+                            }
                         }
         
                         event.stopPropagation();
@@ -51,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
         
                 // Prevent closing dropdown when clicking inside a submenu
-                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                document.querySelectorAll('.menu-drop2').forEach(menu => {
                     menu.addEventListener('click', function(event) {
                         event.stopPropagation();
                     });
