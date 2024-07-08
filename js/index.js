@@ -4,15 +4,6 @@ function setMainPhoto(newSrc) {
 };
 
 document.addEventListener("DOMContentLoaded", function() {
-    function closeAllDropdowns(except = null) {
-        let dropdownMenus = document.querySelectorAll('.dropdown-menu.show');
-        dropdownMenus.forEach(menu => {
-            if (menu !== except) {
-                menu.classList.remove('show');
-            }
-        });
-    }
-
     function handleDropdownHover() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
@@ -21,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
             
             if (window.innerWidth > 992) {
                 item.addEventListener('mouseenter', function() {
-                    closeAllDropdowns(dropdownMenu);
                     dropdownMenu.classList.add('show');
                 });
 
@@ -30,17 +20,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    if (dropdownMenu.classList.contains('show')) {
-                        dropdownMenu.classList.remove('show');
-                    } else {
-                        closeAllDropdowns(dropdownMenu);
-                        dropdownMenu.classList.add('show');
-                    }
-                });
-
-                dropdownMenu.addEventListener('click', function(e) {
-                    e.stopPropagation();  // Prevent the submenu click from closing the parent dropdown
+                    e.stopPropagation()
+                    // if (Array.from(dropdownMenu.classList)?.length) {
+                    //     console.log(Array.from(e.target.classList));
+                    //     if (Array.from(e.target.classList).includes('dropdown-item')) {
+                    //         console.log(e.target);
+                    //     } else {
+                    //         if (Array.from(dropdownMenu.classList).includes('show')) {
+                    //             dropdownMenu.classList.remove('show');
+                    //         } else {
+                    //             dropdownMenu.classList.add('show');
+                    //         }
+                    //     }
+                    // }
                 });
             }
         });
@@ -58,4 +50,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
         handleDropdownHover();
     });
+
+    // document.addEventListener('click', function(e) {
+    //     if (window.innerWidth <= 992) {
+
+    //         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+    //         dropdownHoverItems.forEach(menu => {
+    //             if (!menu.contains(e.target)) {
+    //                 menu.classList.remove('show');
+    //             }
+    //         });
+    //     }
+    // });
 });
