@@ -48,4 +48,15 @@ document.addEventListener("DOMContentLoaded", function() {
         handleDropdownHover();
     });
 
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 992) {
+
+            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+            dropdownHoverItems.forEach(menu => {
+                console.log('testtt');
+                console.log(menu);
+            });
+        }
+    });
+
 });
