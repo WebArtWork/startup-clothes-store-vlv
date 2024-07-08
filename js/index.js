@@ -5,10 +5,6 @@ function setMainPhoto(newSrc) {
 
 document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
-
-        document.addEventListener('click', function() {
-            console.log(1);
-        });
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
         dropdownHoverItems.forEach(item => {
@@ -26,14 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.addEventListener('click', function(e) {
                     console.log(2);
                     e.stopPropagation();
-                    if (Array.from(e.target.classList).includes('button-menu')) {
-                        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-                        dropdownHoverItems.forEach(menu => {
-
-                        });
-                    } else if (Array.from(e.target.classList).includes('dropdown-toggle')) {
-                        
-                    }
                 });
             }
         });
