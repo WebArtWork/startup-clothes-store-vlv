@@ -37,8 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         }
                     } else {
                         // Запобігаємо закриттю вкладених меню
-                        let parentDropdownMenu = item.closest('.menu-drop1');
-                        closeAllMainDropdownMenusExcept(parentDropdownMenu);
                         dropdownMenu.classList.toggle('show');
                     }
                 });
@@ -50,15 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
         let mainDropdownMenus = document.querySelectorAll('.menu-drop1');
         mainDropdownMenus.forEach(menu => {
             menu.classList.remove('show');
-        });
-    }
-
-    function closeAllMainDropdownMenusExcept(exception) {
-        let mainDropdownMenus = document.querySelectorAll('.menu-drop1');
-        mainDropdownMenus.forEach(menu => {
-            if (menu !== exception) {
-                menu.classList.remove('show');
-            }
         });
     }
 
