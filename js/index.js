@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    e.stopPropagation()
+                    console.log(e.target);
+                    e.stopPropagation();
                     // if (Array.from(dropdownMenu.classList)?.length) {
                     //     console.log(Array.from(e.target.classList));
                     //     if (Array.from(e.target.classList).includes('dropdown-item')) {
