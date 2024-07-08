@@ -3,27 +3,28 @@ function setMainPhoto(newSrc) {
     mainPhoto.src = newSrc;
 };
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
-        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
+        // Знаходимо перший елемент з класом .dropdown-hover
+        let firstDropdownHoverItem = document.querySelector('.dropdown-hover');
 
-        dropdownHoverItems.forEach(item => {
-            let dropdownMenu = item.querySelector('.dropdown-menu');
+        if (firstDropdownHoverItem) {
+            let dropdownMenu = firstDropdownHoverItem.querySelector('.dropdown-menu');
 
             if (window.innerWidth > 992) {
-                item.addEventListener('mouseenter', function () {
-                    // Закриваємо всі відкриті меню перед відкриттям поточного
+                firstDropdownHoverItem.addEventListener('mouseenter', function() {
+                    // Закриваємо всі відкриті меню перед відкриттям нового
                     closeAllDropdownMenus();
                     dropdownMenu.classList.add('show');
                 });
 
-                item.addEventListener('mouseleave', function () {
+                firstDropdownHoverItem.addEventListener('mouseleave', function() {
                     dropdownMenu.classList.remove('show');
                 });
             } else {
-                item.addEventListener('click', function (e) {
+                firstDropdownHoverItem.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    // Закриваємо всі відкриті меню перед відкриттям поточного
+                    // Закриваємо всі відкриті меню перед відкриттям нового
                     closeAllDropdownMenus();
                     if (dropdownMenu.classList.contains('show')) {
                         dropdownMenu.classList.remove('show');
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 });
             }
-        });
+        }
     }
 
     function closeAllDropdownMenus() {
@@ -44,14 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     handleDropdownHover();
 
-    window.addEventListener('resize', function () {
-        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
-
-        dropdownHoverItems.forEach(item => {
-            let dropdownMenu = item.querySelector('.dropdown-menu');
-            item.replaceWith(item.cloneNode(true));
-        });
-
+    window.addEventListener('resize', function() {
+        // Перезапускаємо функцію handleDropdownHover після зміни розміру вікна
         handleDropdownHover();
-    })
+    });
 });
