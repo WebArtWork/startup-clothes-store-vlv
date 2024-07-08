@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.addEventListener('click', function(e) {
                     console.log(e.target);
                     e.stopPropagation();
+                    if (Array.from(e.target.classList).contains('button-menu')) {
+                       console.log('test');
+                    }
                     // if (Array.from(dropdownMenu.classList)?.length) {
                     //     console.log(Array.from(e.target.classList));
                     //     if (Array.from(e.target.classList).includes('dropdown-item')) {
