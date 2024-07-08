@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             } else {
                 item.addEventListener('click', function(e) {
-                    console.log(2);
                     e.stopPropagation();
                 });
             }
