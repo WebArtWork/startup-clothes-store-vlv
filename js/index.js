@@ -8,12 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
         dropdownHoverItems.forEach(item => {
-            let dropdownToggle = item.querySelector('.dropdown-toggle');
             let dropdownMenu = item.querySelector('.dropdown-menu');
             
             if (window.innerWidth > 992) {
                 item.addEventListener('mouseenter', function() {
-                    closeAllDropdowns();
                     dropdownMenu.classList.add('show');
                 });
 
@@ -21,22 +19,19 @@ document.addEventListener("DOMContentLoaded", function() {
                     dropdownMenu.classList.remove('show');
                 });
             } else {
-                dropdownToggle.addEventListener('click', function(e) {
+                item.addEventListener('click', function(e) {
+                    console.log(2);
                     e.stopPropagation();
-                    let isVisible = dropdownMenu.classList.contains('show');
-                    closeAllDropdowns();
-                    if (!isVisible) {
-                        dropdownMenu.classList.add('show');
+                    if (Array.from(e.target.classList).includes('button-menu')) {
+                        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+                        dropdownHoverItems.forEach(menu => {
+
+                        });
+                    } else if (Array.from(e.target.classList).includes('dropdown-toggle')) {
+                        
                     }
                 });
             }
-        });
-    }
-
-    function closeAllDropdowns() {
-        let dropdownMenus = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-        dropdownMenus.forEach(menu => {
-            menu.classList.remove('show');
         });
     }
 
@@ -52,7 +47,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         handleDropdownHover();
     });
+
     document.addEventListener('click', function() {
-        closeAllDropdowns();
+        console.log(1);
     });
+
 });
