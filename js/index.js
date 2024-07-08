@@ -8,10 +8,12 @@ document.addEventListener("DOMContentLoaded", function() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
         dropdownHoverItems.forEach(item => {
+            let dropdownToggle = item.querySelector('.dropdown-toggle');
             let dropdownMenu = item.querySelector('.dropdown-menu');
             
             if (window.innerWidth > 992) {
                 item.addEventListener('mouseenter', function() {
+                    closeAllDropdowns();
                     dropdownMenu.classList.add('show');
                 });
 
@@ -19,19 +21,22 @@ document.addEventListener("DOMContentLoaded", function() {
                     dropdownMenu.classList.remove('show');
                 });
             } else {
-                item.addEventListener('click', function(e) {
-                    console.log(e.target);
+                dropdownToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    if (Array.from(e.target.classList).includes('button-menu')) {
-                        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-                        dropdownHoverItems.forEach(menu => {
-                            console.log(menu);
-                        });
-                    } else if (Array.from(e.target.classList).includes('dropdown-toggle')) {
-                        
+                    let isVisible = dropdownMenu.classList.contains('show');
+                    closeAllDropdowns();
+                    if (!isVisible) {
+                        dropdownMenu.classList.add('show');
                     }
                 });
             }
+        });
+    }
+
+    function closeAllDropdowns() {
+        let dropdownMenus = document.querySelectorAll('.dropdown-hover .dropdown-menu');
+        dropdownMenus.forEach(menu => {
+            menu.classList.remove('show');
         });
     }
 
@@ -47,16 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         handleDropdownHover();
     });
-
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 992) {
-
-            let dropdownHoverItems = document.querySelectorAll('.dropdown-hover .dropdown-menu');
-            dropdownHoverItems.forEach(menu => {
-                console.log('testtt');
-                console.log(menu);
-            });
-        }
+    document.addEventListener('click', function() {
+        closeAllDropdowns();
     });
-
 });
