@@ -27,14 +27,19 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 item.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    // Закриваємо всі відкриті головні меню перед відкриттям нового
-                    closeAllMainDropdownMenus();
+                    // Закриваємо всі відкриті головні меню перед відкриттям нового, якщо це не вкладене меню
                     if (dropdownMenu.classList.contains('menu-drop1')) {
+                        closeAllMainDropdownMenus();
                         if (dropdownMenu.classList.contains('show')) {
                             dropdownMenu.classList.remove('show');
                         } else {
                             dropdownMenu.classList.add('show');
                         }
+                    } else {
+                        // Запобігаємо закриттю вкладених меню
+                        let parentDropdownMenu = item.closest('.menu-drop1');
+                        closeAllMainDropdownMenusExcept(parentDropdownMenu);
+                        dropdownMenu.classList.toggle('show');
                     }
                 });
             }
@@ -45,6 +50,15 @@ document.addEventListener("DOMContentLoaded", function() {
         let mainDropdownMenus = document.querySelectorAll('.menu-drop1');
         mainDropdownMenus.forEach(menu => {
             menu.classList.remove('show');
+        });
+    }
+
+    function closeAllMainDropdownMenusExcept(exception) {
+        let mainDropdownMenus = document.querySelectorAll('.menu-drop1');
+        mainDropdownMenus.forEach(menu => {
+            if (menu !== exception) {
+                menu.classList.remove('show');
+            }
         });
     }
 
