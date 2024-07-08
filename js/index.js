@@ -5,40 +5,45 @@ function setMainPhoto(newSrc) {
 
 document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
-        // Знаходимо перший елемент з класом .dropdown-hover
-        let firstDropdownHoverItem = document.querySelector('.dropdown-hover');
+        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
 
-        if (firstDropdownHoverItem) {
-            let dropdownMenu = firstDropdownHoverItem.querySelector('.dropdown-menu');
+        dropdownHoverItems.forEach(item => {
+            let dropdownMenu = item.querySelector('.dropdown-menu');
 
             if (window.innerWidth > 992) {
-                firstDropdownHoverItem.addEventListener('mouseenter', function() {
-                    // Закриваємо всі відкриті меню перед відкриттям нового
-                    closeAllDropdownMenus();
-                    dropdownMenu.classList.add('show');
-                });
-
-                firstDropdownHoverItem.addEventListener('mouseleave', function() {
-                    dropdownMenu.classList.remove('show');
-                });
-            } else {
-                firstDropdownHoverItem.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    // Закриваємо всі відкриті меню перед відкриттям нового
-                    closeAllDropdownMenus();
-                    if (dropdownMenu.classList.contains('show')) {
-                        dropdownMenu.classList.remove('show');
-                    } else {
+                item.addEventListener('mouseenter', function() {
+                    // Закриваємо всі відкриті головні меню перед відкриттям нового
+                    closeAllMainDropdownMenus();
+                    if (dropdownMenu.classList.contains('menu-drop1')) {
                         dropdownMenu.classList.add('show');
                     }
                 });
+
+                item.addEventListener('mouseleave', function() {
+                    if (dropdownMenu.classList.contains('menu-drop1')) {
+                        dropdownMenu.classList.remove('show');
+                    }
+                });
+            } else {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    // Закриваємо всі відкриті головні меню перед відкриттям нового
+                    closeAllMainDropdownMenus();
+                    if (dropdownMenu.classList.contains('menu-drop1')) {
+                        if (dropdownMenu.classList.contains('show')) {
+                            dropdownMenu.classList.remove('show');
+                        } else {
+                            dropdownMenu.classList.add('show');
+                        }
+                    }
+                });
             }
-        }
+        });
     }
 
-    function closeAllDropdownMenus() {
-        let dropdownMenus = document.querySelectorAll('.dropdown-menu');
-        dropdownMenus.forEach(menu => {
+    function closeAllMainDropdownMenus() {
+        let mainDropdownMenus = document.querySelectorAll('.menu-drop1');
+        mainDropdownMenus.forEach(menu => {
             menu.classList.remove('show');
         });
     }
@@ -46,7 +51,13 @@ document.addEventListener("DOMContentLoaded", function() {
     handleDropdownHover();
 
     window.addEventListener('resize', function() {
-        // Перезапускаємо функцію handleDropdownHover після зміни розміру вікна
+        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
+        
+        dropdownHoverItems.forEach(item => {
+            let dropdownMenu = item.querySelector('.dropdown-menu');
+            item.replaceWith(item.cloneNode(true));
+        });
+
         handleDropdownHover();
     });
 });
