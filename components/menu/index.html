@@ -1,13 +1,11 @@
 {% for tag in tags %}
 <li class="menu-item">
     <div class="dropdown-item">
-        <div>
-            <a href="/products/{{{tag._id|string}}}" class="menu-link">{{{tag.name}}}</a>
-            {% if tag.allTags and tag.allTags|length > 0 %}
-            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            </button>
-            {% endif %}
-        </div>
+        <a href="/products/{{{tag._id|string}}}" class="menu-link">{{{tag.name}}}</a>
+        {% if tag.allTags and tag.allTags|length > 0 %}
+        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        </button>
+        {% endif %}
         {% if tag.allTags and tag.allTags|length > 0 %}
         <div class="btn-group dropend dropdown-hover">
             <ul class="dropdown-menu menu-drop2">
