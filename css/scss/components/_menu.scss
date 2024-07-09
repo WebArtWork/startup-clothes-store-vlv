@@ -210,8 +210,7 @@
 }
 
 .btn-group-vertical>.btn, .btn-group>.btn {
-    position: relative;
-	flex: 0;
+	flex: 0 !important;
 }
 
 
