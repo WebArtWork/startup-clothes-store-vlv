@@ -254,6 +254,10 @@
 
 }
 
+.btn-group-vertical>.btn, .btn-group>.btn {
+	flex: 0;
+}
+
 @media (max-width: 992px) {
 
 	.dropdown-item {
