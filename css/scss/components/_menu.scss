@@ -272,6 +272,11 @@
 		position: absolute;
 	}
 }
+@media (min-width: 768px) {
+	.menu-link {
+		flex-grow: 1;
+	}
+}
 
 @media (max-width: 768px) {
 	.dropdown-menu {
