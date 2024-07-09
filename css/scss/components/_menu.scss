@@ -209,6 +209,11 @@
 	color: #2a2828;
 }
 
+.btn-group-vertical>.btn, .btn-group>.btn {
+    position: relative;
+	flex: 0;
+}
+
 
 
 @media (min-width: 992px) {
@@ -298,11 +303,13 @@
 		text-align: start;
 	}
 	.dropdown-item {
-        align-items: start;
-        flex-direction: column; /* Додаємо цей стиль */
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
     }
 
-	.dropdown-item .btn {
+	.dropdown-hover .btn {
 		text-align: left;
 		transform: rotate(90deg);
 	}

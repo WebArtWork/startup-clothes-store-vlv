@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.addEventListener('mouseleave', function() {
                     dropdownMenu.classList.remove('show');
                 });
-            } else {
+            } else {    
                 item.addEventListener('show.bs.dropdown', function(e) {
                     if (Array.from(e.target.classList).includes('btn')) {
                         e.stopPropagation()
