@@ -73,6 +73,10 @@
 							window.location.href = '/cart';
 						});
 					</script>
+					{% if product.size %}
+					<div class="product-info__cart-text">Розміри:</div>
+					<div class="product-info__cart">{{{product.size}}}</div>
+					{% endif %}
 					{% if product.description %}
 					<div class="product-info__cart-text">Подробиці:</div>
 					<div class="product-info__cart">{{{product.description}}}</div>
