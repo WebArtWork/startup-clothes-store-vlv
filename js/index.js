@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     handleDropdownHover();
 
     window.addEventListener('resize', function() {
-        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
+        let dropdownHoverItems = document.querySelectorAll('.dropdown-item');
         
         dropdownHoverItems.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
