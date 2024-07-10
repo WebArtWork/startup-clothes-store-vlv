@@ -278,6 +278,12 @@
 	}
 }
 
+@media (min-width: 769px) {
+	.menu-link {
+		flex-grow: 1;
+	}
+}
+
 @media (max-width: 768px) {
 	.dropdown-menu {
 		height: auto;
@@ -285,10 +291,6 @@
 		li {
 			display: table;
 		}
-	}
-
-	.menu-link {
-		flex-grow: 1;
 	}
 
 	.menu-drop1 {
