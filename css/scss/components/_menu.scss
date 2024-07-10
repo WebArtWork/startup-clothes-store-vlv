@@ -280,9 +280,10 @@
 @media (min-width: 769px) {
 	.dropdown-item {
 		width: 100%;
-		.menu-link {
-			flex-grow: 1;
-		}
+	}
+
+	.menu-link {
+		flex-grow: 1;
 	}
 }
 
