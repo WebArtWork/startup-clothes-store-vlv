@@ -5,7 +5,7 @@ function setMainPhoto(newSrc) {
 
 document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
-        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
+        let dropdownHoverItems = document.querySelectorAll('.dropdown-item');
 
         dropdownHoverItems.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
