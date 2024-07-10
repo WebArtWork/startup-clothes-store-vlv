@@ -5,9 +5,11 @@ function setMainPhoto(newSrc) {
 
 document.addEventListener("DOMContentLoaded", function() {
     function handleDropdownHover() {
-        let dropdownHoverItems = document.querySelectorAll('.dropdown-item');
+        const dropdownHoverElements = document.querySelectorAll('.dropdown-hover');
+        const dropdownItemElements = document.querySelectorAll('.dropdown-item');
 
-        dropdownHoverItems.forEach(item => {
+        const combinedArray = [...dropdownHoverElements, ...dropdownItemElements];
+        combinedArray.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
             
             if (window.innerWidth > 992) {
@@ -40,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
     handleDropdownHover();
 
     window.addEventListener('resize', function() {
-        let dropdownHoverItems = document.querySelectorAll('.dropdown-item');
+        let dropdownHoverItems = document.querySelectorAll('.dropdown-hover');
         
         dropdownHoverItems.forEach(item => {
             let dropdownMenu = item.querySelector('.dropdown-menu');
