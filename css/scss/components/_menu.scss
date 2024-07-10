@@ -170,6 +170,11 @@
 	margin-bottom: 10px;
 }
 
+.dropdown-menu {
+	--bs-dropdown-link-hover-bg: white;
+	--bs-dropdown-link-active-bg: #ffffff;
+}
+
 .menu-drop1 {
 	top: 50px;
 	border: none;
@@ -273,16 +278,8 @@
 	}
 }
 
-@media (min-width: 769px) {
-	.menu-link {
-		flex-grow: 1;
-	}
-}
-
 @media (max-width: 768px) {
 	.dropdown-menu {
-		--bs-dropdown-link-hover-bg: white;
-		--bs-dropdown-link-active-bg: #ffffff;
 		height: auto;
 
 		li {
