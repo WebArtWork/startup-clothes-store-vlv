@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-item');
 
         dropdownHoverItems.forEach(item => {
+            console.log(item);
             let dropdownMenu = item.querySelector('.dropdown-menu');
             
             if (window.innerWidth > 992) {
