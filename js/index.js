@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let dropdownHoverItems = document.querySelectorAll('.dropdown-item');
 
         dropdownHoverItems.forEach(item => {
-            console.log(item);
             let dropdownMenu = item.querySelector('.dropdown-menu');
             
             if (window.innerWidth > 992) {
+                console.log(dropdownMenu);
                 item.addEventListener('mouseenter', function() {
                     dropdownMenu.classList.add('show');
                 });
