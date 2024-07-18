@@ -78,10 +78,10 @@
 					<div class="product-info__cart-text">Розміри:</div>
 					<div class="product-info__cart size-container">
 						{% for size in product.size %}
-						{% if product.quantity > 0 %}
+						{% if size.quantity > 0 %}
 						<span class="size">{{{size.size.name}}}</span>
 						{% endif %}
-						{% if !(product.quantity > 0) %}
+						{% if !(size.quantity > 0) %}
 						<span class="no-size">{{{size.size.name}}}</span>
 						{% endif %}
 						{% endfor %}
