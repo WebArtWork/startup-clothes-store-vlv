@@ -197,7 +197,7 @@
 }
 
 .size {
-  padding: 6px 8px;
+  padding: 7px 8px;
   border: 1px solid #ccc;
   cursor: pointer;
   position: relative;
@@ -232,6 +232,6 @@
 }
 
 .size.selected {
-  background-color: rgb(185, 185, 185);
+  background-color: rgba(185, 185, 185, 0.699);
   color: black;
 }
