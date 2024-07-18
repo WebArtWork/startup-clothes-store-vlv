@@ -40,6 +40,17 @@
 					<div class="product-info__price">
 						{{{product.price}}}&nbsp;<span>{{{currency}}}</span>
 					</div>
+					<div class="product-info__cart-text">Розміри:</div>
+					<div class="product-info__cart size-container">
+						{% for size in product.size %}
+						{% if size.quantity > 0 %}
+						<span class="size">{{{size.size.name}}}</span>
+						{% endif %}
+						{% if !(size.quantity > 0) %}
+						<span class="no-size">{{{size.size.name}}}</span>
+						{% endif %}
+						{% endfor %}
+					</div>
 					<div class="product-info__cart">
 						<button id="addToCart" type="button" class="btn product-info__cart-btn">
 							Додати у кошик
@@ -75,17 +86,6 @@
 							window.location.href = '/cart';
 						});   
 					</script>
-					<div class="product-info__cart-text">Розміри:</div>
-					<div class="product-info__cart size-container">
-						{% for size in product.size %}
-						{% if size.quantity > 0 %}
-						<span class="size">{{{size.size.name}}}</span>
-						{% endif %}
-						{% if !(size.quantity > 0) %}
-						<span class="no-size">{{{size.size.name}}}</span>
-						{% endif %}
-						{% endfor %}
-					</div>
 					{% if product.description %}
 					<div class="product-info__cart-text">Подробиці:</div>
 					<div class="product-info__cart">{{{product.description}}}</div>
