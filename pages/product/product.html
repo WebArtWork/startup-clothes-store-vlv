@@ -73,21 +73,18 @@
 							const product = "{{{product.id}}}";
 							await toggleProduct();
 							window.location.href = '/cart';
-						});
-
-						function isProductAvailable(product) {
-							console.log('test');
-							return product.size.some((el) =>  el.quantity && el.quantity > 0)
-						}
+						});   
 					</script>
 					<div class="product-info__cart-text">Розміри:</div>
 					<div class="product-info__cart size-container">
 						{% for size in product.size %}
+						{% if product.quantity > 0 %}
 						<span class="size">{{{size.size.name}}}</span>
-						{% endfor %}
-						{% if !isProductAvailable(product) %}
+						{% endif %}
+						{% if !(product.quantity > 0) %}
 						<span class="no-size">{{{size.size.name}}}</span>
 						{% endif %}
+						{% endfor %}
 					</div>
 					{% if product.description %}
 					<div class="product-info__cart-text">Подробиці:</div>
