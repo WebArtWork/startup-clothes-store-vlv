@@ -83,10 +83,10 @@
 					<div class="product-info__cart-text">Розміри:</div>
 					<div class="product-info__cart size-container">
 						{% for size in product.size %}
-						<span class="size">{{size.size.name}}</span>
+						<span class="size">{{{size.size.name}}}</span>
 						{% endfor %}
 						{% if !isProductAvailable(product) %}
-						<span class="no-size">Немає розмірів</span>
+						<span class="no-size">{{{size.size.name}}}</span>
 						{% endif %}
 					</div>
 					{% if product.description %}
