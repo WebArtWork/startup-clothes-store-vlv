@@ -168,3 +168,18 @@
 .thumbnail:hover {
   border-color: #333;
 }
+
+.size-container {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.size {
+  color: green;
+  font-weight: bold;
+}
+
+.no-size {
+  color: red;
+  text-decoration: line-through;
+}

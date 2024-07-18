@@ -24,13 +24,15 @@
 						<span class="visually-hidden">Next</span>
 					</button>
 				</div> -->
-				<img id="mainPhoto" class="main-photo" src="{{{product.thumb}}}" alt="Головне фото" onclick="setMainPhoto('{{{product.thumb}}}')">
+				<img id="mainPhoto" class="main-photo" src="{{{product.thumb}}}" alt="Головне фото"
+					onclick="setMainPhoto('{{{product.thumb}}}')">
 				<div id="thumbnails">
-					<img id="mainPhoto" class="thumbnail" src="{{{product.thumb}}}" alt="Головне фото" onclick="setMainPhoto('{{{product.thumb}}}')">
+					<img id="mainPhoto" class="thumbnail" src="{{{product.thumb}}}" alt="Головне фото"
+						onclick="setMainPhoto('{{{product.thumb}}}')">
 					{% for thumb in product.thumbs %}
-					  <img class="thumbnail" src="{{{thumb}}}" alt="Маленьке фото" onclick="setMainPhoto('{{{thumb}}}')">
+					<img class="thumbnail" src="{{{thumb}}}" alt="Маленьке фото" onclick="setMainPhoto('{{{thumb}}}')">
 					{% endfor %}
-				  </div>
+				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="product-info">
@@ -72,11 +74,21 @@
 							await toggleProduct();
 							window.location.href = '/cart';
 						});
+
+						function isProductAvailable(product) {
+							console.log('test');
+							return product.size.some((el) =>  el.quantity && el.quantity > 0)
+						}
 					</script>
 					<div class="product-info__cart-text">Розміри:</div>
-					{% for size in product.size %}
-						<div class="product-info__cart">{{{size.size.name}}}</div>
-					{% endfor %}
+					<div class="product-info__cart size-container">
+						{% for size in product.size %}
+						<span class="size">{{size.size.name}}</span>
+						{% endfor %}
+						{% if !isProductAvailable(product) %}
+						<span class="no-size">Немає розмірів</span>
+						{% endif %}
+					</div>
 					{% if product.description %}
 					<div class="product-info__cart-text">Подробиці:</div>
 					<div class="product-info__cart">{{{product.description}}}</div>
