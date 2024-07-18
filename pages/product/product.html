@@ -44,10 +44,10 @@
 					<div class="product-info__cart size-container">
 						{% for size in product.size %}
 						{% if size.quantity > 0 %}
-						<span class="size">{{{size.size.name}}}</span>
+						<span class="size available">{{{size.size.name}}}</span>
 						{% endif %}
 						{% if !(size.quantity > 0) %}
-						<span class="no-size">{{{size.size.name}}}</span>
+						<span class="size no-size">{{{size.size.name}}}</span>
 						{% endif %}
 						{% endfor %}
 					</div>
@@ -84,7 +84,20 @@
 							const product = "{{{product.id}}}";
 							await toggleProduct();
 							window.location.href = '/cart';
-						});   
+						});
+
+
+
+						document.addEventListener('DOMContentLoaded', function () {
+							const sizeElements = document.querySelectorAll('.size.available');
+
+							sizeElements.forEach(element => {
+								element.addEventListener('click', function () {
+									sizeElements.forEach(el => el.classList.remove('selected'));
+									element.classList.add('selected');
+								});
+							});
+						})
 					</script>
 					{% if product.description %}
 					<div class="product-info__cart-text">Подробиці:</div>
