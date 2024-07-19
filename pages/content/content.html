@@ -1,15 +1,12 @@
 <div class="container product__container">
 	<section class="product">
-		<div class="row">
-		<div class="product__img col-md-12">
-				<img src="{{{content.thumb}}}" alt="" />
-		</div>
-		<div class="product-info col-md-12">
-			<div class="product-info__title">{{{content.name}}}</div>
-			<div class="product-info__cart">
-				<h5>{{{content.description|safe}}}</h5>
+				<img src="{{{content.thumb}}}" alt="" style="width: auto;
+		height: 300px; object-fit: cover; display: block; margin: 0 auto;" />
+			<div class="product-info">
+				<div class="product-info__title">{{{content.name}}}</div>
+				<div class="product-info__cart">
+					<h5>{{{content.description|safe}}}</h5>
+				</div>
 			</div>
-		</div>
-	</div>
 	</section>
 </div>
