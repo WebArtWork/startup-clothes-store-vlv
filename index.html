@@ -250,11 +250,11 @@
             </div>
 			{% endif %}
 
-      {% if content.length %}
+      {% if top_contents.length %}
             <div class="footer-top__item">
               <div class="footer-top__title">Споживачам</div>
               <ul class="footer-top__ul">
-				{% for content in contents %}
+				{% for content in top_contents %}
                 <li class="footer-top__li">
 					<a href="{{{content.url}}}">{{{content.name}}}</a>
 				</li>
