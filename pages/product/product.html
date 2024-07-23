@@ -66,7 +66,8 @@
 						const toggleProduct = async (quantity = 1) => {
 							const product = "{{{product.id}}}"; 
 							const size = document.getElementsByClassName('size available selected')[0].innerHTML;
-							await Order.toggleProduct(product, quantity, size);
+							const quantityModel = product.size.find(el => el.size.name == size);
+							await Order.toggleProduct(product, quantity, quantityModel);
 							if (await Order.hasProduct(product)) {
 								Dom.element("addToCart").innerHTML = "Забрати з кошика";
 								Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
