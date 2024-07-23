@@ -64,8 +64,8 @@
 						import Order from "/api/wjst/order";
 
 						const toggleProduct = async (quantity = 1) => {
-							const product = "{{{product.id}}}";
-							const size = document.getElementsByClassName('.size.available.selected')[0].innerHTML;
+							const product = "{{{product.id}}}"; 
+							const size = document.getElementsByClassName('size available selected')[0].innerHTML;
 							await Order.toggleProduct(product, quantity, size);
 							if (await Order.hasProduct(product)) {
 								Dom.element("addToCart").innerHTML = "Забрати з кошика";
