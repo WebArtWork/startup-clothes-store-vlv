@@ -97,6 +97,7 @@
   }
   .product {
     display: table-cell;
+    max-width: 360px;
 
     &__img {
       img {
