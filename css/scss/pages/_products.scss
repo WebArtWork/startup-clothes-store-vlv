@@ -52,6 +52,7 @@
 }
 
 .cloth__list {
+  width: 1000px;
   display: flex;
   flex-wrap: wrap;
   gap: 70px 50px;
@@ -70,12 +71,21 @@
   }
 
   img {
-    height: 427px;
+    height: 350px;
+    width: 400px;
+  }
+}
+@media (max-width: 1400px) {
+  .cloth__list {
+    width: 800px;
+    justify-content: center;
+    padding: 0 10px;
   }
 }
 
 @media (max-width: 992px) {
   .cloth__list {
+    width: 100%;
     justify-content: center;
     padding: 0 10px;
   }
@@ -85,4 +95,56 @@
   .cloth__list {
     padding: 0;
   }
+}
+
+
+
+// sidebar
+
+.sidebar {
+  padding: 20px;
+  margin: 20px 0px; 
+  border-right: 1px solid #ddd;
+}
+.sidebar h3 {
+  font-size: 20px;
+  margin-top: 0;
+  text-transform: uppercase ;
+}
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+.sidebar li {
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+}
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+.sidebar ul li label {
+    display: block;
+    cursor: pointer;
+    color: #333;
+}
+.sidebar ul li input[type="checkbox"] {
+    margin-right: 10px;
+}
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+.sidebar ul li a:hover {
+  text-decoration: none;
+  color: #069aa2;
+}
+.sidebar ul li ul {
+  display: none;
+  margin-top: 5px;
+  margin-left: 15px;
+}
+.sidebar ul li.active ul {
+  display: block;
 }

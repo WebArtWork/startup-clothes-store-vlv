@@ -23,18 +23,170 @@
   </div>
 </div>
 {% endfor %} -->
-
 <div class="container cloth-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar">
+        <h3>Фільтрувати за</h3>
+        <ul>
+          <li>
+            <a href="#" class="toggle-category">Вік</a>
+            
+                            <ul>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="0-3">
+                                        0-3 місяці
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="3-6">
+                                        3-6 місяців
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="6-12">
+                                        6-12 місяців
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="1-2">
+                                        1-2 роки
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="2-3">
+                                        2-3 роки
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="3-4">
+                                        3-4 роки
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="4-5">
+                                        4-5 років
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="5-6">
+                                        5-6 років
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="6-7">
+                                        6-7 років
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="7-8">
+                                        7-8 років
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="8-9">
+                                        8-9 років
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="age" value="9-10">
+                                        9-10 років
+                                    </label>
+                                </li>6
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="toggle-category">Категорія товару</a>
+            <ul>
+              <li><a href="#">Футболки</a></li>
+              <li><a href="#">Штани</a></li>
+              <li><a href="#">Сукні</a></li>
+              <li><a href="#">Куртки</a></li>
+              <li><a href="#">Спортивний одяг</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="toggle-category">Ціна</a>
+            <ul>
+              <li><a href="#">До 500 грн</a></li>
+              <li><a href="#">500-1000 грн</a></li>
+              <li><a href="#">1000-2000 грн</a></li>
+              <li><a href="#">2000-3000 грн</a></li>
+              <li><a href="#">3000+ грн</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="toggle-category">Відсоток знижки</a>
+            <ul>
+              <li><a href="#">До 10%</a></li>
+              <li><a href="#">10-20%</a></li>
+              <li><a href="#">20-30%</a></li>
+              <li><a href="#">30-40%</a></li>
+              <li><a href="#">40-50%</a></li>
+              <li><a href="#">50%+</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="toggle-category">Наявність</a>
+            <ul>
+              <li><a href="#">В наявності</a></li>
+              <li><a href="#">Немає в наявності</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="toggle-category">Сезон</a>
+            <ul>
+              <li><a href="#">Весна</a></li>
+              <li><a href="#">Літо</a></li>
+              <li><a href="#">Осінь</a></li>
+              <li><a href="#">Зима</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
       <div class="cloth__list">
-          {% for product in products %}
+        {% for product in products %}
         <a href="/product/{{{product._id|string}}}" class="cloth__item cloth__item-products" data-modal-id="modal">
-        	<img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
-        	<div class="cloth__item-title">{{{product.name}}}</div>
-        	<div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
+          <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
+          <div class="cloth__item-title">{{{product.name}}}</div>
+          <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
         </a>
         {% endfor %}
+      </div>
     </div>
+  </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      var toggles = document.querySelectorAll('.toggle-category');
+      toggles.forEach(function (toggle) {
+          toggle.addEventListener('click', function (event) {
+              event.preventDefault();
+              var parentLi = this.parentElement;
+              if (parentLi.classList.contains('active')) {
+                  parentLi.classList.remove('active');
+              } else {
+                  parentLi.classList.add('active');
+              }
+          });
+      });
+  });
+</script>
 
 <!-- {% for product in products %}
 <h1>{{{product.name}}}</h1>
