@@ -42,6 +42,19 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <a href="#" class="toggle-category" id="season">Сезон</a>
+              <ul>
+                {% for season in seasons %}
+                <li>
+                  <label>
+                    <input type="checkbox" name="{{{season}}}" class="filter-checkbox" data-category="season">
+                    {{{season}}}
+                  </label>
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
