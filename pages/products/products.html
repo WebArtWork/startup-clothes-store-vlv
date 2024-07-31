@@ -94,13 +94,11 @@
       let url = new URL(window.location.href);
       let params = new URLSearchParams(url.search);
       
-      // Clear existing filter parameters
       const filterCategories = document.querySelectorAll('.toggle-category');
       filterCategories.forEach(category => {
         params.delete(category.id);
       });
 
-      // Collect filter values
       const filterValues = {};
 
       document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
@@ -112,17 +110,14 @@
           filterValues[category].push(checkbox.name);
         }
       });
-
-      // Set the filter parameters in the URL
       for (const [category, values] of Object.entries(filterValues)) {
         if (values.length > 0) {
           params.set(category, values.join(','));
         }
       }
-
-      // Update the URL with the new parameters
       url.search = params.toString();
       window.history.replaceState(null, null, url.toString());
+      location.reload();
     }
   });
 </script>
