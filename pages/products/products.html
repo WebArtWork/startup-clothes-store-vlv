@@ -22,24 +22,22 @@
             <li>
               <a href="#" class="toggle-category" id="gender">Стать</a>
               <ul>
+                {% for gender in genders %}
                 <li>
                   <label>
-                    <input type="checkbox" name="boy" class="filter-checkbox" data-category="gender">
-                    Хлопчики
+                    <input type="checkbox" name="{{{gender}}}" class="filter-checkbox" data-category="gender">
+                    {% if gender == 'boy' %}
+                      Хлопчики
+                    {% endif %}
+                    {% if gender == 'girl' %}
+                      Дівчатка
+                    {% endif %}
+                    {% if gender == 'unisex' %}
+                      Унісекс
+                    {% endif %}
                   </label>
                 </li>
-                <li>
-                  <label>
-                    <input type="checkbox" name="girl" class="filter-checkbox" data-category="gender">
-                    Дівчатка
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="checkbox" name="unisex" class="filter-checkbox" data-category="gender">
-                    Унісекс
-                  </label>
-                </li>
+                {% endfor %}
               </ul>
             </li>
             <li>
