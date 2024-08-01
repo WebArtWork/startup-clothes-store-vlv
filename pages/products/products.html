@@ -1,153 +1,210 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Filters</title>
-  <style>
-    .active>ul {
-      display: block;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container cloth-container">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="sidebar">
-          <h3>Фільтрувати за</h3>
-          <ul>
-            <li>
-              <a href="#" class="toggle-category" id="gender">Стать</a>
-              <ul>
-                {% for gender in genders %}
-                <li>
-                  <label>
-                    <input type="checkbox" name="{{{gender}}}" class="filter-checkbox" data-category="gender">
-                    {% if gender == 'boy' %}
-                      Хлопчики
-                    {% endif %}
-                    {% if gender == 'girl' %}
-                      Дівчатка
-                    {% endif %}
-                    {% if gender == 'unisex' %}
-                      Унісекс
-                    {% endif %}
-                  </label>
-                </li>
-                {% endfor %}
-              </ul>
-            </li>
-            <li>
-              <a href="#" class="toggle-category" id="season">Сезон</a>
-              <ul>
-                {% for season in seasons %}
-                <li>
-                  <label>
-                    <input type="checkbox" name="{{{season}}}" class="filter-checkbox" data-category="season">
-                    {{{season}}}
-                  </label>
-                </li>
-                {% endfor %}
-              </ul>
-            </li>
-          </ul>
-        </div>
+<div class="container cloth-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar">
+        <h3>Фільтрувати за</h3>
+        <ul>
+          <li>
+            <a href="#" class="toggle-category" id="gender">Стать</a>
+            <ul>
+              {% for gender in genders %}
+              <li>
+                <label>
+                  <input type="checkbox" name="{{{gender}}}" class="filter-checkbox" data-category="gender">
+                  {% if gender == 'boy' %}
+                  Хлопчики
+                  {% endif %}
+                  {% if gender == 'girl' %}
+                  Дівчатка
+                  {% endif %}
+                  {% if gender == 'unisex' %}
+                  Унісекс
+                  {% endif %}
+                </label>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="toggle-category" id="season">Сезон</a>
+            <ul>
+              {% for season in seasons %}
+              <li>
+                <label>
+                  <input type="checkbox" name="{{{season}}}" class="filter-checkbox" data-category="season">
+                  {{{season}}}
+                </label>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="toggle-category" id="price">Ціна</a>
+            <div class="container mt-5">
+              <div class="d-flex justify-content-between">
+                <input type="number" id="price-min" min="0" max="99999" value="0" class="form-control w-25">
+                <span class="mx-2">-</span>
+                <input type="number" id="price-max" min="0" max="99999" value="99999" class="form-control w-25">
+              </div>
+              <div class="slider-container">
+                <div class="slider-track"></div>
+                <input type="range" class="slider" id="slider-min" min="0" max="99999" step="10" value="0">
+                <input type="range" class="slider" id="slider-max" min="0" max="99999" step="10" value="99999">
+              </div>
+              <button class="btn btn-primary mt-3" id="reset-button">Очистити</button>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="col-md-8">
-        <div class="cloth__list">
-          {% for product in products %}
-          <a href="/product/{{{product._id|string}}}" class="cloth__item cloth__item-products" data-modal-id="modal">
-            <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
-            <div class="cloth__item-title">{{{product.name}}}</div>
-            <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
-          </a>
-          {% endfor %}
-        </div>
+    </div>
+    <div class="col-md-8">
+      <div class="cloth__list">
+        {% for product in products %}
+        <a href="/product/{{{product._id|string}}}" class="cloth__item cloth__item-products" data-modal-id="modal">
+          <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
+          <div class="cloth__item-title">{{{product.name}}}</div>
+          <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
+        </a>
+        {% endfor %}
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var toggles = document.querySelectorAll('.toggle-category');
-      toggles.forEach(function (toggle) {
-        toggle.addEventListener('click', function (event) {
-          event.preventDefault();
-          var parentLi = this.parentElement;
-          if (parentLi.classList.contains('active')) {
-            parentLi.classList.remove('active');
-          } else {
-            parentLi.classList.add('active');
-          }
-        });
-      });
-
-      document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
-        checkbox.addEventListener('change', function () {
-          updateFilters();
-        });
-      });
-
-      function updateFilters() {
-        let url = new URL(window.location.href);
-        let params = new URLSearchParams(url.search);
-
-        const filterCategories = document.querySelectorAll('.toggle-category');
-        filterCategories.forEach(category => {
-          params.delete(category.id);
-        });
-
-        const filterValues = {};
-
-        document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
-          if (checkbox.checked) {
-            const category = checkbox.getAttribute('data-category');
-            if (!filterValues[category]) {
-              filterValues[category] = [];
-            }
-            filterValues[category].push(checkbox.name);
-          }
-        });
-        for (const [category, values] of Object.entries(filterValues)) {
-          if (values.length > 0) {
-            params.set(category, values.join(','));
-          }
+<script type="module">
+  import Dom from "/api/wjst/dom";
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggles = document.querySelectorAll('.toggle-category');
+    toggles.forEach(function (toggle) {
+      toggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        var parentLi = this.parentElement;
+        if (parentLi.classList.contains('active')) {
+          parentLi.classList.remove('active');
+        } else {
+          parentLi.classList.add('active');
         }
-        url.search = params.toString();
-        window.history.replaceState(null, null, url.toString());
-        location.reload();
+      });
+    });
+
+    const priceMinInput = Dom.element('price-min');
+    const priceMaxInput = Dom.element('price-max');
+    const sliderMin = Dom.element('slider-min');
+    const sliderMax = Dom.element('slider-max');
+
+    function updateSlider() {
+      const minVal = parseFloat(sliderMin.value);
+      const maxVal = parseFloat(sliderMax.value);
+
+      if (minVal > maxVal) {
+        sliderMin.value = maxVal;
+        sliderMax.value = minVal;
       }
 
-      function initializeFilters() {
-        let url = new URL(window.location.href);
-        let params = new URLSearchParams(url.search);
-        let categoriesWithEnabledFilters = new Set();
+      priceMinInput.value = sliderMin.value;
+      priceMaxInput.value = sliderMax.value;
+    }
+    sliderMin.addEventListener('input', updateSlider);
+    sliderMax.addEventListener('input', updateSlider);
+    sliderMin.addEventListener('change', updateFilters);
+    sliderMax.addEventListener('change', updateFilters);
+    priceMinInput.addEventListener('blur', function () {
+      sliderMin.value = priceMinInput.value;
+      updateSlider();
+      updateFilters();
+    });
 
-        params.forEach((value, key) => {
-          let values = value.split(',');
-          values.forEach(val => {
+    priceMaxInput.addEventListener('blur', function () {
+      sliderMax.value = priceMaxInput.value;
+      updateSlider();
+      updateFilters();
+    });
+
+    function resetSlider() {
+      priceMinInput.value = 0;
+      priceMaxInput.value = 99999;
+      sliderMin.value = 0;
+      sliderMax.value = 99999;
+      updateSlider();
+      updateFilters();
+    }
+    Dom.click("reset-button", () => resetSlider());
+
+    document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+      checkbox.addEventListener('change', function () {
+        updateFilters();
+      });
+    });
+
+
+    function updateFilters() {
+      let url = new URL(window.location.href);
+      let params = new URLSearchParams(url.search);
+
+      const filterCategories = document.querySelectorAll('.toggle-category');
+      filterCategories.forEach(category => {
+        params.delete(category.id);
+      });
+
+      const filterValues = {};
+
+      document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+        if (checkbox.checked) {
+          const category = checkbox.getAttribute('data-category');
+          if (!filterValues[category]) {
+            filterValues[category] = [];
+          }
+          filterValues[category].push(checkbox.name);
+        }
+      });
+
+      const minPrice = Dom.element('price-min').value;
+      const maxPrice = Dom.element('price-max').value;
+      if (minPrice !== '' && maxPrice !== '') {
+        filterValues['price'] = [minPrice, maxPrice];
+      }
+
+      for (const [category, values] of Object.entries(filterValues)) {
+        if (values.length > 0) {
+          params.set(category, values.join(','));
+        }
+      }
+      url.search = params.toString();
+      window.history.replaceState(null, null, url.toString());
+      location.reload();
+    }
+
+    function initializeFilters() {
+      let url = new URL(window.location.href);
+      let params = new URLSearchParams(url.search);
+      let categoriesWithEnabledFilters = new Set();
+
+      params.forEach((value, key) => {
+        let values = value.split(',');
+        values.forEach(val => {
+          if (key === 'price') {
+            Dom.element('price-min').value = values[0];
+            Dom.element('price-max').value = values[1];
+            Dom.element('slider-min').value = values[0];
+            Dom.element('slider-max').value = values[1];
+          } else {
             let checkbox = document.querySelector(`.filter-checkbox[data-category="${key}"][name="${val}"]`);
             if (checkbox) {
               checkbox.checked = true;
               categoriesWithEnabledFilters.add(key);
             }
-          });
-        });
-
-        categoriesWithEnabledFilters.forEach(category => {
-          let categoryElement = document.getElementById(category);
-          if (categoryElement) {
-            categoryElement.parentElement.classList.add('active');
           }
         });
-      }
+      });
 
-      initializeFilters();
-    });
-  </script>
-</body>
+      categoriesWithEnabledFilters.forEach(category => {
+        let categoryElement = document.getElementById(category);
+        if (categoryElement) {
+          categoryElement.parentElement.classList.add('active');
+        }
+      });
+    }
 
-</html>
+    initializeFilters();
+  });
+</script>
