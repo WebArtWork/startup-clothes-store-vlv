@@ -31,8 +31,8 @@
               {% for age in ages %}
               <li>
                 <label>
-                  <input type="checkbox" name="{{{gender}}}" class="filter-checkbox" data-category="gender">
-                  {{{age}}}
+                  <input type="checkbox" name="{{{age.value}}}" class="filter-checkbox" data-category="age">
+                  {{{age.title}}}
                 </label>
               </li>
               {% endfor %}
