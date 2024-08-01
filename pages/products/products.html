@@ -26,6 +26,19 @@
             </ul>
           </li>
           <li>
+            <a href="#" class="toggle-category" id="age">Вік</a>
+            <ul>
+              {% for age in ages %}
+              <li>
+                <label>
+                  <input type="checkbox" name="{{{gender}}}" class="filter-checkbox" data-category="gender">
+                  {{{age}}}
+                </label>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li>
             <a href="#" class="toggle-category" id="season">Сезон</a>
             <ul>
               {% for season in seasons %}
@@ -46,10 +59,20 @@
                 <span class="mx-2">-</span>
                 <input type="number" id="price-max" min="0" max="99999" value="99999" class="form-control w-25">
               </div>
-              <div class="slider-container">
+              <div class="slider-container position-relative">
                 <div class="slider-track"></div>
                 <input type="range" class="slider" id="slider-min" min="0" max="99999" step="10" value="0">
                 <input type="range" class="slider" id="slider-max" min="0" max="99999" step="10" value="99999">
+                <div class="slider-values">
+                  <span class="slider-min-value">₴0</span>
+                  <span class="slider-max-value">₴99999</span>
+                </div>
+                <div class="slider-steps">
+                  <span class="step" style="left: 20%;">|</span>
+                  <span class="step" style="left: 40%;">|</span>
+                  <span class="step" style="left: 60%;">|</span>
+                  <span class="step" style="left: 80%;">|</span>
+                </div>
               </div>
               <button class="btn btn-primary mt-3" id="reset-button">Очистити</button>
             </div>
