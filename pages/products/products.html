@@ -28,7 +28,8 @@
           <li>
             <a href="#" class="toggle-category" id="age">Вік</a>
             <ul>
-              {% for age in newAges %}
+              {{{ages | json}}}
+              {% for age in ages %}
               <li>
                 <label>
                   <input type="checkbox" name="{{{age.value}}}" class="filter-checkbox" data-category="age">
@@ -61,6 +62,7 @@
               </div>
               <div class="slider-container position-relative">
                 <div class="slider-track"></div>
+                <div class="slider-range" id="slider-range"></div>
                 <input type="range" class="slider" id="slider-min" min="0" max="99999" step="10" value="0">
                 <input type="range" class="slider" id="slider-max" min="0" max="99999" step="10" value="99999">
                 <div class="slider-values">
@@ -68,10 +70,16 @@
                   <span class="slider-max-value">₴99999</span>
                 </div>
                 <div class="slider-steps">
+                  <span class="step" style="left: 10%;">|</span>
                   <span class="step" style="left: 20%;">|</span>
+                  <span class="step" style="left: 30%;">|</span>
                   <span class="step" style="left: 40%;">|</span>
+                  <span class="step" style="left: 50%;">|</span>
                   <span class="step" style="left: 60%;">|</span>
+                  <span class="step" style="left: 70%;">|</span>
                   <span class="step" style="left: 80%;">|</span>
+                  <span class="step" style="left: 90%;">|</span>
+                  <span class="step" style="left: 100%;">|</span>
                 </div>
               </div>
               <button class="btn btn-primary mt-3" id="reset-button">Очистити</button>
@@ -114,10 +122,13 @@
     const priceMaxInput = Dom.element('price-max');
     const sliderMin = Dom.element('slider-min');
     const sliderMax = Dom.element('slider-max');
+    const sliderRange = Dom.element('slider-range');
 
     function updateSlider() {
       const minVal = parseFloat(sliderMin.value);
       const maxVal = parseFloat(sliderMax.value);
+      const minPercent = ((minVal - parseFloat(sliderMin.min)) / (parseFloat(sliderMin.max) - parseFloat(sliderMin.min))) * 100;
+      const maxPercent = ((maxVal - parseFloat(sliderMin.min)) / (parseFloat(sliderMin.max) - parseFloat(sliderMin.min))) * 100;
 
       if (minVal > maxVal) {
         sliderMin.value = maxVal;
@@ -126,6 +137,9 @@
 
       priceMinInput.value = sliderMin.value;
       priceMaxInput.value = sliderMax.value;
+
+      sliderRange.style.left = minPercent + '%';
+      sliderRange.style.width = (maxPercent - minPercent) + '%';
     }
     sliderMin.addEventListener('input', updateSlider);
     sliderMax.addEventListener('input', updateSlider);
@@ -227,7 +241,7 @@
         }
       });
     }
-
     initializeFilters();
+    updateSlider();
   });
 </script>

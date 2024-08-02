@@ -174,7 +174,7 @@
     left: 0;
     right: 0;
     height: 5px;
-    background: #333;
+    background: #837d7d;
     transform: translateY(-50%);
     border-radius: 5px;
   }
@@ -188,6 +188,15 @@
     appearance: none;
     background: none;
     z-index: 999;
+  }
+
+  .slider-range {
+    position: absolute;
+    top: 50%;
+    height: 5px;
+    background: #000;
+    transform: translateY(-50%);
+    border-radius: 5px;
   }
 
   .slider::-webkit-slider-thumb {
@@ -242,4 +251,6 @@
   .slider-steps .step {
     position: absolute;
     transform: translateX(-50%);
+    font-size: 13px;
+    color: #000;
   }
