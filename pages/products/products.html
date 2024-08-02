@@ -28,7 +28,6 @@
           <li>
             <a href="#" class="toggle-category" id="age">Вік</a>
             <ul>
-              {{{ages | json}}}
               {% for age in ages %}
               <li>
                 <label>
@@ -79,7 +78,6 @@
                   <span class="step" style="left: 70%;">|</span>
                   <span class="step" style="left: 80%;">|</span>
                   <span class="step" style="left: 90%;">|</span>
-                  <span class="step" style="left: 100%;">|</span>
                 </div>
               </div>
               <button class="btn btn-primary mt-3" id="reset-button">Очистити</button>
