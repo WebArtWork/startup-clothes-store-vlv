@@ -198,6 +198,16 @@
     transform: translateY(-50%);
     border-radius: 5px;
   }
+  .dash {
+    color: #000;
+  }
+
+  .reset-button {
+    color: #000;
+    margin-top: 20px;
+    text-align: right;
+    cursor: pointer;
+  }
 
   .slider::-webkit-slider-thumb {
     pointer-events: all;
