@@ -93,8 +93,6 @@
 
 							sizeElements.forEach(element => {
 								element.addEventListener('click', function () {
-									console.log(element);
-									
 									sizeElements.forEach(el => el.classList.remove('selected'));
 									element.classList.add('selected');
 								});
