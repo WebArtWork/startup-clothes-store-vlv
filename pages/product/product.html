@@ -97,7 +97,7 @@
 
 						document.addEventListener('DOMContentLoaded', function () {
 							const sizeElements = document.querySelectorAll('.size.available');
-
+							const productId = "{{{product.id}}}";
 							sizeElements.forEach(element => {
 								const sizeId = element.id;
                                 if (isProductInOrder(productId, sizeId)) {
