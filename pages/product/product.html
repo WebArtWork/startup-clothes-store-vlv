@@ -44,7 +44,7 @@
 					<div class="product-info__cart size-container">
 						{% for size in product.size %}
 						{% if size.quantity > 0 %}
-						<span class="size available" id="{{{size.size._id| json}}}">{{{size.size.name}}}</span>
+						<span class="size available" id="{{{size.size._id| lower}}}">{{{size.size.name}}}</span>
 						{% endif %}
 						{% if !(size.quantity > 0) %}
 						<span class="size no-size">{{{size.size.name}}}</span>
