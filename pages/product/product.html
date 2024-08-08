@@ -44,7 +44,7 @@
 					<div class="product-info__cart size-container">
 						{% for size in product.size %}
 						{% if size.quantity > 0 %}
-						<span class="size available">{{{size.size.name}}}</span>
+						<span class="size available" id="{{{size.size._id}}}">{{{size.size.name}}}</span>
 						{% endif %}
 						{% if !(size.quantity > 0) %}
 						<span class="size no-size">{{{size.size.name}}}</span>
@@ -62,11 +62,7 @@
 					<script type="module">
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";
-						import Product from "/api/wjst/product";
-						console.log('start load');
-						
-						const currentProduct = await Product.populated();
-						console.log(currentProduct);
+						import Product from "/api/wjst/product";		
 						
 						const toggleProduct = async (quantity = 1) => {
 							const size = document.getElementsByClassName('size available selected')[0].innerHTML;
@@ -93,8 +89,6 @@
 							await toggleProduct();
 							window.location.href = '/cart';
 						});
-
-
 
 						document.addEventListener('DOMContentLoaded', function () {
 							const sizeElements = document.querySelectorAll('.size.available');
