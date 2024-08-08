@@ -61,8 +61,14 @@
 					</div>
 					<script type="module">
 						import Dom from "/api/wjst/dom";
-						import Order from "/api/wjst/order";	
-						
+						import Order from "/api/wjst/order";
+	
+						const isProductInOrder = (productId, sizeId) => {
+                            return Order.order.products.some(product => 
+                                product.id === productId && product.size === sizeId
+                            );
+                        };
+
 						const toggleProduct = async (quantity = 1) => {
 							const size = document.getElementsByClassName('size available selected')[0].id;
 							console.log(Order.order.products);
@@ -93,6 +99,11 @@
 							const sizeElements = document.querySelectorAll('.size.available');
 
 							sizeElements.forEach(element => {
+								const sizeId = element.id;
+                                if (isProductInOrder(productId, sizeId)) {
+                                    element.classList.add('selected');
+                                }
+
 								element.addEventListener('click', function () {
 									sizeElements.forEach(el => el.classList.remove('selected'));
 									element.classList.add('selected');
