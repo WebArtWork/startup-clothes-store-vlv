@@ -62,7 +62,9 @@
 					<script type="module">
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";
-						import Product from "/api/wjst/product"
+						import Product from "/api/wjst/product";
+						console.log('start load');
+						
 						const currentProduct = await Product.populated();
 						console.log(currentProduct);
 						
