@@ -70,20 +70,7 @@
                         };
 
 						const toggleProduct = async (quantity = 1) => {
-							console.log(document.getElementsByClassName('size available selected'));
-
-							const product = "{{{product.id}}}"; 
-							await Order.toggleProduct(product, quantity, '');
-							if (await Order.hasProduct(product)) {
-								Dom.element("addToCart").innerHTML = "Забрати з кошика";
-								Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
-							} else {
-								Dom.element("addToCart").innerHTML = "Додати у кошик";
-								Dom.element("addToCart").style.backgroundColor = "black";
-							}
-							Dom.element("cart").innerHTML = Dom.template('cart', {
-								counter: Order.order.products.length
-							});
+							
 						};
 
 						Dom.click("addToCart", () => toggleProduct(1));
@@ -95,20 +82,7 @@
 						});
 
 						document.addEventListener('DOMContentLoaded', function () {
-							const sizeElements = document.querySelectorAll('.size.available');
-							const productId = "{{{product.id}}}";
-							sizeElements.forEach(element => {
-								const sizeId = element.id;
-								console.log(productId, sizeId);
-                                if (isProductInOrder(productId, sizeId)) {
-                                    element.classList.add('selected');
-                                }
-
-								element.addEventListener('click', function () {
-									sizeElements.forEach(el => el.classList.remove('selected'));
-									element.classList.add('selected');
-								});
-							});
+							
 						})
 					</script>
 					{% if product.description %}
