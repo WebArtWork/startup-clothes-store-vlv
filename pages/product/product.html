@@ -63,11 +63,9 @@
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";	
 						const order = await Order.populated();
-						console.log(order);
 						
 						const toggleProduct = async (quantity = 1) => {
 							const size = document.getElementsByClassName('size available selected')[0].id;
-							console.log(size);
 							
 							const product = "{{{product.id}}}"; 
 							await Order.toggleProduct(product, quantity, size);
@@ -99,6 +97,9 @@
 									sizeElements.forEach(el => el.classList.remove('selected'));
 									element.classList.add('selected');
 								});
+								const product = "{{{product.id}}}";
+								console.log(product);
+								
 							});
 						})
 					</script>
