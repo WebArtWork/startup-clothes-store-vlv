@@ -40,7 +40,7 @@
 	<div id="template-products" style="display: none;">
 		<div class="cart-product" id="remove{id}">
 			<img src="{thumb}" alt="Product 1" class="product-image">
-			<span class="cart-product-name">{name} ({size}) - {price}грн</span>
+			<span class="cart-product-name">{name} ({size}) - {price} грн</span>
 			<div class="product-quantity">
 				<button productId="{id}" class="quantity-minus">-</button>
 				<input id="id{id}" type="number" class="quantity-value" value="{quantity}" min="1">
@@ -77,6 +77,8 @@
 
 		const resp = await Http.post('/api/user/fetchme', {});
 		const order = await Order.populated();
+		console.log(order);
+		
 		for (const product of order.products) {
 			Dom.add('products', Dom.template('products', {
 				name: product.product.name,
