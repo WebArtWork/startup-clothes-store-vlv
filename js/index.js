@@ -53,13 +53,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-
-
-document.getElementById('toggle-sidebar').addEventListener('click', function() {
-    document.getElementById('sidebar').classList.toggle('active');
-});
-
-document.getElementById('close-sidebar').addEventListener('click', function() {
-    document.getElementById('sidebar').classList.remove('active');
-});
+const toggleElement = document.getElementById('toggle-sidebar');
+const toggleCloseElement = document.getElementById('close-sidebar');
+if (toggleElement) {
+    toggleElement.addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('active');
+    });
+}
+if (toggleCloseElement) {
+    toggleCloseElement.addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('active');
+    });
+}
 
