@@ -62,7 +62,11 @@
 					<script type="module">
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";
+						console.log('test');
+						
 						const order = await Order.populated();
+						console.log(order);
+						
 						const isProductInOrder = (productId, sizeId) => {
 							console.log(order);
 							console.log(productId, sizeId);
