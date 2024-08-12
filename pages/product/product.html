@@ -42,6 +42,7 @@
 					</div>
 					<div class="product-info__cart-text">Розміри:</div>
 					<div class="product-info__cart size-container">
+						{{{size | json}}}
 						{% for size in product.size %}
 						{% if size.quantity > 0 %}
 						<span class="size available" id="{{{size._id}}}">{{{size.size.name}}}</span>
