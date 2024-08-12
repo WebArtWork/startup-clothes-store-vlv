@@ -63,6 +63,7 @@
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";	
 						const order = await Order.populated();
+						console.log(order);
 						
 						const toggleProduct = async (quantity = 1) => {
 							const size = document.getElementsByClassName('size available selected')[0].id;
@@ -88,7 +89,8 @@
 							await toggleProduct();
 							window.location.href = '/cart';
 						});
-
+						console.log('start');
+						
 						document.addEventListener('DOMContentLoaded', function () {
 							const sizeElements = document.querySelectorAll('.size.available');
 							console.log(sizeElements);
