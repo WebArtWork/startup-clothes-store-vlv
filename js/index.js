@@ -63,19 +63,3 @@ document.getElementById('close-sidebar').addEventListener('click', function() {
     document.getElementById('sidebar').classList.remove('active');
 });
 
-
-
-// size
-document.addEventListener('DOMContentLoaded', function () {
-    const sizes = document.querySelectorAll('.size.available');
-
-    sizes.forEach(size => {
-        size.addEventListener('click', function () {
-            // Remove 'selected' class from all sizes
-            sizes.forEach(s => s.classList.remove('selected'));
-
-            // Add 'selected' class to the clicked size
-            size.classList.add('selected');
-        });
-    });
-});

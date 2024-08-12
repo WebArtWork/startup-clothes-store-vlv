@@ -70,6 +70,8 @@
                         };
 
 						const toggleProduct = async (quantity = 1) => {
+							console.log(document.getElementsByClassName('size available selected'));
+							
 							const size = document.getElementsByClassName('size available selected')[0].id;
 							
 							const product = "{{{product.id}}}"; 
