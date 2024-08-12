@@ -63,6 +63,7 @@
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";	
 						const order = await Order.populated();
+						console.log(order);
 						const isProductInOrder = (productId, sizeId) => {
                             return order.products.some(product => 
                                 product.product._id === productId && product.size == sizeId
