@@ -80,21 +80,17 @@
 		console.log(order);
 		
 		order.products.forEach((product, index) => {
-			if (product.productquantity) {
-				Dom.add('products', Dom.template('products', {
-					name: product.product.name,
-					currency: product.currency,
-					price: product.product.price,
-					quantity: product.quantity,
-					status: product.product.status,
-					size: product.size.name,
-					thumb: product.product.thumb,
-					id: product._id,
-					total: product.product.price * product.quantity
-				}));
-			} else {
-				order.products.splice(index, 1);
-			}
+			Dom.add('products', Dom.template('products', {
+				name: product.product.name,
+				currency: product.currency,
+				price: product.product.price,
+				quantity: product.quantity,
+				status: product.product.status,
+				size: product.productquantity.size.name,
+				thumb: product.product.thumb,
+				id: product._id,
+				total: product.product.price * product.quantity
+			}));
 		});
 		const respData = resp || { data: {} };
 		respData.data = respData.data || {};
