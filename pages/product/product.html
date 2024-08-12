@@ -64,20 +64,17 @@
 						import Order from "/api/wjst/order";	
 						const order = await Order.populated();
 						const isProductInOrder = (productId, sizeId) => {
-							console.log(productId, sizeId);
-							
                             return order.products.some(product => 
                                 product.product._id === productId && product.size == sizeId
                             );
                         };
-						console.log(order);
 						
 						const toggleProduct = async (quantity = 1) => {
 							const size = document.getElementsByClassName('size available selected')[0].id;
 							1
 							const product = "{{{product.id}}}"; 
 							await Order.toggleProduct(product, quantity, size);
-							if (await Order.hasProduct(product)) {
+							if (await Order.hasProduct(product, size)) {
 								Dom.element("addToCart").innerHTML = "Забрати з кошика";
 								Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
 							} else {
