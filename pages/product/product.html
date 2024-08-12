@@ -63,9 +63,9 @@
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";	
 						
+						console.log(Order.order.products);
 						const toggleProduct = async (quantity = 1) => {
 							const size = document.getElementsByClassName('size available selected')[0].id;
-							console.log(Order.order.products);
 							
 							const product = "{{{product.id}}}"; 
 							await Order.toggleProduct(product, quantity, size);
