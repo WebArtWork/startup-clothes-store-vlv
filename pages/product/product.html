@@ -64,27 +64,22 @@
 						import Order from "/api/wjst/order";
 						const order = await Order.populated();
 						const isProductInOrder = (productId, sizeId) => {
-							return order.products.some(product =>
-								product.id === productId && product.size == sizeId
-							);
-						};
+                            return order.products.some(product => 
+                                product.id === productId && product.size == sizeId
+                            );
+                        };
 
 						const toggleProduct = async (quantity = 1) => {
 							const size = document.getElementsByClassName('size available selected')[0].id;
-
-							const product = "{{{product.id}}}";
+							
+							const product = "{{{product.id}}}"; 
 							await Order.toggleProduct(product, quantity, size);
-							// if (await Order.hasProduct(product)) {
-							// 	Dom.element("addToCart").innerHTML = "Забрати з кошика";
-							// 	Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
-							// } else {
-							// 	Dom.element("addToCart").innerHTML = "Додати у кошик";
-							// 	Dom.element("addToCart").style.backgroundColor = "black";
-							// }
 							if (await Order.hasProduct(product)) {
-								Dom.element("addToCart").innerHTML = "Додати у кошик";
-							} else {
 								Dom.element("addToCart").innerHTML = "Забрати з кошика";
+								Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
+							} else {
+								Dom.element("addToCart").innerHTML = "Додати у кошик";
+								Dom.element("addToCart").style.backgroundColor = "black";
 							}
 							Dom.element("cart").innerHTML = Dom.template('cart', {
 								counter: Order.order.products.length
@@ -105,9 +100,9 @@
 							sizeElements.forEach(element => {
 								const sizeId = element.id;
 								console.log(productId, sizeId);
-								if (isProductInOrder(productId, sizeId)) {
-									element.classList.add('selected');
-								}
+                                if (isProductInOrder(productId, sizeId)) {
+                                    element.classList.add('selected');
+                                }
 
 								element.addEventListener('click', function () {
 									sizeElements.forEach(el => el.classList.remove('selected'));
