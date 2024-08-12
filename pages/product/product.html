@@ -62,10 +62,8 @@
 					<script type="module">
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";
-						console.log('test');
 						
 						const order = await Order.populated();
-						console.log(order);
 						
 						const isProductInOrder = (productId, sizeId) => {
 							console.log(order);
@@ -104,6 +102,8 @@
 						});
 
 						document.addEventListener('DOMContentLoaded', function () {
+							console.log('load');
+							
 							const sizeElements = document.querySelectorAll('.size.available');
 							const productId = "{{{product.id}}}";
 							sizeElements.forEach(element => {
