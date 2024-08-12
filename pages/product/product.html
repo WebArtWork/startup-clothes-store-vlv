@@ -67,7 +67,7 @@
 							console.log(productId, sizeId);
 							
                             return order.products.some(product => 
-                                product.id === productId && product.size == sizeId
+                                product.product.id === productId && product.size == sizeId
                             );
                         };
 						console.log(order);
