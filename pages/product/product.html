@@ -91,7 +91,8 @@
 
 						document.addEventListener('DOMContentLoaded', function () {
 							const sizeElements = document.querySelectorAll('.size.available');
-
+							console.log(sizeElements);
+							
 							sizeElements.forEach(element => {
 								element.addEventListener('click', function () {
 									sizeElements.forEach(el => el.classList.remove('selected'));
@@ -99,7 +100,6 @@
 								});
 								const product = "{{{product.id}}}";
 								console.log(product);
-								
 							});
 						})
 					</script>
