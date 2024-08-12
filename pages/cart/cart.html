@@ -80,7 +80,7 @@
 		console.log(order);
 		
 		order.products.forEach((product, index) => {
-			if (order.productquantity) {
+			if (product.productquantity) {
 				Dom.add('products', Dom.template('products', {
 					name: product.product.name,
 					currency: product.currency,
