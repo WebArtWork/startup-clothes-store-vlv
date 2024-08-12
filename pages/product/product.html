@@ -63,6 +63,11 @@
 						import Dom from "/api/wjst/dom";
 						import Order from "/api/wjst/order";	
 						const order = await Order.populated();
+						const isProductInOrder = (productId, sizeId) => {
+                            return order.products.some(product => 
+                                product.product._id === productId && product.size == sizeId
+                            );
+                        };
 						console.log(order);
 						
 						const toggleProduct = async (quantity = 1) => {
@@ -70,8 +75,13 @@
 							1
 							const product = "{{{product.id}}}"; 
 							await Order.toggleProduct(product, quantity, size);
-							Dom.element("addToCart").innerHTML = "Додати у кошик";
-							Dom.element("addToCart").style.backgroundColor = "black";
+							if (await Order.hasProduct(product, size)) {
+								Dom.element("addToCart").innerHTML = "Забрати з кошика";
+								Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
+							} else {
+								Dom.element("addToCart").innerHTML = "Додати у кошик";
+								Dom.element("addToCart").style.backgroundColor = "black";
+							}
 							Dom.element("cart").innerHTML = Dom.template('cart', {
 								counter: Order.order.products.length
 							});
@@ -90,6 +100,13 @@
 							const sizeId = element.id;
 
 							element.addEventListener('click', function () {
+								if (isProductInOrder(productId, sizeId)) {
+									Dom.element("addToCart").innerHTML = "Забрати з кошика";
+									Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
+								} else {
+									Dom.element("addToCart").innerHTML = "Додати у кошик";
+									Dom.element("addToCart").style.backgroundColor = "black";
+								}
 								sizeElements.forEach(el => el.classList.remove('selected'));
 								element.classList.add('selected');
 							});
