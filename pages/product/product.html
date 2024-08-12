@@ -98,17 +98,16 @@
 						const productId = "{{{product.id}}}";
 						sizeElements.forEach(element => {
 							const sizeId = element.id;
-
-							element.addEventListener('click', function () {
-								if (isProductInOrder(productId, sizeId)) {
+							element.addEventListener('click', async function () {
+								sizeElements.forEach(el => el.classList.remove('selected'));
+								element.classList.add('selected');
+								if (await Order.hasProduct(productId, sizeId)) {
 									Dom.element("addToCart").innerHTML = "Забрати з кошика";
 									Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
 								} else {
 									Dom.element("addToCart").innerHTML = "Додати у кошик";
 									Dom.element("addToCart").style.backgroundColor = "black";
 								}
-								sizeElements.forEach(el => el.classList.remove('selected'));
-								element.classList.add('selected');
 							});
 						});
 					</script>
