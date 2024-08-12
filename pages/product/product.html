@@ -66,6 +66,7 @@
 						console.log(Order.order.products);
 						const toggleProduct = async (quantity = 1) => {
 							const size = document.getElementsByClassName('size available selected')[0].id;
+							console.log(size);
 							
 							const product = "{{{product.id}}}"; 
 							await Order.toggleProduct(product, quantity, size);
