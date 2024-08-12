@@ -89,21 +89,17 @@
 							await toggleProduct();
 							window.location.href = '/cart';
 						});
+						const sizeElements = document.querySelectorAll('.size.available');
+						console.log(sizeElements);
 						
-						document.addEventListener('DOMContentLoaded', function () {
-							console.log('end');
-							const sizeElements = document.querySelectorAll('.size.available');
-							console.log(sizeElements);
-							
-							sizeElements.forEach(element => {
-								element.addEventListener('click', function () {
-									sizeElements.forEach(el => el.classList.remove('selected'));
-									element.classList.add('selected');
-								});
-								const product = "{{{product.id}}}";
-								console.log(product);
+						sizeElements.forEach(element => {
+							element.addEventListener('click', function () {
+								sizeElements.forEach(el => el.classList.remove('selected'));
+								element.classList.add('selected');
 							});
-						})
+							const product = "{{{product.id}}}";
+							console.log(product);
+							});
 					</script>
 					{% if product.description %}
 					<div class="product-info__cart-text">Подробиці:</div>
