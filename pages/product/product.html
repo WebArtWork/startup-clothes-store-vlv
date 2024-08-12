@@ -61,23 +61,11 @@
 					</div>
 					<script type="module">
 						import Dom from "/api/wjst/dom";
-						import Order from "/api/wjst/order";
+						import Order from "/api/wjst/order";	
 						
-						const order = await Order.populated();
-						
-						const isProductInOrder = (productId, sizeId) => {
-							console.log(order);
-							console.log(productId, sizeId);
-							
-                            return order.products.some(product => 
-                                product.id === productId && product.size == sizeId
-                            );
-                        };
-
 						const toggleProduct = async (quantity = 1) => {
-							console.log(document.getElementsByClassName('size available selected'));
-							
 							const size = document.getElementsByClassName('size available selected')[0].id;
+							console.log(Order.order.products);
 							
 							const product = "{{{product.id}}}"; 
 							await Order.toggleProduct(product, quantity, size);
@@ -92,8 +80,7 @@
 								counter: Order.order.products.length
 							});
 						};
-						console.log('load22');
-						
+
 						Dom.click("addToCart", () => toggleProduct(1));
 
 						Dom.click("buyNow", async () => {
@@ -103,17 +90,9 @@
 						});
 
 						document.addEventListener('DOMContentLoaded', function () {
-							console.log('load');
-							
 							const sizeElements = document.querySelectorAll('.size.available');
-							const productId = "{{{product.id}}}";
-							sizeElements.forEach(element => {
-								const sizeId = element.id;
-								console.log(productId, sizeId);
-                                if (isProductInOrder(productId, sizeId)) {
-                                    element.classList.add('selected');
-                                }
 
+							sizeElements.forEach(element => {
 								element.addEventListener('click', function () {
 									sizeElements.forEach(el => el.classList.remove('selected'));
 									element.classList.add('selected');
