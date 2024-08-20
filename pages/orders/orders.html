@@ -48,7 +48,7 @@
             const price = order.products.reduce((accumulator, product) => accumulator + product.product.price, 0);
             Dom.add('orders', Dom.template('orders', {
                 id: order._id,
-                size: order.size,
+                size: order.product.size,
                 status: order.status,
                 name: order.delivery?.name || "",
                 email: order.delivery?.email || "",
