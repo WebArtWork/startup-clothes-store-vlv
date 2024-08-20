@@ -25,6 +25,7 @@
 <div id="template-orders" style="display: none;">
     <div class="order-container">
         <div><span class="label">ID:</span> <span class="id">{id}</span></div>
+        <div><span class="label">Розмір:</span> <span class="id">{size}</span></div>
         <div><span class="label">Статус:</span> <span class="status">{status}</span></div>
         <div><span class="label">Ім'я:</span> <span class="info">{name}</span></div>
         <div><span class="label">Email:</span> <span class="info">{email}</span></div>
@@ -47,6 +48,7 @@
             const price = order.products.reduce((accumulator, product) => accumulator + product.product.price, 0);
             Dom.add('orders', Dom.template('orders', {
                 id: order._id,
+                size: order.size,
                 status: order.status,
                 name: order.delivery?.name || "",
                 email: order.delivery?.email || "",
