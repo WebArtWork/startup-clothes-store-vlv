@@ -25,12 +25,7 @@
 <div id="template-orders" style="display: none;">
     <div class="order-container">
         <div><span class="label">ID:</span> <span class="id">{id}</span></div>
-        <div>
-            <span class="label">Товари:</span>
-            {% for product in products %}
-                <span class="id">{product.product.name}</span>
-            {% endfor %}
-        </div>
+        <div><span class="label">Розмір:</span> <span class="id">{size}</span></div>
         <div><span class="label">Статус:</span> <span class="status">{status}</span></div>
         <div><span class="label">Ім'я:</span> <span class="info">{name}</span></div>
         <div><span class="label">Email:</span> <span class="info">{email}</span></div>
@@ -50,6 +45,8 @@
     (async () => {
         const orders = await Order.get();
         for (const order of orders) {
+            console.log(order.products);
+            
             const price = order.products.reduce((accumulator, product) => accumulator + product.product.price, 0);
             Dom.add('orders', Dom.template('orders', {
                 id: order._id,
@@ -61,8 +58,7 @@
                 address: order.delivery?.address || "",
                 phone: order.delivery?.phone || "",
                 discount: order.discount ? `-${price - (price * order.discount?.amount / 100)} грн (${order.discount?.amount}%)` : '',
-                price: `${price} грн`,
-                products: order.products
+                price: `${price} грн`
             }));
         }
     })();
