@@ -56,18 +56,18 @@
             <a href="#" class="toggle-category" id="price">Ціна</a>
             <div class="container mt-1">
               <div class="d-flex justify-content-between align-items-center">
-                <input type="number" id="price-min" min="0" max="99999" value="0" class="form-control">
+                <input type="number" id="price-min" min="{{{minPrice}}}" max="{{{maxPrice}}}" value="{{{minPrice}}}" class="form-control">
                 <span class="mx-2 dash">-</span>
-                <input type="number" id="price-max" min="0" max="99999" value="99999" class="form-control">
+                <input type="number" id="price-max" min="{{{minPrice}}}" max="{{{maxPrice}}}" value="{{{maxPrice}}}" class="form-control">
               </div>
               <div class="slider-container position-relative">
                 <div class="slider-track"></div>
                 <div class="slider-range" id="slider-range"></div>
-                <input type="range" class="slider" id="slider-min" min="0" max="99999" step="10" value="0">
-                <input type="range" class="slider" id="slider-max" min="0" max="99999" step="10" value="99999">
+                <input type="range" class="slider" id="slider-min" min="{{{minPrice}}}" max="{{{maxPrice}}}" step="10" value="{{{minPrice}}}">
+                <input type="range" class="slider" id="slider-max" min="{{{minPrice}}}" max="{{{maxPrice}}}" step="10" value="{{{maxPrice}}}">
                 <div class="slider-values">
-                  <span class="slider-min-value">₴0</span>
-                  <span class="slider-max-value">₴99999</span>
+                  <span class="slider-min-value">₴{{{minPrice}}}</span>
+                  <span class="slider-max-value">₴{{{maxPrice}}}</span>
                 </div>
                 <div class="slider-steps">
                   <span class="step" style="left: 10%;">|</span>
@@ -157,10 +157,10 @@
     });
 
     function resetSlider() {
-      priceMinInput.value = 0;
-      priceMaxInput.value = 99999;
-      sliderMin.value = 0;
-      sliderMax.value = 99999;
+      priceMinInput.value = sliderMin.min;
+      priceMaxInput.value = sliderMax.max;
+      sliderMin.value = sliderMin.min;
+      sliderMax.value = sliderMax.max;
       updateSlider();
       updateFilters();
     }
