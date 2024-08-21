@@ -25,7 +25,7 @@
 <div id="template-orders" style="display: none;">
     <div class="order-container">
         <div><span class="label">ID:</span> <span class="id">{id}</span></div>
-        <div><span class="label">Розмір:</span> <span class="id">{size}</span></div>
+        <div><span class="label">Товари:</span> <span class="products">{products |json}</span></div>
         <div><span class="label">Статус:</span> <span class="status">{status}</span></div>
         <div><span class="label">Ім'я:</span> <span class="info">{name}</span></div>
         <div><span class="label">Email:</span> <span class="info">{email}</span></div>
@@ -58,7 +58,8 @@
                 address: order.delivery?.address || "",
                 phone: order.delivery?.phone || "",
                 discount: order.discount ? `-${price - (price * order.discount?.amount / 100)} грн (${order.discount?.amount}%)` : '',
-                price: `${price} грн`
+                price: `${price} грн`,
+                products: order.products
             }));
         }
     })();
