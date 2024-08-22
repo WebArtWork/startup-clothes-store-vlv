@@ -46,8 +46,13 @@
         const orders = await Order.get();
         for (const order of orders) {
             console.log(order.products);
-            
+
             const price = order.products.reduce((accumulator, product) => accumulator + product.product.price, 0);
+            
+            const productsList = order.products.map(product => {
+                return `asdasd`;
+            }).join('\n');
+
             Dom.add('orders', Dom.template('orders', {
                 id: order._id,
                 size: order.size,
@@ -59,7 +64,7 @@
                 phone: order.delivery?.phone || "",
                 discount: order.discount ? `-${price - (price * order.discount?.amount / 100)} грн (${order.discount?.amount}%)` : '',
                 price: `${price} грн`,
-                products: order.products
+                products: productsList 
             }));
         }
     })();
