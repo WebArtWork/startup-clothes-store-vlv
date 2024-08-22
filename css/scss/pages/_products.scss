@@ -112,7 +112,7 @@
     display: none;
     z-index: 1001;
     background: #ffffff;
-    color: #DA9405;
+    color: #8d8d8d;
     border: 1px solid #bebcb7;
     border-radius: 5px;
     padding: 10px 85px;
@@ -337,8 +337,4 @@
   .sidebar ul li.active ul,
   .sidebar ul li.active .container {
     display: block;
-  }
-
-  .filter-checkbox:checked {
-    background-color: #069aa2;
   }
