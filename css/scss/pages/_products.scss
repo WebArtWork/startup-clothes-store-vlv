@@ -339,37 +339,6 @@
     display: block;
   }
 
-
-  .filter-checkbox {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: relative;
-    width: 18px;
-    height: 18px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    background-color: #fff;
-    cursor: pointer;
-  }
-  
-  /* Create a custom checkbox with a background color */
   .filter-checkbox:checked {
-    background-color: #DA9405;
-  }
-  
-  /* Add a checkmark */
-  .filter-checkbox:checked::after {
-    content: '✔';
-    font-size: 14px;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  /* Optional: Add a hover effect */
-  .filter-checkbox:hover {
-    border-color: #DA9405;
+    background-color: #069aa2;
   }
