@@ -116,10 +116,6 @@
         if (parentLi.classList.contains('active')) {
           parentLi.classList.remove('active');
         } else {
-          // Закрити всі інші активні категорії
-          toggles.forEach(function (t) {
-            t.parentElement.classList.remove('active');
-          });
           parentLi.classList.add('active');
         }
       });
