@@ -354,14 +354,14 @@
   
   /* Create a custom checkbox with a background color */
   .filter-checkbox:checked {
-    background-color: #069aa2;
+    background-color: #6cc4cc;
   }
   
   /* Add a checkmark */
   .filter-checkbox:checked::after {
     content: '✔';
     font-size: 14px;
-    color: white;
+    color: rgb(0, 0, 0);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -370,5 +370,5 @@
   
   /* Optional: Add a hover effect */
   .filter-checkbox:hover {
-    border-color: #069aa2;
+    border-color: #6cc4cc;
   }
