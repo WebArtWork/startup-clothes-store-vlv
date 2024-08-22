@@ -55,6 +55,8 @@
 		import Order from "/api/wjst/order";
 		import Event from "/api/wjst/event";
 		import Http from '/api/wjst/http';
+		const resp = await Http.post('/api/user/fetchme', {});
+		const order = await Order.populated();
 
 		const toggleSubmitButton = () => {
 			const submitButton = document.querySelector('.cart-checkout-btn');
@@ -64,7 +66,7 @@
 			const address = Dom.element('address').value.trim();
 			const phone = Dom.element('phone').value.trim();
 
-			if (!email || !name || !city || !address || !phone) {
+			if (!email || !name || !city || !address || !phone || !order.products) {
 				submitButton.disabled = true;
 			} else {
 				submitButton.disabled = false;
@@ -75,8 +77,6 @@
 			toggleSubmitButton();
 		});
 
-		const resp = await Http.post('/api/user/fetchme', {});
-		const order = await Order.populated();
 		console.log(order);
 		
 		order.products.forEach((product, index) => {
