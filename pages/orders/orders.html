@@ -44,10 +44,25 @@
 
     (async () => {
         const orders = await Order.get();
-        for (const order of orders) {
-            console.log(order.products);
-            
+
+        orders.forEach(order => {
+            let productsList = '';
+
+            // Loop through each product in the order
+            order.products.forEach(product => {
+                // Create the template for each product
+                productsList += Dom.template('orders', {
+                    id: order._id,
+                    productName: product.product.name,
+                    productPrice: `${product.product.price} грн`,
+                    productQuantity: product.quantity,
+                });
+            });
+
             const price = order.products.reduce((accumulator, product) => accumulator + product.product.price, 0);
+            const totalDiscount = order.discount ? price - (price * order.discount?.amount / 100) : 0;
+
+            // Create the template for the order, including the product list
             Dom.add('orders', Dom.template('orders', {
                 id: order._id,
                 size: order.size,
@@ -57,10 +72,10 @@
                 city: order.delivery?.city || "",
                 address: order.delivery?.address || "",
                 phone: order.delivery?.phone || "",
-                discount: order.discount ? `-${price - (price * order.discount?.amount / 100)} грн (${order.discount?.amount}%)` : '',
+                discount: order.discount ? `-${totalDiscount} грн (${order.discount?.amount}%)` : '',
                 price: `${price} грн`,
-                products: order.products
+                products: productsList // Insert the product list into the template
             }));
-        }
+        });
     })();
 </script>
