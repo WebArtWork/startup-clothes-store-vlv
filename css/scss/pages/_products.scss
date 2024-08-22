@@ -107,7 +107,6 @@
     padding: 20px;
   }
 
-
   .toggle-sidebar-btn {
     display: none;
     z-index: 1001;
@@ -337,4 +336,39 @@
   .sidebar ul li.active ul,
   .sidebar ul li.active .container {
     display: block;
+  }
+
+
+  .filter-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Create a custom checkbox with a background color */
+  .filter-checkbox:checked {
+    background-color: #069aa2;
+  }
+  
+  /* Add a checkmark */
+  .filter-checkbox:checked::after {
+    content: '✔';
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Optional: Add a hover effect */
+  .filter-checkbox:hover {
+    border-color: #069aa2;
   }
