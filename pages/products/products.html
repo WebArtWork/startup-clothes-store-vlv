@@ -116,6 +116,10 @@
         if (parentLi.classList.contains('active')) {
           parentLi.classList.remove('active');
         } else {
+          // Закрити всі інші активні категорії
+          toggles.forEach(function (t) {
+            t.parentElement.classList.remove('active');
+          });
           parentLi.classList.add('active');
         }
       });
@@ -126,56 +130,6 @@
     const sliderMin = Dom.element('slider-min');
     const sliderMax = Dom.element('slider-max');
     const sliderRange = Dom.element('slider-range');
-
-    function updateSlider() {
-      const minVal = parseFloat(sliderMin.value);
-      const maxVal = parseFloat(sliderMax.value);
-      const minPercent = ((minVal - parseFloat(sliderMin.min)) / (parseFloat(sliderMin.max) - parseFloat(sliderMin.min))) * 100;
-      const maxPercent = ((maxVal - parseFloat(sliderMin.min)) / (parseFloat(sliderMin.max) - parseFloat(sliderMin.min))) * 100;
-
-      if (minVal > maxVal) {
-        sliderMin.value = maxVal;
-        sliderMax.value = minVal;
-      }
-
-      priceMinInput.value = sliderMin.value;
-      priceMaxInput.value = sliderMax.value;
-
-      sliderRange.style.left = minPercent + '%';
-      sliderRange.style.width = (maxPercent - minPercent) + '%';
-    }
-    sliderMin.addEventListener('input', updateSlider);
-    sliderMax.addEventListener('input', updateSlider);
-    sliderMin.addEventListener('change', updateFilters);
-    sliderMax.addEventListener('change', updateFilters);
-    priceMinInput.addEventListener('blur', function () {
-      sliderMin.value = priceMinInput.value;
-      updateSlider();
-      updateFilters();
-    });
-
-    priceMaxInput.addEventListener('blur', function () {
-      sliderMax.value = priceMaxInput.value;
-      updateSlider();
-      updateFilters();
-    });
-
-    function resetSlider() {
-      priceMinInput.value = sliderMin.min;
-      priceMaxInput.value = sliderMax.max;
-      sliderMin.value = sliderMin.min;
-      sliderMax.value = sliderMax.max;
-      updateSlider();
-      updateFilters();
-    }
-    Dom.click("reset", () => resetSlider());
-
-    document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
-      checkbox.addEventListener('change', function () {
-        updateFilters();
-      });
-    });
-
 
     function updateFilters() {
       let url = new URL(window.location.href);
@@ -202,6 +156,8 @@
       const maxPrice = Dom.element('price-max').value;
       if (minPrice !== '' && maxPrice !== '') {
         filterValues['price'] = [minPrice, maxPrice];
+        // Make sure price filter section stays open
+        document.getElementById('price').parentElement.classList.add('active');
       }
 
       for (const [category, values] of Object.entries(filterValues)) {
@@ -213,7 +169,6 @@
       window.history.replaceState(null, null, url.toString());
       location.reload();
     }
-
     function initializeFilters() {
       let url = new URL(window.location.href);
       let params = new URLSearchParams(url.search);
