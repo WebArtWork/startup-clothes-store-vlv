@@ -48,10 +48,10 @@
             console.log(order.products);
 
             const price = order.products.reduce((accumulator, product) => accumulator + product.product.price, 0);
-            
+
             const productsList = order.products.map(product => {
-                return `${product.product.name} (${product?.productquantity?.size}) <br>`;
-            }).join('\n');
+                return `${product.product.name} (${product?.productquantity?.size.name}) <br>`;
+            });
 
             Dom.add('orders', Dom.template('orders', {
                 id: order._id,
@@ -64,7 +64,7 @@
                 phone: order.delivery?.phone || "",
                 discount: order.discount ? `-${price - (price * order.discount?.amount / 100)} грн (${order.discount?.amount}%)` : '',
                 price: `${price} грн`,
-                products: productsList 
+                products: productsList
             }));
         }
     })();
