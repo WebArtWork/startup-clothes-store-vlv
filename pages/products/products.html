@@ -1,8 +1,8 @@
 <div class="container cloth-container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <button id="toggle-sidebar" class="toggle-sidebar-btn">Фільтрувати за</button>
-      <div class="sidebar"  id="sidebar">
+      <div class="sidebar" id="sidebar">
         <button id="close-sidebar" class="close-sidebar-btn">&times;</button>
         <ul>
           <li>
@@ -56,15 +56,19 @@
             <a href="#" class="toggle-category" id="price">Ціна</a>
             <div class="container mt-1">
               <div class="d-flex justify-content-between align-items-center">
-                <input type="number" id="price-min" min="{{{minPrice}}}" max="{{{maxPrice}}}" value="{{{minPrice}}}" class="form-control">
+                <input type="number" id="price-min" min="{{{minPrice}}}" max="{{{maxPrice}}}" value="{{{minPrice}}}"
+                  class="form-control">
                 <span class="mx-2 dash">-</span>
-                <input type="number" id="price-max" min="{{{minPrice}}}" max="{{{maxPrice}}}" value="{{{maxPrice}}}" class="form-control">
+                <input type="number" id="price-max" min="{{{minPrice}}}" max="{{{maxPrice}}}" value="{{{maxPrice}}}"
+                  class="form-control">
               </div>
               <div class="slider-container position-relative">
                 <div class="slider-track"></div>
                 <div class="slider-range" id="slider-range"></div>
-                <input type="range" class="slider" id="slider-min" min="{{{minPrice}}}" max="{{{maxPrice}}}" step="10" value="{{{minPrice}}}">
-                <input type="range" class="slider" id="slider-max" min="{{{minPrice}}}" max="{{{maxPrice}}}" step="10" value="{{{maxPrice}}}">
+                <input type="range" class="slider" id="slider-min" min="{{{minPrice}}}" max="{{{maxPrice}}}" step="10"
+                  value="{{{minPrice}}}">
+                <input type="range" class="slider" id="slider-max" min="{{{minPrice}}}" max="{{{maxPrice}}}" step="10"
+                  value="{{{maxPrice}}}">
                 <div class="slider-values">
                   <span class="slider-min-value">₴{{{minPrice}}}</span>
                   <span class="slider-max-value">₴{{{maxPrice}}}</span>
@@ -87,7 +91,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div class="cloth__list">
         {% for product in products %}
         <a href="/product/{{{product._id|string}}}" class="cloth__item cloth__item-products" data-modal-id="modal">
@@ -112,6 +116,10 @@
         if (parentLi.classList.contains('active')) {
           parentLi.classList.remove('active');
         } else {
+          // Закрити всі інші активні категорії
+          toggles.forEach(function (t) {
+            t.parentElement.classList.remove('active');
+          });
           parentLi.classList.add('active');
         }
       });
