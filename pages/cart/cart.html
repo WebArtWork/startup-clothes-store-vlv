@@ -66,7 +66,7 @@
 			const address = Dom.element('address').value.trim();
 			const phone = Dom.element('phone').value.trim();
 
-			if (!email || !name || !city || !address || !phone || !order.products) {
+			if (!email || !name || !city || !address || !phone || !order.products.length) {
 				submitButton.disabled = true;
 			} else {
 				submitButton.disabled = false;
