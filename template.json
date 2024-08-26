@@ -45,6 +45,7 @@
 	"tags": [
 		{
 			"name": "Футболки",
+			"thumb": "/vlv/img/cloth/cloth2.jpg",
 			"tags": [
 				{
 					"name": "Штани",
@@ -100,6 +101,7 @@
 		},
 		{
 			"name": "Штани",
+			"thumb": "/vlv/img/cloth/cloth3.jpg",
 			"tags": [
 				{
 					"name": "Штани",
@@ -115,25 +117,24 @@
 			]
 		},
 		{
-			"name": "Шапки"
+			"name": "Шапки",
+			"thumb": "/vlv/img/cloth/cloth4.jpg"
 		},
 		{
-			"name": "Взуття"
+			"name": "Взуття",
+			"thumb": "/vlv/img/cloth/cloth5.jpg"
 		},
 		{
-			"name": "Светри"
+			"name": "Светри",
+			"thumb": "/vlv/img/cloth/cloth2.jpg"
 		},
 		{
-			"name": "Білизна"
+			"name": "Білизна",
+			"thumb": "/vlv/img/cloth/cloth2.jpg"
 		},
 		{
-			"name": "Спортивні комплекти"
-		},
-		{
-			"name": "Аксесуари"
-		},
-		{
-			"name": "Розпродаж"
+			"name": "Спортивні комплекти",
+			"thumb": "/vlv/img/cloth/cloth2.jpg"
 		}
 	],
 	"top_products": [

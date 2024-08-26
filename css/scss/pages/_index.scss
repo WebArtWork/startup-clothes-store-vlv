@@ -305,100 +305,118 @@
 }
 
 .land_tags {
-    display: flex;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
-    margin: 0 auto;
-    margin-bottom: 60px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 10px;
+	margin: 0 auto;
+	margin-bottom: 60px;
 }
 
 .land_tags .tag {
-	width: 170px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.land_tags .tag .tag-content {
-    position: relative;
-}
-
-.land_tags .tag .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease;
-}
-
-.land_tags .tag:hover .overlay {
-    opacity: 1; /* Show overlay on hover */
-}
-
-.land_tags .tag .overlay h3 {
-    color: white;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.land_tags .tag .overlay a {
-    padding: 10px 15px;
-    background-color: #fafafa;
-    color: #333333;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.land_tags .tag .overlay a:hover {
-    background-color: #333333;
-    color: #ffffff;
+	position: relative;
+	overflow: hidden;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	height: 100%;
 }
 
 .land_tags .tag img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
+	transition: transform 0.3s ease;
 }
 
-@media (max-width: 1200px) {
-    .land_tags {
-       display: none;
-    }
+.land_tags .tag:hover img {
+	transform: scale(1.05);
 }
 
-.land_tags .all img {
-    min-height: 100px;
-    height: 60vh;
+.land_tags .tag .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	/* Напівпрозорий оверлей */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	/* Спочатку прихований */
+	transition: opacity 0.3s ease;
 }
+
+.land_tags .tag:hover .overlay {
+	opacity: 1;
+	/* Показати оверлей при наведенні */
+}
+
+.land_tags .tag .overlay h3 {
+	color: white;
+	font-size: 1.2rem;
+	margin-bottom: 10px;
+}
+
+.land_tags .tag .overlay a {
+	padding: 10px 15px;
+	background-color: #fafafa;
+	color: #333333;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	text-decoration: none;
+}
+
+.land_tags .tag .overlay a:hover {
+	background-color: #333333;
+	color: #ffffff;
+}
+
+@media (max-width: 768px) {
+	.land_tags {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
+}
+
+@media (max-width: 480px) {
+	.land_tags {
+		grid-template-columns: 1fr;
+	}
+}
+
 /* Стили для контейнера с фотографией */
 .photo-container {
-	width: 100%; /* Ширина контейнера */
-	max-width: 100%; /* Максимальная ширина контейнера */
-	height: 300px; /* Высота контейнера - замените на нужную вам */
-	background-image: url('/vlv/img/banner_1.jpg'); /* URL изображения */
-	background-size: cover; /* Масштабирование фонового изображения */
-	background-position: center; /* Позиционирование фонового изображения */
-	text-align: center; /* Выравнивание текста по центру */
-	color: #fff; /* Цвет текста */
-	display: flex; /* Используем Flexbox для центрирования по вертикали и горизонтали */
-	justify-content: center; /* Центрируем по горизонтали */
-	align-items: center; /* Центрируем по вертикали */
+	width: 100%;
+	/* Ширина контейнера */
+	max-width: 100%;
+	/* Максимальная ширина контейнера */
+	height: 300px;
+	/* Высота контейнера - замените на нужную вам */
+	background-image: url('/vlv/img/banner_1.jpg');
+	/* URL изображения */
+	background-size: cover;
+	/* Масштабирование фонового изображения */
+	background-position: center;
+	/* Позиционирование фонового изображения */
+	text-align: center;
+	/* Выравнивание текста по центру */
+	color: #fff;
+	/* Цвет текста */
+	display: flex;
+	/* Используем Flexbox для центрирования по вертикали и горизонтали */
+	justify-content: center;
+	/* Центрируем по горизонтали */
+	align-items: center;
+	/* Центрируем по вертикали */
 	margin-bottom: 20px;
-  }
-  
-  .content {
+}
+
+.content {
 	font-size: 35px;
 	text-align: center;
 	font-weight: 500;
 	font-family: 'Inknut Antiqua';
-  }
+}
