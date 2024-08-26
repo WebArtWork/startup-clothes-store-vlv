@@ -306,8 +306,8 @@
 
 .land_tags {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-	gap: 10px;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
 	margin: 0 auto;
 	margin-bottom: 60px;
 }
@@ -321,7 +321,7 @@
 }
 
 .land_tags .tag img {
-	width: 300px;
+	width: 100%;
 	height: 300px;
 	object-fit: cover;
 	transition: transform 0.3s ease;
