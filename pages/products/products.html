@@ -1,20 +1,10 @@
+
 <div class="container cloth-container">
   <div class="product-search">
-    <form id="productSearchForm">
-      <input type="text" id="searchInput" placeholder="Шукати товари" />
+    <form>
+      <input type="text" placeholder="Шукати товари" />
       <button type="submit">
-        <svg fill="white" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="24" height="24" viewBox="0,0,256,256">
-          <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
-            stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
-            font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-            <g transform="translate(0,256) scale(0.26667,0.26667)">
-              <path
-                d="M784,-120l-252,-252c-20,16 -43,28.66667 -69,38c-26,9.33333 -53.66667,14 -83,14c-72.66667,0 -134.16667,-25.16667 -184.5,-75.5c-50.33333,-50.33333 -75.5,-111.83333 -75.5,-184.5c0,-72.66667 25.16667,-134.16667 75.5,-184.5c50.33333,-50.33333 111.83333,-75.5 184.5,-75.5c72.66667,0 134.16667,25.16667 184.5,75.5c50.33333,50.33333 75.5,111.83333 75.5,184.5c0,29.33333 -4.66667,57 -14,83c-9.33333,26 -22,49 -38,69l252,252zM380,-400c50,0 92.5,-17.5 127.5,-52.5c35,-35 52.5,-77.5 52.5,-127.5c0,-50 -17.5,-92.5 -52.5,-127.5c-35,-35 -77.5,-52.5 -127.5,-52.5c-50,0 -92.5,17.5 -127.5,52.5c-35,35 -52.5,77.5 -52.5,127.5c0,50 17.5,92.5 52.5,127.5c35,35 77.5,52.5 127.5,52.5z">
-              </path>
-            </g>
-          </g>
-        </svg>
+        <svg fill="white" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0,0,256,256"><g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="translate(0,256) scale(0.26667,0.26667)"><path d="M784,-120l-252,-252c-20,16 -43,28.66667 -69,38c-26,9.33333 -53.66667,14 -83,14c-72.66667,0 -134.16667,-25.16667 -184.5,-75.5c-50.33333,-50.33333 -75.5,-111.83333 -75.5,-184.5c0,-72.66667 25.16667,-134.16667 75.5,-184.5c50.33333,-50.33333 111.83333,-75.5 184.5,-75.5c72.66667,0 134.16667,25.16667 184.5,75.5c50.33333,50.33333 75.5,111.83333 75.5,184.5c0,29.33333 -4.66667,57 -14,83c-9.33333,26 -22,49 -38,69l252,252zM380,-400c50,0 92.5,-17.5 127.5,-52.5c35,-35 52.5,-77.5 52.5,-127.5c0,-50 -17.5,-92.5 -52.5,-127.5c-35,-35 -77.5,-52.5 -127.5,-52.5c-50,0 -92.5,17.5 -127.5,52.5c-35,35 -52.5,77.5 -52.5,127.5c0,50 17.5,92.5 52.5,127.5c35,35 77.5,52.5 127.5,52.5z"></path></g></g></svg>
       </button>
     </form>
   </div>
@@ -111,10 +101,9 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div class="cloth__list" id="productList">
+      <div class="cloth__list">
         {% for product in products %}
-        <a href="/product/{{{product._id|string}}}" class="cloth__item cloth__item-products"
-          data-product-name="{{{product.name}}}" data-modal-id="modal">
+        <a href="/product/{{{product._id|string}}}" class="cloth__item cloth__item-products" data-modal-id="modal">
           <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
           <div class="cloth__item-title">{{{product.name}}}</div>
           <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
@@ -124,116 +113,66 @@
     </div>
   </div>
 </div>
+
 <script type="module">
   import Dom from "/api/wjst/dom";
-
   document.addEventListener('DOMContentLoaded', function () {
-    const searchForm = document.getElementById('productSearchForm');
-    const searchInput = document.getElementById('searchInput');
-    
-    // Функція для оновлення URL та фільтрів
-    function updateFilters() {
-      let url = new URL(window.location.href);
-      let params = new URLSearchParams(url.search);
 
-      // Додамо або видалимо параметр пошуку
-      const searchTerm = searchInput.value.trim();
-      if (searchTerm) {
-        params.set('search', searchTerm);
-      } else {
-        params.delete('search');
-      }
+    const searchInput = document.querySelector('.product-search input');
+    const searchForm = document.querySelector('.product-search form');
 
-      // Логіка для обробки інших фільтрів
-      const filterCategories = document.querySelectorAll('.toggle-category');
-      filterCategories.forEach(category => {
-        params.delete(category.id);
-      });
-
-      const filterValues = {};
-
-      document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
-        if (checkbox.checked) {
-          const category = checkbox.getAttribute('data-category');
-          if (!filterValues[category]) {
-            filterValues[category] = [];
-          }
-          filterValues[category].push(checkbox.name);
-        }
-      });
-
-      const minPrice = Dom.element('price-min').value;
-      const maxPrice = Dom.element('price-max').value;
-      if (minPrice !== '' && maxPrice !== '') {
-        filterValues['price'] = [minPrice, maxPrice];
-      }
-
-      for (const [category, values] of Object.entries(filterValues)) {
-        if (values.length > 0) {
-          params.set(category, values.join(','));
-        }
-      }
-      url.search = params.toString();
-      window.history.replaceState(null, null, url.toString());
-      location.reload();
-    }
-
-    // Ініціалізація пошуку при завантаженні сторінки
-    function initializeSearch() {
-      let url = new URL(window.location.href);
-      let params = new URLSearchParams(url.search);
-      const searchTerm = params.get('search');
-      
-      if (searchTerm) {
-        searchInput.value = searchTerm;
-      }
-    }
-
-    // Обробка події submit форми пошуку
     searchForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      updateFilters();
+        event.preventDefault();
+        updateFilters();
     });
 
-    // Ініціалізація фільтрів при завантаженні сторінки
-    function initializeFilters() {
-      let url = new URL(window.location.href);
-      let params = new URLSearchParams(url.search);
-      let categoriesWithEnabledFilters = new Set();
+    function updateFilters() {
+        let url = new URL(window.location.href);
+        let params = new URLSearchParams(url.search);
 
-      params.forEach((value, key) => {
-        let values = value.split(',');
-        values.forEach(val => {
-          if (key === 'price') {
-            Dom.element('price-min').value = values[0];
-            Dom.element('price-max').value = values[1];
-            Dom.element('slider-min').value = values[0];
-            Dom.element('slider-max').value = values[1];
-          } else if (key === 'search') {
-            searchInput.value = val; // Заповнення поля пошуку
-          } else {
-            let checkbox = document.querySelector(`.filter-checkbox[data-category="${key}"][name="${val}"]`);
-            if (checkbox) {
-              checkbox.checked = true;
-              categoriesWithEnabledFilters.add(key);
-            }
-          }
+        const filterCategories = document.querySelectorAll('.toggle-category');
+        filterCategories.forEach(category => {
+            params.delete(category.id);
         });
-      });
 
-      categoriesWithEnabledFilters.forEach(category => {
-        let categoryElement = document.getElementById(category);
-        if (categoryElement) {
-          categoryElement.parentElement.classList.add('active');
+        const filterValues = {};
+
+        document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+            if (checkbox.checked) {
+                const category = checkbox.getAttribute('data-category');
+                if (!filterValues[category]) {
+                    filterValues[category] = [];
+                }
+                filterValues[category].push(checkbox.name);
+            }
+        });
+
+        const minPrice = Dom.element('price-min').value;
+        const maxPrice = Dom.element('price-max').value;
+        if (minPrice !== '' && maxPrice !== '') {
+            filterValues['price'] = [minPrice, maxPrice];
         }
-      });
+
+        const searchTerm = searchInput.value.trim();
+        if (searchTerm) {
+            filterValues['search'] = [searchTerm];
+        }
+
+        for (const [category, values] of Object.entries(filterValues)) {
+            if (values.length > 0) {
+                params.set(category, values.join(','));
+            }
+        }
+        url.search = params.toString();
+        window.history.replaceState(null, null, url.toString());
+        location.reload();
     }
 
-    // Викликаємо ініціалізацію фільтрів і пошуку
+    // Initialize filters and sliders
     initializeFilters();
-    initializeSearch();
+    updateSlider();
 
-    // Логіка для обробки інших фільтрів
+
     var toggles = document.querySelectorAll('.toggle-category');
     toggles.forEach(function (toggle) {
       toggle.addEventListener('click', function (event) {
@@ -301,5 +240,76 @@
         updateFilters();
       });
     });
+
+
+    function updateFilters() {
+      let url = new URL(window.location.href);
+      let params = new URLSearchParams(url.search);
+
+      const filterCategories = document.querySelectorAll('.toggle-category');
+      filterCategories.forEach(category => {
+        params.delete(category.id);
+      });
+
+      const filterValues = {};
+
+      document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+        if (checkbox.checked) {
+          const category = checkbox.getAttribute('data-category');
+          if (!filterValues[category]) {
+            filterValues[category] = [];
+          }
+          filterValues[category].push(checkbox.name);
+        }
+      });
+
+      const minPrice = Dom.element('price-min').value;
+      const maxPrice = Dom.element('price-max').value;
+      if (minPrice !== '' && maxPrice !== '') {
+        filterValues['price'] = [minPrice, maxPrice];
+      }
+
+      for (const [category, values] of Object.entries(filterValues)) {
+        if (values.length > 0) {
+          params.set(category, values.join(','));
+        }
+      }
+      url.search = params.toString();
+      window.history.replaceState(null, null, url.toString());
+      location.reload();
+    }
+
+    function initializeFilters() {
+      let url = new URL(window.location.href);
+      let params = new URLSearchParams(url.search);
+      let categoriesWithEnabledFilters = new Set();
+
+      params.forEach((value, key) => {
+        let values = value.split(',');
+        values.forEach(val => {
+          if (key === 'price') {
+            Dom.element('price-min').value = values[0];
+            Dom.element('price-max').value = values[1];
+            Dom.element('slider-min').value = values[0];
+            Dom.element('slider-max').value = values[1];
+          } else {
+            let checkbox = document.querySelector(`.filter-checkbox[data-category="${key}"][name="${val}"]`);
+            if (checkbox) {
+              checkbox.checked = true;
+              categoriesWithEnabledFilters.add(key);
+            }
+          }
+        });
+      });
+
+      categoriesWithEnabledFilters.forEach(category => {
+        let categoryElement = document.getElementById(category);
+        if (categoryElement) {
+          categoryElement.parentElement.classList.add('active');
+        }
+      });
+    }
+    initializeFilters();
+    updateSlider();
   });
 </script>
