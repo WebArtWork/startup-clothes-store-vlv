@@ -128,46 +128,46 @@
 <script type="module">
   import Dom from "/api/wjst/dom";
 
-  const searchForm = document.getElementById('productSearchForm');
-  const searchInput = document.getElementById('searchInput');
-  const productList = document.getElementById('productList');
-
-  function updateSearchParams() {
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
-
-    const searchTerm = searchInput.value.trim();
-    if (searchTerm) {
-      params.set('search', searchTerm);
-    } else {
-      params.delete('search');
-    }
-
-    url.search = params.toString();
-    window.history.replaceState(null, null, url.toString());
-
-    updateSearchParams();
-  }
-
-  searchForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-    updateSearchParams();
-  });
-
-  function initializeSearch() {
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
-    const searchTerm = params.get('search');
-    
-    if (searchTerm) {
-      searchInput.value = searchTerm;
-      updateFilters();
-    }
-  }
-
-  initializeSearch();
-
   document.addEventListener('DOMContentLoaded', function () {
+    const searchForm = document.getElementById('productSearchForm');
+    const searchInput = document.getElementById('searchInput');
+    const productList = document.getElementById('productList');
+
+    function updateSearchParams() {
+      let url = new URL(window.location.href);
+      let params = new URLSearchParams(url.search);
+
+      const searchTerm = searchInput.value.trim();
+      if (searchTerm) {
+        params.set('search', searchTerm);
+      } else {
+        params.delete('search');
+      }
+
+      url.search = params.toString();
+      window.history.replaceState(null, null, url.toString());
+
+      updateSearchParams();
+    }
+
+    searchForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      updateSearchParams();
+    });
+
+    function initializeSearch() {
+      let url = new URL(window.location.href);
+      let params = new URLSearchParams(url.search);
+      const searchTerm = params.get('search');
+
+      if (searchTerm) {
+        searchInput.value = searchTerm;
+        updateFilters();
+      }
+    }
+
+    initializeSearch();
+
     var toggles = document.querySelectorAll('.toggle-category');
     toggles.forEach(function (toggle) {
       toggle.addEventListener('click', function (event) {
