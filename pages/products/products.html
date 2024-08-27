@@ -147,7 +147,8 @@
       url.search = params.toString();
       window.history.replaceState(null, null, url.toString());
 
-      updateSearchParams();
+      // Update filters and reload content
+      updateFilters();
     }
 
     searchForm.addEventListener('submit', function (event) {
@@ -162,7 +163,6 @@
 
       if (searchTerm) {
         searchInput.value = searchTerm;
-        updateFilters();
       }
     }
 
@@ -173,11 +173,7 @@
       toggle.addEventListener('click', function (event) {
         event.preventDefault();
         var parentLi = this.parentElement;
-        if (parentLi.classList.contains('active')) {
-          parentLi.classList.remove('active');
-        } else {
-          parentLi.classList.add('active');
-        }
+        parentLi.classList.toggle('active');
       });
     });
 
@@ -204,6 +200,7 @@
       sliderRange.style.left = minPercent + '%';
       sliderRange.style.width = (maxPercent - minPercent) + '%';
     }
+    
     sliderMin.addEventListener('input', updateSlider);
     sliderMax.addEventListener('input', updateSlider);
     sliderMin.addEventListener('change', updateFilters);
@@ -235,7 +232,6 @@
         updateFilters();
       });
     });
-
 
     function updateFilters() {
       let url = new URL(window.location.href);
@@ -304,6 +300,7 @@
         }
       });
     }
+
     initializeFilters();
     updateSlider();
   });
