@@ -133,21 +133,6 @@
   const searchInput = document.getElementById('searchInput');
   const productList = document.getElementById('productList');
 
-  // Функція для оновлення результатів пошуку
-  function updateSearchResults() {
-    const searchTerm = searchInput.value.toLowerCase();
-
-    const products = productList.querySelectorAll('.cloth__item-products');
-    products.forEach(product => {
-      const productName = product.getAttribute('data-product-name').toLowerCase();
-      if (productName.includes(searchTerm)) {
-        product.style.display = '';
-      } else {
-        product.style.display = 'none';
-      }
-    });
-  }
-
   // Функція для оновлення URL
   function updateSearchParams() {
     let url = new URL(window.location.href);
@@ -163,7 +148,7 @@
     url.search = params.toString();
     window.history.replaceState(null, null, url.toString());
 
-    updateSearchResults();
+    updateFilters();
   }
 
   // Обробка події submit форми
@@ -180,7 +165,7 @@
     
     if (searchTerm) {
       searchInput.value = searchTerm;
-      updateSearchResults();
+      updateFilters();
     }
   }
 
