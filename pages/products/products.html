@@ -132,6 +132,43 @@
   const searchInput = document.getElementById('searchInput');
   const productList = document.getElementById('productList');
 
+  function updateFilters() {
+    let url = new URL(window.location.href);
+    let params = new URLSearchParams(url.search);
+
+    const filterCategories = document.querySelectorAll('.toggle-category');
+    filterCategories.forEach(category => {
+      params.delete(category.id);
+    });
+
+    const filterValues = {};
+
+    document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+      if (checkbox.checked) {
+        const category = checkbox.getAttribute('data-category');
+        if (!filterValues[category]) {
+          filterValues[category] = [];
+        }
+        filterValues[category].push(checkbox.name);
+      }
+    });
+
+    const minPrice = Dom.element('price-min').value;
+    const maxPrice = Dom.element('price-max').value;
+    if (minPrice !== '' && maxPrice !== '') {
+      filterValues['price'] = [minPrice, maxPrice];
+    }
+
+    for (const [category, values] of Object.entries(filterValues)) {
+      if (values.length > 0) {
+        params.set(category, values.join(','));
+      }
+    }
+    url.search = params.toString();
+    window.history.replaceState(null, null, url.toString());
+    location.reload();
+  }
+
   function updateSearchParams() {
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
@@ -146,7 +183,7 @@
     url.search = params.toString();
     window.history.replaceState(null, null, url.toString());
 
-    updateSearchParams();
+    updateFilters(); // Виклик після визначення функції
   }
 
   searchForm.addEventListener('submit', function (event) {
@@ -161,7 +198,7 @@
     
     if (searchTerm) {
       searchInput.value = searchTerm;
-      updateFilters();
+      updateFilters(); // Виклик після визначення функції
     }
   }
 
@@ -235,44 +272,6 @@
         updateFilters();
       });
     });
-
-
-    function updateFilters() {
-      let url = new URL(window.location.href);
-      let params = new URLSearchParams(url.search);
-
-      const filterCategories = document.querySelectorAll('.toggle-category');
-      filterCategories.forEach(category => {
-        params.delete(category.id);
-      });
-
-      const filterValues = {};
-
-      document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
-        if (checkbox.checked) {
-          const category = checkbox.getAttribute('data-category');
-          if (!filterValues[category]) {
-            filterValues[category] = [];
-          }
-          filterValues[category].push(checkbox.name);
-        }
-      });
-
-      const minPrice = Dom.element('price-min').value;
-      const maxPrice = Dom.element('price-max').value;
-      if (minPrice !== '' && maxPrice !== '') {
-        filterValues['price'] = [minPrice, maxPrice];
-      }
-
-      for (const [category, values] of Object.entries(filterValues)) {
-        if (values.length > 0) {
-          params.set(category, values.join(','));
-        }
-      }
-      url.search = params.toString();
-      window.history.replaceState(null, null, url.toString());
-      location.reload();
-    }
 
     function initializeFilters() {
       let url = new URL(window.location.href);
