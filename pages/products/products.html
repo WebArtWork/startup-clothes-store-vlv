@@ -128,12 +128,10 @@
 <script type="module">
   import Dom from "/api/wjst/dom";
 
-  document.addEventListener('DOMContentLoaded', function () {
   const searchForm = document.getElementById('productSearchForm');
   const searchInput = document.getElementById('searchInput');
   const productList = document.getElementById('productList');
 
-  // Функція для оновлення URL
   function updateSearchParams() {
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
@@ -151,13 +149,11 @@
     updateSearchParams();
   }
 
-  // Обробка події submit форми
   searchForm.addEventListener('submit', function (event) {
     event.preventDefault();
     updateSearchParams();
   });
 
-  // Ініціалізація пошуку при завантаженні сторінки
   function initializeSearch() {
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
@@ -170,7 +166,6 @@
   }
 
   initializeSearch();
-});
 
   document.addEventListener('DOMContentLoaded', function () {
     var toggles = document.querySelectorAll('.toggle-category');
