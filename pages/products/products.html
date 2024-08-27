@@ -114,7 +114,7 @@
       <div class="cloth__list" id="productList">
         {% for product in products %}
         <a href="/product/{{{product._id|string}}}" class="cloth__item cloth__item-products"
-        data-product-name="{{{product.name}}}" data-modal-id="modal">
+          data-product-name="{{{product.name}}}" data-modal-id="modal">
           <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
           <div class="cloth__item-title">{{{product.name}}}</div>
           <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
@@ -127,43 +127,7 @@
 
 <script type="module">
   import Dom from "/api/wjst/dom";
-  
-  function updateFilters() {
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
-  
-    const filterCategories = document.querySelectorAll('.toggle-category');
-    filterCategories.forEach(category => {
-      params.delete(category.id);
-    });
-  
-    const filterValues = {};
-  
-    document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
-      if (checkbox.checked) {
-        const category = checkbox.getAttribute('data-category');
-        if (!filterValues[category]) {
-          filterValues[category] = [];
-        }
-        filterValues[category].push(checkbox.name);
-      }
-    });
-  
-    const minPrice = Dom.element('price-min').value;
-    const maxPrice = Dom.element('price-max').value;
-    if (minPrice !== '' && maxPrice !== '') {
-      filterValues['price'] = [minPrice, maxPrice];
-    }
-  
-    for (const [category, values] of Object.entries(filterValues)) {
-      if (values.length > 0) {
-        params.set(category, values.join(','));
-      }
-    }
-    url.search = params.toString();
-    window.history.replaceState(null, null, url.toString());
-    location.reload();
-  }
+
   const searchForm = document.getElementById('productSearchForm');
   const searchInput = document.getElementById('searchInput');
   const productList = document.getElementById('productList');
@@ -194,7 +158,7 @@
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
     const searchTerm = params.get('search');
-    
+
     if (searchTerm) {
       searchInput.value = searchTerm;
       updateFilters();
@@ -273,6 +237,42 @@
     });
 
 
+    function updateFilters() {
+      let url = new URL(window.location.href);
+      let params = new URLSearchParams(url.search);
+
+      const filterCategories = document.querySelectorAll('.toggle-category');
+      filterCategories.forEach(category => {
+        params.delete(category.id);
+      });
+
+      const filterValues = {};
+
+      document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+        if (checkbox.checked) {
+          const category = checkbox.getAttribute('data-category');
+          if (!filterValues[category]) {
+            filterValues[category] = [];
+          }
+          filterValues[category].push(checkbox.name);
+        }
+      });
+
+      const minPrice = Dom.element('price-min').value;
+      const maxPrice = Dom.element('price-max').value;
+      if (minPrice !== '' && maxPrice !== '') {
+        filterValues['price'] = [minPrice, maxPrice];
+      }
+
+      for (const [category, values] of Object.entries(filterValues)) {
+        if (values.length > 0) {
+          params.set(category, values.join(','));
+        }
+      }
+      url.search = params.toString();
+      window.history.replaceState(null, null, url.toString());
+      location.reload();
+    }
 
     function initializeFilters() {
       let url = new URL(window.location.href);
