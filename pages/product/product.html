@@ -115,8 +115,8 @@
 					{% if product?.related_products.length %}
 					<div class="product-info__cart-text">Вам може сподобатись:</div>
 					<div class="product-info__cart">
-						{{{product?.related_products | json}}}
 						{% for relatedproduct in product?.related_products %}
+						{{{relatedproduct | json}}}
 						<img class="photo" src="{{{relatedproduct.thumb}}}">
 						{{{relatedproduct.name}}}
 						{% endfor %}
