@@ -68,9 +68,9 @@
 			</div>
 			{% if product.related_products.length %}
 			<div class="product-info__cart-text">Вам може сподобатись:</div>
-			<div class="product-info__cart">
+			<div class="product-info__cart" style="display: inline-block;">
 				{% for relatedproduct in product.related_products %}
-				<img class="photo" src="{{{relatedproduct.thumb}}}">
+				<img class="img-thumbnail" src="{{{relatedproduct.thumb}}}">
 				{{{relatedproduct.name}}}
 				{% endfor %}
 			</div>
