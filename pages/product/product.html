@@ -67,6 +67,10 @@
 						import Order from "/api/wjst/order";
 						const order = await Order.populated();
 
+						const product = await Product.findById(productId)
+							.populate('related_products')
+							.lean();
+
 						const toggleProduct = async (quantity = 1) => {
 							const productquantity = document.getElementsByClassName('size available selected')[0].id;
 							1
@@ -115,9 +119,9 @@
 					{% if product?.related_products.length %}
 					<div class="product-info__cart-text">Вам може сподобатись:</div>
 					<div class="product-info__cart">
-						{% for related_product in product?.related_products %}
-						<img src="{{{related_product.thumb}}}">
-						{{{related_product.name}}}
+						{% for relatedproduct in product?.related_products %}
+						<img class="photo" src="{{{relatedproduct.thumb}}}">
+						{{{relatedproduct.name}}}
 						{% endfor %}
 					</div>
 					{% endif %}
