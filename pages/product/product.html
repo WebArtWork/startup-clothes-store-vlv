@@ -43,12 +43,13 @@
 					<div class="product-info__cart-text">Розміри:</div>
 					<div class="product-info__cart size-container">
 						{% for productquantity in product.productquantity %}
-							{% if productquantity.quantity > 0 %}
-								<span class="size available" id="{{{productquantity._id}}}">{{{productquantity.size.name}}}</span>
-							{% endif %}
-							{% if !(productquantity.quantity > 0) %}
-								<span class="size no-size">{{{productquantity.size.name}}}</span>
-							{% endif %}
+						{% if productquantity.quantity > 0 %}
+						<span class="size available"
+							id="{{{productquantity._id}}}">{{{productquantity.size.name}}}</span>
+						{% endif %}
+						{% if !(productquantity.quantity > 0) %}
+						<span class="size no-size">{{{productquantity.size.name}}}</span>
+						{% endif %}
 						{% endfor %}
 					</div>
 					<div class="product-info__cart">
@@ -59,15 +60,17 @@
 							Купити зараз
 						</button>
 					</div>
+
+
 					<script type="module">
 						import Dom from "/api/wjst/dom";
-						import Order from "/api/wjst/order";	
+						import Order from "/api/wjst/order";
 						const order = await Order.populated();
-						
+
 						const toggleProduct = async (quantity = 1) => {
 							const productquantity = document.getElementsByClassName('size available selected')[0].id;
 							1
-							const product = "{{{product.id}}}"; 
+							const product = "{{{product.id}}}";
 							await Order.toggleProduct(product, quantity, productquantity);
 							if (await Order.hasProduct(product, productquantity)) {
 								Dom.element("addToCart").innerHTML = "Забрати з кошика";
@@ -108,6 +111,15 @@
 					{% if product.description %}
 					<div class="product-info__cart-text">Подробиці:</div>
 					<div class="product-info__cart">{{{product.description}}}</div>
+					{% endif %}
+					{% if product?.related_products.length %}
+					<div class="product-info__cart-text">Вам може сподобатись:</div>
+					<div class="product-info__cart">
+						{% for relatedproduct in product?.related_products %}
+						<img class="thumbnail" src="{{{relatedproduct.thumb}}}">
+						{{{relatedproduct.name}}}
+						{% endfor %}
+					</div>
 					{% endif %}
 				</div>
 			</div>
