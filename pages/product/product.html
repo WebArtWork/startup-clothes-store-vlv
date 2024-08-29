@@ -64,64 +64,64 @@
 					<div class="product-info__cart-text">Подробиці:</div>
 					<div class="product-info__cart">{{{product.description}}}</div>
 					{% endif %}
-					{% if product.related_products.length %}
-					<div class="product-info__cart-text">Вам може сподобатись:</div>
-					<div class="product-info__cart">
-						{% for relatedproduct in product.related_products %}
-							<img class="photo" src="{{{relatedproduct.thumb}}}">
-							{{{relatedproduct.name}}}
-						{% endfor %}
-					</div>
-					{% endif %}
-
-					<script type="module">
-						import Dom from "/api/wjst/dom";
-						import Order from "/api/wjst/order";
-						const order = await Order.populated();
-
-						const toggleProduct = async (quantity = 1) => {
-							const productquantity = document.getElementsByClassName('size available selected')[0].id;
-							1
-							const product = "{{{product.id}}}";
-							await Order.toggleProduct(product, quantity, productquantity);
-							if (await Order.hasProduct(product, productquantity)) {
-								Dom.element("addToCart").innerHTML = "Забрати з кошика";
-								Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
-							} else {
-								Dom.element("addToCart").innerHTML = "Додати у кошик";
-								Dom.element("addToCart").style.backgroundColor = "black";
-							}
-							Dom.element("cart").innerHTML = Dom.template('cart', {
-								counter: Order.order.products.length
-							});
-						};
-
-						Dom.click("addToCart", () => toggleProduct(1));
-
-						Dom.click("buyNow", async () => {
-							const product = "{{{product.id}}}";
-							await toggleProduct();
-							window.location.href = '/cart';
-						});
-						const sizeElements = document.querySelectorAll('.size.available');
-						const productId = "{{{product.id}}}";
-						sizeElements.forEach(element => {
-							const productquantityId = element.id;
-							element.addEventListener('click', async function () {
-								sizeElements.forEach(el => el.classList.remove('selected'));
-								element.classList.add('selected');
-								if (await Order.hasProduct(productId, productquantityId)) {
-									Dom.element("addToCart").innerHTML = "Забрати з кошика";
-									Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
-								} else {
-									Dom.element("addToCart").innerHTML = "Додати у кошик";
-									Dom.element("addToCart").style.backgroundColor = "black";
-								}
-							});
-						});
-					</script>
 				</div>
 			</div>
+			{% if product.related_products.length %}
+			<div class="product-info__cart-text">Вам може сподобатись:</div>
+			<div class="product-info__cart">
+				{% for relatedproduct in product.related_products %}
+				<img class="photo" src="{{{relatedproduct.thumb}}}">
+				{{{relatedproduct.name}}}
+				{% endfor %}
+			</div>
+			{% endif %}
+
+			<script type="module">
+				import Dom from "/api/wjst/dom";
+				import Order from "/api/wjst/order";
+				const order = await Order.populated();
+
+				const toggleProduct = async (quantity = 1) => {
+					const productquantity = document.getElementsByClassName('size available selected')[0].id;
+					1
+					const product = "{{{product.id}}}";
+					await Order.toggleProduct(product, quantity, productquantity);
+					if (await Order.hasProduct(product, productquantity)) {
+						Dom.element("addToCart").innerHTML = "Забрати з кошика";
+						Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
+					} else {
+						Dom.element("addToCart").innerHTML = "Додати у кошик";
+						Dom.element("addToCart").style.backgroundColor = "black";
+					}
+					Dom.element("cart").innerHTML = Dom.template('cart', {
+						counter: Order.order.products.length
+					});
+				};
+
+				Dom.click("addToCart", () => toggleProduct(1));
+
+				Dom.click("buyNow", async () => {
+					const product = "{{{product.id}}}";
+					await toggleProduct();
+					window.location.href = '/cart';
+				});
+				const sizeElements = document.querySelectorAll('.size.available');
+				const productId = "{{{product.id}}}";
+				sizeElements.forEach(element => {
+					const productquantityId = element.id;
+					element.addEventListener('click', async function () {
+						sizeElements.forEach(el => el.classList.remove('selected'));
+						element.classList.add('selected');
+						if (await Order.hasProduct(productId, productquantityId)) {
+							Dom.element("addToCart").innerHTML = "Забрати з кошика";
+							Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
+						} else {
+							Dom.element("addToCart").innerHTML = "Додати у кошик";
+							Dom.element("addToCart").style.backgroundColor = "black";
+						}
+					});
+				});
+			</script>
 		</div>
 	</section>
 </div>
