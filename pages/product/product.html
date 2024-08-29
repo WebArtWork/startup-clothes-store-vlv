@@ -112,12 +112,12 @@
 					<div class="product-info__cart-text">Подробиці:</div>
 					<div class="product-info__cart">{{{product.description}}}</div>
 					{% endif %}
-					{% if product.related_products && product.related_products.length > 0 %}
+					{% if product.related_products.length > 0 %}
 					<div class="product-info__cart-text">Вам може сподобатись:</div>
 					<div class="product-info__cart">
-						{% for relatedproduct in product.related_products %}
-							<img class="photo" src="{{{relatedproduct.thumb}}}" alt="{{{relatedproduct.name}}}">
-							{{{relatedproduct.name}}}
+						{% for related_product in related_products %}
+							<img class="photo" src="{{{related_product.thumb}}}" alt="{{{related_product.name}}}">
+							{{{related_product.name}}}
 						{% endfor %}
 					</div>
 				{% endif %}
