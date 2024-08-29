@@ -69,7 +69,7 @@
 			{% if product.related_products.length %}
 			<div class="product-info__cart-text">Вам може сподобатись:</div>
 				{% for relatedproduct in product.related_products %}
-				<div class="card" style="width: 12rem;">
+				<div class="card" style="width: 12rem; margin-right: 20px; border: 2px solid #6cc4cc;">
 					<img src="{{{relatedproduct.thumb}}}" class="card-img-top" alt="{{{relatedproduct.name}}}" style="padding: 10px;">
 					<p class="card-text">{{{relatedproduct.name}}}</p>
 				  </div>
