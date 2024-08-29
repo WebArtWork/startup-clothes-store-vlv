@@ -116,7 +116,7 @@
 					<div class="product-info__cart-text">Вам може сподобатись:</div>
 					<div class="product-info__cart">
 						{% for relatedproduct in product?.related_products %}
-						<img class="thumbnail" src="{{{relatedproduct.thumb}}}">
+						<img class="main-photo" src="{{{relatedproduct.thumb}}}">
 						{{{relatedproduct.name}}}
 						{% endfor %}
 					</div>
