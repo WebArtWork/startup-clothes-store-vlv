@@ -67,13 +67,11 @@
 				</div>
 			</div>
 			{% if product.related_products.length %}
-			<div class="product-info__cart-text" style="display: inline-block; gap: 20px;">Вам може сподобатись:</div>
+			<div class="product-info__cart-text">Вам може сподобатись:</div>
 				{% for relatedproduct in product.related_products %}
 				<div class="card" style="width: 12rem;">
-					<img src="{{{relatedproduct.thumb}}}" class="card-img-top" alt="{{{relatedproduct.name}}}" style="margin: 10px;">
-					<div class="card-body">
-					  <p class="card-text">{{{relatedproduct.name}}}</p>
-					</div>
+					<img src="{{{relatedproduct.thumb}}}" class="card-img-top" alt="{{{relatedproduct.name}}}" style="padding: 10px;">
+					<p class="card-text">{{{relatedproduct.name}}}</p>
 				  </div>
 				{% endfor %}
 			</div>
