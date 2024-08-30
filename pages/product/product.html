@@ -67,15 +67,15 @@
 				</div>
 			</div>
 			{% if product.related_products.length %}
-			<div class="product-info__cart-text" style="margin-top: 10px;">Вам може сподобатись:</div>
+			<div class="product-info__cart-text" style="margin-top: 40px;">Вам може сподобатись:</div>
 			{% for relatedproduct in product.related_products %}
-			<a href="{{{relatedproduct.id}}}">
-				<div class="card" style="width: 12rem; margin-right: 20px; border: none">
+			<div class="card" style="width: 12rem; margin-right: 20px; border: none">
+					<a href="{{{relatedproduct.id|string}}}">
 					<img src="{{{relatedproduct.thumb}}}" class="card-img-top" alt="{{{relatedproduct.name}}}"
 						style="padding: 10px;">
 					<p class="card-text">{{{relatedproduct.name}}}</p>
+				</a>
 				</div>
-			</a>
 			{% endfor %}
 		</div>
 		{% endif %}
