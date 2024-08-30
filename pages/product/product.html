@@ -62,7 +62,7 @@
 					</div>
 					{% if product.description %}
 					<div class="product-info__cart-text">Подробиці:</div>
-					<div class="product-info__cart">{{{product.description}}}</div>
+					<div class="product-info__cart">{{{product.description|safe}}}</div>
 					{% endif %}
 				</div>
 			</div>
