@@ -70,9 +70,8 @@
 			<div class="product-info__cart-text" style="margin-top: 40px;">Вам може сподобатись:</div>
 			{% for relatedproduct in product.related_products %}
 			<div class="card" style="width: 12rem; margin-right: 20px; border: none">
-					<a href="{{{relatedproduct.id|string}}}">
-					<img src="{{{relatedproduct.thumb}}}" class="card-img-top" alt="{{{relatedproduct.name}}}"
-						style="padding: 10px;">
+					<a href="/product/{{{relatedproduct.id|string}}}">
+					<img src="{{{relatedproduct.thumb}}}" class="card-img-top" alt="{{{relatedproduct.name}}}">
 					<p class="card-text">{{{relatedproduct.name}}}</p>
 				</a>
 				</div>
