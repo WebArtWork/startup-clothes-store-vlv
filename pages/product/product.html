@@ -44,8 +44,8 @@
 					<div class="product-info__cart size-container">
 						{% for productquantity in product.productquantity %}
 						{% if productquantity.quantity > 0 %}
-						<span class="size available color"
-							id="{{{productquantity._id}}}">{{{productquantity.color}}}</span>
+						<span class="size available"
+							id="{{{productquantity._id}}}" style="background-color: {{{productquantity.color}}};">{{{productquantity.color}}}</span>
 						{% endif %}
 						{% if !(productquantity.quantity > 0) %}
 						<span class="size no-size">{{{productquantity.size.name}}}</span>
