@@ -3,6 +3,27 @@
 		<div class="row">
 			<div class="col-md-6">
 
+				<!-- <div class="carousel-inner">
+						<div class="carousel-item active">
+							<img src="{{{product.thumb}}}" class="d-block w-100">
+						</div>
+						{% for thumb in product.thumbs %}
+						<div class="carousel-item">
+							<img src="{{{thumb}}}" alt="{{{car.name}}}" class="d-block w-100">
+						</div>
+						{% endfor %}
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div> -->
 				<img id="mainPhoto" class="main-photo" src="{{{product.thumb}}}" alt="Головне фото"
 					onclick="setMainPhoto('{{{product.thumb}}}')">
 				<div id="thumbnails">
@@ -19,27 +40,29 @@
 					<div class="product-info__price">
 						{{{product.price}}}&nbsp;<span>{{{currency}}}</span>
 					</div>
+					<!-- Colors Section -->
 					<div class="product-info__cart-text">Кольори:</div>
-					<div class="product-info__cart size-container" id="colorSelection">
+					<div class="product-info__cart color-container">
 						{% for productquantity in product.productquantity %}
-						{% if productquantity.quantity > 0 %}
-						<span class="color-option size available" data-color="{{{productquantity.color}}}" id="{{{productquantity._id}}}" 
-							style="background-color: {{{productquantity.color}}};">{{{productquantity.color}}}</span>
-						{% endif %}
-						{% if !(productquantity.quantity > 0) %}
-						<span class="size no-size">{{{productquantity.color}}}</span>
-						{% endif %}
+						<span class="color-circle" style="background-color: {{{productquantity.color}}};"
+							data-color="{{{productquantity.color}}}">
+						</span>
 						{% endfor %}
 					</div>
+
+					<!-- Sizes Section -->
 					<div class="product-info__cart-text">Розміри:</div>
-					<div class="product-info__cart size-container" id="sizeSelection">
+					<div class="product-info__cart size-container">
 						{% for productquantity in product.productquantity %}
 						{% if productquantity.quantity > 0 %}
-						<span class="size available"
-							id="{{{productquantity._id}}}" data-color="{{{productquantity.color}}}" data-size="{{{productquantity.size.name}}}" data-quantity="{{{productquantity.quantity}}}">{{{productquantity.size.name}}}</span>
+						<span class="size available" data-size="{{{productquantity.size.name}}}"
+							data-color="{{{productquantity.color}}}" id="{{{productquantity._id}}}">
+							{{{productquantity.size.name}}}
+						</span>
 						{% endif %}
 						{% if !(productquantity.quantity > 0) %}
-						<span class="size no-size">{{{productquantity.size.name}}}</span>
+						<span class="size no-size"
+							data-size="{{{productquantity.size.name}}}">{{{productquantity.size.name}}}</span>
 						{% endif %}
 						{% endfor %}
 					</div>
@@ -61,11 +84,11 @@
 			<div class="product-info__cart-text" style="margin-top: 40px;">Вам може сподобатись:</div>
 			{% for relatedproduct in product.related_products %}
 			<div class="card" style="width: 12rem; margin-right: 20px; border: none">
-					<a href="/product/{{{relatedproduct.id|string}}}">
+				<a href="/product/{{{relatedproduct.id|string}}}">
 					<img src="{{{relatedproduct.thumb}}}" class="card-img-top" alt="{{{relatedproduct.name}}}">
 					<p class="card-text">{{{relatedproduct.name}}}</p>
 				</a>
-				</div>
+			</div>
 			{% endfor %}
 		</div>
 		{% endif %}
@@ -75,10 +98,67 @@
 			import Order from "/api/wjst/order";
 			const order = await Order.populated();
 
+			const sizeElements = document.querySelectorAll('.size.available');
+			const colorElements = document.querySelectorAll('.color-circle');
+			let selectedColor = null;
+			let selectedSize = null;
+
+			// Handle color selection
+			colorElements.forEach(element => {
+				element.addEventListener('click', function () {
+					// Remove 'selected' class from all colors
+					colorElements.forEach(el => el.classList.remove('selected'));
+
+					// Mark the clicked color as 'selected'
+					element.classList.add('selected');
+					selectedColor = element.getAttribute('data-color');
+
+					// Update sizes visibility based on the selected color
+					sizeElements.forEach(sizeElement => {
+						const sizeColor = sizeElement.getAttribute('data-color');
+						if (sizeColor !== selectedColor) {
+							sizeElement.classList.add('no-size');
+						} else {
+							sizeElement.classList.remove('no-size');
+						}
+					});
+
+					// Reset the selected size when color changes
+					selectedSize = null;
+					sizeElements.forEach(el => el.classList.remove('selected'));
+				});
+			});
+
+			// Handle size selection
+			sizeElements.forEach(element => {
+				element.addEventListener('click', function () {
+					if (!element.classList.contains('no-size')) {
+						// Remove 'selected' class from all sizes
+						sizeElements.forEach(el => el.classList.remove('selected'));
+
+						// Mark the clicked size as 'selected'
+						element.classList.add('selected');
+						selectedSize = element.getAttribute('data-size');
+
+						// Update color visibility based on the selected size
+						colorElements.forEach(colorElement => {
+							const colorSize = colorElement.getAttribute('data-size');
+							if (colorSize !== selectedSize) {
+								colorElement.classList.add('no-color');
+							} else {
+								colorElement.classList.remove('no-color');
+							}
+						});
+					}
+				});
+			});
+
+			// Toggle Product Logic (if modified)
 			const toggleProduct = async (quantity = 1) => {
 				const productquantity = document.getElementsByClassName('size available selected')[0].id;
 				const product = "{{{product.id}}}";
 				await Order.toggleProduct(product, quantity, productquantity);
+
 				if (await Order.hasProduct(product, productquantity)) {
 					Dom.element("addToCart").innerHTML = "Забрати з кошика";
 					Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
@@ -86,6 +166,7 @@
 					Dom.element("addToCart").innerHTML = "Додати у кошик";
 					Dom.element("addToCart").style.backgroundColor = "black";
 				}
+
 				Dom.element("cart").innerHTML = Dom.template('cart', {
 					counter: Order.order.products.length
 				});
@@ -98,49 +179,6 @@
 				await toggleProduct();
 				window.location.href = '/cart';
 			});
-
-			// Color and Size selection logic
-const colorElements = document.querySelectorAll('.color-option');
-const sizeElements = document.querySelectorAll('.size-option');
-
-// When a color is selected
-colorElements.forEach(colorElement => {
-    colorElement.addEventListener('click', function () {
-        const selectedColor = this.getAttribute('data-color');
-        
-        // Deselect other colors
-        colorElements.forEach(el => el.classList.remove('selected'));
-        this.classList.add('selected');
-
-        // Filter and show sizes for the selected color
-        sizeElements.forEach(sizeElement => {
-            const color = sizeElement.getAttribute('data-color');
-            const quantity = sizeElement.getAttribute('data-quantity');
-
-            if (color === selectedColor && quantity > 0) {
-                sizeElement.style.display = 'inline-block';  // Show available sizes
-                sizeElement.classList.remove('disabled');
-            } else {
-                sizeElement.style.display = 'none';  // Hide unavailable sizes
-            }
-        });
-    });
-});
-
-// Size selection logic
-sizeElements.forEach(sizeElement => {
-    sizeElement.addEventListener('click', function () {
-        const quantity = this.getAttribute('data-quantity');
-
-        if (quantity > 0) {
-            // Deselect all sizes first
-            sizeElements.forEach(el => el.classList.remove('selected'));
-
-            // Select the clicked size
-            this.classList.add('selected');
-        }
-    });
-});
 
 		</script>
 </div>

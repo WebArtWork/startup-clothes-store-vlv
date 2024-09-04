@@ -236,3 +236,25 @@
   background-color: rgba(185, 185, 185, 0.699);
   color: black;
 }
+
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.color-circle.selected {
+  border: 2px solid #000;
+}
+
+.no-color, .no-size {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.size.selected, .color-circle.selected {
+  border: 2px solid #000;
+}
