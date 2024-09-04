@@ -100,44 +100,48 @@
 			});
 
 			// Color and Size selection logic
-			const colorElements = document.querySelectorAll('.color-option');
-			const sizeElements = document.querySelectorAll('.size-option');
+const colorElements = document.querySelectorAll('.color-option');
+const sizeElements = document.querySelectorAll('.size-option');
 
-			// When a color is selected
-			colorElements.forEach(colorElement => {
-				colorElement.addEventListener('click', function () {
-					const selectedColor = this.getAttribute('data-color');
-					
-					// Deselect other colors
-					colorElements.forEach(el => el.classList.remove('selected'));
-					this.classList.add('selected');
+// When a color is selected
+colorElements.forEach(colorElement => {
+    colorElement.addEventListener('click', function () {
+        const selectedColor = this.getAttribute('data-color');
+        
+        // Deselect other colors
+        colorElements.forEach(el => el.classList.remove('selected'));
+        this.classList.add('selected');
 
-					// Filter and show sizes for the selected color
-					sizeElements.forEach(sizeElement => {
-						const color = sizeElement.getAttribute('data-color');
-						const quantity = sizeElement.getAttribute('data-quantity');
+        // Filter and show sizes for the selected color
+        sizeElements.forEach(sizeElement => {
+            const color = sizeElement.getAttribute('data-color');
+            const quantity = sizeElement.getAttribute('data-quantity');
 
-						if (color === selectedColor && quantity > 0) {
-							sizeElement.style.display = 'inline-block';  // Show available sizes
-							sizeElement.classList.remove('disabled');
-						} else {
-							sizeElement.style.display = 'none';  // Hide unavailable sizes
-						}
-					});
-				});
-			});
+            if (color === selectedColor && quantity > 0) {
+                sizeElement.style.display = 'inline-block';  // Show available sizes
+                sizeElement.classList.remove('disabled');
+            } else {
+                sizeElement.style.display = 'none';  // Hide unavailable sizes
+            }
+        });
+    });
+});
 
-			// Size selection logic
-			sizeElements.forEach(sizeElement => {
-				sizeElement.addEventListener('click', function () {
-					const quantity = this.getAttribute('data-quantity');
+// Size selection logic
+sizeElements.forEach(sizeElement => {
+    sizeElement.addEventListener('click', function () {
+        const quantity = this.getAttribute('data-quantity');
 
-					if (quantity > 0) {
-						sizeElements.forEach(el => el.classList.remove('selected'));
-						this.classList.add('selected');
-					}
-				});
-			});
+        if (quantity > 0) {
+            // Deselect all sizes first
+            sizeElements.forEach(el => el.classList.remove('selected'));
+
+            // Select the clicked size
+            this.classList.add('selected');
+        }
+    });
+});
+
 		</script>
 </div>
 </section>
