@@ -129,7 +129,7 @@
 				});
 			});
 
-			// Handle size selection
+			// Handle size selection without affecting color availability
 			sizeElements.forEach(element => {
 				element.addEventListener('click', function () {
 					if (!element.classList.contains('no-size')) {
@@ -139,16 +139,6 @@
 						// Mark the clicked size as 'selected'
 						element.classList.add('selected');
 						selectedSize = element.getAttribute('data-size');
-
-						// Update color visibility based on the selected size
-						colorElements.forEach(colorElement => {
-							const colorSize = colorElement.getAttribute('data-size');
-							if (colorSize !== selectedSize) {
-								colorElement.classList.add('no-color');
-							} else {
-								colorElement.classList.remove('no-color');
-							}
-						});
 					}
 				});
 			});
@@ -179,6 +169,7 @@
 				await toggleProduct();
 				window.location.href = '/cart';
 			});
+
 
 		</script>
 </div>
