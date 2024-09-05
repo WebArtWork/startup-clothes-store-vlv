@@ -103,7 +103,7 @@
 			let selectedColor = null;
 			let selectedSize = null;
 
-			// Handle color selection
+			// Handle color selection, even for unavailable colors
 			colorElements.forEach(element => {
 				element.addEventListener('click', function () {
 					// Remove 'selected' class from all colors
@@ -116,10 +116,10 @@
 					// Update sizes visibility based on the selected color
 					sizeElements.forEach(sizeElement => {
 						const sizeColor = sizeElement.getAttribute('data-color');
-						if (sizeColor !== selectedColor) {
-							sizeElement.classList.add('no-size');
-						} else {
+						if (sizeColor === selectedColor) {
 							sizeElement.classList.remove('no-size');
+						} else {
+							sizeElement.classList.add('no-size');
 						}
 					});
 
@@ -129,17 +129,29 @@
 				});
 			});
 
-			// Handle size selection without affecting color availability
+			// Handle size selection, even for unavailable sizes
 			sizeElements.forEach(element => {
 				element.addEventListener('click', function () {
-					if (!element.classList.contains('no-size')) {
-						// Remove 'selected' class from all sizes
-						sizeElements.forEach(el => el.classList.remove('selected'));
+					// Allow selection of 'no-size' elements
+					sizeElements.forEach(el => el.classList.remove('selected'));
 
-						// Mark the clicked size as 'selected'
-						element.classList.add('selected');
-						selectedSize = element.getAttribute('data-size');
-					}
+					// Mark the clicked size as 'selected'
+					element.classList.add('selected');
+					selectedSize = element.getAttribute('data-size');
+
+					// Update color visibility based on the selected size
+					colorElements.forEach(colorElement => {
+						const colorSize = document.querySelector(
+							`.size[data-color="${colorElement.getAttribute('data-color')}"][data-size="${selectedSize}"]`
+						);
+
+						// If the color has the selected size available, make it visible
+						if (colorSize && !colorSize.classList.contains('no-size')) {
+							colorElement.classList.remove('no-color'); // Add 'no-color' class if you want to hide unavailable colors
+						} else {
+							colorElement.classList.add('no-color'); // This class can be used to grey out unavailable colors
+						}
+					});
 				});
 			});
 
