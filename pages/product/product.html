@@ -142,42 +142,6 @@
 				}
 			};
 
-			// Function to update colors based on the selected size
-			const updateColorsBasedOnSize = (selectedSize) => {
-				colorElements.forEach(colorElement => {
-					const color = colorElement.getAttribute('data-color');
-					let hasMatchingProductQuantity = false;
-
-					// Check if the selected size is available for the color
-					document.querySelectorAll(`.size[data-color="${color}"]`).forEach(sizeElement => {
-						if (sizeElement.getAttribute('data-size') === selectedSize && !sizeElement.classList.contains('no-size')) {
-							hasMatchingProductQuantity = true;
-						}
-					});
-
-					// Enable or disable the color based on the availability of the size
-					if (hasMatchingProductQuantity) {
-						colorElement.classList.remove('no-color');
-					} else {
-						colorElement.classList.add('no-color');
-					}
-				});
-			};
-
-			// Function to update sizes based on the selected color
-			const updateSizesBasedOnColor = (selectedColor) => {
-				sizeElements.forEach(sizeElement => {
-					const sizeColor = sizeElement.getAttribute('data-color');
-
-					// Enable or disable the size based on the availability of the color
-					if (sizeColor === selectedColor) {
-						sizeElement.classList.remove('no-size');
-					} else {
-						sizeElement.classList.add('no-size');
-					}
-				});
-			};
-
 			// Handle color selection
 			colorElements.forEach(element => {
 				element.addEventListener('click', function () {
@@ -192,35 +156,71 @@
 					selectedColor = element.getAttribute('data-color');
 
 					// Update sizes visibility based on the selected color
-					updateSizesBasedOnColor(selectedColor);
-
-					// If a size is already selected, update colors based on the selected size
-					if (selectedSize) {
-						updateColorsBasedOnSize(selectedSize);
-					}
+					sizeElements.forEach(sizeElement => {
+						const sizeColor = sizeElement.getAttribute('data-color');
+						if (sizeColor === selectedColor) {
+							sizeElement.classList.remove('no-size');  // Show sizes available for this color
+						} else {
+							sizeElement.classList.add('no-size');  // Hide sizes not available for this color
+						}
+					});
 
 					// Check the validity of the current selection
 					checkValidity();
 				});
 			});
 
-			// Handle size selection
+			// Handle size selection, even for unavailable sizes
 			sizeElements.forEach(element => {
 				element.addEventListener('click', function () {
 					selectedSize = element.getAttribute('data-size');
 					const isSizeAvailable = !element.classList.contains('no-size');
 
-					// Reset the selected size, do not reset the selected color
+					// Only reset the selected size, do not reset the selected color
 					sizeElements.forEach(el => el.classList.remove('selected'));
 					element.classList.add('selected');
 
-					// If the selected size is available, update color visibility based on the selected size
-					if (isSizeAvailable) {
-						updateColorsBasedOnSize(selectedSize);
-					} else {
-						// If the selected size is not available, hide all colors
+					if (!isSizeAvailable) {
+						// Hide all colors initially
 						colorElements.forEach(colorElement => {
 							colorElement.classList.add('no-color');
+						});
+
+						// Enable the color that matches the selected size
+						colorElements.forEach(colorElement => {
+							const color = colorElement.getAttribute('data-color');
+							let hasMatchingProductQuantity = false;
+
+							// Check if any product quantity has this size and color
+							document.querySelectorAll(`.size[data-color="${color}"]`).forEach(sizeElement => {
+								const size = sizeElement.getAttribute('data-size');
+								if (size === selectedSize) {
+									hasMatchingProductQuantity = true;
+								}
+							});
+
+							// If the color has the selected size, enable it
+							if (hasMatchingProductQuantity) {
+								colorElement.classList.remove('no-color');
+							}
+						});
+					} else {
+						// If the size is available for the current color, proceed with the normal logic
+						sizeElements.forEach(el => el.classList.remove('selected'));
+						element.classList.add('selected');
+
+						// Update color visibility based on the selected size
+						colorElements.forEach(colorElement => {
+							const colorSize = document.querySelector(
+								`.size[data-color="${colorElement.getAttribute('data-color')}"][data-size="${selectedSize}"]`
+							);
+
+							// If the color has the selected size available, show it
+							if (colorSize && !colorSize.classList.contains('no-size')) {
+								colorElement.classList.remove('no-color');
+							} else {
+								colorElement.classList.add('no-color');
+							}
 						});
 					}
 
@@ -231,6 +231,7 @@
 
 			// Check the validity on page load (in case a default color/size is pre-selected)
 			checkValidity();
+
 
 			// Toggle Product Logic (if modified)
 			const toggleProduct = async (quantity = 1) => {
@@ -258,7 +259,6 @@
 				await toggleProduct();
 				window.location.href = '/cart';
 			});
-
 
 
 		</script>
