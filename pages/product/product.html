@@ -165,26 +165,22 @@
 						}
 					});
 
-					// Reset the selected size when color changes
-					selectedSize = null;
-					sizeElements.forEach(el => el.classList.remove('selected'));
-
 					// Check the validity of the current selection
 					checkValidity();
 				});
 			});
 
-			// Handle size selection (even for unavailable sizes)
+			// Handle size selection (without resetting the selected color)
 			sizeElements.forEach(element => {
 				element.addEventListener('click', function () {
 					selectedSize = element.getAttribute('data-size');
 					const isSizeAvailable = !element.classList.contains('no-size');
 
-					// Reset the selected color
-					selectedColor = null;
-					colorElements.forEach(el => el.classList.remove('selected'));
+					// Only reset the selected size, do not reset the selected color
+					sizeElements.forEach(el => el.classList.remove('selected'));
+					element.classList.add('selected');
 
-					// If the selected size is not available, enable the color that has this size in its productquantity
+					// If the selected size is not available, adjust the colors based on available sizes
 					if (!isSizeAvailable) {
 						// Hide all colors initially
 						colorElements.forEach(colorElement => {
@@ -234,13 +230,8 @@
 				});
 			});
 
-			// Initially hide the "Очікується" button on page load
-			waitingButton.style.display = 'none';
-
 			// Check the validity on page load (in case a default color/size is pre-selected)
 			checkValidity();
-
-
 
 			// Toggle Product Logic (if modified)
 			const toggleProduct = async (quantity = 1) => {
