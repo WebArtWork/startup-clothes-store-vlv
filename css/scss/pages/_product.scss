@@ -240,14 +240,12 @@
 }
 
 .color-circle {
-  position: relative;
-  display: inline-block;
-  width: 30px;  /* Adjust width as per design */
-  height: 30px;  /* Adjust height as per design */
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background-color: transparent;
-  border: 1px solid #ccc;
+  display: inline-block;
   cursor: pointer;
+  margin: 5px;
 }
 
 .color-circle.selected {
