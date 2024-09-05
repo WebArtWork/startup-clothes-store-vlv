@@ -112,32 +112,33 @@
 			const buyNowButton = document.getElementById('buyNow');
 			const waitingButton = document.querySelector('.product-info__cart-waiting');
 
-			// Function to hide regular buttons and show waiting button
-			const showWaitingButton = () => {
-				addToCartButton.style.display = 'none';
-				buyNowButton.style.display = 'none';
-				waitingButton.style.display = 'block';
-			};
-
-			// Function to show regular buttons and hide waiting button
+			// Function to hide the "Очікується" button and show the normal buttons
 			const showNormalButtons = () => {
 				addToCartButton.style.display = 'block';
 				buyNowButton.style.display = 'block';
 				waitingButton.style.display = 'none';
 			};
 
-			// Function to check if a valid color and size are selected
+			// Function to hide the normal buttons and show the "Очікується" button
+			const showWaitingButton = () => {
+				addToCartButton.style.display = 'none';
+				buyNowButton.style.display = 'none';
+				waitingButton.style.display = 'block';
+			};
+
+			// Function to check if both a valid color and size are selected
 			const checkValidity = () => {
 				const selectedColorElement = document.querySelector('.color-circle.selected');
 				const selectedSizeElement = document.querySelector('.size.selected');
 
-				// If no valid color or size is selected, or if they are invalid, show the "Очікується" button
-				if (!selectedColorElement || !selectedSizeElement ||
-					selectedSizeElement.classList.contains('no-size') ||
-					selectedColorElement.classList.contains('no-color')) {
-					showWaitingButton();
-				} else {
+				// If both a valid color and size are selected, show the normal buttons
+				if (selectedColorElement && selectedSizeElement &&
+					!selectedSizeElement.classList.contains('no-size') &&
+					!selectedColorElement.classList.contains('no-color')) {
 					showNormalButtons();
+				} else {
+					// Otherwise, show the "Очікується" button
+					showWaitingButton();
 				}
 			};
 
@@ -168,7 +169,7 @@
 					selectedSize = null;
 					sizeElements.forEach(el => el.classList.remove('selected'));
 
-					// Check validity of the current selection
+					// Check the validity of the current selection
 					checkValidity();
 				});
 			});
@@ -228,7 +229,7 @@
 						});
 					}
 
-					// Check validity of the current selection
+					// Check the validity of the current selection
 					checkValidity();
 				});
 			});
@@ -236,8 +237,9 @@
 			// Initially hide the "Очікується" button on page load
 			waitingButton.style.display = 'none';
 
-			// Check validity on page load (in case a default color/size is pre-selected)
+			// Check the validity on page load (in case a default color/size is pre-selected)
 			checkValidity();
+
 
 
 			// Toggle Product Logic (if modified)
