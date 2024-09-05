@@ -97,98 +97,58 @@
 			import Dom from "/api/wjst/dom";
 			import Order from "/api/wjst/order";
 			const order = await Order.populated();
-		
-			const sizeElements = document.querySelectorAll('.size');
+
+			const sizeElements = document.querySelectorAll('.size.available');
 			const colorElements = document.querySelectorAll('.color-circle');
 			let selectedColor = null;
 			let selectedSize = null;
-		
-			// Function to update sizes based on the selected color
-			const updateSizeVisibility = (color) => {
-				sizeElements.forEach(sizeElement => {
-					const sizeColor = sizeElement.getAttribute('data-color');
-					if (sizeColor !== color) {
-						sizeElement.classList.add('no-size');
-					} else {
-						sizeElement.classList.remove('no-size');
-					}
-				});
-			};
-		
-			// Function to update colors based on the selected size
-			const updateColorVisibility = (size) => {
-				colorElements.forEach(colorElement => {
-					let colorAvailable = false;
-					sizeElements.forEach(sizeElement => {
-						if (sizeElement.getAttribute('data-size') === size &&
-							sizeElement.getAttribute('data-color') === colorElement.getAttribute('data-color')) {
-							colorAvailable = true;
-						}
-					});
-					if (!colorAvailable) {
-						colorElement.classList.add('no-size');
-					} else {
-						colorElement.classList.remove('no-size');
-					}
-				});
-			};
-		
+
 			// Handle color selection
 			colorElements.forEach(element => {
 				element.addEventListener('click', function () {
 					// Remove 'selected' class from all colors
 					colorElements.forEach(el => el.classList.remove('selected'));
-		
+
 					// Mark the clicked color as 'selected'
 					element.classList.add('selected');
 					selectedColor = element.getAttribute('data-color');
-		
-					// Show only the sizes available for the selected color
-					updateSizeVisibility(selectedColor);
-		
-					// Allow choosing unavailable sizes for this color (they just won't trigger the cart logic)
-					sizeElements.forEach(sizeElement => sizeElement.classList.remove('disabled'));
-		
-					// Reset the selected size when the color changes
+
+					// Update sizes visibility based on the selected color
+					sizeElements.forEach(sizeElement => {
+						const sizeColor = sizeElement.getAttribute('data-color');
+						if (sizeColor !== selectedColor) {
+							sizeElement.classList.add('no-size');
+						} else {
+							sizeElement.classList.remove('no-size');
+						}
+					});
+
+					// Reset the selected size when color changes
 					selectedSize = null;
 					sizeElements.forEach(el => el.classList.remove('selected'));
 				});
 			});
-		
-			// Handle size selection
+
+			// Handle size selection without affecting color availability
 			sizeElements.forEach(element => {
 				element.addEventListener('click', function () {
-					// Allow selecting even if it’s not available, but disable adding to cart if no stock
-					if (!element.classList.contains('disabled')) {
+					if (!element.classList.contains('no-size')) {
 						// Remove 'selected' class from all sizes
 						sizeElements.forEach(el => el.classList.remove('selected'));
-		
+
 						// Mark the clicked size as 'selected'
 						element.classList.add('selected');
 						selectedSize = element.getAttribute('data-size');
-		
-						// Show only the colors available for the selected size
-						updateColorVisibility(selectedSize);
-		
-						// Reset the selected color when the size changes
-						selectedColor = null;
-						colorElements.forEach(el => el.classList.remove('selected'));
 					}
 				});
 			});
-		
+
 			// Toggle Product Logic (if modified)
 			const toggleProduct = async (quantity = 1) => {
-				// Ensure both color and size are selected before toggling product
-				if (!selectedColor || !selectedSize) {
-					alert('Please select a color and size.');
-					return;
-				}
-		
-				const productquantity = document.getElementsByClassName('size selected')[0].id;
+				const productquantity = document.getElementsByClassName('size available selected')[0].id;
 				const product = "{{{product.id}}}";
 				await Order.toggleProduct(product, quantity, productquantity);
-		
+
 				if (await Order.hasProduct(product, productquantity)) {
 					Dom.element("addToCart").innerHTML = "Забрати з кошика";
 					Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
@@ -196,21 +156,22 @@
 					Dom.element("addToCart").innerHTML = "Додати у кошик";
 					Dom.element("addToCart").style.backgroundColor = "black";
 				}
-		
+
 				Dom.element("cart").innerHTML = Dom.template('cart', {
 					counter: Order.order.products.length
 				});
 			};
-		
+
 			Dom.click("addToCart", () => toggleProduct(1));
-		
+
 			Dom.click("buyNow", async () => {
 				const product = "{{{product.id}}}";
 				await toggleProduct();
 				window.location.href = '/cart';
 			});
+
+
 		</script>
-		
 </div>
 </section>
 </div>
