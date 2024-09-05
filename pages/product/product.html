@@ -186,7 +186,8 @@
 							colorElement.classList.add('no-color');
 						});
 
-						// Enable the color that matches the selected size
+						// Enable only the color that matches the selected size
+						let matchedColorFound = false;
 						colorElements.forEach(colorElement => {
 							const color = colorElement.getAttribute('data-color');
 							let hasMatchingProductQuantity = false;
@@ -199,9 +200,10 @@
 								}
 							});
 
-							// If the color has the selected size, enable it
-							if (hasMatchingProductQuantity) {
+							// If the color has the selected size, enable only one color
+							if (hasMatchingProductQuantity && !matchedColorFound) {
 								colorElement.classList.remove('no-color');
+								matchedColorFound = true; // Stop after enabling one color
 							}
 						});
 					} else {
@@ -228,6 +230,7 @@
 					checkValidity();
 				});
 			});
+
 
 			// Check the validity on page load (in case a default color/size is pre-selected)
 			checkValidity();
