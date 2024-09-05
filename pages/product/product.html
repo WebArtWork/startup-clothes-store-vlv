@@ -73,6 +73,9 @@
 						<button id="buyNow" type="button" class="btn product-info__cart-btn">
 							Купити зараз
 						</button>
+						<button type="button" class="btn product-info__cart-waiting">
+							Очікується
+						</button>
 					</div>
 					{% if product.description %}
 					<div class="product-info__cart-text">Подробиці:</div>
@@ -104,30 +107,23 @@
 			let selectedColor = null;
 			let selectedSize = null;
 
-			// Get references to the buttons
+			// Get all the buttons
 			const addToCartButton = document.getElementById('addToCart');
 			const buyNowButton = document.getElementById('buyNow');
-			let waitingButton = null;
+			const waitingButton = document.querySelector('.product-info__cart-waiting');
 
-			// Function to handle showing "Очікується" button
+			// Function to hide regular buttons and show waiting button
 			const showWaitingButton = () => {
-				if (!waitingButton) {
-					waitingButton = document.createElement('button');
-					waitingButton.className = 'btn product-info__cart-btn';
-					waitingButton.innerHTML = 'Очікується';
-					waitingButton.disabled = true;
-					addToCartButton.parentNode.insertBefore(waitingButton, addToCartButton);
-				}
 				addToCartButton.style.display = 'none';
 				buyNowButton.style.display = 'none';
 				waitingButton.style.display = 'block';
 			};
 
-			// Function to handle showing normal buttons
+			// Function to show regular buttons and hide waiting button
 			const showNormalButtons = () => {
 				addToCartButton.style.display = 'block';
 				buyNowButton.style.display = 'block';
-				if (waitingButton) waitingButton.style.display = 'none';
+				waitingButton.style.display = 'none';
 			};
 
 			// Function to check if a valid color and size are selected
@@ -237,8 +233,12 @@
 				});
 			});
 
-			// Initially check validity on page load (in case a default color/size is pre-selected)
+			// Initially hide the "Очікується" button on page load
+			waitingButton.style.display = 'none';
+
+			// Check validity on page load (in case a default color/size is pre-selected)
 			checkValidity();
+
 
 			// Toggle Product Logic (if modified)
 			const toggleProduct = async (quantity = 1) => {
