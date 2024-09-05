@@ -103,6 +103,36 @@
 			let selectedColor = null;
 			let selectedSize = null;
 
+			// Function to update sizes based on the selected color
+			const updateSizeVisibility = (color) => {
+				sizeElements.forEach(sizeElement => {
+					const sizeColor = sizeElement.getAttribute('data-color');
+					if (sizeColor !== color) {
+						sizeElement.classList.add('no-size');
+					} else {
+						sizeElement.classList.remove('no-size');
+					}
+				});
+			};
+
+			// Function to update colors based on the selected size
+			const updateColorVisibility = (size) => {
+				colorElements.forEach(colorElement => {
+					let colorAvailable = false;
+					sizeElements.forEach(sizeElement => {
+						if (sizeElement.getAttribute('data-size') === size &&
+							sizeElement.getAttribute('data-color') === colorElement.getAttribute('data-color')) {
+							colorAvailable = true;
+						}
+					});
+					if (!colorAvailable) {
+						colorElement.classList.add('no-size');
+					} else {
+						colorElement.classList.remove('no-size');
+					}
+				});
+			};
+
 			// Handle color selection
 			colorElements.forEach(element => {
 				element.addEventListener('click', function () {
@@ -114,14 +144,7 @@
 					selectedColor = element.getAttribute('data-color');
 
 					// Update sizes visibility based on the selected color
-					sizeElements.forEach(sizeElement => {
-						const sizeColor = sizeElement.getAttribute('data-color');
-						if (sizeColor !== selectedColor) {
-							sizeElement.classList.add('no-size');
-						} else {
-							sizeElement.classList.remove('no-size');
-						}
-					});
+					updateSizeVisibility(selectedColor);
 
 					// Reset the selected size when color changes
 					selectedSize = null;
@@ -129,7 +152,7 @@
 				});
 			});
 
-			// Handle size selection without affecting color availability
+			// Handle size selection
 			sizeElements.forEach(element => {
 				element.addEventListener('click', function () {
 					if (!element.classList.contains('no-size')) {
@@ -139,6 +162,13 @@
 						// Mark the clicked size as 'selected'
 						element.classList.add('selected');
 						selectedSize = element.getAttribute('data-size');
+
+						// Update colors visibility based on the selected size
+						updateColorVisibility(selectedSize);
+
+						// Reset the selected color when size changes
+						selectedColor = null;
+						colorElements.forEach(el => el.classList.remove('selected'));
 					}
 				});
 			});
@@ -169,9 +199,8 @@
 				await toggleProduct();
 				window.location.href = '/cart';
 			});
-
-
 		</script>
+
 </div>
 </section>
 </div>
