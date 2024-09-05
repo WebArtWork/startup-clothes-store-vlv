@@ -107,8 +107,11 @@
 			// Handle color selection
 			colorElements.forEach(element => {
 				element.addEventListener('click', function () {
-					// Remove 'selected' class from all colors
-					colorElements.forEach(el => el.classList.remove('selected'));
+					// Remove 'selected' class from all colors and remove no-color class
+					colorElements.forEach(el => {
+						el.classList.remove('selected');
+						el.classList.remove('no-color');
+					});
 
 					// Mark the clicked color as 'selected'
 					element.classList.add('selected');
@@ -118,7 +121,7 @@
 					sizeElements.forEach(sizeElement => {
 						const sizeColor = sizeElement.getAttribute('data-color');
 						if (sizeColor === selectedColor) {
-							sizeElement.classList.remove('no-size');  // Show the size if it's available for this color
+							sizeElement.classList.remove('no-size');  // Show sizes available for this color
 						} else {
 							sizeElement.classList.add('no-size');  // Hide sizes not available for this color
 						}
@@ -178,6 +181,7 @@
 					}
 				});
 			});
+
 
 			// Toggle Product Logic (if modified)
 			const toggleProduct = async (quantity = 1) => {
