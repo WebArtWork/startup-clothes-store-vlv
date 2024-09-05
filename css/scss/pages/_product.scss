@@ -240,12 +240,14 @@
 }
 
 .color-circle {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  position: relative;
   display: inline-block;
+  width: 30px;  /* Adjust width as per design */
+  height: 30px;  /* Adjust height as per design */
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #ccc;
   cursor: pointer;
-  margin: 5px;
 }
 
 .color-circle.selected {
@@ -253,8 +255,22 @@
 }
 
 .color-circle.no-color {
-  opacity: 0.5;
-  pointer-events: auto; 
+  opacity: 0.5;  /* Lower opacity for unavailable colors */
+  position: relative;
+  pointer-events: auto;  /* Allow clicking on unavailable colors */
+}
+
+/* Add a red diagonal line across unavailable color circles */
+.color-circle.no-color::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: red;
+  transform: rotate(45deg);  /* Diagonal line */
+  transform-origin: center;  /* Center the diagonal line */
 }
 
 .no-color, .no-size {
