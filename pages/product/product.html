@@ -136,42 +136,34 @@
 					const selectedSize = element.getAttribute('data-size');
 					const isSizeAvailable = !element.classList.contains('no-size');
 
-					// If the size is not available, check if there is any color that contains this size
-					if (!isSizeAvailable) {
-						colorElements.forEach(colorElement => {
-							const color = colorElement.getAttribute('data-color');
-							const matchingProductQuantity = document.querySelector(
-								`.size[data-color="${color}"][data-size="${selectedSize}"]`
-							);
+					// If the size is not available, we still proceed with the logic to check the colors
+					sizeElements.forEach(el => el.classList.remove('selected'));
+					element.classList.add('selected');
 
-							if (matchingProductQuantity && !matchingProductQuantity.classList.contains('no-size')) {
-								// Enable the color that has the matching size
-								colorElement.classList.remove('no-color');
-							} else {
-								// Disable or grey out the color if it doesn't match the selected size
-								colorElement.classList.add('no-color');
+					// Update color visibility based on the selected size
+					colorElements.forEach(colorElement => {
+						const color = colorElement.getAttribute('data-color');
+						let hasMatchingSize = false;
+
+						// Loop through all productquantity items to see if the color contains the selected size
+						document.querySelectorAll(`.size[data-color="${color}"]`).forEach(sizeElement => {
+							const size = sizeElement.getAttribute('data-size');
+							if (size === selectedSize && !sizeElement.classList.contains('no-size')) {
+								hasMatchingSize = true; // If a matching size is found, mark the color as available
 							}
 						});
-					} else {
-						// Handle the case where the size is available (existing logic)
-						sizeElements.forEach(el => el.classList.remove('selected'));
-						element.classList.add('selected');
 
-						// Update color visibility based on the selected size
-						colorElements.forEach(colorElement => {
-							const colorSize = document.querySelector(
-								`.size[data-color="${colorElement.getAttribute('data-color')}"][data-size="${selectedSize}"]`
-							);
-
-							if (colorSize && !colorSize.classList.contains('no-size')) {
-								colorElement.classList.remove('no-color');
-							} else {
-								colorElement.classList.add('no-color');
-							}
-						});
-					}
+						if (hasMatchingSize) {
+							// If the color has the selected size, enable the color
+							colorElement.classList.remove('no-color');
+						} else {
+							// Otherwise, disable or grey out the color
+							colorElement.classList.add('no-color');
+						}
+					});
 				});
 			});
+
 
 
 			// Toggle Product Logic (if modified)
