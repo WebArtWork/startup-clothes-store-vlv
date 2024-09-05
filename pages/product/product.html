@@ -131,6 +131,17 @@
 				const selectedColorElement = document.querySelector('.color-circle.selected');
 				const selectedSizeElement = document.querySelector('.size.selected');
 
+				// If the selected size is not available for the selected color, remove the 'selected' class from size
+				if (selectedColorElement && selectedSizeElement) {
+					const selectedColor = selectedColorElement.getAttribute('data-color');
+					const sizeColor = selectedSizeElement.getAttribute('data-color');
+
+					if (selectedColor !== sizeColor) {
+						// Remove the 'selected' class from the size if it doesn't match the selected color
+						selectedSizeElement.classList.remove('selected');
+					}
+				}
+
 				// If both a valid color and size are selected, show the normal buttons
 				if (selectedColorElement && selectedSizeElement &&
 					!selectedSizeElement.classList.contains('no-size') &&
@@ -156,14 +167,21 @@
 					selectedColor = element.getAttribute('data-color');
 
 					// Update sizes visibility based on the selected color
+					let sizeMatched = false;
 					sizeElements.forEach(sizeElement => {
 						const sizeColor = sizeElement.getAttribute('data-color');
 						if (sizeColor === selectedColor) {
 							sizeElement.classList.remove('no-size');  // Show sizes available for this color
+							sizeMatched = true;
 						} else {
 							sizeElement.classList.add('no-size');  // Hide sizes not available for this color
 						}
 					});
+
+					// If no sizes match the selected color, remove 'selected' class from the current size
+					if (!sizeMatched) {
+						sizeElements.forEach(sizeElement => sizeElement.classList.remove('selected'));
+					}
 
 					// Check the validity of the current selection
 					checkValidity();
@@ -230,6 +248,7 @@
 					checkValidity();
 				});
 			});
+
 
 
 			// Check the validity on page load (in case a default color/size is pre-selected)
