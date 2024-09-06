@@ -100,171 +100,120 @@
 			import Dom from "/api/wjst/dom";
 			import Order from "/api/wjst/order";
 			const order = await Order.populated();
-
-			// Get all size and color elements
-			const sizeElements = document.querySelectorAll('.size');
-			const colorElements = document.querySelectorAll('.color-circle');
+		  
+			const sizeContainer = document.querySelector('.size-container');
+			const colorContainer = document.querySelector('.color-container');
 			let selectedColor = null;
 			let selectedSize = null;
-
-			// Get all the buttons
+		  
 			const addToCartButton = document.getElementById('addToCart');
 			const buyNowButton = document.getElementById('buyNow');
 			const waitingButton = document.querySelector('.product-info__cart-waiting');
-
-			// Function to hide the "Очікується" button and show the normal buttons
-			const showNormalButtons = () => {
+		  
+			// Функція для зміни стану кнопок
+			const updateButtons = (isValidSelection) => {
+			  if (isValidSelection) {
 				addToCartButton.style.display = 'block';
 				buyNowButton.style.display = 'block';
 				waitingButton.style.display = 'none';
-			};
-
-			// Function to hide the normal buttons and show the "Очікується" button
-			const showWaitingButton = () => {
+			  } else {
 				addToCartButton.style.display = 'none';
 				buyNowButton.style.display = 'none';
 				waitingButton.style.display = 'block';
+			  }
 			};
-
-			// Function to check if both a valid color and size are selected
+		  
+			// Функція для перевірки валідності вибраного кольору та розміру
 			const checkValidity = () => {
-				const selectedColorElement = document.querySelector('.color-circle.selected');
-				const selectedSizeElement = document.querySelector('.size.selected');
-
-				// If both a valid color and size are selected, show the normal buttons
-				if (selectedColorElement && selectedSizeElement &&
-					!selectedSizeElement.classList.contains('no-size') &&
-					!selectedColorElement.classList.contains('no-color')) {
-					showNormalButtons();
-				} else {
-					// Otherwise, show the "Очікується" button
-					showWaitingButton();
-				}
+			  const selectedColorElement = document.querySelector('.color-circle.selected');
+			  const selectedSizeElement = document.querySelector('.size.selected');
+			  const isValidSelection = selectedColorElement && selectedSizeElement && 
+									   !selectedSizeElement.classList.contains('no-size');
+			  updateButtons(isValidSelection);
 			};
-
-			// Handle color selection
-			colorElements.forEach(element => {
-				element.addEventListener('click', function () {
-					// Remove 'selected' class from all colors and remove no-color class
-					colorElements.forEach(el => {
-						el.classList.remove('selected');
-						el.classList.remove('no-color');
-					});
-
-					// Mark the clicked color as 'selected'
-					element.classList.add('selected');
-					selectedColor = element.getAttribute('data-color');
-
-					// Update sizes visibility based on the selected color
-					sizeElements.forEach(sizeElement => {
-						const sizeColor = sizeElement.getAttribute('data-color');
-						if (sizeColor === selectedColor) {
-							sizeElement.classList.remove('no-size');  // Show sizes available for this color
-						} else {
-							sizeElement.classList.add('no-size');  // Hide sizes not available for this color
-						}
-					});
-
-					// Check the validity of the current selection
-					checkValidity();
+		  
+			// Функція для вибору кольору
+			const selectColor = (colorElement) => {
+			  document.querySelectorAll('.color-circle').forEach(el => el.classList.remove('selected'));
+			  colorElement.classList.add('selected');
+			  selectedColor = colorElement.getAttribute('data-color');
+		  
+			  // Відображення доступних розмірів для вибраного кольору
+			  document.querySelectorAll('.size').forEach(sizeElement => {
+				const sizeColor = sizeElement.getAttribute('data-color');
+				sizeElement.classList.toggle('no-size', sizeColor !== selectedColor);
+			  });
+		  
+			  checkValidity();
+			};
+		  
+			// Функція для вибору розміру
+			const selectSize = (sizeElement) => {
+			  selectedSize = sizeElement.getAttribute('data-size');
+			  document.querySelectorAll('.size').forEach(el => el.classList.remove('selected'));
+			  sizeElement.classList.add('selected');
+		  
+			  // Якщо розмір недоступний, показуємо відповідний колір
+			  if (sizeElement.classList.contains('no-size')) {
+				document.querySelectorAll('.color-circle').forEach(el => el.classList.add('no-color'));
+				document.querySelectorAll(`.size[data-size="${selectedSize}"]`).forEach(el => {
+				  const color = el.getAttribute('data-color');
+				  document.querySelector(`.color-circle[data-color="${color}"]`).classList.remove('no-color');
 				});
-			});
-
-			// Handle size selection, even for unavailable sizes
-			sizeElements.forEach(element => {
-				element.addEventListener('click', function () {
-					selectedSize = element.getAttribute('data-size');
-					const isSizeAvailable = !element.classList.contains('no-size');
-
-					// Only reset the selected size, do not reset the selected color
-					sizeElements.forEach(el => el.classList.remove('selected'));
-					element.classList.add('selected');
-
-					if (!isSizeAvailable) {
-						// Hide all colors initially
-						colorElements.forEach(colorElement => {
-							colorElement.classList.add('no-color');
-						});
-
-						// Enable only the color that matches the selected size
-						let matchedColorFound = false;
-						colorElements.forEach(colorElement => {
-							const color = colorElement.getAttribute('data-color');
-							let hasMatchingProductQuantity = false;
-
-							// Check if any product quantity has this size and color
-							document.querySelectorAll(`.size[data-color="${color}"]`).forEach(sizeElement => {
-								const size = sizeElement.getAttribute('data-size');
-								if (size === selectedSize) {
-									hasMatchingProductQuantity = true;
-								}
-							});
-
-							// If the color has the selected size, enable only one color
-							if (hasMatchingProductQuantity && !matchedColorFound) {
-								colorElement.classList.remove('no-color');
-								matchedColorFound = true; // Stop after enabling one color
-							}
-						});
-					} else {
-						// If the size is available for the current color, proceed with the normal logic
-						sizeElements.forEach(el => el.classList.remove('selected'));
-						element.classList.add('selected');
-
-						// Update color visibility based on the selected size
-						colorElements.forEach(colorElement => {
-							const colorSize = document.querySelector(
-								`.size[data-color="${colorElement.getAttribute('data-color')}"][data-size="${selectedSize}"]`
-							);
-
-							// If the color has the selected size available, show it
-							if (colorSize && !colorSize.classList.contains('no-size')) {
-								colorElement.classList.remove('no-color');
-							} else {
-								colorElement.classList.add('no-color');
-							}
-						});
-					}
-
-					// Check the validity of the current selection
-					checkValidity();
+			  } else {
+				// Повертаємо всі кольори, доступні для цього розміру
+				document.querySelectorAll('.color-circle').forEach(colorElement => {
+				  const colorSize = document.querySelector(`.size[data-color="${colorElement.getAttribute('data-color')}"][data-size="${selectedSize}"]`);
+				  colorElement.classList.toggle('no-color', !colorSize || colorSize.classList.contains('no-size'));
 				});
+			  }
+		  
+			  checkValidity();
+			};
+		  
+			// Делегування подій для вибору кольору та розміру
+			colorContainer.addEventListener('click', (e) => {
+			  if (e.target.classList.contains('color-circle')) {
+				selectColor(e.target);
+			  }
 			});
-
-
-			// Check the validity on page load (in case a default color/size is pre-selected)
-			checkValidity();
-
-
-			// Toggle Product Logic (if modified)
+		  
+			sizeContainer.addEventListener('click', (e) => {
+			  if (e.target.classList.contains('size')) {
+				selectSize(e.target);
+			  }
+			});
+		  
+			// Функція для додавання продукту до кошика
 			const toggleProduct = async (quantity = 1) => {
-				const productquantity = document.getElementsByClassName('size available selected')[0].id;
-				const product = "{{{product.id}}}";
-				await Order.toggleProduct(product, quantity, productquantity);
-
-				if (await Order.hasProduct(product, productquantity)) {
-					Dom.element("addToCart").innerHTML = "Забрати з кошика";
-					Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
-				} else {
-					Dom.element("addToCart").innerHTML = "Додати у кошик";
-					Dom.element("addToCart").style.backgroundColor = "black";
-				}
-
-				Dom.element("cart").innerHTML = Dom.template('cart', {
-					counter: Order.order.products.length
-				});
+			  const productquantity = document.querySelector('.size.available.selected').id;
+			  const product = "{{{product.id}}}";
+			  await Order.toggleProduct(product, quantity, productquantity);
+		  
+			  if (await Order.hasProduct(product, productquantity)) {
+				Dom.element("addToCart").innerHTML = "Забрати з кошика";
+				Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
+			  } else {
+				Dom.element("addToCart").innerHTML = "Додати у кошик";
+				Dom.element("addToCart").style.backgroundColor = "black";
+			  }
+		  
+			  Dom.element("cart").innerHTML = Dom.template('cart', {
+				counter: Order.order.products.length
+			  });
 			};
-
+		  
+			// Слухачі подій для кнопок
 			Dom.click("addToCart", () => toggleProduct(1));
-
 			Dom.click("buyNow", async () => {
-				const product = "{{{product.id}}}";
-				await toggleProduct();
-				window.location.href = '/cart';
+			  await toggleProduct();
+			  window.location.href = '/cart';
 			});
-
-
-		</script>
+		  
+			// Перевірка валідності при завантаженні сторінки
+			checkValidity();
+		  </script>
+		  
 </div>
 </section>
 </div>
