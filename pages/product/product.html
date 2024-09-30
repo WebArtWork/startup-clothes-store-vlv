@@ -101,86 +101,102 @@
 			import Order from "/api/wjst/order";
 			const order = await Order.populated();
 
+			// Функція для вибору кольору
+			const selectColor = (colorElement) => {
+				// Знімаємо клас 'selected' з усіх кольорів
+				document.querySelectorAll('.color-circle').forEach(el => el.classList.remove('selected'));
+				// Додаємо клас 'selected' до обраного кольору
+				colorElement.classList.add('selected');
+				selectedColor = colorElement.getAttribute('data-color');
+
+				// Відображаємо доступні розміри для обраного кольору
+				document.querySelectorAll('.size').forEach(sizeElement => {
+					const sizeColor = sizeElement.getAttribute('data-color');
+					// Додаємо/знімаємо клас 'no-size' в залежності від вибору кольору
+					sizeElement.classList.toggle('no-size', sizeColor !== selectedColor);
+				});
+
+				// Перевірка валідності вибору
+				checkValidity();
+			};
+
+			// Функція для вибору розміру
+			const selectSize = (sizeElement) => {
+				// Очищаємо попередній вибір
+				selectedSize = sizeElement.getAttribute('data-size');
+				document.querySelectorAll('.size').forEach(el => el.classList.remove('selected'));
+				sizeElement.classList.add('selected');
+
+				// Логіка для доступних/недоступних кольорів при виборі розміру
+				if (sizeElement.classList.contains('no-size')) {
+					document.querySelectorAll('.color-circle').forEach(el => el.classList.add('no-color'));
+					document.querySelectorAll(`.size[data-size="${selectedSize}"]`).forEach(el => {
+						const color = el.getAttribute('data-color');
+						document.querySelector(`.color-circle[data-color="${color}"]`).classList.remove('no-color');
+					});
+				} else {
+					// Повертаємо всі доступні кольори для вибраного розміру
+					document.querySelectorAll('.color-circle').forEach(colorElement => {
+						const colorSize = document.querySelector(`.size[data-color="${colorElement.getAttribute('data-color')}"][data-size="${selectedSize}"]`);
+						colorElement.classList.toggle('no-color', !colorSize || colorSize.classList.contains('no-size'));
+					});
+				}
+
+				// Перевірка валідності вибору
+				checkValidity();
+			};
+
+			// Функція для зміни стану кнопок
+			const updateButtons = (isValidSelection) => {
+				if (isValidSelection) {
+					addToCartButton.style.display = 'block';
+					buyNowButton.style.display = 'block';
+					waitingButton.style.display = 'none';
+				} else {
+					addToCartButton.style.display = 'none';
+					buyNowButton.style.display = 'none';
+					waitingButton.style.display = 'block';
+				}
+			};
+
+			// Перевірка валідності вибору
+			const checkValidity = () => {
+				const selectedColorElement = document.querySelector('.color-circle.selected');
+				const selectedSizeElement = document.querySelector('.size.selected');
+				const isValidSelection = selectedColorElement && selectedSizeElement &&
+					!selectedSizeElement.classList.contains('no-size');
+				updateButtons(isValidSelection);
+			};
+
+			// Додавання подій для вибору кольору та розміру після завантаження сторінки
 			document.addEventListener('DOMContentLoaded', () => {
 				const sizeContainer = document.querySelector('.size-container');
 				const colorContainer = document.querySelector('.color-container');
-				let selectedColor = null;
-				let selectedSize = null;
-
 				const addToCartButton = document.getElementById('addToCart');
 				const buyNowButton = document.getElementById('buyNow');
 				const waitingButton = document.querySelector('.product-info__cart-waiting');
+				let selectedColor = null;
+				let selectedSize = null;
 
-				const updateButtons = (isValidSelection) => {
-					if (isValidSelection) {
-						addToCartButton.style.display = 'block';
-						buyNowButton.style.display = 'block';
-						waitingButton.style.display = 'none';
-					} else {
-						addToCartButton.style.display = 'none';
-						buyNowButton.style.display = 'none';
-						waitingButton.style.display = 'block';
-					}
-				};
-
-				const checkValidity = () => {
-					const selectedColorElement = document.querySelector('.color-circle.selected');
-					const selectedSizeElement = document.querySelector('.size.selected');
-					const isValidSelection = selectedColorElement && selectedSizeElement &&
-						!selectedSizeElement.classList.contains('no-size');
-					updateButtons(isValidSelection);
-				};
-
-				const selectColor = (colorElement) => {
-					document.querySelectorAll('.color-circle').forEach(el => el.classList.remove('selected'));
-					colorElement.classList.add('selected');
-					selectedColor = colorElement.getAttribute('data-color');
-
-					document.querySelectorAll('.size').forEach(sizeElement => {
-						const sizeColor = sizeElement.getAttribute('data-color');
-						sizeElement.classList.toggle('no-size', sizeColor !== selectedColor);
-					});
-
-					checkValidity();
-				};
-
-				const selectSize = (sizeElement) => {
-					selectedSize = sizeElement.getAttribute('data-size');
-					document.querySelectorAll('.size').forEach(el => el.classList.remove('selected'));
-					sizeElement.classList.add('selected');
-
-					if (sizeElement.classList.contains('no-size')) {
-						document.querySelectorAll('.color-circle').forEach(el => el.classList.add('no-color'));
-						document.querySelectorAll(`.size[data-size="${selectedSize}"]`).forEach(el => {
-							const color = el.getAttribute('data-color');
-							document.querySelector(`.color-circle[data-color="${color}"]`).classList.remove('no-color');
-						});
-					} else {
-						document.querySelectorAll('.color-circle').forEach(colorElement => {
-							const colorSize = document.querySelector(`.size[data-color="${colorElement.getAttribute('data-color')}"][data-size="${selectedSize}"]`);
-							colorElement.classList.toggle('no-color', !colorSize || colorSize.classList.contains('no-size'));
-						});
-					}
-
-					checkValidity();
-				};
-
+				// Додаємо обробку подій для кольорів
 				colorContainer.addEventListener('click', (e) => {
 					if (e.target.classList.contains('color-circle')) {
 						selectColor(e.target);
 					}
 				});
 
+				// Додаємо обробку подій для розмірів
 				sizeContainer.addEventListener('click', (e) => {
 					if (e.target.classList.contains('size')) {
 						selectSize(e.target);
 					}
 				});
 
+				// Перевіряємо валідність вибору при першому завантаженні
 				checkValidity();
 			});
-
 		</script>
+
 
 </div>
 </section>
