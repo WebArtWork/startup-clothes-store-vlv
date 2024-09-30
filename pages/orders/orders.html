@@ -44,7 +44,7 @@
 
     (async () => {
         const orders = await Order.get();
-        
+
         orders.reverse();
 
         for (const order of orders) {
@@ -53,7 +53,7 @@
             const price = order.products.reduce((accumulator, product) => accumulator + product.product?.price, 0);
 
             const productsList = order.products.map(product => {
-                return `${product.product?.name} (${product?.productquantity?.size?.name || ''}) ${product.quantity} шт. <br>`;
+                return `${product.product?.name} (${product?.productquantity?.size?.name || ''}, ${product?.productquantity?.color || ''}) ${product.quantity} шт. <br>`;
             }).join('');
 
             Dom.add('orders', Dom.template('orders', {
@@ -68,7 +68,7 @@
                 phone: order.delivery?.phone || "",
                 discount: order.discount ? `-${price - (price * order.discount?.amount / 100)} грн (${order.discount?.amount}%)` : '',
                 price: `${price} грн`,
-                products: productsList 
+                products: productsList
             }));
         }
     })();
