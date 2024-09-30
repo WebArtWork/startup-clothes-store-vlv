@@ -53,7 +53,7 @@
             const price = order.products.reduce((accumulator, product) => accumulator + product.product?.price, 0);
 
             const productsList = order.products.map(product => {
-                return `${product.product.name} (${product?.productquantity?.size?.name || ''}) ${product.quantity} шт. <br>`;
+                return `${product.product?.name} (${product?.productquantity?.size?.name || ''}) ${product.quantity} шт. <br>`;
             }).join('');
 
             Dom.add('orders', Dom.template('orders', {
