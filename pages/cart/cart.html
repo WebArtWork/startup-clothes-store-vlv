@@ -200,7 +200,7 @@
 
 		function calculateTotal() {
 			let total = order.products.reduce(
-				(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
+				(accumulator, currentValue) => accumulator + (currentValue.product?.price * currentValue.quantity),
 				0,
 			);
 			return total - (total * (order.discount?.amount || 0)) / 100
@@ -212,7 +212,7 @@
 			discountElement.style.display = order.discount ? 'block' : 'none';
 			if (order.discount) {
 				let total = order.products.reduce(
-					(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
+					(accumulator, currentValue) => accumulator + (currentValue.product?.price * currentValue.quantity),
 					0,
 				);
 				const discountAmount = discountElement.querySelector('.discountAmount');
