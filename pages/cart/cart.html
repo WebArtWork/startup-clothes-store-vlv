@@ -82,16 +82,16 @@
 
 		order.products.forEach((product, index) => {
 			Dom.add('products', Dom.template('products', {
-				name: product.product.name,
-				color: product.productquantity.color,
+				name: product.product?.name,
+				color: product.productquantity?.color,
 				currency: product.currency,
-				price: product.product.price,
+				price: product.product?.price,
 				quantity: product.quantity,
-				status: product.product.status,
-				size: product.productquantity.size.name,
-				thumb: product.product.thumb,
+				status: product.product?.status,
+				size: product.productquantity?.size?.name,
+				thumb: product.product?.thumb,
 				id: product._id,
-				total: product.product.price * product.quantity
+				total: product.product?.price * product.quantity
 			}));
 		});
 
