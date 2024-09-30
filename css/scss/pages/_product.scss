@@ -199,29 +199,31 @@
 // }
 
 .size-container {
-  display: inline-block;
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .size {
-  padding: 7px 8px;
+  padding: 8px 10px;
   border: 1px solid #ccc;
   cursor: pointer;
   position: relative;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 .size.available {
-  color: rgb(0, 0, 0);
-  border-color: rgb(0, 0, 0);
+  color: #333;
+  border-color: #333;
 }
 
 .size.no-size {
-  color: black;
-  border-color: rgb(165 102 102);
+  color: #a56666;
+  border-color: #a56666;
   opacity: 0.5;
-    pointer-events: auto;
+  pointer-events: none;
 }
 
 .size.no-size::before,
@@ -230,7 +232,7 @@
   position: absolute;
   width: 100%;
   height: 1px;
-  background-color: rgb(165 102 102);
+  background-color: #a56666;
   top: 50%;
   left: 0;
   transform: rotate(45deg);
@@ -241,8 +243,8 @@
 }
 
 .size.selected {
-  background-color: rgba(185, 185, 185, 0.699);
-  color: black;
+  background-color: #ddd;
+  border-color: #000;
 }
 
 .color-circle {
@@ -252,6 +254,8 @@
   display: inline-block;
   cursor: pointer;
   margin: 5px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
 }
 
 .color-circle.selected {
@@ -259,12 +263,10 @@
 }
 
 .color-circle.no-color {
-  opacity: 0.5;  /* Lower opacity for unavailable colors */
-  position: relative;
-  pointer-events: auto;  /* Allow clicking on unavailable colors */
+  opacity: 0.5;
+  pointer-events: none;
 }
 
-/* Add a red diagonal line across unavailable color circles */
 .color-circle.no-color::before {
   content: '';
   position: absolute;
@@ -273,15 +275,6 @@
   right: 0;
   height: 2px;
   background-color: red;
-  transform: rotate(45deg);  /* Diagonal line */
-  transform-origin: center;  /* Center the diagonal line */
-}
-
-.no-color, .no-size {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.size.selected, .color-circle.selected {
-  border: 2px solid #000;
+  transform: rotate(45deg);
+  transform-origin: center;
 }

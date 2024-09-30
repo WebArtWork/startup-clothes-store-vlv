@@ -100,120 +100,88 @@
 			import Dom from "/api/wjst/dom";
 			import Order from "/api/wjst/order";
 			const order = await Order.populated();
-		  
-			const sizeContainer = document.querySelector('.size-container');
-			const colorContainer = document.querySelector('.color-container');
-			let selectedColor = null;
-			let selectedSize = null;
-		  
-			const addToCartButton = document.getElementById('addToCart');
-			const buyNowButton = document.getElementById('buyNow');
-			const waitingButton = document.querySelector('.product-info__cart-waiting');
-		  
-			// Функція для зміни стану кнопок
-			const updateButtons = (isValidSelection) => {
-			  if (isValidSelection) {
-				addToCartButton.style.display = 'block';
-				buyNowButton.style.display = 'block';
-				waitingButton.style.display = 'none';
-			  } else {
-				addToCartButton.style.display = 'none';
-				buyNowButton.style.display = 'none';
-				waitingButton.style.display = 'block';
-			  }
-			};
-		  
-			// Функція для перевірки валідності вибраного кольору та розміру
-			const checkValidity = () => {
-			  const selectedColorElement = document.querySelector('.color-circle.selected');
-			  const selectedSizeElement = document.querySelector('.size.selected');
-			  const isValidSelection = selectedColorElement && selectedSizeElement && 
-									   !selectedSizeElement.classList.contains('no-size');
-			  updateButtons(isValidSelection);
-			};
-		  
-			// Функція для вибору кольору
-			const selectColor = (colorElement) => {
-			  document.querySelectorAll('.color-circle').forEach(el => el.classList.remove('selected'));
-			  colorElement.classList.add('selected');
-			  selectedColor = colorElement.getAttribute('data-color');
-		  
-			  // Відображення доступних розмірів для вибраного кольору
-			  document.querySelectorAll('.size').forEach(sizeElement => {
-				const sizeColor = sizeElement.getAttribute('data-color');
-				sizeElement.classList.toggle('no-size', sizeColor !== selectedColor);
-			  });
-		  
-			  checkValidity();
-			};
-		  
-			// Функція для вибору розміру
-			const selectSize = (sizeElement) => {
-			  selectedSize = sizeElement.getAttribute('data-size');
-			  document.querySelectorAll('.size').forEach(el => el.classList.remove('selected'));
-			  sizeElement.classList.add('selected');
-		  
-			  // Якщо розмір недоступний, показуємо відповідний колір
-			  if (sizeElement.classList.contains('no-size')) {
-				document.querySelectorAll('.color-circle').forEach(el => el.classList.add('no-color'));
-				document.querySelectorAll(`.size[data-size="${selectedSize}"]`).forEach(el => {
-				  const color = el.getAttribute('data-color');
-				  document.querySelector(`.color-circle[data-color="${color}"]`).classList.remove('no-color');
+
+			document.addEventListener('DOMContentLoaded', () => {
+				const sizeContainer = document.querySelector('.size-container');
+				const colorContainer = document.querySelector('.color-container');
+				let selectedColor = null;
+				let selectedSize = null;
+
+				const addToCartButton = document.getElementById('addToCart');
+				const buyNowButton = document.getElementById('buyNow');
+				const waitingButton = document.querySelector('.product-info__cart-waiting');
+
+				const updateButtons = (isValidSelection) => {
+					if (isValidSelection) {
+						addToCartButton.style.display = 'block';
+						buyNowButton.style.display = 'block';
+						waitingButton.style.display = 'none';
+					} else {
+						addToCartButton.style.display = 'none';
+						buyNowButton.style.display = 'none';
+						waitingButton.style.display = 'block';
+					}
+				};
+
+				const checkValidity = () => {
+					const selectedColorElement = document.querySelector('.color-circle.selected');
+					const selectedSizeElement = document.querySelector('.size.selected');
+					const isValidSelection = selectedColorElement && selectedSizeElement &&
+						!selectedSizeElement.classList.contains('no-size');
+					updateButtons(isValidSelection);
+				};
+
+				const selectColor = (colorElement) => {
+					document.querySelectorAll('.color-circle').forEach(el => el.classList.remove('selected'));
+					colorElement.classList.add('selected');
+					selectedColor = colorElement.getAttribute('data-color');
+
+					document.querySelectorAll('.size').forEach(sizeElement => {
+						const sizeColor = sizeElement.getAttribute('data-color');
+						sizeElement.classList.toggle('no-size', sizeColor !== selectedColor);
+					});
+
+					checkValidity();
+				};
+
+				const selectSize = (sizeElement) => {
+					selectedSize = sizeElement.getAttribute('data-size');
+					document.querySelectorAll('.size').forEach(el => el.classList.remove('selected'));
+					sizeElement.classList.add('selected');
+
+					if (sizeElement.classList.contains('no-size')) {
+						document.querySelectorAll('.color-circle').forEach(el => el.classList.add('no-color'));
+						document.querySelectorAll(`.size[data-size="${selectedSize}"]`).forEach(el => {
+							const color = el.getAttribute('data-color');
+							document.querySelector(`.color-circle[data-color="${color}"]`).classList.remove('no-color');
+						});
+					} else {
+						document.querySelectorAll('.color-circle').forEach(colorElement => {
+							const colorSize = document.querySelector(`.size[data-color="${colorElement.getAttribute('data-color')}"][data-size="${selectedSize}"]`);
+							colorElement.classList.toggle('no-color', !colorSize || colorSize.classList.contains('no-size'));
+						});
+					}
+
+					checkValidity();
+				};
+
+				colorContainer.addEventListener('click', (e) => {
+					if (e.target.classList.contains('color-circle')) {
+						selectColor(e.target);
+					}
 				});
-			  } else {
-				// Повертаємо всі кольори, доступні для цього розміру
-				document.querySelectorAll('.color-circle').forEach(colorElement => {
-				  const colorSize = document.querySelector(`.size[data-color="${colorElement.getAttribute('data-color')}"][data-size="${selectedSize}"]`);
-				  colorElement.classList.toggle('no-color', !colorSize || colorSize.classList.contains('no-size'));
+
+				sizeContainer.addEventListener('click', (e) => {
+					if (e.target.classList.contains('size')) {
+						selectSize(e.target);
+					}
 				});
-			  }
-		  
-			  checkValidity();
-			};
-		  
-			// Делегування подій для вибору кольору та розміру
-			colorContainer.addEventListener('click', (e) => {
-			  if (e.target.classList.contains('color-circle')) {
-				selectColor(e.target);
-			  }
+
+				checkValidity();
 			});
-		  
-			sizeContainer.addEventListener('click', (e) => {
-			  if (e.target.classList.contains('size')) {
-				selectSize(e.target);
-			  }
-			});
-		  
-			// Функція для додавання продукту до кошика
-			const toggleProduct = async (quantity = 1) => {
-			  const productquantity = document.querySelector('.size.available.selected').id;
-			  const product = "{{{product.id}}}";
-			  await Order.toggleProduct(product, quantity, productquantity);
-		  
-			  if (await Order.hasProduct(product, productquantity)) {
-				Dom.element("addToCart").innerHTML = "Забрати з кошика";
-				Dom.element("addToCart").style.backgroundColor = "#6cc4cc";
-			  } else {
-				Dom.element("addToCart").innerHTML = "Додати у кошик";
-				Dom.element("addToCart").style.backgroundColor = "black";
-			  }
-		  
-			  Dom.element("cart").innerHTML = Dom.template('cart', {
-				counter: Order.order.products.length
-			  });
-			};
-		  
-			// Слухачі подій для кнопок
-			Dom.click("addToCart", () => toggleProduct(1));
-			Dom.click("buyNow", async () => {
-			  await toggleProduct();
-			  window.location.href = '/cart';
-			});
-		  
-			// Перевірка валідності при завантаженні сторінки
-			checkValidity();
-		  </script>
-		  
+
+		</script>
+
 </div>
 </section>
 </div>
