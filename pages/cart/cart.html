@@ -40,7 +40,7 @@
 	<div id="template-products" style="display: none;">
 		<div class="cart-product" id="remove{id}">
 			<img src="{thumb}" alt="Product 1" class="product-image">
-			<span class="cart-product-name">{name} ({size}) - {price} грн</span>
+			<span class="cart-product-name">{name} (Колір: {color}, Розмір: {size}) - {price} грн</span>
 			<div class="product-quantity">
 				<button productId="{id}" class="quantity-minus">-</button>
 				<input id="id{id}" type="number" class="quantity-value" value="{quantity}" min="1">
@@ -49,6 +49,7 @@
 			<span class="product-total-price" id="product-total-price{id}"> {total} грн</span>
 		</div>
 	</div>
+
 
 	<script type="module">
 		import Dom from "/api/wjst/dom";
@@ -78,10 +79,11 @@
 		});
 
 		console.log(order);
-		
+
 		order.products.forEach((product, index) => {
 			Dom.add('products', Dom.template('products', {
 				name: product.product.name,
+				color: product.productquantity.color,
 				currency: product.currency,
 				price: product.product.price,
 				quantity: product.quantity,
@@ -92,6 +94,7 @@
 				total: product.product.price * product.quantity
 			}));
 		});
+
 		const respData = resp || { data: {} };
 		respData.data = respData.data || {};
 		Dom.element('email').value = respData.email || "";
@@ -174,13 +177,13 @@
 			}
 		});
 		Dom.click('.deleteDiscount', async () => {
-				order.discount = undefined;
-				const orderTotalElement = Dom.element("orderTotal");
-				const orderTotal = parseFloat(orderTotalElement.textContent.trim());
-				const discountedTotal = calculateTotal();
-				orderTotalElement.textContent = discountedTotal.toFixed(2);
-				toggleDiscount()
-				await Order.update(order);
+			order.discount = undefined;
+			const orderTotalElement = Dom.element("orderTotal");
+			const orderTotal = parseFloat(orderTotalElement.textContent.trim());
+			const discountedTotal = calculateTotal();
+			orderTotalElement.textContent = discountedTotal.toFixed(2);
+			toggleDiscount()
+			await Order.update(order);
 		});
 		Dom.submit('cart-info-form', async data => {
 			order.status = 'ordered';
@@ -204,9 +207,9 @@
 		}
 
 		function toggleDiscount() {
-			Dom.element("codeBlock").style.display = order.discount ? 'none': 'flex';
+			Dom.element("codeBlock").style.display = order.discount ? 'none' : 'flex';
 			const discountElement = Dom.element("existingDiscount");
-			discountElement.style.display = order.discount ? 'block': 'none';
+			discountElement.style.display = order.discount ? 'block' : 'none';
 			if (order.discount) {
 				let total = order.products.reduce(
 					(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
