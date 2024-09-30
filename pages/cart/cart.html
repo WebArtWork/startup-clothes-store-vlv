@@ -103,7 +103,7 @@
 		Dom.element('address').value = respData.data.address || "";
 		Dom.element('phone').value = respData.data.phone || "";
 		Dom.element("orderTotal").textContent = order.products.reduce(
-			(accumulator, currentValue) => accumulator + (currentValue.product.price * currentValue.quantity),
+			(accumulator, currentValue) => accumulator + (currentValue.product?.price * currentValue.quantity),
 			0,
 		);
 		toggleSubmitButton();
