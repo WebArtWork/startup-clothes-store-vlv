@@ -318,6 +318,8 @@
 
   function updateProductPriceInHTML() {
     const products = '{{{products}}}';
+    console.log(products);
+
     products.forEach(element => {
       const productElement = document.querySelector(`a[data-product-name="${element.id}"] .cloth__item-price`);
       if (productElement) {
