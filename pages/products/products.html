@@ -317,6 +317,7 @@
   };
 
   function updateProductPriceInHTML() {
+    const products = JSON.parse('{{{products|string}}}');
     products.forEach(element => {
       const productElement = document.querySelector(`a[data-product-name="${element.id}"] .cloth__item-price`);
       if (productElement) {
