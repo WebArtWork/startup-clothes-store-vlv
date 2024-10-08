@@ -317,7 +317,7 @@
   };
 
   function updateProductPriceInHTML() {
-    const products = '{{{products | json}}}';
+    const products = JSON.parse('{{{products|json}}}')
     console.log(products);
 
     products.forEach(element => {
