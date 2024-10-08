@@ -117,7 +117,8 @@
           data-product-name="{{{product.name}}}" data-modal-id="modal">
           <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
           <div class="cloth__item-title">{{{product.name}}}</div>
-          <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span></div>
+          <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span> {{{product.discounts | json}}}
+          </div>
         </a>
         {% endfor %}
       </div>
@@ -200,7 +201,7 @@
       sliderRange.style.left = minPercent + '%';
       sliderRange.style.width = (maxPercent - minPercent) + '%';
     }
-    
+
     sliderMin.addEventListener('input', updateSlider);
     sliderMax.addEventListener('input', updateSlider);
     sliderMin.addEventListener('change', updateFilters);
