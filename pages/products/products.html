@@ -117,7 +117,7 @@
           data-product-name="{{{product.name}}}" data-modal-id="modal">
           <img src="{{{product.thumb}}}" alt="{{{product.name}}}" />
           <div class="cloth__item-title">{{{product.name}}}</div>
-          <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span> {{{product.discounts | json}}}
+          <div class="cloth__item-price">{{{product.price}}} <span>{{{currency}}}</span>
           </div>
         </a>
         {% endfor %}
@@ -166,7 +166,7 @@
         searchInput.value = searchTerm;
       }
     }
-
+    updateProductPriceInHTML();
     initializeSearch();
 
     var toggles = document.querySelectorAll('.toggle-category');
@@ -305,4 +305,23 @@
     initializeFilters();
     updateSlider();
   });
+
+  function applyDiscounts(product, discounts) {
+    let finalPrice = product.price;
+
+    discounts.forEach(discount => {
+      finalPrice = (finalPrice * discount.amount) / 100;
+    });
+
+    return finalPrice;
+  };
+
+  function updateProductPriceInHTML() {
+    products.forEach(element => {
+      const productElement = document.querySelector(`a[data-product-name="${element.id}"] .cloth__item-price`);
+      if (productElement) {
+        productElement.innerHTML = `${applyDiscounts(element, element.discounts)} <span>{{{currency}}}</span>`;
+      }
+    });
+  }
 </script>
