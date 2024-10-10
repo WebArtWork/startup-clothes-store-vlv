@@ -37,7 +37,7 @@ const swiperCloth = new Swiper('.cloth-swiper', {
         1350: {
             slidesPerView: 4,
             spaceBetween: 20,
-        },
+        }
     },
     autoplay: {
         delay: 8000,
@@ -46,9 +46,12 @@ const swiperCloth = new Swiper('.cloth-swiper', {
     on: {
         init: function () {
             const totalSlides = this.slides.length;
+            const nextButton = this.navigation.$nextEl[0];
+            const prevButton = this.navigation.$prevEl[0];
+
             if (totalSlides <= 4) {
-                this.navigation.$nextEl.addClass('hidden');
-                this.navigation.$prevEl.addClass('hidden');
+                nextButton.classList.add('hidden');
+                prevButton.classList.add('hidden');
             }
         }
     }
