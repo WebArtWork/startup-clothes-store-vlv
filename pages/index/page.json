@@ -110,27 +110,6 @@
 		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
 		"thumb": "/vlv/img/swiper/photo2.jpg",
 		"name": "Нова колекція"
-	},
-	{
-		"id": "123",
-		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"thumb": "/vlv/img/land/vlv1.jpg",
-		"name": "Новини"
-	},
-	{
-		"id": "123",
-		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"thumb": "/vlv/img/land/vlv2.jpg",
-		"name": "Знижки"
-	},
-	{
-		"id": "123",
-		"short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.",
-		"thumb": "/vlv/img/land/vlv3.jpg",
-		"name": "Нова колекція"
 	}
 ]
 }
